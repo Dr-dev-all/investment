@@ -6,12 +6,28 @@ body {
   @apply bg-white h-screen w-screen;
 }
 
+.main-style {
+  @apply flex min-h-screen flex-col items-center justify-between;
+}
+
 .section-style {
-  @apply w-screen h-full;
+  @apply w-screen h-full overflow-hidden;
+}
+
+.div-style {
+  @apply bg-no-repeat bg-left bg-cover h-[38rem]  w-screen;
 }
 
 .article-style {
   @apply w-full   h-full flex flex-col justify-center items-center text-white;
+}
+
+.form-text-style {
+  @apply block text-[1.2rem] mb-1 mt-1 font-bold;
+}
+
+.form-input-style {
+  @apply px-3 py-1 rounded-full border-2 border-black shadow-2xl;
 }
 
 /* UTILITY STYLING */
