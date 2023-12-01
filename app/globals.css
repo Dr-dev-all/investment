@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white h-screen w-screen;
+  @apply bg-white h-screen overflow-x-hidden  w-screen relative;
 }
 
 .main-style {
@@ -23,11 +23,11 @@ body {
 }
 
 .form-text-style {
-  @apply block text-[1.2rem] mb-1 mt-1 font-bold;
+  @apply block text-[1rem]   font-bold;
 }
 
 .form-input-style {
-  @apply px-3 py-1 rounded-full border-2 border-black shadow-2xl;
+  @apply px-3 py-1 rounded-full border-2 border-black w-full shadow-2xl;
 }
 
 /* UTILITY STYLING */
@@ -41,9 +41,17 @@ body {
 }
 
 .plan-style {
-  @apply bg-blue-500 mx-auto gap-2 min-h-[17rem] rounded-[2rem] text-center  w-[90%];
+  @apply bg-white text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-left p-2  w-[94%];
 }
 
 .plan-items {
   @apply w-full  flex justify-between items-center px-2 py-1;
+}
+
+.plan-link-style {
+  @apply p-2 my-2 mx-auto rounded-[2rem] text-white  shadow-gray-500 shadow-xl bg-[#03045e]  my-2;
+}
+
+.help-div-style {
+  @apply center-with-flex gap-2 text-center bg-[#03045e] text-white mx-auto px-3 py-1 h-[10rem] w-full rounded-t-lg shadow-gray-500 shadow-2xl;
 }

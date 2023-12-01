@@ -13,10 +13,10 @@ export default function Footer() {
 
   const contactUs = [
     { name: 'Phone: +44667367367267', url: '#', id: 1 },
-    { name: 'Email: support@bullyharvest.com', url: '#', id: 1 },
-    { name: 'Facebook', url: '#', id: 1 },
-    { name: 'Whatsapp', url: '#', id: 1 },
-    { name: 'Instagram', url: '#', id: 1 },
+    { name: 'Email: support@bullyharvest.com', url: '#', id: 2 },
+    { name: 'Facebook', url: '#', id: 3 },
+    { name: 'Whatsapp', url: '#', id: 4 },
+    { name: 'Instagram', url: '#', id: 5 },
   ];
 
   const mediaCenter = [

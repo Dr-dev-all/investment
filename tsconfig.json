@@ -22,6 +22,27 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/Landing.js",
+    "components/Login.js",
+    "app/api/latestnews/route.js",
+    "app/layout.js",
+    "app/page.js",
+    "components/Register.js",
+    "components/Footer.js",
+    "components/index.js",
+    "components/Verifypassword.js",
+    "components/Userdash.js",
+    "components/About.js",
+    "components/AdminDashBoard.js",
+    "components/Contact.js",
+    "components/Header.js",
+    "app/(auth)/register/page.js",
+    "app/(auth)/login/page.js"
+  ],
   "exclude": ["node_modules"]
 }

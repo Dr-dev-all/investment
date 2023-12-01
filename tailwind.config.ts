@@ -8,10 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-      },
+      backgroundImage: {},
     },
   },
   plugins: [],
 };
-export default config;
+module.exports = config;

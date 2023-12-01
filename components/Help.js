@@ -1,7 +1,7 @@
-export default function UserDashBoard() {
+export default function Help() {
   const content = (
     <main>
-      <h1>login page</h1>
+      <h1>help comp</h1>
     </main>
   );
 

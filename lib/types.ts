@@ -13,4 +13,4 @@ export const userRegisterSchema = z
     path: ['confirmPwordass'],
   });
 
-export type TSregisterSchema = z.infer<typeof userRegisterSchema>;
+export default userRegisterSchema;
