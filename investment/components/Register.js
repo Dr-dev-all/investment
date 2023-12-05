@@ -19,7 +19,9 @@ export default function Register() {
   const [userData, setUserData] = useState({});
   const [userErrorData, setUserErrorData] = useState({});
   // const inputRef = useRef(null);
-  const [serverData, setServerData] = useState({});
+  const [serverData, setServerData] = useState('');
+  const [errorInResponse, setErrorInResponse] = useState(false);
+  const [userOptions, setUserOptions] = useState({});
 
   const {
     register,
@@ -27,6 +29,7 @@ export default function Register() {
     setError,
     setFocus,
     reset,
+    getValues,
     formState: { errors, isSubmitting, isSubmitSuccessful, isSubmitted },
   } = useForm();
 
@@ -37,25 +40,59 @@ export default function Register() {
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' },
       });
-      // console.log(response.json());
+      console.log(response);
 
-      if (!response.ok) {
+      if (response.statusCode !== 201 || !response.ok) {
         const errorResponseData = await response.json();
 
-        if (errorResponseData.errorStatus) {
-          if (errorResponseData.field === 'email') {
-            setError('email', {
-              type: 'server',
+        console.log(errorResponseData.message);
+        setErrorInResponse(!errorInResponse);
+
+        if (
+          errorResponseData.errorStatus === true &&
+          errorResponseData.successStatus === false &&
+          errorResponseData.allFields === false
+        ) {
+          if (
+            errorResponseData.field === 'email' &&
+            errorResponseData.errorStatus === true
+          ) {
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+            setServerData(errorInResponse.message);
+            setError('root.serverError', {
+              type: response.statusCode,
               message: errorResponseData.message,
             });
-          } else if (errorResponseData.field === 'password') {
-            setError('password', {
-              type: 'server',
-              message: errorResponseData.message,
+          } else if (
+            errorResponseData.field === 'password' &&
+            errorResponseData.errorStatus === true
+          ) {
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+            setServerData(errorInResponse.message);
+            setError('root.serverError', {
+              type: response.statusCode,
+              message: errorResponseData.messages,
             });
-          } else if (errorResponseData.field === 'confirmPassword') {
-            setError('confirmPassword', {
-              type: 'server',
+          } else if (
+            errorResponseData.field === 'confirmPassword' &&
+            errorResponseData.errorStatus === true
+          ) {
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+            setServerData(errorInResponse.message);
+            setError('root.serverError', {
+              type: response.statusCode,
               message: errorResponseData.message,
             });
           } else if (
@@ -63,31 +100,24 @@ export default function Register() {
             errorResponseData.successStatus === false &&
             errorResponseData.errorStatus === true
           ) {
-            setError('firstName', {
-              type: 'server',
-              messsage: errorResponseData.message,
-            });
-            setError('lastName', {
-              type: 'server',
-              messsage: errorResponseData.message,
-            });
-            setError('email', {
-              type: 'server',
-              messsage: errorResponseData.message,
-            });
-            setError('password', {
-              type: 'server',
-              messsage: errorResponseData.message,
-            });
-            setError('confirmPassword', {
-              type: 'server',
+            setUserOptions(() => ({
+              ...userOptions,
+              allDataField: errorResponseData.allFields,
+              dataErrorStatus: errorResponseData.errorStatus,
+              dataSuccessStatus: errorResponseData.successStatus,
+            }));
+            setServerData(errorInResponse.message);
+            setError('root.serverError', {
+              type: response.statusCode,
               messsage: errorResponseData.message,
             });
           } else {
             alert('Invalid user data recieved');
           }
         }
-      } else {
+      }
+
+      if (response.statusCode === 201 || response.statusCode === 200) {
         const successResponse = await response.json();
         console.log(successResponse);
       }
@@ -112,30 +142,38 @@ export default function Register() {
                   type='text'
                   {...register('firstName', {
                     required: 'Please enter your firstname',
-                    maxLength: 20,
+                    maxLength: 30,
                   })}
                   name='firstName'
                   id='firstName'
                   className='form-input-style'
                   placeholder='Eg: james'
                 />
-                {errors.firstName && errors.firstName.type === 'required' && (
+                {errors.firstName && errors.firstName.type === 'required' ? (
                   <p className='form-error-style'>
                     <BiSolidError className='warning-icon-style' />
                     {errors.firstName.message}
                   </p>
+                ) : (
+                  errors.firstName &&
+                  errors.firstName.type === 'maxLength' && (
+                    <p className='form-error-style'>
+                      <BiSolidError className='warning-icon-style' />
+                      Please choose a shorter name
+                    </p>
+                  )
                 )}
-                {errors.firstName && errors.firstName.type === 'maxLength' && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    Please choose a shorter name
-                  </p>
-                )}
-                {errors.firstName && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.firstName.message}
-                  </p>
+
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse &&
+                userOptions.dataField === 'firstName' &&
+                userOptions.dataErrorStatus === true ? (
+                  <p>{serverData}</p>
+                ) : (
+                  errorInResponse &&
+                  userOptions.allDataField === true &&
+                  userOptions.dataSuccessStatus === false &&
+                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
                 )}
               </div>
 
@@ -155,23 +193,30 @@ export default function Register() {
                   className='form-input-style'
                   placeholder='Eg: Morgan'
                 />
-                {errors.firstName && errors.firstName.type === 'required' && (
+                {errors.firstName && errors.firstName.type === 'required' ? (
                   <p className='form-error-style'>
                     <BiSolidError className='warning-icon-style' />
                     {errors.lastName.message}
                   </p>
+                ) : (
+                  errors.lastName &&
+                  errors.lastName.type === 'maxLength' && (
+                    <p className='form-error-style'>
+                      <BiSolidError className='warning-icon-style' />
+                      Please choose a shorter name
+                    </p>
+                  )
                 )}
-                {errors.lastName && errors.lastName.type === 'maxLength' && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    Please choose a shorter name
-                  </p>
-                )}
-                {errors.lastName && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.lastName.message}
-                  </p>
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse &&
+                userOptions.dataField === 'lastName' &&
+                userOptions.dataErrorStatus === true ? (
+                  <p>{serverData}</p>
+                ) : (
+                  errorInResponse &&
+                  userOptions.allDataField === true &&
+                  userOptions.dataSuccessStatus === false &&
+                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
                 )}
               </div>
 
@@ -192,23 +237,31 @@ export default function Register() {
                   className='form-input-style'
                   placeholder='Eg: jamesmorgan@gmail.com'
                 />
-                {errors.email && errors.email.type === 'required' && (
+                {errors.email && errors.email.type === 'required' ? (
                   <p className='form-error-style'>
                     <BiSolidError className='warning-icon-style' />
                     {errors.email.message}
                   </p>
+                ) : (
+                  errors.email &&
+                  errors.email.type === 'pattern' && (
+                    <p className='form-error-style'>
+                      <BiSolidError className='warning-icon-style' />
+                      Please enter a valid email address
+                    </p>
+                  )
                 )}
-                {errors.email && errors.email.type === 'pattern' && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    Please enter a valid email address
-                  </p>
-                )}
-                {errors.email && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.email.message}
-                  </p>
+
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse &&
+                userOptions.dataField === 'email' &&
+                userOptions.dataErrorStatus === true ? (
+                  <p>{serverData}</p>
+                ) : (
+                  errorInResponse &&
+                  userOptions.allDataField === true &&
+                  userOptions.dataSuccessStatus === false &&
+                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
                 )}
               </div>
 
@@ -219,7 +272,10 @@ export default function Register() {
                 <input
                   {...register('password', {
                     required: 'Please enter your password',
-                    minLength: 6,
+                    minLength: {
+                      value: 6,
+                      message: 'Password must be above six characters',
+                    },
                   })}
                   type='text'
                   name='password'
@@ -227,23 +283,31 @@ export default function Register() {
                   className='form-input-style'
                   placeholder='Eg: Password123*@'
                 />
-                {errors.password && errors.password.type === 'required' && (
+                {errors.password && errors.password.type === 'required' ? (
                   <p className='form-error-style'>
                     <BiSolidError className='warning-icon-style' />
                     {errors.password.message}
                   </p>
+                ) : (
+                  errors.password &&
+                  errors.password.type === 'minLength' && (
+                    <p className='form-error-style'>
+                      <BiSolidError className='warning-icon-style' />
+                      {errors.password.message}
+                    </p>
+                  )
                 )}
-                {errors.password && errors.password.type === 'minLength' && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.password.message}
-                  </p>
-                )}
-                {errors.password && (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.password.message}
-                  </p>
+
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse &&
+                userOptions.dataField === 'password' &&
+                userOptions.dataErrorStatus === true ? (
+                  <p>{serverData}</p>
+                ) : (
+                  errorInResponse &&
+                  userOptions.allDataField === true &&
+                  userOptions.dataSuccessStatus === false &&
+                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
                 )}
               </div>
 
@@ -253,8 +317,12 @@ export default function Register() {
                 </label>
                 <input
                   {...register('confirmPassword', {
-                    required: 'Please repeat your password',
-                    minLength: 6,
+                    required: 'This field must not be empty',
+                    minLength: {
+                      value: 6,
+                      message: ' input data must be above six (6) characters',
+                    },
+                    validate: (value) => value === getValues('password'),
                   })}
                   type='text'
                   name='confirmPassword'
@@ -263,24 +331,37 @@ export default function Register() {
                   placeholder='Eg: Password123*@'
                 />
                 {errors.confirmPassword &&
-                  errors.confirmPassword.type === 'required' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
-                      {errors.confirmPassword.message}
-                    </p>
-                  )}
-                {errors.confirmPassword &&
-                  errors.confirmPassword.type === 'minLength' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
-                      input data must be above six (6) characters
-                    </p>
-                  )}
-                {errors.confirmPassword && (
+                errors.confirmPassword.type === 'required' ? (
                   <p className='form-error-style'>
                     <BiSolidError className='warning-icon-style' />
                     {errors.confirmPassword.message}
                   </p>
+                ) : errors.confirmPassword &&
+                  errors.confirmPassword.type === 'minLength' ? (
+                  <p className='form-error-style'>
+                    <BiSolidError className='warning-icon-style' />
+                    {errors?.confirmPassword?.message}
+                  </p>
+                ) : (
+                  errors.confirmPassword &&
+                  errors.confirmPassword.type === 'validate' && (
+                    <p className='form-error-style'>
+                      <BiSolidError className='warning-icon-style' />
+                      Password does not match
+                    </p>
+                  )
+                )}
+
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse &&
+                userOptions.dataField === 'confirmPassword' &&
+                userOptions.dataErrorStatus === true ? (
+                  <p>{serverData}</p>
+                ) : (
+                  errorInResponse &&
+                  userOptions.allDataField === true &&
+                  userOptions.dataSuccessStatus === false &&
+                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
                 )}
               </div>
 
