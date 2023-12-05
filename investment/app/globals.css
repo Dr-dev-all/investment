@@ -55,3 +55,11 @@ body {
 .help-div-style {
   @apply center-with-flex gap-2 text-center bg-[#03045e] text-white mx-auto px-3 py-1 h-[10rem] w-full rounded-t-lg shadow-gray-500 shadow-2xl;
 }
+
+.form-error-style {
+  @apply bg-[#da0a1c] italic text-center p-1 my-2 mx-auto text-white text-[1.2rem];
+}
+
+.warning-icon-style {
+  @apply inline text-white pr-2 text-[1.5rem];
+}
