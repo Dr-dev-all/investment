@@ -19,7 +19,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use('/auth', authRoutes);
+app.use('/auths', authRoutes);
 app.use('/users', userRoutes);
 
 app.all('*', (req, res) => {

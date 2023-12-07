@@ -4,6 +4,20 @@ import asyncHandler from 'express-async-handler';
 import isEmail from 'validator/lib/isEmail.js';
 
 const getAllUsers = asyncHandler(async (req, res) => {
+  const user_id = req.user;
+  if (!user_id) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  const foundUser = await User.findById(user_id);
+  if (!foundUser) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  // if (foundUser.isAdmin === false) {
+  //   return res.status(401).json({ message: 'Unauthorized' });
+  // }
+
   const users = await User.find().select('-password').lean();
   if (!users?.length) return res.status(400).json({ message: 'No user found' });
   return res.status(200).json({ message: users });

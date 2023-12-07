@@ -1,4 +1,4 @@
-import jwt from 'json-web-token';
+import jwt from 'jsonwebtoken';
 
 const verifyjwt = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
@@ -16,3 +16,5 @@ const verifyjwt = (req, res, next) => {
     next();
   });
 };
+
+export default verifyjwt;

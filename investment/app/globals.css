@@ -19,7 +19,7 @@ body {
 }
 
 .article-style {
-  @apply w-full   h-full flex flex-col justify-center items-center text-white;
+  @apply w-full   min-h-full flex flex-col grow justify-center items-center text-white;
 }
 
 .form-text-style {
@@ -57,9 +57,9 @@ body {
 }
 
 .form-error-style {
-  @apply bg-[#da0a1c] italic text-center p-1 my-2 mx-auto text-white text-[1.2rem];
+  @apply text-[#da0a1c] italic text-center p-[0.6px] my-1 mx-auto text-[1.2rem];
 }
 
 .warning-icon-style {
-  @apply inline text-white pr-2 text-[1.5rem];
+  @apply inline text-[#da0a1c] pr-2 text-[1.5rem];
 }

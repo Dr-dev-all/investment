@@ -12,16 +12,20 @@ import { useState, useEffect, useRef } from 'react';
 import validator from 'validator';
 import { BiSolidError } from 'react-icons/bi';
 import dotenv from 'dotenv';
-
+import { sendStatusCode } from 'next/dist/server/api-utils';
+import { useRouter, usePathname } from 'next/navigation';
 dotenv.config();
 
 export default function Register() {
   const [userData, setUserData] = useState({});
-  const [userErrorData, setUserErrorData] = useState({});
+  const [userErrorData, setUserErrorData] = useState('');
   // const inputRef = useRef(null);
-  const [serverData, setServerData] = useState('');
+  const [serverData, setServerData] = useState(null);
   const [errorInResponse, setErrorInResponse] = useState(false);
   const [userOptions, setUserOptions] = useState({});
+  const router = useRouter();
+  const pathname = usePathname();
+  let errorResponseData;
 
   const {
     register,
@@ -42,85 +46,104 @@ export default function Register() {
       });
       console.log(response);
 
-      if (response.statusCode !== 201 || !response.ok) {
-        const errorResponseData = await response.json();
+      if (!response.ok) {
+        // HANDLING 409
 
-        console.log(errorResponseData.message);
         setErrorInResponse(!errorInResponse);
-
-        if (
-          errorResponseData.errorStatus === true &&
-          errorResponseData.successStatus === false &&
-          errorResponseData.allFields === false
-        ) {
+        if (response.status === 409 || response.statusText === 'Conflict') {
+          errorResponseData = await response.json();
           if (
             errorResponseData.field === 'email' &&
-            errorResponseData.errorStatus === true
+            errorResponseData.errorStatus === true &&
+            errorResponseData.successStatus === false
           ) {
+            setServerData(errorResponseData.message);
+            console.log(errorResponseData.message);
+
             setUserOptions(() => ({
               ...userOptions,
               dataField: errorResponseData.field,
               dataErrorStatus: errorResponseData.errorStatus,
             }));
-            setServerData(errorInResponse.message);
-            setError('root.serverError', {
-              type: response.statusCode,
-              message: errorResponseData.message,
-            });
-          } else if (
-            errorResponseData.field === 'password' &&
-            errorResponseData.errorStatus === true
-          ) {
-            setUserOptions(() => ({
-              ...userOptions,
-              dataField: errorResponseData.field,
-              dataErrorStatus: errorResponseData.errorStatus,
-            }));
-            setServerData(errorInResponse.message);
-            setError('root.serverError', {
-              type: response.statusCode,
-              message: errorResponseData.messages,
-            });
-          } else if (
-            errorResponseData.field === 'confirmPassword' &&
-            errorResponseData.errorStatus === true
-          ) {
-            setUserOptions(() => ({
-              ...userOptions,
-              dataField: errorResponseData.field,
-              dataErrorStatus: errorResponseData.errorStatus,
-            }));
-            setServerData(errorInResponse.message);
-            setError('root.serverError', {
-              type: response.statusCode,
-              message: errorResponseData.message,
-            });
-          } else if (
-            errorResponseData.allFields === true &&
-            errorResponseData.successStatus === false &&
-            errorResponseData.errorStatus === true
-          ) {
-            setUserOptions(() => ({
-              ...userOptions,
-              allDataField: errorResponseData.allFields,
-              dataErrorStatus: errorResponseData.errorStatus,
-              dataSuccessStatus: errorResponseData.successStatus,
-            }));
-            setServerData(errorInResponse.message);
-            setError('root.serverError', {
-              type: response.statusCode,
-              messsage: errorResponseData.message,
-            });
-          } else {
-            alert('Invalid user data recieved');
           }
         }
+
+        // HANDLING 400
+
+        if (response.status === 400 || response.statusText === 'Bad request') {
+          errorResponseData = await response.json();
+          if (
+            errorResponseData.field === 'email' &&
+            errorResponseData.errorStatus === true &&
+            errorResponseData.successStatus === false
+          ) {
+            setServerData(errorResponseData.message);
+            console.log(errorResponseData.message);
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+          }
+        }
+
+        if (response.status === 400 || response.statusText === 'Bad request') {
+          errorResponseData = await response.json();
+          if (
+            errorResponseData.field === 'password' &&
+            errorResponseData.errorStatus === true &&
+            errorResponseData.successStatus === false
+          ) {
+            setServerData(errorResponseData.message);
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+          }
+        }
+
+        if (response.status === 400 || response.statusText === 'Bad request') {
+          errorResponseData = await response.json();
+          if (
+            errorResponseData.field === 'confirmPassword' &&
+            errorResponseData.errorStatus === true &&
+            errorResponseData.successStatus === false
+          ) {
+            setServerData(errorResponseData.message);
+            setUserOptions(() => ({
+              ...userOptions,
+              dataField: errorResponseData.field,
+              dataErrorStatus: errorResponseData.errorStatus,
+            }));
+          }
+        }
+      } else if (
+        response.ok &&
+        response.status === 201 &&
+        response.statusText === 'Created'
+      ) {
+        errorResponseData = await response.json();
+
+        if (
+          errorResponseData.errorStatus === false &&
+          errorResponseData.successStatus === true
+        ) {
+          setServerData(null);
+          setUserOptions(() => ({
+            ...userOptions,
+            dataField: errorResponseData.field,
+            dataErrorStatus: errorResponseData.errorStatus,
+          }));
+
+          router.push('/login');
+        }
+      } else {
+        router.push(`/${pathname}`);
+        setUserErrorData('Invalid user data recieved');
       }
 
-      if (response.statusCode === 201 || response.statusCode === 200) {
-        const successResponse = await response.json();
-        console.log(successResponse);
-      }
+      // isSubmitted || (isSubmitSuccessful && setServerData(null));
     } catch (error) {
       console.log(error);
     } finally {
@@ -133,6 +156,13 @@ export default function Register() {
       <div className='div-style'>
         <article className='center-with-flex w-[90%] mx-auto my-auto h-full '>
           <form className='' onSubmit={handleSubmit(onSubmit)}>
+            <h1
+              className={`form-error-style text-center margin-auto w-[60%] ${
+                !userErrorData ? 'hidden' : 'block'
+              } `}>
+              <BiSolidError className='warning-icon-style' />
+              {userErrorData}
+            </h1>
             <div className='grid grid-cols-1 sm:gap-3 sm:grid-cols-2'>
               <div>
                 <label htmlFor='firstName' className='form-text-style'>
@@ -198,14 +228,13 @@ export default function Register() {
                     <BiSolidError className='warning-icon-style' />
                     {errors.lastName.message}
                   </p>
+                ) : errors.lastName && errors.lastName.type === 'maxLength' ? (
+                  <p className='form-error-style'>
+                    <BiSolidError className='warning-icon-style' />
+                    Please choose a shorter name
+                  </p>
                 ) : (
-                  errors.lastName &&
-                  errors.lastName.type === 'maxLength' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
-                      Please choose a shorter name
-                    </p>
-                  )
+                  <h1>{serverData}</h1>
                 )}
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
@@ -229,6 +258,7 @@ export default function Register() {
                     required: 'Please enter your email address',
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'invalid email address',
                     },
                   })}
                   type='text'
@@ -247,7 +277,7 @@ export default function Register() {
                   errors.email.type === 'pattern' && (
                     <p className='form-error-style'>
                       <BiSolidError className='warning-icon-style' />
-                      Please enter a valid email address
+                      {errors.email?.message}
                     </p>
                   )
                 )}
@@ -256,7 +286,13 @@ export default function Register() {
                 {errorInResponse &&
                 userOptions.dataField === 'email' &&
                 userOptions.dataErrorStatus === true ? (
-                  <p>{serverData}</p>
+                  <p
+                    className={`form-error-style ${
+                      serverData === null ? 'hidden' : 'block'
+                    }`}>
+                    <BiSolidError className='warning-icon-style' />
+                    {serverData}
+                  </p>
                 ) : (
                   errorInResponse &&
                   userOptions.allDataField === true &&
@@ -373,7 +409,9 @@ export default function Register() {
             </div>
 
             <div className=' center-with-flex flex-cols   w-full '>
-              <button className=' bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg'>
+              <button
+                onClick={() => {}}
+                className=' bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg'>
                 Register
               </button>
               <p className='font-bold mx-auto w-[8rems]'>

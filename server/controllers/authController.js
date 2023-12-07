@@ -1,5 +1,5 @@
 import { User } from '../models/userModels.js';
-import jwt from 'json-web-token';
+import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 import isEmail from 'validator/lib/isEmail.js';
 import bcrypt from 'bcrypt';
@@ -8,38 +8,58 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body();
+  const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
   if (!isEmail(email)) {
-    return res.status(400).json({ message: 'Invalid email address' });
+    return res.status(400).json({
+      field: 'email',
+      allFields: false,
+      errorStatus: true,
+      successStatus: false,
+      message: 'Invalid email address',
+    });
   }
 
   const founduser = await User.findOne({ email }).exec();
 
   if (!founduser) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({
+      allFields: true,
+      field: 'email',
+      successStatus: false,
+      errorStatus: true,
+      message: 'Wrong username or password',
+    });
   }
 
   const match = await bcrypt.compare(password, founduser.password);
   if (!match) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({
+      allFields: true,
+      field: 'password',
+      successStatus: false,
+      errorStatus: true,
+      message: 'Wrong username or password',
+    });
   }
-  // Generate token
+  //Generate token
   const accessToken = jwt.sign(
     { _id: founduser._id },
     process.env.ACCESS_TOKEN_SEC,
     {
-      expiresIn: '15m',
+      expiresIn: '3m',
     }
   );
 
-  const refreshToken = jst.sign(
+  // create refreshtoken
+
+  const refreshToken = jwt.sign(
     { _id: founduser._id },
     process.env.REFRESH_TOKEN_SEC,
-    { expiresIn: '7d' }
+    { expiresIn: '7m' }
   );
 
   res.cookie('jwt', refreshToken, {
@@ -49,7 +69,12 @@ const login = asyncHandler(async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.json({ accessToken });
+  res.status(200).json({
+    successStatus: true,
+    allFields: true,
+    errorStatus: false,
+    accessToken,
+  });
 });
 
 const refresh = asyncHandler(async (req, res) => {

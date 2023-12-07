@@ -4,7 +4,6 @@ import { GoArrowUpRight } from 'react-icons/go';
 import { PiArrowFatLinesDownFill } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Header, Footer } from '@/components';
 
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { MdVerifiedUser } from 'react-icons/md';
@@ -20,6 +19,7 @@ import { TbSquareRoundedNumber3Filled } from 'react-icons/tb';
 import { TbSquareRoundedNumber4Filled } from 'react-icons/tb';
 import { TbSquareRoundedNumber5Filled } from 'react-icons/tb';
 import { TbSquareRoundedNumber6Filled } from 'react-icons/tb';
+import { IoShieldCheckmarkSharp } from 'react-icons/io5';
 
 export default function Landing() {
   const starterPlan = [
@@ -31,7 +31,7 @@ export default function Landing() {
     { name: 'Profit Withdraw', value: 'Anytime', id: 6 },
   ];
 
-  const [sow, setShow] = useState(true);
+  // const [sow, setShow] = useState(true);
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
@@ -41,9 +41,7 @@ export default function Landing() {
         const apiResponse = await fetch('/api/latestnews/', options);
         if (!apiResponse.ok) return 'No data';
         const newsData = await apiResponse.json();
-        // const mainData = newsData.push(latestNewsData);
-        // const firstDataList = firstNewsData.push(latestNewsData[1]);
-        // const secondDatalist = secondNewsData.push(latestNewsData[2]);
+
         setAllData(newsData);
       } catch (error) {
         console.log(error);
@@ -90,22 +88,83 @@ export default function Landing() {
               />
             </div>
           </div>
-          <h1 className='w-screen h-[2rem]   my-[1rem]'>
-            Benefits of investing with us
+          <h1 className='w-screen h-[2rem] text-[2rem] text-center border-t-4 border-t-[#001845]  text-[#001845] font-bold  my-[1rem]'>
+            How we earn from our mining investors
           </h1>
-          <ul className='text-white h-[9rem] w-screen pl-2 py-4 bg-[#001845] list-disc'>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
+          <ul className='flex flex-col justify-between  items-left text-white min-h-[14rem] w-screen pl-2 py-4 bg-[#001845] list-none'>
+            <li className='   '>
+              {' '}
+              <IoShieldCheckmarkSharp className='inline  text-[1.2rem] mr-2' />{' '}
+              The transaction is bundled into a block.
+            </li>
+            <li className='   '>
+              {' '}
+              <IoShieldCheckmarkSharp className='inline  text-[1.2rem] mr-2' />{' '}
+              Miners verify whether the transaction is valid.
+            </li>
+            <li className='   '>
+              {' '}
+              <IoShieldCheckmarkSharp className='inline  text-[1.2rem]  mr-2' />
+              They select headers of the most recent block and in sert it into
+              the new block as a hash
+            </li>{' '}
+            <li className=''>
+              {' '}
+              <IoShieldCheckmarkSharp className='inline  text-[1.2rem] mr-2' />{' '}
+              They solve the mathematical problem.
+            </li>
+            <li className='   '>
+              {' '}
+              <IoShieldCheckmarkSharp className='inline text-[1.2rem]  mr-2 ' />
+              When the solution is found, the new block is added the blockchain
+              and then propgated thoughout the network by this producing profit
+              hourly to investors account.
+            </li>
           </ul>
         </div>
       </article>
 
-      <hr className='w-[80%] mx-auto' />
+      <article className='article-style center-with-flex my-3 '>
+        <h1 className='flex flex-row justify-between px-3 items-center bg-[#03045e] text-bold text-[1.3rem] h-[3rem] w-screen'>
+          <hr className='bg-white p-[0.2px] w-[3rem] ' /> HOW IT WORKS{' '}
+          <hr className='bg-white p-[0.2px] w-[3rem] ' />
+        </h1>
+        <section className='grid grid-cols-2  gap-2 sm:grid-cols-2 md:grid-cols-3 h-full w-full p-5 '>
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber1Filled className='text-[3rem] ' />
+            <FaUserCheck className='text-[2rem]' />
 
-      <div className=' center-with-flex w-screen text-center my-[1rem]'>
+            <h1 className='font-bold text-white'>REGISTER</h1>
+          </div>
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber2Filled className='text-[3rem] ' />
+            <MdVerifiedUser className='text-[2rem]' />
+            <h1 className='font-bold text-white'>Verify KYC</h1>
+          </div>
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber3Filled className='text-[3rem] ' />
+            <PiPottedPlantFill className='text-[2rem]' />
+            <h1 className='font-bold text-white'>CHOOSE A PLAN</h1>
+          </div>
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber4Filled className='text-[3rem] ' />
+            <FaMoneyBillTrendUp className='text-[2rem]' />
+            <h1 className='font-bold text-white'>FUND ACCOUNT</h1>
+          </div>
+
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber5Filled className='text-[3rem] ' />
+            <PiChartLineUpBold className='text-[2rem]' />
+            <h1 className='font-bold text-white'>WE TRADE FOR YOU</h1>
+          </div>
+          <div className='help-div-style'>
+            <TbSquareRoundedNumber6Filled className='text-[3rem] ' />
+            <BsCashCoin className='text-[2rem]' />
+            <h1 className='font-bold text-white'>ENJOY PROFIT</h1>
+          </div>
+        </section>
+      </article>
+      <div className=' center-with-flex w-screen   min-h-[6rem] text-center my-[3rem]'>
         <h2 className=' text-[1.3rem] font-bold text-center p-2 '>
           ENJOY OUR BEST PLANS{' '}
         </h2>
@@ -114,8 +173,8 @@ export default function Landing() {
           <PiArrowFatLinesDownFill className='text-white text-[1.5rem]' />
         </span>
       </div>
-
       <article className='article-style    '>
+        {/* bf arrow */}
         <h1 className='text-center'>Our Best Plan</h1>
         <div className='center-with-grid md:grid-cols-3 w-screen'>
           <div className='center-with-flex  plan-style'>
@@ -160,46 +219,6 @@ export default function Landing() {
         </div>
       </article>
 
-      <article className='article-style center-with-flex my-3 '>
-        <h1 className='flex flex-row justify-between px-3 items-center bg-[#03045e] text-bold text-[1.3rem] h-[3rem] w-screen'>
-          <hr className='bg-white p-[0.2px] w-[3rem] ' /> HOW IT WORKS{' '}
-          <hr className='bg-white p-[0.2px] w-[3rem] ' />
-        </h1>
-        <section className='grid grid-cols-2  gap-2 sm:grid-cols-2 md:grid-cols-3 h-full w-full p-5 '>
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber1Filled className='text-[3rem] ' />
-            <FaUserCheck className='text-[2rem]' />
-
-            <h1 className='font-bold text-white'>REGISTER</h1>
-          </div>
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber2Filled className='text-[3rem] ' />
-            <MdVerifiedUser className='text-[2rem]' />
-            <h1 className='font-bold text-white'>Verify KYC</h1>
-          </div>
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber3Filled className='text-[3rem] ' />
-            <PiPottedPlantFill className='text-[2rem]' />
-            <h1 className='font-bold text-white'>CHOOSE A PLAN</h1>
-          </div>
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber4Filled className='text-[3rem] ' />
-            <FaMoneyBillTrendUp className='text-[2rem]' />
-            <h1 className='font-bold text-white'>FUND ACCOUNT</h1>
-          </div>
-
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber5Filled className='text-[3rem] ' />
-            <PiChartLineUpBold className='text-[2rem]' />
-            <h1 className='font-bold text-white'>WE TRADE FOR YOU</h1>
-          </div>
-          <div className='help-div-style'>
-            <TbSquareRoundedNumber6Filled className='text-[3rem] ' />
-            <BsCashCoin className='text-[2rem]' />
-            <h1 className='font-bold text-white'>ENJOY PROFIT</h1>
-          </div>
-        </section>
-      </article>
       <article className='article-style center-with-flex   '>
         <h1 className='flex flex-row justify-center mr-auto my-[1rem] tracking-wide  p-3 text-left items-center text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem] text-white bg-[#2b2d42] rounded-r-[2rem] h-[3rem] w-[75%]'>
           Crypto News Updates

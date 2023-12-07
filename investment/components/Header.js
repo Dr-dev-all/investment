@@ -20,7 +20,7 @@ export default function Header() {
     { name: 'Learn ', url: 'Learn', id: 8 },
   ];
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const content = (
     <header

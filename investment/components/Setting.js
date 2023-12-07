@@ -5,15 +5,15 @@ export default function Setting() {
         <form>
           <div>
             <label htmlFor='user_plan'>Current plan: </label>
-            <input value='basic plan' />
+            <input />
           </div>
           <div>
             <label htmlFor='user_plan'>First Name: </label>
-            <input value='user first name' />
+            <input />
           </div>
           <div>
             <label htmlFor='user_plan'>Current plan: </label>
-            <input value='basic plan' />
+            <input />
           </div>
         </form>
       </section>
