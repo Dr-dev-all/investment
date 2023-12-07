@@ -1,7 +1,7 @@
 export default function Contact() {
   const content = (
     <nav>
-      <h2>Contact page</h2   >
+      <h2>Contact pageeeeeeeeeee</h2   >
     </nav>
   );
 
