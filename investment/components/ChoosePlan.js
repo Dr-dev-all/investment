@@ -6,7 +6,7 @@ export default function ChoosePlan() {
         <h2>Choose a plan</h2>
         <div className="plan-container">
           <div className="plan">
-            <h3>Basic</h3>
+            <h3>Basicc</h3>
             <p>$10/month</p>
             <p>10GB storage</p>
           </div>
