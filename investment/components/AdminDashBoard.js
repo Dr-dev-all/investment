@@ -8,29 +8,30 @@ import History from '@/components/History';
 import Help from '@/components/Help';
 import Logout from '@/components/Logout';
 import { useState, useEffect } from 'react';
+import Investors from '@/components/Investors';
 
-export default function Userdash() {
+export default function Admindash() {
   const router = useRouter();
   const [currentData, setCurrentData] = useState('');
   const [mainComp, setMainComp] = useState('');
   const userSideBar = [
-    { name: 'Home', url: './', id: 1, pager: 'home' },
+    { name: 'Recents', url: './', id: 1, pager: 'home' },
     { name: 'Dashboard', url: './dashboard', id: 2, pager: 'dash' },
     { name: 'History', url: './history', id: 3, pager: History },
-    { name: 'Help', url: './help', id: 4, pager: Help },
-    { name: 'Setting', url: './setting', id: 5, pager: Setting },
-    { name: 'Learn', url: './learn', id: 6, pager: Learn },
+    { name: 'Investors', url: './investors', id: 4, pager: Investors },
+    { name: 'Settings', url: './setting', id: 5, pager: Setting },
+    { name: 'feedbacks', url: './learn', id: 6, pager: Learn },
     { name: 'Logout', url: './logout', id: 7, pager: Logout },
   ];
 
   const dashBoard = (
     <div className='parent p-1'>
       <div className='grid grid-cols-2 gap-2'>
-        <div class='bg-white p-4'>Total Bal</div>
-        <div class='bg-white p-4'>Earns</div>
-        <div class='bg-white p-4'>Withdraw</div>
+        <div className='bg-white p-4'>Total Bal</div>
+        <div className='bg-white p-4'>Earns</div>
+        <div className='bg-white p-4'>Withdraw</div>
       </div>
-      <div class='bg-white p-4'>History</div>
+      <div className='bg-white p-4'>History</div>
       <div className='grid grid-cols-3 gap-2 mt-4'>
         <div className='bg-white p-3 col-span-2 text-center'>
           <p>Why you should upgrade</p>
@@ -50,14 +51,14 @@ export default function Userdash() {
       </div>
 
       <div className='grid grid-cols-2 gap-2 mt-4'>
-        <div class='bg-white p-1 text-center'>
+        <div className='bg-white p-1 text-center'>
           <h2>Unique Invest</h2>
           <p>Why one should invest</p>
           <button className='mt-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
             Upgrade
           </button>
         </div>
-        <div class='bg-white p-2 text-center'>
+        <div className='bg-white p-2 text-center'>
           loleydkkkk bhhhdbdb bdbdb bb bdbdbd bdbd
         </div>
       </div>
@@ -89,7 +90,10 @@ export default function Userdash() {
         {' '}
         <div className=' flex flex-row  justify-between items-center px-3  min-h-[5rem] bg-green-500'>
           <div className='center-with-flex p-3 border-2 border-black  rounded-full  h-[3rem]'>
-            <h1>USER PLAN</h1>
+            <Link href='/'>
+              {' '}
+              <h1>USER PLAN</h1>{' '}
+            </Link>
           </div>
           <div>
             <p>Hi james</p>
