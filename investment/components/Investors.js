@@ -1,13 +1,12 @@
 'use client';
 import allData from '@/hooks/useInvestors';
-import axios from '@/authendpoints/axios';
+import axiosPrivate from '@/authendpoints/axios';
 import { useState, useEffect } from 'react';
 import { errorMonitor } from 'stream';
+import useInvestors from '@/hooks/useInvestors';
 
 export default function Investors() {
-  //   const [userData, setUserData] = useState({});
-
-  //   const allUser = async () => {
+  //   const [uPallUser = async () => {
   //     try {
   //       const response = await fetch('http://127.0.0.1:5000/users/getallusers');
   //       const data = await response.json();
@@ -17,9 +16,25 @@ export default function Investors() {
   //     }
   //   };
 
+  //   useInvestors();
+
+  const getUsers = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/users/getallusers');
+      if (!response.ok) throw new Error('Request was not a success');
+      if (response.ok) {
+        const mainUserData = await response.json();
+        console.log(mainUserData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const content = (
     <section className='h-full w-full bg-green-500'>
       <h1>welcome to investors page</h1>
+      <button onClick={() => getUsers()}>see users</button>
       <article>
         <ul>
           <li>
