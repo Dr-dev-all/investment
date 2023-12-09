@@ -63,3 +63,7 @@ body {
 .warning-icon-style {
   @apply inline text-[#da0a1c] pr-2 text-[1.5rem];
 }
+
+.ad-inp-style {
+  @apply ml-auto text-black w-[50%] px-1 rounded-full;
+}
