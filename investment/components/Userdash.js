@@ -1,166 +1,77 @@
 "use client";
-import { FaBell } from "react-icons/fa6";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import Setting from "@/components/Setting";
-import Learn from "@/components/Learn";
-import History from "@/components/History";
-import Help from "@/components/Help";
-import Logout from "@/components/Logout";
-import Landing from "@/components/Landing";
-import ChoosePlan from "@/components/ChoosePlan";
-import Withdraw from "@/components/Withdraw";
 import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { MdArrowOutward } from "react-icons/md";
 
 export default function Userdash() {
-  const router = useRouter();
-  const [currentData, setCurrentData] = useState("");
-  const [mainComp, setMainComp] = useState("");
-  const [choosePlan, setChoosePlan] = useState(false);
-  const userSideBar = [
-    { name: "Home", url: "/", id: 1, pager: "" },
-    { name: "Dashboard", url: "./dashboard", id: 2, pager: "dash" },
-    { name: "History", url: "./history", id: 3, pager: History },
-    { name: "Learn", url: "./learn", id: 6, pager: Learn },
-    { name: "Logout", url: "./logout", id: 7, pager: Logout },
-    { name: "", url: "./chooseplan", id: 8, pager: ChoosePlan },
-    { name: "", url: "./withdraw", id: 9, pager: Withdraw },
-  ];
-
-  const planCaller = () => {
-    const data = userSideBar
-      .map((dt) => dt)
-      .filter((dt2) => dt2.id === 8)[0].pager;
-    setCurrentData(data);
-  };
-
-  const withdrawCaller = () => {
-    const data = userSideBar
-      .map((dt) => dt)
-      .filter((dt2) => dt2.id === 9)[0].pager;
-    setCurrentData(data);
-  };
-
-  const dashBoard = (
-    <div className="parent p-1">
-      <div className="grid grid-cols-2 gap-2">
-        <div className="bg-white p-4 rounded-lg">
-          <h3>Total Bal</h3>
-          <h1 className="font-bold">$50.00</h1>
-        </div>
-        <div className="bg-white p-4 rounded-lg">
-          <h3>Profits</h3>
-          <h1 className="font-bold">$0.00</h1>
-        </div>
-        <div className="bg-white p-4 rounded-lg">
-          <h3>Investment Yield</h3>
-          <h1 className="font-bold">$0.00</h1>
-        </div>
-        <div className="bg-white p-4 rounded-lg">
-          <h3>Bonus</h3>
-          <h1 className="font-bold">$50.00</h1>
-        </div>
-      </div>
-
-      <div className="gap-3">
-        <button
-          onClick={() => {
-            withdrawCaller();
-          }}
-          className="mr-3 mt-3 bg-white text-black font-bold py-2 px-4 rounded"
-        >
-          Withdraw
-        </button>
-        <button
-          onClick={() => {
-            planCaller();
-          }}
-          className="mt-3 bg-white text-black font-bold py-2 px-4 rounded"
-        >
-          Choose Plan
-        </button>
-      </div>
-
-      <div className="grid grid-cols-1 mt-4">
-        <div className="bg-white p-3 col-span-2 text-center">
-          <p>Why you should upgrade</p>
-          <button className="mt-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Upgrade
-          </button>
-        </div>
-      </div>
-
-      {/* <div className='grid grid-cols-2 gap-2 mt-4'>
-        <div className='bg-white p-1 text-center'>
-          <h2>Unique Invest</h2>
-          <p>Why one should invest</p>
-          <button className='mt-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-            Upgrade
-          </button>
-        </div>
-        <div className='bg-white p-2 text-center'>
-          loleydkkkk bhhhdbdb bdbdb bb bdbdbd bdbd
-        </div>
-      </div> */}
-    </div>
-  );
+  const [userData, setUserData] = useState(null);
+  const userID = useParams();
 
   useEffect(() => {
-    const chooseItem = () => {
-      userSideBar.map((data) => {
-        var active = Object.values(data).filter((e) => e === currentData)[0];
-        if (currentData) {
-          if (currentData === "dash") {
-            setMainComp(dashBoard);
-          } else {
-            setMainComp(currentData);
-          }
-        } else {
-          setMainComp(dashBoard);
+    const fetchData = async () => {
+      try {
+        if (!userID) throw new Error("User id must be provided");
+        const response = await fetch(
+          `http://127.0.0.1:5000/users/getsingleuser/${userID}`
+        );
+        if (!response.ok) throw new Error("An error occured");
+        if (response.ok) {
+          const serverResponse = await response.json();
+          console.log(serverResponse);
+          // setUserData(serverResponse);
         }
-      });
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    chooseItem();
-  }, [currentData]);
+    fetchData();
+  });
 
   const content = (
-    <section className="h-screen z-0 w-screen">
-      <header className="center-with-grid  w-full min-h-[5rem] bg-green-500">
-        {" "}
-        <div className=" flex flex-row  justify-between items-center px-3  min-h-[5rem] bg-green-500">
-          <div className="center-with-flex p-3 border-2 border-black  rounded-full  h-[3rem]">
-            <h1>USER PLAN</h1>
-          </div>
-          <div>
-            <p>Hi james</p>
-            <p>Active: </p>
-          </div>
-          <div>
-            <FaBell />
-          </div>
+    <main className="h-screen w-full  text-[#03045e] flex flex flex-col">
+      <section className="flex justify-between items-center w-full min-h-[4rem]   p-2 ">
+        <div className=" center-with-flex  text-[#03045e] w-full h-[4rem] bg-white border-2   rounded-full shadow-xl shadow-gray-500  text-[1.1rem] font-black ">
+          <h1 className="flex flex-col">
+            Balance <span>$00.00 </span>
+          </h1>
         </div>
-      </header>
-      <section className="flex   max-h-full w-full">
-        <article className=" text-center p3 w-[30%] min-h-[31rem] bg-blue-500">
-          <ul>
-            {userSideBar.map((sideData) => (
-              <li
-                key={sideData.id}
-                className="text-start ml-3 mb-6 md:text-[2rem] font-bold"
-              >
-                <button onClick={() => setCurrentData(sideData.pager)}>
-                  {sideData.name}
-                </button>
-              </li>
-            ))}
+        <div className="  center-with-flex  text-[#03045e] w-full  rounded-full shadow-xl shadow-gray-500  border-2 bg-white h-[4rem]  font-black">
+          <h1 className="flex flex-col">
+            Profit <span>$00.00 </span>
+          </h1>
+        </div>
+      </section>
+      {/* choose plan */}
+      <section className=" center-with-flex w-full min-h-[5rem] gap-3">
+        <article className="center-with-flex text-center w-[90%] border-2 p-2 shadow-lg shadow-gray-500 rounded-[2rem]">
+          <ul className="w-full">
+            <li className="font-bold w-full  plan-items">
+              Bonus amount: <span className="font-none italic "> $00.00</span>
+            </li>
+            <li className="font-bold w-full  plan-items">
+              Yield amount: <span className="font-none italic "> $00.00</span>
+            </li>
           </ul>
         </article>
-        <article className="w-[70%] min-h-[4rem] bg-red-500">
-          {mainComp}
+        <article className="center-with-flex text-center w-[90%] border-2 p-2 shadow-lg shadow-gray-500 rounded-[2rem]">
+          <div>
+            <p className="text-[1.2rem] text-center ">
+              Choose a plan to start your earning journey
+            </p>
+          </div>
+          <h1></h1>
+          <Link
+            href="#"
+            className=" bg-gradient-to-r from-[#03045e] rounded-[2rem]  from-85% text-[1.4rem] font-bold   to-white text-white shadow-lg shadow-gray-500 p-2   "
+          >
+            choose plan now{" "}
+            <MdArrowOutward className="inline text-[1rem] text-[#03045e]" />
+          </Link>
         </article>
       </section>
-    </section>
+    </main>
   );
 
   return content;

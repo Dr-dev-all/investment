@@ -1,4 +1,4 @@
-import AdminDashBoard from '@/components/AdminDashBoard';
+import AdminDashBoard from "@/components/AdminDashBoard";
 
 export default function page() {
   const content = (
