@@ -7,6 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 export default function Userdash() {
   const [userData, setUserData] = useState(null);
   const userID = useParams();
+  console.log(userID);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +64,7 @@ export default function Userdash() {
           </div>
           <h1></h1>
           <Link
-            href="#"
+            href="/login/userdash/chooseplan"
             className=" bg-gradient-to-r from-[#03045e] rounded-[2rem]  from-85% text-[1.4rem] font-bold   to-white text-white shadow-lg shadow-gray-500 p-2   "
           >
             choose plan now{" "}

@@ -119,7 +119,7 @@ export default function Admindash() {
           //   setServerData((prev) => ({ ...prev, svdt: serverResponse }));
           //   console.log(serverData);
           setServerData(serverResponse);
-          console.log(serverData);
+          console.log(serverResponse);
         }
       } catch (error) {
         console.log(error);
@@ -136,14 +136,8 @@ export default function Admindash() {
           {serverData?.length ? (
             serverData.map((user, i) => (
               <li key={i}>
-                <div
-                  className="bg-yellow-500 flex flex-col justify-between  items-center text-center"
-                  key={i}
-                >
-                  <form
-                    className="bg-blue-500 text-white text-left my-3 p-1 h-full w-full border-2 "
-                    key={i}
-                  >
+                <div className="bg-yellow-500 flex flex-col justify-between  items-center text-center">
+                  <form className="bg-blue-500 text-white text-left my-3 p-1 h-full w-full border-2 ">
                     <div className="plan-items">
                       <label>Email:</label>
                       <input
