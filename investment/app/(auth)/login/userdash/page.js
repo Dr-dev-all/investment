@@ -1,9 +1,17 @@
-import Userdash from '@/components/Userdash';
+"use client";
+import React from "react";
+import Userdash from "@/components/Userdash";
+import UserDashboardHeader from "@/components/UserDashboardHeader";
+import UserDashboardFooter from "@/components/UserDashboardFooter";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 
 export default function page() {
   const content = (
-    <main className='z-0'>
+    <main>
+      <UserDashboardHeader />
       <Userdash />
+      <UserDashboardFooter />
     </main>
   );
 
