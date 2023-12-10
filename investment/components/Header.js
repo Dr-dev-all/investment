@@ -59,10 +59,6 @@ export default function Header() {
         </Link>
 
         <Link href="#" className="font-bold hidden md:block">
-          Help
-        </Link>
-
-        <Link href="#" className="font-bold hidden md:block">
           Services
         </Link>
 
@@ -73,7 +69,7 @@ export default function Header() {
           Learn
         </Link>
 
-        <Link href="#" className="font-bold hidden md:block">
+        <Link href="/contact" className="font-bold hidden md:block">
           Contact
         </Link>
 
