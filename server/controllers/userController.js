@@ -20,7 +20,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
   const users = await User.find().select("-password").lean();
   if (!users?.length) return res.status(400).json({ message: "No user found" });
-  return res.status(200).json(users);
+  return res.status(200).json({ users });
 });
 
 const getSingleUser = asyncHandler(async (req, res) => {

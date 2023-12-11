@@ -17,7 +17,7 @@ export default function UserDashboardHeader() {
   ];
 
   const content = (
-    <header className=" bg-[#03045e] w-full min-h-[3rem] text-white fixed  mb-[2rem]  overflow-x-hidden">
+    <header className=" bg-[#03045e] w-full min-h-[3rem] text-white fixed top-0  mb-[2rem]  ">
       <section className="w-full max-h-[3rem] flex flex-row justify-between items-center  py-2 px-5">
         <h1 className=" mb-[0.2rem] ">
           <Link href="/" className=" ">
@@ -38,7 +38,7 @@ export default function UserDashboardHeader() {
       </section>
       <section>
         <hr className="w-full mb-1 mx-auto " />
-        <article className="flex justify-between items-center  py-1 px-2">
+        <article className="flex justify-between items-center  py-1 px-[2rem]">
           <div className="flex flex-col justify-center items-center ">
             <Link href="/login/userdash/withdraw" className="center-with-flex">
               <FaMinusCircle className="text-[1.5rem] " />
@@ -52,12 +52,6 @@ export default function UserDashboardHeader() {
             >
               <IoAddCircleSharp className="text-[1.5rem]" />
               <h1 className=" text-white mx-auto ">Choose Plan</h1>
-            </Link>
-          </div>
-          <div className="flex flex-col justify-center items-center ">
-            <Link href="/login/userdash/topup" className="center-with-flex">
-              <FaArrowUpWideShort className="text-[1.5rem]" />
-              <h1 className="  text-white mx-auto ">Top up</h1>
             </Link>
           </div>
         </article>

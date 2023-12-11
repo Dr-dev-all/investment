@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 
 export default function page() {
   const content = (
-    <main className="relative">
+    <main className="">
       <UserDashboardHeader />
       <Userdash />
       <UserDashboardFooter />

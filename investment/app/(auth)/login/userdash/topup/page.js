@@ -4,11 +4,13 @@ import TopUp from "@/components/TopUp";
 
 export default function page() {
   const content = (
-    <main>
+    <>
       <UserDashboardHeader />
-      <TopUp />
+      <main>
+        <TopUp />
+      </main>
       <UserDashboardFooter />
-    </main>
+    </>
   );
 
   return content;

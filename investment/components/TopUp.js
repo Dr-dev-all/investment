@@ -1,5 +1,9 @@
 export default function TopUp() {
-  const content = <main className="">top up data goes here</main>;
+  const content = (
+    <main className="mt-[6.5em]">
+      <section></section>
+    </main>
+  );
 
   return content;
 }
