@@ -1,16 +1,12 @@
-"use client";
-import React from "react";
-import Userdash from "@/components/Userdash";
 import UserDashboardHeader from "@/components/UserDashboardHeader";
 import UserDashboardFooter from "@/components/UserDashboardFooter";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import History from "@/components/History";
 
 export default function page() {
   const content = (
-    <main className="relative">
+    <main>
       <UserDashboardHeader />
-      <Userdash />
+      <History />
       <UserDashboardFooter />
     </main>
   );

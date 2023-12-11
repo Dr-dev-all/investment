@@ -1,18 +1,18 @@
 export default function Setting() {
   const content = (
-    <main className=''>
+    <main className="h-full  text-black">
       <section>
         <form>
           <div>
-            <label htmlFor='user_plan'>Current plan: </label>
+            <label htmlFor="user_plan">Current plan: </label>
             <input />
           </div>
           <div>
-            <label htmlFor='user_plan'>First Name: </label>
+            <label htmlFor="user_plan">First Name: </label>
             <input />
           </div>
           <div>
-            <label htmlFor='user_plan'>Current plan: </label>
+            <label htmlFor="user_plan">Current plan: </label>
             <input />
           </div>
         </form>

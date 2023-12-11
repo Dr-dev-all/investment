@@ -31,14 +31,14 @@ export default function Userdash() {
   });
 
   const content = (
-    <main className="h-screen w-full  text-[#03045e] flex flex flex-col">
-      <section className="flex justify-between items-center w-full min-h-[4rem]   p-2 ">
-        <div className=" center-with-flex  text-[#03045e] w-full h-[4rem] bg-white border-2   rounded-full shadow-xl shadow-gray-500  text-[1.1rem] font-black ">
+    <main className="min-h-screen w-full text-[#03045e]  mt-[6.9rem]  flex flex-col">
+      <section className="flex justify-between  bg-[#03045e]  items-center w-full min-h-[4rem]   p-2 ">
+        <div className=" center-with-flex  text-[#03045e] w-full h-[4rem] bg-white border-2   rounded-full   text-[1.1rem] font-black ">
           <h1 className="flex flex-col">
             Balance <span>$00.00 </span>
           </h1>
         </div>
-        <div className="  center-with-flex  text-[#03045e] w-full  rounded-full shadow-xl shadow-gray-500  border-2 bg-white h-[4rem]  font-black">
+        <div className="  center-with-flex  text-[#03045e] w-full  rounded-full  border-2 bg-white h-[4rem]  font-black">
           <h1 className="flex flex-col">
             Profit <span>$00.00 </span>
           </h1>

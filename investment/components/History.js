@@ -3,7 +3,7 @@ import { BsBank } from "react-icons/bs";
 
 export default function History() {
   const content = (
-    <main className="">
+    <main className="min-h-screen">
       <div>
         <h1 className="items-center flex justify-center text-center font-bold">
           History

@@ -1,6 +1,10 @@
 import { headers } from "../next.config";
 import Link from "next/link";
 import { IoNotificationsSharp } from "react-icons/io5";
+import { FaMinusCircle } from "react-icons/fa";
+import { IoAddCircleSharp } from "react-icons/io5";
+import { FaArrowUpWideShort } from "react-icons/fa6";
+import Image from "next/image";
 
 export default function UserDashboardHeader() {
   const navBarData = [
@@ -13,28 +17,51 @@ export default function UserDashboardHeader() {
   ];
 
   const content = (
-    <header className=" bg-[#03045e] w-screen min-h-[4rem] text-white ">
-      <section className="w-full min-h-[3rem] flex flex-row justify-between items-center px-3">
-        <h1>PLAN A</h1>
+    <header className=" bg-[#03045e] w-full min-h-[3rem] text-white fixed  mb-[2rem]  overflow-x-hidden">
+      <section className="w-full max-h-[3rem] flex flex-row justify-between items-center  py-2 px-5">
+        <h1 className=" mb-[0.2rem] ">
+          <Link href="/" className=" ">
+            <Image
+              src="/bhlogo.jpeg"
+              alt="bh-logo"
+              width={32}
+              height={32}
+              className="border-2 border-white "
+            />
+          </Link>
+        </h1>
         <h1>Hi firstname</h1>
         <h1>
           {" "}
           <IoNotificationsSharp />{" "}
         </h1>
       </section>
-      <nav
-        className={`block flex justify-center items-center w-full bg-white text-[#03045e]  hidden `}
-      >
-        <ul className="w-[89%] min-h-full flex flex-col justify-between items-center font-bold text-[2rem] underline disc-none ">
-          {navBarData.map((data, i) => (
-            <li key={i} className="w-full h-[1.2rem] font-bold text-[1.5rem]">
-              <Link href={data.url} key={i}>
-                {data.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <section>
+        <hr className="w-full mb-1 mx-auto " />
+        <article className="flex justify-between items-center  py-1 px-2">
+          <div className="flex flex-col justify-center items-center ">
+            <Link href="/login/userdash/withdraw" className="center-with-flex">
+              <FaMinusCircle className="text-[1.5rem] " />
+              <h1 className="  text-white mx-auto ">Withdraw</h1>
+            </Link>
+          </div>
+          <div className="flex flex-col justify-center items-center ">
+            <Link
+              href="/login/userdash/chooseplan"
+              className="center-with-flex"
+            >
+              <IoAddCircleSharp className="text-[1.5rem]" />
+              <h1 className=" text-white mx-auto ">Choose Plan</h1>
+            </Link>
+          </div>
+          <div className="flex flex-col justify-center items-center ">
+            <Link href="/login/userdash/topup" className="center-with-flex">
+              <FaArrowUpWideShort className="text-[1.5rem]" />
+              <h1 className="  text-white mx-auto ">Top up</h1>
+            </Link>
+          </div>
+        </article>
+      </section>
     </header>
   );
 

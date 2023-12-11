@@ -134,8 +134,8 @@ export default function Admindash() {
       <article>
         <ul className="overflow-x-hidden h-[35rem]">
           {serverData?.length ? (
-            serverData.map((user, i) => (
-              <li key={i}>
+            serverData.map((user) => (
+              <li key={user._id}>
                 <div className="bg-yellow-500 flex flex-col justify-between  items-center text-center">
                   <form className="bg-blue-500 text-white text-left my-3 p-1 h-full w-full border-2 ">
                     <div className="plan-items">
@@ -148,8 +148,9 @@ export default function Admindash() {
                     <div className="plan-items">
                       <label>Firstname:</label>
                       <input
-                        {...register("firstName", { value: user.firstName })}
+                        {...register("firstName", {})}
                         className=" ad-inp-style"
+                        defaultValue={{ firstName: user.firstName }}
                       />
                     </div>
                     <div className="plan-items">
