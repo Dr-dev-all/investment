@@ -25,7 +25,7 @@ export default function Header() {
   const content = (
     <header
       className={`w-screen 
-       flex justify-center items-center   flex-col 
+       flex justify-center items-center  top-0 flex-col 
           fixed z-0`}
     >
       <div
@@ -50,31 +50,23 @@ export default function Header() {
           About
         </Link>
 
-        <Link href="#" className="font-bold hidden md:block">
-          Invest
-        </Link>
-
-        <Link href="#" className="font-bold hidden md:block">
-          News
-        </Link>
-
-        <Link href="#" className="font-bold hidden md:block">
+        <Link href="service" className="font-bold hidden md:block">
           Services
         </Link>
 
+        <Link href="prices" className="font-bold hidden md:block">
+          Prices
+        </Link>
+
         <Link
-          href="#"
+          href="/security"
           className="font-bold hidden md:block  hover:underline transition-all duration-300"
         >
-          Learn
+          Security
         </Link>
 
         <Link href="/contact" className="font-bold hidden md:block">
           Contact
-        </Link>
-
-        <Link href="#" className="font-bold hidden md:block">
-          Prices
         </Link>
 
         <button
