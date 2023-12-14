@@ -46,7 +46,7 @@ export default function Userdash() {
       </section>
       {/* choose plan */}
       <section className=" center-with-flex w-full min-h-[5rem] gap-3">
-        <article className="center-with-flex text-center w-[90%] border-2 p-2 shadow-lg shadow-gray-500 rounded-[2rem]">
+        <article className="center-with-flex text-center w-[90%] border-2 p-3 shadow-lg shadow-gray-500 rounded-lg">
           <ul className="w-full">
             <li className="font-bold w-full  plan-items">
               Bonus amount: <span className="font-none italic "> $00.00</span>
@@ -56,7 +56,7 @@ export default function Userdash() {
             </li>
           </ul>
         </article>
-        <article className="center-with-flex text-center w-[90%] border-2 p-2 shadow-lg shadow-gray-500 rounded-[2rem]">
+        <article className="center-with-flex text-center w-[90%] border-2 p-1 shadow-lg shadow-gray-500 rounded-lg">
           <div>
             <p className="text-[1.2rem] text-center ">
               Choose a plan to start your earning journey
