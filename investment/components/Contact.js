@@ -27,36 +27,36 @@ export default function Contact() {
             <div class="sm:mb-5 p-9 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div>
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     ADDRESS
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   24 NORTH MEGGETLAND, EDINBURGH, SCOTLAND, EH14 1XG
                 </p>
               </div>
 
               <div>
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     PHONE NUMBERS
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   +1 388 7333 838
                 </p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   +1 388 7333 838
                 </p>
               </div>
 
               <div>
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     EMAIL ADDRESS
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   bullharvest@admin.com
                 </p>
               </div>
@@ -71,7 +71,7 @@ export default function Contact() {
               Please contact us about all enquiries including membership and
               volunteer work using the form below.
             </p>
-            <div class="relative z-0 w-full mb-5 group">
+            <div className="relative z-0 w-full mb-5 group">
               <input
                 type="text"
                 name="floating_name"
@@ -87,7 +87,7 @@ export default function Contact() {
                 Name
               </label>
             </div>
-            <div class="relative z-0 w-full mb-5 group">
+            <div className="relative z-0 w-full mb-5 group">
               <input
                 type="email"
                 name="floating_email"
@@ -108,7 +108,7 @@ export default function Contact() {
                 type="text"
                 name="repeat_message"
                 id="floating_message"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />

@@ -117,12 +117,12 @@ const createNewuser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { id, firstName, lastName, email, password, plan, balance } = req.body;
+  const { id, firstName, lastName, email, plan, balance } = req.body;
   if (!id || !firstName || !lastName || !email || !plan || !balance) {
-    return res.status(400).json({ message: "All fields are requird" });
+    return res.status(400).json({ message: "All fields are required" });
   }
 
-  const user = await User.findById(id).exec();
+  const user = await User.findById(_id).exec();
   if (!user) return res.status(400).json({ message: "User not found" });
   if (!isEmail(email)) {
     return res.status(400).json({ message: "Invalid mail address" });
@@ -133,7 +133,7 @@ const updateUser = asyncHandler(async (req, res) => {
     .lean()
     .exec();
 
-  if (duplicateEmail && duplicateEmail._id.toString() !== id) {
+  if (duplicateEmail && duplicateEmail._id.toString() !== _id) {
     return res.status(409).json({ message: "Email already exist" });
   }
 
@@ -143,13 +143,13 @@ const updateUser = asyncHandler(async (req, res) => {
   user.plan = plan;
   user.balance = balance;
 
-  if (password) {
-    user.password = await bcrypt.hash(password, 10);
-  }
+  // if (password) {
+  //   user.password = await bcrypt.hash(password, 10);
+  // }
 
   const updateduser = await user.save();
   if (!updateduser) {
-    return res.status(500).send("Error in updating the user");
+    return res.status(500).json({ message: "Error in updating the user" });
   }
   return res.status(200).json({ message: "Successfully Updated" });
 });
@@ -159,7 +159,14 @@ const deleteUser = asyncHandler(async (req, res) => {
   if (!id) {
     return res.status(400).json({ message: "User id is required" });
   }
-  const deletedUser = await User.deleteOne({ _id: id }).exec();
+
+  const foundUser = await User.findById(id).exec();
+
+  if (!foundUser) {
+    return res.status(404).json({ message: "User does not exist" });
+  }
+
+  const deletedUser = await User.deleteOne({ email: foundUser.email }).exec();
   if (!deletedUser) {
     return res.status(404).json({ message: "User doesn't exists" });
   }
