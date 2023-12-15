@@ -31,39 +31,38 @@ export default function Security() {
             <div className="text-start lg:w-[70%] ">
               <IoDocumentText className=" text-[2.5em] lg:text-[3em] rounded-full mt-16  mb-4 text-white p-2 bg-[#03045e]" />
               <h2 className="text-lg font-semibold leading-6 text-gray-900">
-                Your Identity Document
+                Data Encryption
               </h2>
               <p className="mt-2 text-sm text-gray-700">
-                We ask everyone who opens a BullHarvest account to give us their
-                and a valid details issued by the google. This helps us prevent
-                identity fraud by confirming that everyone who uses BullHarvest,
-                including you, is who they say they are.
+                Your data is shielded with industry-standard encryption
+                protocols. Every interaction with BullHarvest, from logging in
+                to executing transactions, is encrypted to protect your
+                sensitive information from unauthorized access.
               </p>
             </div>
             <div className="text-start lg:w-[70%] ">
               <FaRegEyeSlash className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h2 className="text-lg font-semibold leading-6 text-gray-900">
-                Your Password
+                Secure Authentication
               </h2>
               <p className="mt-2 text-sm text-gray-700">
-                When you’re opening your BullHarvest account, we ask that you
-                create a password (with any combination of letters, numbers and
-                special characters) to secure your account. We may ask for your
-                password to authorise any changes you make to your account
-                information.
+                Enhance your account security with our multi-factor
+                authentication (MFA) process. This adds an additional layer of
+                protection by requiring multiple forms of identification,
+                ensuring that only authorized users can access their accounts.
               </p>
             </div>
 
             <div className="text-start lg:w-[70%] ">
               <AiFillPropertySafety className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h2 className="text-lg font-semibold leading-6 text-gray-900 ">
-                Your PINs
+                Privacy Assurance
               </h2>
               <p className="mt-2 text-sm text-gray-700">
-                Every BullHarvest account is secured with a unique PIN that only
-                the account holder should have access to. You can’t use your
-                BullHarvest account without first setting your sign-in PIN. Your
-                transactions on the app are also secured with a transaction PIN.
+                We are committed to transparency about how we handle your data.
+                Explore our detailed Privacy Policy to understand the measures
+                we take to protect your privacy and ensure the responsible use
+                of your information.
               </p>
             </div>
 

@@ -38,8 +38,8 @@ export default function () {
 
       <section className="mx-auto mt-8 center-with-flex lg:px-8 ">
         {/* bf arrow */}
-        <div className="center-with-grid lg:mx-9 md:grid-cols-3  mx-auto lg:w-[75%] px-9 ">
-          <div className="center-with-flex  w-[90%] plan-style">
+        <div className="center-with-grid md:grid-cols-3 w-screen">
+          <div className=" center-with-flex  plan-style">
             <h1>plan 1</h1>
             <ul className="w-[90%] h-[80%]  mx-auto block">
               {starterPlan.map((data) => (

@@ -1,3 +1,15 @@
+import { SiEasyeda } from "react-icons/si";
+import { ImProfile } from "react-icons/im";
+import { TbBusinessplan } from "react-icons/tb";
+import { FaSchoolCircleCheck } from "react-icons/fa6";
+import { MdSchedule } from "react-icons/md";
+import { PiStrategyBold } from "react-icons/pi";
+import { FaUserFriends } from "react-icons/fa";
+import { IoMdOptions } from "react-icons/io";
+import { FaBusinessTime } from "react-icons/fa";
+import { MdOutlineManageAccounts } from "react-icons/md";
+import { MdManageHistory } from "react-icons/md";
+
 export default function Service() {
   const content = (
     <main className="min-h-screen">
@@ -43,6 +55,7 @@ export default function Service() {
           </p>
           <div className="min-w-screen grid grid-cols-1 md:grid-cols-3 gap-1  ">
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <FaBusinessTime className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Investment Plans
               </h3>
@@ -52,6 +65,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <MdOutlineManageAccounts className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Risk Management
               </h3>
@@ -62,6 +76,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <MdManageHistory className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Performance History
               </h3>
@@ -134,6 +149,7 @@ export default function Service() {
           </h1>
           <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 gap-3  ">
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <SiEasyeda className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Easy Registration
               </h3>
@@ -146,6 +162,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <ImProfile className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Personalized Profile
               </h3>
@@ -164,6 +181,8 @@ export default function Service() {
           </h1>
           <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 gap-3  ">
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <TbBusinessplan className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
+
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Comprehensive Offerings
               </h3>
@@ -176,6 +195,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <FaSchoolCircleCheck className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Educational Resources
               </h3>
@@ -193,6 +213,7 @@ export default function Service() {
           </h1>
           <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 gap-3  ">
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <MdSchedule className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Schedule a Consultation
               </h3>
@@ -205,6 +226,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <PiStrategyBold className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Investment Strategy
               </h3>
@@ -223,6 +245,7 @@ export default function Service() {
           </h1>
           <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 gap-3  ">
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <FaUserFriends className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 User-Friendly Platforms
               </h3>
@@ -235,6 +258,7 @@ export default function Service() {
             </div>
 
             <div className=" lg:w-[100%] mx-auto mb-4 ">
+              <IoMdOptions className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-16 mt-8  mb-4 text-white p-2 bg-[#03045e]" />
               <h3 className="text-lg font-semibold leading-6 text-gray-900">
                 Diversification Options
               </h3>
