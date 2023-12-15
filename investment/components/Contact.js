@@ -22,7 +22,7 @@ export default function Contact() {
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40 mb-8">
-        <div className=" mx-auto flex flex-col sm:flex-row justify-between items-center ">
+        <div className=" mx-auto flex flex-col sm:flex-row  gap-8 justify-between items-center ">
           <div>
             <div class="sm:mb-5 p-9 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div>

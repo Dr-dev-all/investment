@@ -1,9 +1,13 @@
 export default function ChoosePlan() {
   const content = (
-    <section>
-      <h1>Make a deposit</h1>
+    <section className="min-h-screen w-full text-[#03045e]  mt-[6.9rem] mb-[5em]  rounded-b-lg  flex flex-col">
+      <h1 className=" mt-2 text-2xl font-bold text-center text-gray-700 flex items-center justify-center mb-3 ">
+        Make a deposit
+      </h1>
       <div>
-        <h2>Choose a plan</h2>
+        <h2 className="text-lg font-medium mt-1 text-md tecxt-center text-gray-700 flex items-center justify-center mb-3 ">
+          Choose a plan
+        </h2>
         <div className="mb-5 bg-white text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]">
           <h1>Plan A</h1>
           <div className="plan">
@@ -142,8 +146,6 @@ export default function ChoosePlan() {
             </button>
           </form>
         </div>
-
-        <button className="mt-6">UPGRADE</button>
       </div>
     </section>
   );

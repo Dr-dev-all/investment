@@ -54,7 +54,7 @@ export default function Header() {
           Services
         </Link>
 
-        <Link href="prices" className="font-bold hidden md:block">
+        <Link href="/prices" className="font-bold hidden md:block">
           Prices
         </Link>
 
