@@ -24,8 +24,10 @@ export default function AdminFooter() {
           </Link>
         </div>
         <div className="center-with-flex">
-          <IoSettings className="text-[1.7rem]" />
-          <h1>Setting</h1>
+          <Link href="/login/adminDash/adminsetting">
+            <IoSettings className="text-[1.7rem]" />
+            <h1>Setting</h1>
+          </Link>
         </div>
         <div className="center-with-flex">
           <IoChatbubblesSharp className="text-[1.7rem]" />
