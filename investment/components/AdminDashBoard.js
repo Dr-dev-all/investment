@@ -1,6 +1,7 @@
 "use client";
 import { memo } from "react";
 import { BsBank2 } from "react-icons/bs";
+import { BiMoneyWithdraw } from "react-icons/bi";
 
 export default function AdminDashBoard() {
   const content = (
@@ -11,6 +12,15 @@ export default function AdminDashBoard() {
           <div>
             <p>Revenue</p>
             <p className="font-bold text-wite">$2,2345</p>
+          </div>
+        </div>
+      </section>
+      <section className="bg-white text-black w-[80%] min-h-full rounded-[2rem]  min-w-full mx-auto gap-3 p-3 mt-4  ">
+        <div className="flex justify-between items-center w-full text-white bg-black mx-auto rounded-full px-5 py-2 shadow-gray-500 shadow-lg ">
+          <BiMoneyWithdraw className="text-[1.3rem]" />{" "}
+          <div>
+            <p>W-Requests</p>
+            <p className="font-bold text-wite">None</p>
           </div>
         </div>
       </section>

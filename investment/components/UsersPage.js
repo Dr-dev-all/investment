@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef, useMemo, memo, use } from "react";
-import axios from "@/authendpoints/axios";
 import { useForm } from "react-hook-form";
 import { BiSolidSquareRounded } from "react-icons/bi";
 import { IoPersonAddSharp } from "react-icons/io5";

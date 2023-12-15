@@ -1,46 +1,111 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useContext, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
+// import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import { AuthProvider } from "@/app/Authprovider";
+// import axios from "@/lib/axios";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+// import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Userdash() {
-  const [userData, setUserData] = useState(null);
-  const userID = useParams();
-  console.log(userID);
-
+  const [user, setUser] = useState();
+  const axiosPrivate = useAxiosPrivate();
+  // navigate = useNavigate();
+  // location = useLocation();
+  const { auth } = useContext(AuthProvider);
+  const { userId } = auth;
+  console.log(auth.userInfo);
   useEffect(() => {
-    const fetchData = async () => {
+    let isMounted = true;
+    const controller = new AbortController();
+
+    const getUser = async () => {
       try {
-        if (!userID) throw new Error("User id must be provided");
-        const response = await fetch(
-          `http://127.0.0.1:5000/users/getsingleuser/${userID}`
-        );
-        if (!response.ok) throw new Error("An error occured");
-        if (response.ok) {
-          const serverResponse = await response.json();
-          console.log(serverResponse);
-          // setUserData(serverResponse);
-        }
+        const response = await axiosPrivate.get("/users/getsingleuser", {
+          signal: controller.signal,
+        });
+        isMounted && setUser(response.data);
       } catch (error) {
         console.log(error);
+        // navigate("/login", { state: { from: location }, replace: true });
       }
     };
 
-    fetchData();
-  });
+    getUser();
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
+
+  // BEFORE-------
+  // let effectRan = useRef(false);
+  // let compMount = useRef(false);
+  // const { auth } = useContext(AuthProvider);
+  // let userTokenData;
+  // const assignAccessToken = () => {
+  //   try {
+  //     userTokenData = jwtDecode(
+  //       auth.accessToken,
+  //       "k1J22I2B2KJCBKDNBJNJNSS786BDBNX"
+  //     );
+  //   } catch (error) {
+  //     console.error("access token is gone");
+  //   }
+  // };
+  // assignAccessToken();
+  // const { _id: userID } = userTokenData;
+  // console.log(userID);
+  // const [userData, setUserData] = useState(null);
+
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+  //     const fetchData = async () => {
+  //       try {
+  //         if (!userID) throw new Error("User id must be provided");
+  //         const response = await fetch(
+  //           `http://127.0.0.1:5000/users/getsingleuser/${userID}`
+  //         );
+  //         if (!response.ok) throw new Error("An error occured");
+  //         if (response.ok) {
+  //           const serverData = await response.json();
+  //           localStorage.setItem("reQuser", JSON.stringify(serverData));
+  //           console.log(serverData);
+  //           setUserData(serverData);
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }
+
+  //   return () => {
+  //     console.log("Cleaned up");
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+
+  // if (compMount.current === true) {
+  // const requetedata = JSON.parse(localStorage.getItem("reQuser"));
+  // console.log(requetedata);
+  // BEFORE-------
 
   const content = (
     <main className="min-h-screen w-full text-[#03045e]  mt-[6.9rem]  rounded-b-lg  flex flex-col">
       <section className="flex justify-between  bg-[#03045e]  items-center w-full min-h-[4rem]   p-2 ">
         <div className=" center-with-flex  text-[#03045e] w-full h-[5rem] bg-white border-2   rounded-lg   text-[1.1rem] font-black ">
           <h1 className="flex flex-col">
-            Balance <span>$00.00 </span>
+            Balance <span>$ {auth.userInfo.Balance} .00 </span>
           </h1>
         </div>
         <div className="  center-with-flex  text-[#03045e] w-full  rounded-lg  border-2 bg-white h-[5rem]  font-black">
           <h1 className="flex flex-col">
-            Profit <span>$00.00 </span>
+            Profit <span>$.00 </span>
           </h1>
         </div>
       </section>
@@ -74,6 +139,7 @@ export default function Userdash() {
       </section>
     </main>
   );
-
   return content;
+  // }
+  // compMount.current = true;
 }

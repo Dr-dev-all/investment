@@ -12,8 +12,10 @@ export default function AdminFooter() {
     <main className="min-h-[3rem] w-full text-black fixed bottom-0 bg-white border-t-2 py-1 ">
       <section className="flex justify-between items-center min-h-[3rem]  mx-auto text-center w-full px-4">
         <div className="center-with-flex">
-          <MdSpaceDashboard className="text-[1.7rem]" />
-          <h1>D-board</h1>
+          <Link href="/login/adminDash">
+            <MdSpaceDashboard className="text-[1.7rem]" />
+            <h1>D-board</h1>
+          </Link>
         </div>
         <div className="center-with-flex">
           <Link href="/login/adminDash/userspage">
