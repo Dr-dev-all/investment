@@ -1,5 +1,5 @@
-import axios from '@/authendpoints/axios';
-import useAuth from './useAuth';
+import axios from "@/axiosAPI/axios";
+import useAuth from "./useAuth";
 
 const useLogout = () => {
   const { setAuth } = useAuth();
@@ -7,7 +7,7 @@ const useLogout = () => {
   const logout = async () => {
     setAuth({});
     try {
-      const response = await axios('/auths/logout', {
+      const response = await axios("/auths/logout", {
         withCredentials: true,
       });
     } catch (err) {

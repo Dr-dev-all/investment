@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import axios from '@/authendpoints/axios';
-import { all } from 'axios';
+import { useEffect, useState } from "react";
+import axios from "@/axiosAPI/axios";
+import { all } from "axios";
 
 export default function useInvestors() {
   const [userData, setUserData] = useState([]);
@@ -8,7 +8,7 @@ export default function useInvestors() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/users/getallusers');
+        const response = await fetch("http://127.0.0.1:5000/users/getallusers");
         if (response.ok) {
           const data = await response.json();
           setUserData(data);

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Authproviders from "@/app/Authprovider";
 
 import { Inter } from "next/font/google";
 
@@ -11,7 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Authproviders>{children}</Authproviders>
+      </body>
     </html>
   );
 }

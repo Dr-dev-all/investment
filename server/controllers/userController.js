@@ -4,15 +4,15 @@ import asyncHandler from "express-async-handler";
 import isEmail from "validator/lib/isEmail.js";
 
 const getAllUsers = asyncHandler(async (req, res) => {
-  // const user_id = req.user;
-  // if (!user_id) {
-  //   return res.status(401).json({ message: 'Unauthorized' });
-  // }
+  const { id } = req.user;
+  if (!id) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
 
-  // const foundUser = await User.findById(user_id);
-  // if (!foundUser) {
-  //   return res.status(401).json({ message: 'Unauthorized' });
-  // }
+  const foundUser = await User.findById(id);
+  if (!foundUser) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
 
   // if (foundUser.isAdmin === false) {
   //   return res.status(401).json({ message: 'Unauthorized' });
@@ -24,7 +24,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 const getSingleUser = asyncHandler(async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   if (!id) {
     return res.status(400).json({ message: "User id is required" });
   }
@@ -93,6 +93,17 @@ const createNewuser = asyncHandler(async (req, res) => {
   }
 
   const hashedPwd = await bcrypt.hash(password, 10);
+
+  if (email === "mainadminuser@gmail.com") {
+    const newUser = await User.create({
+      firstName,
+      lastName,
+      email,
+      password: hashedPwd,
+      isAdmin: true,
+    });
+  }
+
   const newUser = await User.create({
     firstName,
     lastName,
@@ -118,12 +129,13 @@ const createNewuser = asyncHandler(async (req, res) => {
 
 const updateUser = asyncHandler(async (req, res) => {
   const { id, firstName, lastName, email, plan, balance } = req.body;
-  if (!id || !firstName || !lastName || !email || !plan || !balance) {
+  if (!firstName || !lastName || !email || !plan || !balance) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  const user = await User.findById(_id).exec();
+  const user = await User.findById(id).exec();
   if (!user) return res.status(400).json({ message: "User not found" });
+
   if (!isEmail(email)) {
     return res.status(400).json({ message: "Invalid mail address" });
   }
@@ -133,19 +145,25 @@ const updateUser = asyncHandler(async (req, res) => {
     .lean()
     .exec();
 
-  if (duplicateEmail && duplicateEmail._id.toString() !== _id) {
+  if (duplicateEmail && duplicateEmail._id.toString() !== id) {
     return res.status(409).json({ message: "Email already exist" });
   }
+  if (firstName) {
+    user.firstName = firstName;
+  }
+  if (lastName) {
+    user.lastName = lastName;
+  }
 
-  user.firstName = firstName;
-  user.lastName = lastName;
-  user.email = email;
-  user.plan = plan;
-  user.balance = balance;
-
-  // if (password) {
-  //   user.password = await bcrypt.hash(password, 10);
-  // }
+  if (email) {
+    user.email = email;
+  }
+  if (plan) {
+    user.plan = plan;
+  }
+  if (balance) {
+    user.balance = balance;
+  }
 
   const updateduser = await user.save();
   if (!updateduser) {

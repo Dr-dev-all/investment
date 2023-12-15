@@ -4,7 +4,7 @@ import { IoSearchSharp } from "react-icons/io5";
 
 export default function AdminHeader() {
   const content = (
-    <main className="min-h-full w-full text-black sticky top-0 text-white bg-black  ">
+    <main className=" mx-auto min-h-[3rem] w-full text-black sticky top-0 text-white bg-black  w-screen">
       <section className="flex justify-between items-center px-2 h-full w-full">
         <div className=" center-with-flex font-bold">
           <h1 className="">one</h1>

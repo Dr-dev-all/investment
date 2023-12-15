@@ -1,24 +1,23 @@
-'use client';
-import Header from './Header';
-import Footer from './Footer';
-import { userRegisterSchema } from '@/lib/types';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { PiSortDescending } from 'react-icons/pi';
-import Link from 'next/link';
-import { MdOutlineSecurity } from 'react-icons/md';
-import { GoAlertFill } from 'react-icons/go';
-import { useState, useEffect, useRef } from 'react';
-import validator from 'validator';
-import { BiSolidError } from 'react-icons/bi';
-import dotenv from 'dotenv';
-import { sendStatusCode } from 'next/dist/server/api-utils';
-import { useRouter, usePathname } from 'next/navigation';
+"use client";
+import Header from "./Header";
+import Footer from "./Footer";
+
+import { useForm } from "react-hook-form";
+import { PiSortDescending } from "react-icons/pi";
+import Link from "next/link";
+import { MdOutlineSecurity } from "react-icons/md";
+import { GoAlertFill } from "react-icons/go";
+import { useState, useEffect, useRef } from "react";
+import validator from "validator";
+import { BiSolidError } from "react-icons/bi";
+import dotenv from "dotenv";
+import { sendStatusCode } from "next/dist/server/api-utils";
+import { useRouter, usePathname } from "next/navigation";
 dotenv.config();
 
 export default function Register() {
   const [userData, setUserData] = useState({});
-  const [userErrorData, setUserErrorData] = useState('');
+  const [userErrorData, setUserErrorData] = useState("");
   // const inputRef = useRef(null);
   const [serverData, setServerData] = useState(null);
   const [errorInResponse, setErrorInResponse] = useState(false);
@@ -39,10 +38,10 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/users/register', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:5000/users/register", {
+        method: "POST",
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
       });
       console.log(response);
 
@@ -50,10 +49,10 @@ export default function Register() {
         // HANDLING 409
 
         setErrorInResponse(!errorInResponse);
-        if (response.status === 409 || response.statusText === 'Conflict') {
+        if (response.status === 409 || response.statusText === "Conflict") {
           errorResponseData = await response.json();
           if (
-            errorResponseData.field === 'email' &&
+            errorResponseData.field === "email" &&
             errorResponseData.errorStatus === true &&
             errorResponseData.successStatus === false
           ) {
@@ -70,10 +69,10 @@ export default function Register() {
 
         // HANDLING 400
 
-        if (response.status === 400 || response.statusText === 'Bad request') {
+        if (response.status === 400 || response.statusText === "Bad request") {
           errorResponseData = await response.json();
           if (
-            errorResponseData.field === 'email' &&
+            errorResponseData.field === "email" &&
             errorResponseData.errorStatus === true &&
             errorResponseData.successStatus === false
           ) {
@@ -87,10 +86,10 @@ export default function Register() {
           }
         }
 
-        if (response.status === 400 || response.statusText === 'Bad request') {
+        if (response.status === 400 || response.statusText === "Bad request") {
           errorResponseData = await response.json();
           if (
-            errorResponseData.field === 'password' &&
+            errorResponseData.field === "password" &&
             errorResponseData.errorStatus === true &&
             errorResponseData.successStatus === false
           ) {
@@ -103,10 +102,10 @@ export default function Register() {
           }
         }
 
-        if (response.status === 400 || response.statusText === 'Bad request') {
+        if (response.status === 400 || response.statusText === "Bad request") {
           errorResponseData = await response.json();
           if (
-            errorResponseData.field === 'confirmPassword' &&
+            errorResponseData.field === "confirmPassword" &&
             errorResponseData.errorStatus === true &&
             errorResponseData.successStatus === false
           ) {
@@ -121,7 +120,7 @@ export default function Register() {
       } else if (
         response.ok &&
         response.status === 201 &&
-        response.statusText === 'Created'
+        response.statusText === "Created"
       ) {
         errorResponseData = await response.json();
 
@@ -136,11 +135,11 @@ export default function Register() {
             dataErrorStatus: errorResponseData.errorStatus,
           }));
 
-          router.push('/login');
+          router.push("/login");
         }
       } else {
         router.push(`/${pathname}`);
-        setUserErrorData('Invalid user data recieved');
+        setUserErrorData("Invalid user data recieved");
       }
 
       // isSubmitted || (isSubmitSuccessful && setServerData(null));
@@ -152,43 +151,44 @@ export default function Register() {
   };
 
   const content = (
-    <section className='center-with-flex min-h-[50rem] overflow-hidden w-screen'>
-      <div className='div-style'>
-        <article className='center-with-flex w-[90%] mx-auto my-auto h-full '>
-          <form className='' onSubmit={handleSubmit(onSubmit)}>
+    <section className="center-with-flex min-h-[50rem] overflow-hidden w-screen">
+      <div className="div-style">
+        <article className="center-with-flex w-[90%] mx-auto my-auto h-full ">
+          <form className="" onSubmit={handleSubmit(onSubmit)}>
             <h1
               className={`form-error-style text-center margin-auto w-[60%] ${
-                !userErrorData ? 'hidden' : 'block'
-              } `}>
-              <BiSolidError className='warning-icon-style' />
+                !userErrorData ? "hidden" : "block"
+              } `}
+            >
+              <BiSolidError className="warning-icon-style" />
               {userErrorData}
             </h1>
-            <div className='grid grid-cols-1 sm:gap-3 sm:grid-cols-2'>
+            <div className="grid grid-cols-1 sm:gap-3 sm:grid-cols-2">
               <div>
-                <label htmlFor='firstName' className='form-text-style'>
-                  Firstname:{' '}
+                <label htmlFor="firstName" className="form-text-style">
+                  Firstname:{" "}
                 </label>
                 <input
-                  type='text'
-                  {...register('firstName', {
-                    required: 'Please enter your firstname',
+                  type="text"
+                  {...register("firstName", {
+                    required: "Please enter your firstname",
                     maxLength: 30,
                   })}
-                  name='firstName'
-                  id='firstName'
-                  className='form-input-style'
-                  placeholder='Eg: james'
+                  name="firstName"
+                  id="firstName"
+                  className="form-input-style"
+                  placeholder="Eg: james"
                 />
-                {errors.firstName && errors.firstName.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                {errors.firstName && errors.firstName.type === "required" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors.firstName.message}
                   </p>
                 ) : (
                   errors.firstName &&
-                  errors.firstName.type === 'maxLength' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
+                  errors.firstName.type === "maxLength" && (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
                       Please choose a shorter name
                     </p>
                   )
@@ -196,7 +196,7 @@ export default function Register() {
 
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
-                userOptions.dataField === 'firstName' &&
+                userOptions.dataField === "firstName" &&
                 userOptions.dataErrorStatus === true ? (
                   <p>{serverData}</p>
                 ) : (
@@ -208,29 +208,29 @@ export default function Register() {
               </div>
 
               <div>
-                {' '}
-                <label htmlFor='lastName' className='form-text-style'>
-                  Lastname:{' '}
+                {" "}
+                <label htmlFor="lastName" className="form-text-style">
+                  Lastname:{" "}
                 </label>
                 <input
-                  {...register('lastName', {
-                    required: 'Please enter your lastname',
+                  {...register("lastName", {
+                    required: "Please enter your lastname",
                     maxLength: 30,
                   })}
-                  type='text'
-                  name='lastName'
-                  id='lastName'
-                  className='form-input-style'
-                  placeholder='Eg: Morgan'
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  className="form-input-style"
+                  placeholder="Eg: Morgan"
                 />
-                {errors.firstName && errors.firstName.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                {errors.firstName && errors.firstName.type === "required" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors.lastName.message}
                   </p>
-                ) : errors.lastName && errors.lastName.type === 'maxLength' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                ) : errors.lastName && errors.lastName.type === "maxLength" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     Please choose a shorter name
                   </p>
                 ) : (
@@ -238,7 +238,7 @@ export default function Register() {
                 )}
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
-                userOptions.dataField === 'lastName' &&
+                userOptions.dataField === "lastName" &&
                 userOptions.dataErrorStatus === true ? (
                   <p>{serverData}</p>
                 ) : (
@@ -250,33 +250,33 @@ export default function Register() {
               </div>
 
               <div>
-                <label htmlFor='email' className=' form-text-style '>
-                  Email:{' '}
+                <label htmlFor="email" className=" form-text-style ">
+                  Email:{" "}
                 </label>
                 <input
-                  {...register('email', {
-                    required: 'Please enter your email address',
+                  {...register("email", {
+                    required: "Please enter your email address",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'invalid email address',
+                      message: "invalid email address",
                     },
                   })}
-                  type='text'
-                  name='email'
-                  id='email'
-                  className='form-input-style'
-                  placeholder='Eg: jamesmorgan@gmail.com'
+                  type="text"
+                  name="email"
+                  id="email"
+                  className="form-input-style"
+                  placeholder="Eg: jamesmorgan@gmail.com"
                 />
-                {errors.email && errors.email.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                {errors.email && errors.email.type === "required" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors.email.message}
                   </p>
                 ) : (
                   errors.email &&
-                  errors.email.type === 'pattern' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
+                  errors.email.type === "pattern" && (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
                       {errors.email?.message}
                     </p>
                   )
@@ -284,13 +284,14 @@ export default function Register() {
 
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
-                userOptions.dataField === 'email' &&
+                userOptions.dataField === "email" &&
                 userOptions.dataErrorStatus === true ? (
                   <p
                     className={`form-error-style ${
-                      serverData === null ? 'hidden' : 'block'
-                    }`}>
-                    <BiSolidError className='warning-icon-style' />
+                      serverData === null ? "hidden" : "block"
+                    }`}
+                  >
+                    <BiSolidError className="warning-icon-style" />
                     {serverData}
                   </p>
                 ) : (
@@ -302,33 +303,33 @@ export default function Register() {
               </div>
 
               <div>
-                <label htmlFor='password' className='form-text-style'>
-                  Password:{' '}
+                <label htmlFor="password" className="form-text-style">
+                  Password:{" "}
                 </label>
                 <input
-                  {...register('password', {
-                    required: 'Please enter your password',
+                  {...register("password", {
+                    required: "Please enter your password",
                     minLength: {
                       value: 6,
-                      message: 'Password must be above six characters',
+                      message: "Password must be above six characters",
                     },
                   })}
-                  type='text'
-                  name='password'
-                  id='password'
-                  className='form-input-style'
-                  placeholder='Eg: Password123*@'
+                  type="text"
+                  name="password"
+                  id="password"
+                  className="form-input-style"
+                  placeholder="Eg: Password123*@"
                 />
-                {errors.password && errors.password.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                {errors.password && errors.password.type === "required" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors.password.message}
                   </p>
                 ) : (
                   errors.password &&
-                  errors.password.type === 'minLength' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
+                  errors.password.type === "minLength" && (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
                       {errors.password.message}
                     </p>
                   )
@@ -336,7 +337,7 @@ export default function Register() {
 
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
-                userOptions.dataField === 'password' &&
+                userOptions.dataField === "password" &&
                 userOptions.dataErrorStatus === true ? (
                   <p>{serverData}</p>
                 ) : (
@@ -348,41 +349,41 @@ export default function Register() {
               </div>
 
               <div>
-                <label htmlFor='confirmPassword' className='form-text-style'>
-                  Confirm Password:{' '}
+                <label htmlFor="confirmPassword" className="form-text-style">
+                  Confirm Password:{" "}
                 </label>
                 <input
-                  {...register('confirmPassword', {
-                    required: 'This field must not be empty',
+                  {...register("confirmPassword", {
+                    required: "This field must not be empty",
                     minLength: {
                       value: 6,
-                      message: ' input data must be above six (6) characters',
+                      message: " input data must be above six (6) characters",
                     },
-                    validate: (value) => value === getValues('password'),
+                    validate: (value) => value === getValues("password"),
                   })}
-                  type='text'
-                  name='confirmPassword'
-                  id='confirmPassword'
-                  className='form-input-style'
-                  placeholder='Eg: Password123*@'
+                  type="text"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  className="form-input-style"
+                  placeholder="Eg: Password123*@"
                 />
                 {errors.confirmPassword &&
-                errors.confirmPassword.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                errors.confirmPassword.type === "required" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors.confirmPassword.message}
                   </p>
                 ) : errors.confirmPassword &&
-                  errors.confirmPassword.type === 'minLength' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
+                  errors.confirmPassword.type === "minLength" ? (
+                  <p className="form-error-style">
+                    <BiSolidError className="warning-icon-style" />
                     {errors?.confirmPassword?.message}
                   </p>
                 ) : (
                   errors.confirmPassword &&
-                  errors.confirmPassword.type === 'validate' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
+                  errors.confirmPassword.type === "validate" && (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
                       Password does not match
                     </p>
                   )
@@ -390,7 +391,7 @@ export default function Register() {
 
                 {/* SERVER VALIDATION ERROR DISPLAY */}
                 {errorInResponse &&
-                userOptions.dataField === 'confirmPassword' &&
+                userOptions.dataField === "confirmPassword" &&
                 userOptions.dataErrorStatus === true ? (
                   <p>{serverData}</p>
                 ) : (
@@ -401,24 +402,26 @@ export default function Register() {
                 )}
               </div>
 
-              <div className=' w-full flex gap-2 flex-row px-3 justify-center items-center '>
-                <hr className='w-[5rem] bg-[#03045e] p-[0.6px]' />{' '}
-                <MdOutlineSecurity className='text-[#03045e] sm:text-[2rem]' />{' '}
-                <hr className='w-[5rem] p-[0.6px] bg-[#03045e]' />
+              <div className=" w-full flex gap-2 flex-row px-3 justify-center items-center ">
+                <hr className="w-[5rem] bg-[#03045e] p-[0.6px]" />{" "}
+                <MdOutlineSecurity className="text-[#03045e] sm:text-[2rem]" />{" "}
+                <hr className="w-[5rem] p-[0.6px] bg-[#03045e]" />
               </div>
             </div>
 
-            <div className=' center-with-flex flex-cols   w-full '>
+            <div className=" center-with-flex flex-cols   w-full ">
               <button
                 onClick={() => {}}
-                className=' bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg'>
+                className=" bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg"
+              >
                 Register
               </button>
-              <p className='font-bold mx-auto w-[8rems]'>
-                Already have an account?{' '}
+              <p className="font-bold mx-auto w-[8rems]">
+                Already have an account?{" "}
                 <Link
-                  href='/login'
-                  className='underline text-[1.2rem] font-bold  text-[#03045e]'>
+                  href="/login"
+                  className="underline text-[1.2rem] font-bold  text-[#03045e]"
+                >
                   Login.
                 </Link>
               </p>

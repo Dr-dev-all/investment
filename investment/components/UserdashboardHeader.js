@@ -1,10 +1,15 @@
+"use client";
+import { useState, useContext, useEffect, useRef } from "react";
+import { AuthProvider } from "@/app/Authprovider";
 import { headers } from "../next.config";
+import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { FaMinusCircle } from "react-icons/fa";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import Image from "next/image";
+import axios from "@/lib/axios";
 
 export default function UserDashboardHeader() {
   const navBarData = [
@@ -16,6 +21,74 @@ export default function UserDashboardHeader() {
     { name: "Logout", url: "logout" },
   ];
 
+  const { auth } = useContext(AuthProvider);
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const controller = new AbortController();
+
+    const getUser = async () => {
+      try {
+        const response = await axios.get("/users/getsingleuser/id", {
+          signal: controller.signal,
+        });
+        isMounted && setUsers(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUser();
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
+
+  // BEFORE-------
+  // const { auth } = useContext(AuthProvider);
+  // const userTokenData = jwtDecode(
+  //   auth.accessToken,
+  //   "k1J22I2B2KJCBKDNBJNJNSS786BDBNX"
+  // );
+  // let effectRan = useRef(false);
+  // let compMount = useRef(false);
+  // const { _id: userID } = userTokenData;
+  // console.log(userID);
+  // const [userData, setUserData] = useState(null);
+
+  // useEffect(() => {
+  //   if (effectRan.current === true) {
+  //     const fetchData = async () => {
+  //       try {
+  //         if (!userID) throw new Error("User id must be provided");
+  //         const response = await fetch(
+  //           `http://127.0.0.1:5000/users/getsingleuser/${userID}`
+  //         );
+  //         if (!response.ok) throw new Error("An error occured");
+  //         if (response.ok) {
+  //           const serverData = await response.json();
+  //           console.log(serverData);
+  //           setUserData(serverData);
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }
+
+  //   return () => {
+  //     effectRan.current = true;
+  //   };
+  // }, []);
+  // before------
+  // console.log(userData);
+  // if (compMount.current === true) {
   const content = (
     <header className=" bg-[#03045e] w-full min-h-[3rem] text-white fixed top-0  mb-[2rem]  ">
       <section className="w-full max-h-[3rem] flex flex-row justify-between items-center  py-2 px-5">
@@ -30,7 +103,7 @@ export default function UserDashboardHeader() {
             />
           </Link>
         </h1>
-        <h1>Hi firstname</h1>
+        <h1>Hi {auth.userInfo.Firstname} </h1>
         <h1>
           {" "}
           <IoNotificationsSharp />{" "}
@@ -61,3 +134,5 @@ export default function UserDashboardHeader() {
 
   return content;
 }
+// compMount.current = true;
+// }
