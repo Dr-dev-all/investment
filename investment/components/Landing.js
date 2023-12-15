@@ -175,7 +175,7 @@ export default function Landing() {
           <PiArrowFatLinesDownFill className="text-white text-[1.5rem]" />
         </span>
       </div>
-      <article className="article-style    ">
+      <article className="article-style  mb-5  ">
         {/* bf arrow */}
         <h1 className="text-center">Our Best Plan</h1>
         <div className="center-with-grid md:grid-cols-3 w-screen">
