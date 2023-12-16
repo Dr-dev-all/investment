@@ -7,6 +7,7 @@ import { TiArrowUnsorted } from "react-icons/ti";
 import { PiArrowUpRightFill } from "react-icons/pi";
 import Image from "next/image";
 import { MdOutlineHeight } from "react-icons/md";
+import { TickerTape } from "react-tradingview-embed";
 
 export default function Header() {
   const navItems = [
@@ -25,64 +26,67 @@ export default function Header() {
   const content = (
     <header
       className={`w-screen 
-       flex justify-center items-center  top-0 flex-col 
+       flex justify-center  flex-col items-center  top-0 flex-col 
           fixed z-0`}
     >
-      <div
-        className={`flex flex-row h-[40%] border-b-2 border-white py-2 bg-[#03045e]  w-screen text-white justify-between   z-10 px-4 md:px-6  
+      <div>
+        <div
+          className={`flex flex-row h-[40%] border-b-2 border-white py-2 bg-[#03045e]  w-screen text-white justify-between   z-10 px-4 md:px-6  
              text-white  items-center`}
-      >
-        <Link href="/" className="border-white border-2">
-          <Image src="/bhlogo.jpeg" alt="bh-logo" width={28} height={28} />
-        </Link>
-        <Link href="/register" className="font-bold min">
-          Register
-        </Link>
-
-        <Link
-          href="/login"
-          className="font-bold max-[283px]:hidden min:[300]:block"
         >
-          Login
-        </Link>
+          <Link href="/" className="border-white border-2">
+            <Image src="/bhlogo.jpeg" alt="bh-logo" width={28} height={28} />
+          </Link>
+          <Link href="/register" className="font-bold min">
+            Register
+          </Link>
 
-        <Link href="about" className="font-bold hidden md:block">
-          About
-        </Link>
+          <Link
+            href="/login"
+            className="font-bold max-[283px]:hidden min:[300]:block"
+          >
+            Login
+          </Link>
 
-        <Link href="service" className="font-bold hidden md:block">
-          Services
-        </Link>
+          <Link href="about" className="font-bold hidden md:block">
+            About
+          </Link>
 
-        <Link href="/prices" className="font-bold hidden md:block">
-          Prices
-        </Link>
+          <Link href="service" className="font-bold hidden md:block">
+            Services
+          </Link>
 
-        <Link
-          href="/security"
-          className="font-bold hidden md:block  hover:underline transition-all duration-300"
-        >
-          Security
-        </Link>
+          <Link href="/prices" className="font-bold hidden md:block">
+            Prices
+          </Link>
 
-        <Link href="/contact" className="font-bold hidden md:block">
-          Contact
-        </Link>
+          <Link
+            href="/security"
+            className="font-bold hidden md:block  hover:underline transition-all duration-300"
+          >
+            Security
+          </Link>
 
-        <button
-          className=" md:hidden"
-          onClick={() => {
-            setShow(!show);
-          }}
-        >
-          MENU{" "}
-          {show ? (
-            <BiSolidDownArrow className="inline" />
-          ) : (
-            <TiArrowUnsorted className="inline" />
-          )}
-        </button>
+          <Link href="/contact" className="font-bold hidden md:block">
+            Contact
+          </Link>
+
+          <button
+            className=" md:hidden"
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
+            MENU{" "}
+            {show ? (
+              <BiSolidDownArrow className="inline" />
+            ) : (
+              <TiArrowUnsorted className="inline" />
+            )}
+          </button>
+        </div>
       </div>
+
       <nav
         className={`flex flex-col justify-center items-center md:hidden  block h-[8.9rem] gap-2 p-1 bg-yellow-500   rounded-l-lg  w-[96%] ml-[2.5rem]  ${
           show ? "hidden" : "block "

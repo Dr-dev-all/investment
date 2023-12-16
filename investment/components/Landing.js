@@ -21,6 +21,15 @@ import { TbSquareRoundedNumber5Filled } from "react-icons/tb";
 import { TbSquareRoundedNumber6Filled } from "react-icons/tb";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { ImHappy2 } from "react-icons/im";
+import Script from "next/script";
+import {
+  AdvancedChart,
+  CryptocurrencyMarket,
+  TickerTape,
+  MarketOverview,
+} from "react-tradingview-embed";
+import { MdOutlineMoreTime } from "react-icons/md";
+import { ImQuotesLeft } from "react-icons/im";
 
 export default function Landing() {
   const starterPlan = [
@@ -31,6 +40,16 @@ export default function Landing() {
     { name: "Number of Period", value: "7 Times", id: 5 },
     { name: "Profit Withdraw", value: "Anytime", id: 6 },
   ];
+
+  const consumedData = {
+    feedMode: "all_symbols",
+    isTransparent: false,
+    displayMode: "regular",
+    width: "480",
+    height: "830",
+    colorTheme: "light",
+    locale: "en",
+  };
 
   // const [sow, setShow] = useState(true);
   const [allData, setAllData] = useState([]);
@@ -70,9 +89,12 @@ export default function Landing() {
           .
         </article>
       </div>
+      <div>
+        <TickerTape />
+      </div>
       <article className="article-style center-with-flex ">
         <div className="w-full h-full ">
-          <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#001845] ">
+          <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#03045e] ">
             who we are
           </h1>
           <div className="flex flex-row  justify-between  px-  pt-7  items-center h-[6rem] w-screen text-black">
@@ -90,37 +112,64 @@ export default function Landing() {
               />
             </div>
           </div>
-          <h1 className="w-screen h-[2rem] text-[2rem] text-center border-t-4 border-t-[#001845]  text-[#001845] font-bold  my-[1rem]">
-            How we earn from our mining investors
+          <h1 className="w-screen h-[3rem] center-with-flex text-[1.2rem] uppercase text-center border-t-4 border-t-[#03045e]  text-[#001845]  font-bold mt-[1rem]">
+            How we benefits
           </h1>
-          <ul className="flex flex-col justify-between  items-left text-white min-h-[14rem] w-screen pl-2 py-4 bg-[#001845] list-none">
-            <li className="   ">
+          <ul className="flex flex-col justify-between pt-2 items-center text-white min-h-[5rem] w-screen  bg-[#03045e] list-none">
+            <li className="flex flex-col justify-between items-center text-center px-2 gap-2">
               {" "}
-              <IoShieldCheckmarkSharp className="inline  text-[1.2rem] mr-2" />{" "}
-              The transaction is bundled into a block.
+              <span className="flex justify-between items-center w-full px-7">
+                <hr className="w-[5rem]" />
+                <MdOutlineMoreTime className="" />
+                <hr className="w-[5rem]" />
+              </span>
+              <p className="bg-white text-[#03045e] mb-2 font-bold">
+                The transaction is bundled into a block.
+              </p>
             </li>
-            <li className="   ">
-              {" "}
-              <IoShieldCheckmarkSharp className="inline  text-[1.2rem] mr-2" />{" "}
-              Miners verify whether the transaction is valid.
+            <li className="flex flex-col justify-between items-center  text-center px-2  gap-2">
+              <span className="flex justify-between items-center w-full px-7">
+                <hr className="w-[5rem]" />
+                <MdOutlineMoreTime />
+                <hr className="w-[5rem]" />
+              </span>{" "}
+              <p className="bg-white text-[#03045e] mb-2 font-bold">
+                Miners verify whether the transaction is valid.
+              </p>
             </li>
-            <li className="   ">
-              {" "}
-              <IoShieldCheckmarkSharp className="inline  text-[1.2rem]  mr-2" />
-              They select headers of the most recent block and in sert it into
-              the new block as a hash
+            <li className="flex flex-col justify-between items-center px-2 text-center  gap-2">
+              <span className="flex justify-between items-center w-full px-7">
+                <hr className="w-[5rem]" />
+                <MdOutlineMoreTime />
+                <hr className="w-[5rem]" />
+              </span>{" "}
+              <p className="bg-white text-[#03045e] mb-2 font-bold">
+                They select headers of the most recent block and in sert it into
+                the new block as a hash
+              </p>
             </li>{" "}
-            <li className="">
-              {" "}
-              <IoShieldCheckmarkSharp className="inline  text-[1.2rem] mr-2" />{" "}
-              They solve the mathematical problem.
+            <li className="flex flex-col justify-between items-center text-center px-2 gap-2">
+              <span className="flex justify-between items-center w-full px-7">
+                <hr className="w-[5rem]" />
+                <MdOutlineMoreTime />
+                <hr className="w-[5rem]" />
+              </span>{" "}
+              <p className="bg-white text-[#03045e] mb-2 font-bold">
+                They solve the mathematical problem.
+              </p>
             </li>
-            <li className="   ">
+            <span className="flex justify-between items-center w-full mb-3  px-2 px-7">
+              <hr className="w-[5rem]" />
+              <MdOutlineMoreTime />
+              <hr className="w-[5rem]" />
+            </span>
+            <li className="flex flex-col justify-between items-center text-center px-2 gap-2">
               {" "}
-              <IoShieldCheckmarkSharp className="inline text-[1.2rem]  mr-2 " />
-              When the solution is found, the new block is added the blockchain
-              and then propgated thoughout the network by this producing profit
-              hourly to investors account.
+              <p className="bg-white text-[#03045e] mb-2 font-bold">
+                When the solution is found, the new block is added the
+                blockchain and then propgated thoughout the network by this
+                producing profit hourly to investors account.
+              </p>
             </li>
           </ul>
         </div>
@@ -220,21 +269,38 @@ export default function Landing() {
           </div>
         </div>
       </article>
-
-      <article>
-        <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#001845] ">
-          who we are
+      <article className="article-style">
+        <h1 className=" mr-auto my-[1rem] tracking-wide   text-left items-left text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[85%]">
+          Market Overview
         </h1>
-        <div>
-          <div className=""></div>
+        <div className="mx-auto ">
+          <div className="w-90% mx-auto">
+            <MarketOverview widgetProps={{ width: 310 }} />
+          </div>
+        </div>
+      </article>
+
+      <article className="center-with-flex w-screen min-h-[5rem]  mt-2 p-1 ">
+        <h1 className=" mr-auto my-[1rem] tracking-wide   text-left items-left text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[85%]">
+          Cryptocurrency market
+        </h1>
+        <div className="center-with-flex  w-full mx-auto min-h-[15rem] bg-[#03045e]   p-1">
+          <CryptocurrencyMarket
+            widgetProps={{
+              width: "100%",
+              height: 250,
+              colorTheme: "light",
+              style: "margin: auto",
+            }}
+          />
         </div>
       </article>
 
       <article className="article-style center-with-flex   ">
-        <h1 className="flex flex-row justify-center mr-auto my-[1rem] tracking-wide  p-3 text-left items-center text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem] text-white bg-[#2b2d42] rounded-r-[2rem] h-[3rem] w-[75%]">
+        <h1 className=" mr-auto my-[1rem] tracking-wide  p-3 text-left items-left text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[75%]">
           Crypto News Updates
         </h1>
-        <section className="grid grid-cols-1 w-[90%] h-[10rem] overflow-y-hidden">
+        <section className="grid grid-cols-1 w-[95%] h-[10rem] overflow-y-hidden">
           {
             <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 h-full w-full overflow-y-hidden">
               {allData.map((data) => (
@@ -255,10 +321,10 @@ export default function Landing() {
         </section>
       </article>
 
-      <article className="article-style center-with-flex bg-green-500 ">
-        <section className="md:px-[5em]  mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-20">
-          <div className="mt-[4em]">
-            <h2 className="mb-4 text-3xl font-medium tracking-tight text-gray-900">
+      <article className="article-style bg-green-500 ">
+        <section className="  mx-auto w-full ">
+          <div className=" w-full ">
+            <h2 className="mb-4 text-[1.4rem] font-bold underline  text-center w-full  text-gray-900">
               BullHarvest Testimonials
             </h2>
             <p className="mt-6 mb-6 max-w-3xl text-xl text-neutral-600">
@@ -266,27 +332,28 @@ export default function Landing() {
               their financial journey. Read what our clients have to say about
               their experiences:
             </p>
-            <div className="min-w-screen grid grid-cols-1 md:grid-cols-3 gap-3  ">
-              <div className="text-startlg:w-[70%]  bg-white text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-left p-3  w-[100%] ">
-                <p className="mt-2 text-lg text-gray-700">
+            <div className="w-screen min-h-[10rem]  grid grid-cols-1 md:grid-cols-3 gap-1 ">
+              <div className="  bg-white text-[#03045e]  mx-auto  border-none  min-h-[5rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%] ">
+                <p className="mt-2  text-gray-700  p-3">
+                  <ImQuotesLeft className="text-[1.2rem] ml-4 mb-2" />
                   "BullHarvest has been a game-changer for me. The platform's
                   educational resources and insightful market analyses have
                   given me the knowledge and confidence to make informed
                   investment decisions. It's not just a platform; it's a
                   learning experience!"
                 </p>
-                <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900">
+                <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900 px-3">
                   — Sarah Thompson, Investor since 2020
                 </h2>
-                <ImHappy2 className=" text-[2.5em] lg:text-[3em] rounded-full lg:mt-2 mt-2  mb-4 text-white p-2 bg-[#03045e]" />
               </div>
 
               <div className="text-startlg:w-[70%]  bg-white text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-left p-3  w-[100%] ">
-                <p className="mt-2 text-lg text-gray-700">
-                  "BullHarvest has become my trusted partner in financial
-                  growth. The team's dedication to transparency, coupled with
-                  their commitment to security, has created an environment where
-                  I feel confident in managing my investments. Kudos to
+                <p className="mt-2 text-lg text-gray-700 text-center">
+                  <ImQuotesLeft className="text-[1.2rem] ml-4 mb-2" />
+                  BullHarvest has become my trusted partner in financial growth.
+                  The team's dedication to transparency, coupled with their
+                  commitment to security, has created an environment where I
+                  feel confident in managing my investments. Kudos to
                   BullHarvest for making investing a breeze."
                 </p>
                 <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900">

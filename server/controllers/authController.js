@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const login = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl);
   const { email, password } = req.body;
   if (!email || !password) {
     console.log({ email, password });
@@ -53,6 +54,7 @@ const login = asyncHandler(async (req, res) => {
       Balance: founduser.balance,
       Firstname: founduser.firstName,
       Admin: founduser.isAdmin,
+      Active: founduser.isActive,
     },
     process.env.ACCESS_TOKEN_SEC,
     {
@@ -68,6 +70,7 @@ const login = asyncHandler(async (req, res) => {
       Balance: founduser.balance,
       Firstname: founduser.firstName,
       Admin: founduser.isAdmin,
+      Active: founduser.isActive,
     },
     process.env.REFRESH_TOKEN_SEC,
     { expiresIn: "4m" }
