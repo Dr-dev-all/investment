@@ -33,6 +33,8 @@
     "react-router-dom": "^6.21.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.3",
+    "react-tradingview-embed": "^3.0.6",
+    "react-tradingview-widget-components": "^1.0.4",
     "reactjs-popup": "^2.0.6",
     "validator": "^13.11.0",
     "zod": "^3.22.4"

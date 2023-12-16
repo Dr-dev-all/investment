@@ -8,6 +8,8 @@ import { AuthProvider } from "@/app/Authprovider";
 // import axios from "@/lib/axios";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 // import { useNavigate, useLocation } from "react-router-dom";
+import { SymbolOverview } from "react-tradingview-widget-components";
+import TradingView from "./TradingView";
 
 export default function Userdash() {
   const [user, setUser] = useState();
@@ -135,6 +137,16 @@ export default function Userdash() {
             choose plan now{" "}
             <MdArrowOutward className="inline text-[1rem] text-[#03045e]" />
           </Link>
+        </article>
+      </section>
+      <section className="center-with-flex min-h-[10rem] w-screen  bg-red-500 my-3 mx-auto ">
+        <article className=" bg-green-500 h-[17rem] mx-auto w-[95%] ">
+          <TradingView />
+        </article>
+      </section>
+      <section className="center-with-flex w-[95%] my-3 mx-auto  min-h-[5rem]">
+        <article className=" bg-yellow-500 w-[90%] h-full mx-auto ">
+          user activity
         </article>
       </section>
     </main>

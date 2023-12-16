@@ -94,6 +94,10 @@ const createNewuser = asyncHandler(async (req, res) => {
 
   const hashedPwd = await bcrypt.hash(password, 10);
 
+  // EMAIL VERIFICATION
+
+  // END OF MAIL VERIFICATION
+
   if (email === "mainadminuser@gmail.com") {
     const newUser = await User.create({
       firstName,
