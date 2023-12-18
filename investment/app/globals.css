@@ -23,7 +23,7 @@ body {
 }
 
 .form-text-style {
-  @apply block text-[1rem]   font-bold;
+  @apply block text-left   font-bold;
 }
 
 .form-input-style {
@@ -57,11 +57,11 @@ body {
 }
 
 .form-error-style {
-  @apply text-[#da0a1c] italic text-center p-[0.6px] my-1 mx-auto text-[1.2rem];
+  @apply flex justify-center items-center text-[#da0a1c] w-[98%] italic text-center p-[0.8px] my-1 mx-auto;
 }
 
 .warning-icon-style {
-  @apply inline text-[#da0a1c] pr-2 text-[1.5rem];
+  @apply inline text-[#da0a1c] pl-1 text-[1.5rem];
 }
 
 .ad-inp-style {

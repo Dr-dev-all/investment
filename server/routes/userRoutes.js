@@ -2,6 +2,8 @@ import express from "express";
 import userController from "../controllers/userController.js";
 import verifyjwt from "../middlewares/verifyJwt.js";
 import protectRoutes from "../middlewares/protectRoutes.js";
+import headers from "../middlewares/corHeader.js";
+import cors from "cors";
 
 const router = express.Router();
 

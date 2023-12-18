@@ -92,26 +92,48 @@ export default function Landing() {
       <div>
         <TickerTape />
       </div>
+      <article className="min-h-[5rem] w-full mx-auto  ">
+        <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#03045e] ">
+          who we are
+        </h1>
+        <div className="flex flex-row  justify-between     items-center  w-screen text-black">
+          <p className="block w-[60%] my-auto">
+            {" "}
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut ! There
+            are many variations of passages of Lorem Ipsum available, but the
+            majority have suffered alteration in some form, by injected humour,
+            or randomised words which don’t look even slightly believable. If
+            you are going to use a passage of Lorem Ipsum, you need to be sure
+            there isn’t anything embarrassing hidden in the middle of text. All
+            the Lorem Ipsum generators on the Internet tend to repeat predefined
+            chunks as necessary. There are many variations of passages of Lorem
+            Ipsum available, but the majority have suffered alteration in some
+            form, by injected humour, or randomised words which don’t look even
+            slightly believable. If you are going to use a passage of Lorem
+            Ipsum, you need to be sure there isn’t anything embarrassing hidden
+            in the middle of text. All the Lorem Ipsum generators on the
+            Internet tend to repeat predefined chunks as necessary. There are
+            many variations of passages of Lorem Ipsum available, but the
+            majority have suffered alteration in some form, by injected humour,
+            or randomised words which don’t look even slightly believable. If
+            you are going to use a passage of Lorem Ipsum, you need to be sure
+            there isn’t anything embarrassing hidden in the middle of text. All
+            the Lorem Ipsum generators on the Internet tend to repeat predefined
+            chunks as necessary.
+          </p>{" "}
+          <div className="w-[40%]  my-auto">
+            <Image
+              src="../security-icon.svg"
+              alt="security-icon"
+              height={80}
+              width={80}
+              className="mx-auto my-auto"
+            />
+          </div>
+        </div>
+      </article>
       <article className="article-style center-with-flex ">
         <div className="w-full h-full ">
-          <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#03045e] ">
-            who we are
-          </h1>
-          <div className="flex flex-row  justify-between  px-  pt-7  items-center h-[6rem] w-screen text-black">
-            <p className="block w-[60%] my-auto">
-              {" "}
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut !{" "}
-            </p>{" "}
-            <div className="w-[40%]  my-auto">
-              <Image
-                src="../security-icon.svg"
-                alt="security-icon"
-                height={80}
-                width={80}
-                className="mx-auto my-auto"
-              />
-            </div>
-          </div>
           <h1 className="w-screen h-[3rem] center-with-flex text-[1.2rem] uppercase text-center border-t-4 border-t-[#03045e]  text-[#001845]  font-bold mt-[1rem]">
             How we benefits
           </h1>

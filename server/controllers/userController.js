@@ -14,9 +14,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  // if (foundUser.isAdmin === false) {
-  //   return res.status(401).json({ message: 'Unauthorized' });
-  // }
+  if (foundUser.isAdmin === false) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
 
   const users = await User.find().select("-password").lean();
   if (!users?.length) return res.status(400).json({ message: "No user found" });
@@ -24,18 +24,24 @@ const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 const getSingleUser = asyncHandler(async (req, res) => {
-  const { id } = req.user;
-  if (!id) {
-    return res.status(400).json({ message: "User id is required" });
+  const userId = req.user;
+
+  if (!userId) {
+    return res.status(400).json({ message: "User data is required" });
   }
 
-  const foundUser = await User.findById(id).exec();
-
+  const foundUser = await User.findById(userId).exec();
   if (!foundUser) {
-    return res.status(400).json("Invalid user");
+    return res.status(400).json({ message: "Invalid user" });
   }
-
-  return res.status(200).json({ message: foundUser });
+  const userData = {
+    email: foundUser.email,
+    firstName: foundUser.firstName,
+    lastName: foundUser.lastName,
+    balance: foundUser.balance,
+  };
+  // res.setHeader("Access-Control-Allow-Credentials", true);
+  return res.status(200).json(userData);
 });
 
 const createNewuser = asyncHandler(async (req, res) => {
@@ -98,7 +104,7 @@ const createNewuser = asyncHandler(async (req, res) => {
 
   // END OF MAIL VERIFICATION
 
-  if (email === "mainadminuser@gmail.com") {
+  if (email === "Otb9007@gmail.com") {
     const newUser = await User.create({
       firstName,
       lastName,

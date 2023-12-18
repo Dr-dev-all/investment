@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const login = asyncHandler(async (req, res) => {
-  console.log(req.originalUrl);
+  // console.log(req.originalUrl);
   const { email, password } = req.body;
   if (!email || !password) {
     console.log({ email, password });
@@ -58,7 +58,7 @@ const login = asyncHandler(async (req, res) => {
     },
     process.env.ACCESS_TOKEN_SEC,
     {
-      expiresIn: "3m",
+      expiresIn: "1d",
     }
   );
 
@@ -71,9 +71,10 @@ const login = asyncHandler(async (req, res) => {
       Firstname: founduser.firstName,
       Admin: founduser.isAdmin,
       Active: founduser.isActive,
+      isLoggedIn: true,
     },
     process.env.REFRESH_TOKEN_SEC,
-    { expiresIn: "4m" }
+    { expiresIn: "7d" }
   );
 
   res.cookie("jwt", refreshToken, {
@@ -105,13 +106,13 @@ const refresh = asyncHandler(async (req, res) => {
     }
     const foundUser = await User.findById(decoded._id).exec();
     if (!foundUser) {
-      return res.status(401).json({ message: "Unauthorize" });
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
     const accessToken = jwt.sign(
       { _id: foundUser._id },
       process.env.ACCESS_TOKEN_SEC,
-      { expiresIn: "15m" }
+      { expiresIn: "1d" }
     );
 
     res.json({ accessToken });

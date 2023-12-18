@@ -52,6 +52,8 @@ export default function Login() {
     formState: { errors, isSubmitting, isSubmitSuccessful, isSubmitted },
   } = useForm();
 
+  // FORM SUBMIT HANDLER
+
   const onSubmit = async (data) => {
     console.log(data);
     try {
@@ -149,6 +151,22 @@ export default function Login() {
       reset();
     }
   };
+  // END OF FORM SUBMIT HANDLER
+
+  // GENERATE OTP FOR THE USER
+
+  const generateOtp = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/otp/generateotp");
+      console.log(response);
+      const serverData = await response.json();
+      console.log(serverData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // END OF OTP GENERATOR
 
   const content = (
     <section className="center-with-flex min-h-[50rem] overflow-hidden w-screen">
@@ -267,6 +285,14 @@ export default function Login() {
                 >
                   Login
                 </button>
+                <div className="center-with-flex my-2">
+                  <Link
+                    href="/login/emailotp"
+                    className="font-bold text-[#03045e] underline"
+                  >
+                    Forgot Password
+                  </Link>
+                </div>
                 <p className="font-bold mx-auto w-[8rems]">
                   Don't have an account?{" "}
                   <Link

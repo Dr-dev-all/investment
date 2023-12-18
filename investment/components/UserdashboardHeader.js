@@ -9,6 +9,7 @@ import { FaMinusCircle } from "react-icons/fa";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { FaArrowUpWideShort } from "react-icons/fa6";
 import Image from "next/image";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 import axios from "@/lib/axios";
 
 export default function UserDashboardHeader() {
@@ -21,8 +22,10 @@ export default function UserDashboardHeader() {
     { name: "Logout", url: "logout" },
   ];
 
+  const axiosPrivate = useAxiosPrivate();
+
   const { auth } = useContext(AuthProvider);
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,10 +34,11 @@ export default function UserDashboardHeader() {
 
     const getUser = async () => {
       try {
-        const response = await axios.get("/users/getsingleuser/id", {
+        const response = await axiosPrivate.get("/users/getsingleuser", {
           signal: controller.signal,
         });
-        isMounted && setUsers(response.data);
+        // isMounted && setUsers(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -48,6 +52,7 @@ export default function UserDashboardHeader() {
     };
   }, []);
 
+  console.log(users);
   // BEFORE-------
   // const { auth } = useContext(AuthProvider);
   // const userTokenData = jwtDecode(
@@ -103,7 +108,7 @@ export default function UserDashboardHeader() {
             />
           </Link>
         </h1>
-        <h1>Hi {auth.userInfo.Firstname} </h1>
+        <h1>Hi {auth?.userInfo?.Firstname} </h1>
         <h1>
           {" "}
           <IoNotificationsSharp />{" "}

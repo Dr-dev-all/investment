@@ -8,7 +8,11 @@ export const corsOptions = {
       return callback("Origin not allowed", false);
     }
   },
-  credential: true,
+  credentials: true,
+  methods: "GET, PATCH, POST, DELETE",
+  preflightContinue: false,
+  allowedHeaders: ["Content-Type", "Authorization"],
   "Access-Control-Allow-Credentials": true,
+
   optionsSuccessStatus: 200,
 };

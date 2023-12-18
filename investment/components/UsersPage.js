@@ -5,6 +5,9 @@ import { BiSolidSquareRounded } from "react-icons/bi";
 import { IoPersonAddSharp } from "react-icons/io5";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+import { set } from "mongoose";
+
 // import useParams from "react-router-dom";
 
 export default function UsersPage() {
@@ -15,6 +18,7 @@ export default function UsersPage() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const axiosPrivate = useAxiosPrivate();
   const activateUser = async (id) => {
     try {
       const response = await fetch(
@@ -104,31 +108,34 @@ export default function UsersPage() {
   }
 
   useEffect(() => {
-    if (effectRan.current === true) {
-      const fetchUsers = async () => {
-        try {
-          const response = await fetch(
-            "http://127.0.0.1:5000/users/getallusers"
-          );
-          if (!response.ok) throw new Error("Network error try again later");
-          if (response.ok) {
-            const serverData = await response.json();
-            localStorage.setItem("userData", JSON.stringify(serverData));
-            setData(serverData);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    let isMounted = true;
+    const controller = new AbortController();
+    const fetchUsers = async () => {
+      try {
+        const response = await axiosPrivate("/users/getallusers", {
+          signal: controller.signal,
+        });
+        isMounted && setData(response.data);
+        console.log(data);
+        // if (!response.ok) throw new Error("Network error try again later");
+        // if (response.ok) {
+        //   const serverData = await response;
+        //   console.log(serverData);
+        //   localStorage.setItem("userData", JSON.stringify(serverData));
+        //   setData(serverData);
+        // }
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-      fetchUsers();
-    }
+    fetchUsers();
 
     return () => {
-      effectRan.current = true;
-      console.log("finished");
+      isMounted = false;
+      controller.abort();
     };
-  }, [setData]);
+  }, []);
 
   const content = (
     <main className="min-h-full px-4 w-screen bg-white mt-4 mb-[4rem]">
@@ -283,6 +290,6 @@ export default function UsersPage() {
     </main>
   );
 
-  dataRender.current = true;
+  // dataRender.current = true;
   return content;
 }

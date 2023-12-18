@@ -12,32 +12,47 @@ import { SymbolOverview } from "react-tradingview-widget-components";
 import TradingView from "./TradingView";
 
 export default function Userdash() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
+  const [newData, setNewData] = useState(null);
+  let effectRan = useRef(false);
   const axiosPrivate = useAxiosPrivate();
   // navigate = useNavigate();
   // location = useLocation();
   const { auth } = useContext(AuthProvider);
-  const { userId } = auth;
-  console.log(auth.userInfo);
+  // localStorage.setItem("AUTH", JSON.stringify(auth));
+  // const { userId } = auth;
+  console.log(auth);
   useEffect(() => {
+    console.log("just mount");
     let isMounted = true;
     const controller = new AbortController();
+    console.log("useEffect display");
+    if (effectRan.current === true) {
+      const getUser = async () => {
+        try {
+          const response = await axiosPrivate.get("/users/getsingleuser", {
+            signal: controller.signal,
+          });
 
-    const getUser = async () => {
-      try {
-        const response = await axiosPrivate.get("/users/getsingleuser", {
-          signal: controller.signal,
-        });
-        isMounted && setUser(response.data);
-      } catch (error) {
-        console.log(error);
-        // navigate("/login", { state: { from: location }, replace: true });
-      }
-    };
+          isMounted && setUser(response.data);
 
-    getUser();
+          // if (response.status === 200 && response.statusText === "OK") {
+          //   setUser(response.data);
+
+          //   console.log(response.data);
+          // }
+        } catch (error) {
+          console.log(error);
+          // navigate("/login", { state: { from: location }, replace: true });
+        }
+      };
+      getUser();
+    }
+
+    console.log("no longer mounted");
 
     return () => {
+      effectRan.current = true;
       isMounted = false;
       controller.abort();
     };
@@ -96,13 +111,17 @@ export default function Userdash() {
   // const requetedata = JSON.parse(localStorage.getItem("reQuser"));
   // console.log(requetedata);
   // BEFORE-------
+  // console.log(user);
+  // const users = JSON.parse(localStorage.getItem("users"));
+  // console.log(users);
 
+  console.log(user);
   const content = (
     <main className="min-h-screen w-full text-[#03045e]  mt-[6.9rem]  rounded-b-lg  flex flex-col">
       <section className="flex justify-between  bg-[#03045e]  items-center w-full min-h-[4rem]   p-2 ">
         <div className=" center-with-flex  text-[#03045e] w-full h-[5rem] bg-white border-2   rounded-lg   text-[1.1rem] font-black ">
           <h1 className="flex flex-col">
-            Balance <span>$ {auth.userInfo.Balance} .00 </span>
+            Balance <span>$ {auth?.userInfo?.Balance} .00 </span>
           </h1>
         </div>
         <div className="  center-with-flex  text-[#03045e] w-full  rounded-lg  border-2 bg-white h-[5rem]  font-black">
