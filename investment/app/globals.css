@@ -11,7 +11,7 @@ body {
 }
 
 .section-style {
-  @apply w-screen h-full overflow-hidden;
+  @apply w-screen  overflow-hidden;
 }
 
 .div-style {
@@ -43,13 +43,16 @@ body {
 .plan-style {
   @apply bg-white text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-left p-2  w-[94%];
 }
+.plan-style-b {
+  @apply bg-[#152238] text-[white] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-left p-2  w-[94%];
+}
 
 .plan-items {
   @apply w-full  flex justify-between items-center px-2 py-1;
 }
 
 .plan-link-style {
-  @apply p-2 my-2 mx-auto rounded-[2rem] text-white  shadow-gray-500 shadow-xl bg-[#03045e]  my-2;
+  @apply p-2 my-2 mx-auto rounded-[1rem] text-white  shadow-gray-500 shadow-xl bg-[#03045e]  my-2;
 }
 
 .help-div-style {
