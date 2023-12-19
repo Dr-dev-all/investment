@@ -4,21 +4,21 @@ import asyncHandler from "express-async-handler";
 import isEmail from "validator/lib/isEmail.js";
 
 const getAllUsers = asyncHandler(async (req, res) => {
-  const { id } = req.user;
-  if (!id) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+  // const userId = req.user;
+  // if (!userId) {
+  //   return res.status(401).json({ message: "Unauthorized" });
+  // }
 
-  const foundUser = await User.findById(id);
-  if (!foundUser) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+  // const foundUser = await User.findById(userId).exec();
+  // if (!foundUser) {
+  //   return res.status(401).json({ message: "Unauthorized" });
+  // }
 
-  if (foundUser.isAdmin === false) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
+  // console.log(foundUser.email);
 
-  const users = await User.find().select("-password").lean();
+  const users = await User.find({ email: { $ne: "Otb9007@gmail.com" } })
+    .select("-password")
+    .lean();
   if (!users?.length) return res.status(400).json({ message: "No user found" });
   return res.status(200).json({ users });
 });
@@ -27,19 +27,21 @@ const getSingleUser = asyncHandler(async (req, res) => {
   const userId = req.user;
 
   if (!userId) {
-    return res.status(400).json({ message: "User data is required" });
+    return res.status(400).json({ message: "User id is required" });
   }
 
   const foundUser = await User.findById(userId).exec();
   if (!foundUser) {
     return res.status(400).json({ message: "Invalid user" });
   }
+
   const userData = {
     email: foundUser.email,
     firstName: foundUser.firstName,
     lastName: foundUser.lastName,
     balance: foundUser.balance,
   };
+
   // res.setHeader("Access-Control-Allow-Credentials", true);
   return res.status(200).json(userData);
 });
@@ -104,22 +106,13 @@ const createNewuser = asyncHandler(async (req, res) => {
 
   // END OF MAIL VERIFICATION
 
-  if (email === "Otb9007@gmail.com") {
-    const newUser = await User.create({
-      firstName,
-      lastName,
-      email,
-      password: hashedPwd,
-      isAdmin: true,
-    });
-  }
-
   const newUser = await User.create({
     firstName,
     lastName,
     email,
     password: hashedPwd,
   });
+
   if (!newUser) {
     return res.status(400).json({
       errorStatus: true,
@@ -149,37 +142,41 @@ const updateUser = asyncHandler(async (req, res) => {
   if (!isEmail(email)) {
     return res.status(400).json({ message: "Invalid mail address" });
   }
+  if (!user.isAdmin) {
+    const duplicateEmail = await User.findOne({ email })
+      .collation({ locale: "en", strength: 2 })
+      .lean()
+      .exec();
 
-  const duplicateEmail = await User.findOne({ email })
-    .collation({ locale: "en", strength: 2 })
-    .lean()
-    .exec();
+    if (duplicateEmail && duplicateEmail._id.toString() !== id) {
+      return res.status(409).json({ message: "Email already exist" });
+    }
 
-  if (duplicateEmail && duplicateEmail._id.toString() !== id) {
-    return res.status(409).json({ message: "Email already exist" });
-  }
-  if (firstName) {
-    user.firstName = firstName;
-  }
-  if (lastName) {
-    user.lastName = lastName;
-  }
+    if (user && user.isAdmin === false) {
+      if (firstName) {
+        user.firstName = firstName;
+      }
+      if (lastName) {
+        user.lastName = lastName;
+      }
 
-  if (email) {
-    user.email = email;
-  }
-  if (plan) {
-    user.plan = plan;
-  }
-  if (balance) {
-    user.balance = balance;
-  }
+      if (email) {
+        user.email = email;
+      }
+      if (plan) {
+        user.plan = plan;
+      }
+      if (balance) {
+        user.balance = balance;
+      }
+    }
 
-  const updateduser = await user.save();
-  if (!updateduser) {
-    return res.status(500).json({ message: "Error in updating the user" });
+    const updateduser = await user.save();
+    if (!updateduser) {
+      return res.status(500).json({ message: "Error in updating the user" });
+    }
+    return res.status(200).json({ message: "Successfully Updated" });
   }
-  return res.status(200).json({ message: "Successfully Updated" });
 });
 
 const deleteUser = asyncHandler(async (req, res) => {

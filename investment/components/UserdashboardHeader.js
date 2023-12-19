@@ -11,6 +11,7 @@ import { FaArrowUpWideShort } from "react-icons/fa6";
 import Image from "next/image";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 import axios from "@/lib/axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 export default function UserDashboardHeader() {
   const navBarData = [
@@ -25,7 +26,7 @@ export default function UserDashboardHeader() {
   const axiosPrivate = useAxiosPrivate();
 
   const { auth } = useContext(AuthProvider);
-  const [users, setUsers] = useState(null);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     let isMounted = true;
@@ -37,7 +38,7 @@ export default function UserDashboardHeader() {
         const response = await axiosPrivate.get("/users/getsingleuser", {
           signal: controller.signal,
         });
-        // isMounted && setUsers(response.data);
+        isMounted && setUser((prev) => ({ ...prev, data: response.data }));
         console.log(response.data);
       } catch (error) {
         console.log(error);
@@ -52,7 +53,7 @@ export default function UserDashboardHeader() {
     };
   }, []);
 
-  console.log(users);
+  console.log(user);
   // BEFORE-------
   // const { auth } = useContext(AuthProvider);
   // const userTokenData = jwtDecode(
@@ -108,7 +109,21 @@ export default function UserDashboardHeader() {
             />
           </Link>
         </h1>
-        <h1>Hi {auth?.userInfo?.Firstname} </h1>
+        <h1>
+          Hi{" "}
+          {user?.data?.firstName ? (
+            user?.data?.firstName
+          ) : (
+            <BeatLoader
+              color={{ color: "white" }}
+              loading={true}
+              // cssOverride={override}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          )}{" "}
+        </h1>
         <h1>
           {" "}
           <IoNotificationsSharp />{" "}

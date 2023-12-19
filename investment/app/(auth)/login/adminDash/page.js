@@ -15,29 +15,6 @@ export default function page() {
   const pathname = usePathname();
   let logicMount = useRef(false);
 
-  // effectlayout logic
-  useLayoutEffect(() => {
-    // if (logicMount.current === true) {
-    const protectadmin = () => {
-      if (pathname) {
-        if (!auth.userInfo?.Admin) {
-          if (auth?.userInfo?.Active === true) {
-            redirect + "/login";
-          } else {
-            redirect("/register");
-          }
-        }
-      }
-    };
-
-    protectadmin();
-    // }
-
-    // return () => {
-    //   // logicMount.current = true;
-    // };
-  }, []);
-
   // if (compoMount.current === true) {
   const content = (
     <>

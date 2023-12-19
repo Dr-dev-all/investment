@@ -27,7 +27,7 @@ export default function page() {
   const axiosPrivate = useAxiosPrivate();
   const router = useRouter();
   const effectRan = useRef(false);
-  const [data, setData] = useState(null);
+  const [userData, setUserData] = useState({});
   const [mainData, setMainData] = useState({});
   // const dataRender = useRef(true);
   const [userFormData, setUserFormData] = useState({});
@@ -144,12 +144,12 @@ export default function page() {
         const response = await axiosPrivate("/users/getallusers", {
           signal: controller.signal,
         });
-        if (!response.ok) throw new Error("Network error try again later");
+        // if (!response.ok) throw new Error("Network error try again later");
         if (response.statusText === "OK") {
           const serverData = await response.data;
           console.log(serverData);
           localStorage.setItem("userData", JSON.stringify(serverData));
-          setData(serverData);
+          setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
         console.log(error);
@@ -220,6 +220,7 @@ export default function page() {
     }
   };
 
+  console.log(userData);
   const content = (
     <>
       <AdminHeader />{" "}
@@ -239,8 +240,8 @@ export default function page() {
         </section>
         <section>
           <ul className="grid grid-cols-1 gap-3 justify-center items-center w-full h-full mt-3">
-            {data?.users?.length && !isLoading ? (
-              data?.users.map((user, i) => (
+            {userData?.data?.users?.length && !isLoading ? (
+              userData?.data?.users.map((user, i) => (
                 <li key={i}>
                   <div>
                     <div className=" bg-black text-white rounded-[2rem] p-2 shadow-gray-500 shadow-xl">

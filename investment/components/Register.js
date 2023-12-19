@@ -139,7 +139,6 @@ export default function Register() {
         }
       } else {
         router.push(`/${pathname}`);
-        setUserErrorData("Invalid user data recieved");
       }
 
       // isSubmitted || (isSubmitSuccessful && setServerData(null));
@@ -155,14 +154,6 @@ export default function Register() {
       <div className="div-style">
         <article className="center-with-flex w-[90%] mx-auto my-auto h-full ">
           <form className="" onSubmit={handleSubmit(onSubmit)}>
-            <h1
-              className={`form-error-style text-center margin-auto w-[60%] ${
-                !userErrorData ? "hidden" : "block"
-              } `}
-            >
-              <BiSolidError className="warning-icon-style" />
-              {userErrorData}
-            </h1>
             <div className="grid grid-cols-1 sm:gap-3 sm:grid-cols-2">
               <div>
                 <label htmlFor="firstName" className="form-text-style">
