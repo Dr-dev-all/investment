@@ -70,3 +70,15 @@ body {
 .ad-inp-style {
   @apply ml-auto text-black w-[50%] px-1 rounded-full;
 }
+
+.bitcoin-button-style {
+  @apply center-with-flex w-full   bg-[#03045e] text-white text-center  font-bold py-3 px-10   my-2  mx-auto  shadow-2xl shadow-gray-500   hover:rounded-[2rem]  transition-all duration-500;
+}
+
+.bitcoin-text-style {
+  @apply text-[1.2rem] font-bold   text-white;
+}
+
+.button-style-close {
+  @apply center-with-flex   text-[1.5rem] bg-red-500 text-white font-bold px-4  py-1   rounded-full w-[7rem] mx-auto my-4;
+}

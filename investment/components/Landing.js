@@ -33,6 +33,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { GiPayMoney } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { GiTakeMyMoney } from "react-icons/gi";
+import { SiBitcoinsv } from "react-icons/si";
 
 import {
   AdvancedChart,
@@ -84,6 +85,11 @@ export default function Landing() {
 
   // const [sow, setShow] = useState(true);
   const [allData, setAllData] = useState([]);
+  const [showDataA, setShowDataA] = useState(false);
+  const [showDataB, setShowDataB] = useState(false);
+  const [showDataC, setShowDataC] = useState(false);
+  const [showDataD, setShowDataD] = useState(false);
+  const [showDataE, setShowDataE] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -444,19 +450,261 @@ export default function Landing() {
         </div>
       </article> */}
 
-      <article className=" text-center center-with-flex w-screen min-h-[8rem] mb-4  p-1 ">
-        <h1 className=" mr-auto my-[1rem] tracking-wide    text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[100%]">
-          Cryptocurrency market
+      <article className=" text-center center-with-flex w-full min-h-[8rem]  ">
+        <h1 className=" flex justify-between items-center w-[70%] mx-auto px-[1rem] border-y-2 border-[#03045e]  ">
+          <span className=" text-[2rem] font-bold uppercase text-[#03045e] ">
+            Bitcoin
+          </span>
+          <SiBitcoinsv className="text-[2rem] text-[#03045e] " />
         </h1>
-        <div className="center-with-flex  w-full mx-auto min-h-[15rem] bg-[#eae0c9]   ">
-          <CryptocurrencyMarket
-            widgetProps={{
-              width: "100%",
-              height: 370,
-              colorTheme: "light",
-              style: "margin: auto",
-            }}
-          />
+        <div className="center-with-flex   w-screen mx-auto min-h-[15rem] bg-[#eae0c9]  px-[2rem]  ">
+          <div className="w-screen ">
+            <button
+              onClick={() => setShowDataA(!showDataA)}
+              href=""
+              className=" bitcoin-button-style   "
+            >
+              <span className="bitcoin-text-style "> What is bitcoin </span>
+            </button>
+            <div
+              className={`${
+                showDataA
+                  ? "block w-full w-[90%] px-5  py-3 z-10 tracking-tight bg-white"
+                  : "hidden"
+              }`}
+            >
+              <p>
+                Bitcoin is one of the most popular types of cryptocurrencies,
+                which are digital mediums of exchange that exist solely online.
+                Bitcoin runs on a decentralized computer network or distributed
+                ledger that tracks transactions in the cryptocurrency. When
+                computers on the network verify and process transactions, new
+                bitcoins are created, or mined. These networked computers, or
+                miners, process the transaction in exchange for a payment in
+                Bitcoin. Bitcoin is powered by blockchain, which is the
+                technology that powers many cryptocurrencies. A blockchain is a
+                decentralized ledger of all the transactions across a network.
+                Groups of approved transactions together form a block and are
+                joined to create a chain. Think of it as a long public record
+                that functions almost like a long running receipt. Bitcoin
+                mining is the process of adding a block to the chain.
+              </p>
+
+              <button
+                onClick={() => setShowDataA(!showDataA)}
+                className=" button-style-close"
+              >
+                close
+              </button>
+            </div>
+          </div>
+          <div className="w-screen  ">
+            <button
+              onClick={() => setShowDataB(!showDataB)}
+              href=""
+              className="  bitcoin-button-style"
+            >
+              <span className=" bitcoin-text-style">
+                {" "}
+                How bitcoin mining works{" "}
+              </span>
+            </button>
+            <div
+              className={`${
+                showDataB
+                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
+                  : "hidden"
+              }`}
+            >
+              <p>
+                In order to successfully add a block, Bitcoin miners compete to
+                solve extremely complex math problems that require the use of
+                expensive computers and enormous amounts of electricity. To
+                complete the mining process, miners must be first to arrive at
+                the correct or closest answer to the question. The process of
+                guessing the correct number (hash) is known as proof of work.
+                Miners guess the target hash by randomly making as many guesses
+                as quickly as they can, which requires major computing power.
+                The difficulty only increases as more miners join the network.
+                The computer hardware required is known as application-specific
+                integrated circuits, or ASICs, and can cost up to $10,000. ASICs
+                consume huge amounts of electricity, which has drawn criticism
+                from environmental groups and limits the profitability of
+                miners. If a miner is able to successfully add a block to the
+                blockchain, they will receive 6.25 bitcoins as a reward. The
+                reward amount is cut in half roughly every four years, or every
+                210,000 blocks. As of November 2023, Bitcoin traded at around
+                $36,400, making 6.25 bitcoins worth $227,500.
+              </p>
+              <button
+                onClick={() => setShowDataB(!showDataB)}
+                href=""
+                className="  button-style-close"
+              >
+                close
+              </button>
+            </div>
+          </div>
+          <div className="w-screen">
+            <button
+              onClick={() => setShowDataC(!showDataC)}
+              href=""
+              className="  bitcoin-button-style"
+            >
+              <span className="bitcoin-text-style">
+                {" "}
+                Bitcoin mining rewards over time
+              </span>
+            </button>
+            <div
+              className={`${
+                showDataC
+                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
+                  : "hidden"
+              }`}
+            >
+              <p>
+                The reward for mining 1 block is halved every 210,000 blocks, or
+                about every 4 years. It depends. Even if Bitcoin miners are
+                successful, it’s not clear that their efforts will end up being
+                profitable due to the high upfront costs of equipment and the
+                ongoing electricity costs. The electricity for one ASIC can use
+                the same amount of electricity as half a million PlayStation 3
+                devices, according to a As the difficulty and complexity of
+                Bitcoin mining has increased, the computing power required has
+                also gone up. Bitcoin mining consumes about 147 terawatt-hours
+                of electricity each year, more than most countries, according to
+                the Cambridge Bitcoin Electricity Consumption Index. You’d need
+                9 years’ worth of the typical U.S. household’s electricity to
+                mine just one bitcoin as of August 2021. One way to share some
+                of the high costs of mining is by joining a mining pool. Pools
+                allow miners to share resources and add more capability, but
+                shared resources mean shared rewards, so the potential payout is
+                less when working through a pool. The volatility of Bitcoin’s
+                price also makes it difficult to know exactly how much you’re
+                working for.
+              </p>
+              <button
+                onClick={() => setShowDataC(!showDataC)}
+                href=""
+                className="  button-style-close"
+              >
+                {" "}
+                close
+              </button>
+            </div>
+          </div>
+          <div className="w-screen">
+            <button
+              onClick={() => setShowDataD(!showDataD)}
+              href=""
+              className=" bitcoin-button-style"
+            >
+              <span className=" bitcoin-text-style">
+                {" "}
+                Risks of Bitcoin mining
+              </span>
+            </button>
+            <div
+              className={`${
+                showDataD
+                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
+                  : "hidden"
+              }`}
+            >
+              <div>
+                <h2 className="text-[1.5rem]  font-bold">Price volatility:</h2>
+                <p>
+                  {" "}
+                  Bitcoin’s price has varied widely since it was introduced in
+                  2009. Since just November 2021, Bitcoin has traded for less
+                  than $20,000 and nearly as high as $69,000. This kind of
+                  volatility makes it difficult for miners to know if their
+                  reward will outweigh the high costs of mining.
+                </p>
+              </div>
+              <div>
+                <h2 className="text-[1.5rem]  font-bold">Regulation:</h2>
+                <p>
+                  {" "}
+                  Very few governments have embraced cryptocurrencies such as
+                  Bitcoin, and many are more likely to view them skeptically
+                  because the currencies operate outside government control.
+                  There is always the risk that governments could outlaw the
+                  mining of Bitcoin or cryptocurrencies altogether as China did
+                  in 2021, citing financial risks and increased speculative
+                  trading.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowDataD(!showDataD)}
+                href=""
+                className=" button-style-close"
+              >
+                close
+              </button>
+            </div>
+          </div>
+          <div className="w-screen">
+            <button
+              onClick={() => setShowDataE(!showDataE)}
+              href=""
+              className="bitcoin-button-style"
+            >
+              <span className=" text-[1.2rem] font-bold   text-white">
+                {" "}
+                Taxes on Bitcoin mining
+              </span>
+            </button>
+            <div
+              className={`    ${
+                showDataE
+                  ? "block w-full w-[90%] px-5  py-3   tracking-tight bg-white"
+                  : "hidden"
+              }`}
+            >
+              <p>
+                It’s important to remember the impact that taxes can have on
+                Bitcoin mining. The IRS has been looking to crack down on owners
+                and traders of cryptocurrencies as the asset prices have
+                ballooned in recent years. Here are the key tax considerations
+                to keep in mind for Bitcoin mining.
+              </p>
+              <div>
+                <span>Are you a business:</span>
+                <p>
+                  If Bitcoin mining is your business, you may be able to deduct
+                  expenses you incur for tax purposes. Revenue would be the
+                  value of the bitcoins you earn. But if mining is a hobby for
+                  you, it’s not likely you’ll be able to deduct expenses.
+                </p>
+              </div>
+              <div>
+                <span>Mined bitcoin is income:</span>
+                <p>
+                  If you’re successfully able to mine Bitcoin or other
+                  cryptocurrencies, the fair market value of the currencies at
+                  the time of receipt will be taxed at ordinary income rates.
+                </p>
+              </div>
+              <div>
+                <span>Capital gains:</span>
+                <p>
+                  If you sell bitcoins at a price above where you received them,
+                  that qualifies as a capital gain, which would be taxed the
+                  same way it would for traditional assets such as stocks or
+                  bonds.
+                </p>
+              </div>
+              <button
+                onClick={() => setShowDataE(!showDataE)}
+                href=""
+                className="button-style-close"
+              >
+                close
+              </button>
+            </div>
+          </div>
         </div>
       </article>
 

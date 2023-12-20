@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   const content = (
-    <footer className="min-h-[7rem] w-full bg-[#03045e] text-white">
+    <footer className="min-h-[10rem] w-full bg-[#03045e] text-white">
       <main className="flex flex-col justify-between items-center">
         <section className="center-with-flex h-auto py-[1rem]">
           <div className="h-[5rem] flex flex-col justify-center items-center">
@@ -91,18 +91,20 @@ export default function Footer() {
         <hr className="w-[80%]" />
 
         <section
-          className="flex justify-center w-full h-[10rem] relative text-center
+          className="flex flex-col flex-grow justify-center w-full min-h-[10rem]  text-center
         
         "
         >
-          <div className="flex justify-between items-center h-full w-full px-[3rem]">
+          <div className="grid   h-[5rem] w-screen  px-3 my-6  ">
             <Link href="#">Legal notice</Link>
             <Link href="#">Whistleblowers</Link>
             <Link href="#">Terms & Conditions</Link>
             <Link href="#">Bug bounty</Link>
-            <Link href="#">Complaints</Link>
+            <Link href="#" className="">
+              Complaints
+            </Link>
           </div>
-          <p className="absolute bottom-0">
+          <p className="  my-[2rem]  w-[90%] mx-auto">
             &copy; 2023 BULLHARVEST All Rights reserved
           </p>
         </section>
