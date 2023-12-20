@@ -8,6 +8,7 @@ import { PiArrowUpRightFill } from "react-icons/pi";
 import Image from "next/image";
 import { MdOutlineHeight } from "react-icons/md";
 import { TickerTape } from "react-tradingview-embed";
+import { PiArrowFatLineRightFill } from "react-icons/pi";
 
 export default function Header() {
   const navItems = [
@@ -27,7 +28,7 @@ export default function Header() {
     <header
       className={`w-screen 
        flex justify-center  flex-col items-center  top-0 flex-col 
-          fixed z-0`}
+          fixed z-10`}
     >
       <div>
         <div
@@ -88,17 +89,21 @@ export default function Header() {
       </div>
 
       <nav
-        className={`flex flex-col justify-center items-center md:hidden  block h-[8.9rem] gap-2 p-1 bg-yellow-500   rounded-l-lg  w-[96%] ml-[2.5rem]  ${
+        className={`flex flex-col justify-center items-center md:hidden  block h-screen transition-all duration-5000     rounded-l-lg bg-white  w-screen   ${
           show ? "hidden" : "block "
-        } bg-white  mx-auto   text-[#03045e] text-center z-0`}
+        }   mx-auto   text-[#03045e] text-center z-0`}
       >
-        <ul className="grid grid-cols-2 gap-3 h-full w-full   mx-auto">
+        <ul className="center-with-flex  h-[70%] w-[80%] gap-2 my-auto border-t-2  border-t-[#03045e] mx-auto">
           {navItems.map((data) => (
-            <li key={data.id} className={` underline underline-offset-4`}>
-              <Link href={data.url} className="text-[1rem] font-bold">
+            <li key={data.id} className={`text-left w-[50%]  mx-auto `}>
+              <Link
+                href={data.url}
+                className="text-[1.2rem] capitalize px-3 w-full text-left underline  font-bold"
+              >
                 {data.name}
+
+                <PiArrowFatLineRightFill className="inline" />
               </Link>{" "}
-              <PiArrowUpRightFill className="inline" />
             </li>
           ))}
         </ul>

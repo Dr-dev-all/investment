@@ -48,7 +48,7 @@ body {
 }
 
 .plan-items {
-  @apply w-full  flex justify-between items-center px-2 py-1;
+  @apply w-full  flex justify-between items-center  py-1;
 }
 
 .plan-link-style {

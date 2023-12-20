@@ -25,6 +25,14 @@ import { TbSquareRoundedNumber4Filled } from "react-icons/tb";
 import { TbSquareRoundedNumber5Filled } from "react-icons/tb";
 import { TbSquareRoundedNumber6Filled } from "react-icons/tb";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
+import { IoMdStar } from "react-icons/io";
+import { IoMdStarHalf } from "react-icons/io";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import { MdArrowOutward } from "react-icons/md";
+import { GiPayMoney } from "react-icons/gi";
+import { GiReceiveMoney } from "react-icons/gi";
+import { GiTakeMyMoney } from "react-icons/gi";
 
 import {
   AdvancedChart,
@@ -34,11 +42,30 @@ import {
 } from "react-tradingview-embed";
 import { MdOutlineMoreTime } from "react-icons/md";
 import { ImQuotesLeft } from "react-icons/im";
+import internal from "stream";
 
 export default function Landing() {
   const starterPlan = [
-    { name: "Interest", value: "128.8%", id: 1 },
+    { name: "Interest", value: "20%", id: 1 },
     { name: "Investment", value: "$500-$5000", id: 2 },
+    { name: "Capital Back", value: "Yes", id: 3 },
+    { name: "Return Type", value: "Period", id: 4 },
+    { name: "Number of Period", value: "5 Times", id: 5 },
+    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  ];
+
+  const premium = [
+    { name: "Interest", value: "130.1%", id: 1 },
+    { name: "Investment", value: "$5000-$10000", id: 2 },
+    { name: "Capital Back", value: "No", id: 3 },
+    { name: "Return Type", value: "Period", id: 4 },
+    { name: "Number of Period", value: "7 Times", id: 5 },
+    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  ];
+
+  const gold = [
+    { name: "Interest", value: "180%", id: 1 },
+    { name: "Investment", value: "$10000-$50000", id: 2 },
     { name: "Capital Bank", value: "No", id: 3 },
     { name: "Return Type", value: "Period", id: 4 },
     { name: "Number of Period", value: "7 Times", id: 5 },
@@ -76,33 +103,36 @@ export default function Landing() {
   }, []);
 
   const content = (
-    <section className="section-style bg-[#eae0c9] ">
+    <section className="section-style bg-[#eae0c9] sm:bg-green-500 md:bg-green-500 lg:bg-yellow-500 ">
       <div
         className="div-style"
         style={{ backgroundImage: "url(../risebtc.jpg)" }}
       >
-        <article className=" mb-6 flex justify-center items-center z-0 h-[10rem] w-screen pl-[rem]  text-white ">
-          <h2 className=" font-bold text-[1.9rem] w-[80%] leading-relaxed  mt-[8em] text-center">
-            {" "}
-            Empowering Your Wealth Journey Today with
-            <span className="mx-2 text-blue-500  p-1 font-bold  ">
-              BullHarvest
-            </span>{" "}
-          </h2>
-        </article>
-        <div className="text-white mt-[10em] text-center m-4">
-          <p className="leading-relaxed text-4rem">
-            Trade across multiple markets with the most stable and reliable
-            pricing in the industry.
-          </p>
-        </div>
-        <div className="lg:items-start lg:justify-left flex flex-col md:flex-row lg:flex-row justify-center items-center p-4">
-          <buttton className="w-full text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-5 px-4  mb-2 md:mb-0 ">
-            REGISTER
-          </buttton>
-          <buttton className="w-full  text-center transparent border hover:bg-green-700 text-white font-bold py-4 px-4 ">
-            LOGIN
-          </buttton>
+        <div className="w-full h-full bg-black  opacity-70">
+          <article className=" mb-6 flex justify-center items-center z-0 h-[10rem] w-screen pl-[rem]  text-white ">
+            <h2 className=" font-bold text-[1.9rem] w-[80%] leading-relaxed  mt-[8em] text-center lg:text-start ">
+              {" "}
+              Empowering Your Wealth
+              <br /> Journey Today with
+              <span className="mx-2 text-blue-500  p-1 font-bold  ">
+                BullHarvest
+              </span>{" "}
+            </h2>
+          </article>
+          <div className=" mb-6 md:mt-2 lg:mt-2 mt-[8em] flex justify-center items-center z-0 h-[10rem]  pl-[rem]  text-white ">
+            <p className=" font-normal text-[1.2rem] w-[80%]  tracking-wide  leading-relaxed  mt-[2em] text-left lg:text-start ">
+              Trade across multiple markets with the
+              <br /> most stable and reliable pricing in the industry.
+            </p>
+          </div>
+          <div className="w-[98%] px-[4rem] mx-auto lg:items-start lg:justify-left flex flex-col md:flex-row lg:flex-row  lg:w-[50%] md:ml-[8em]  justify-between items-center ">
+            <buttton className="w-full lg:w-[40%] text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mb-2 md:mb-0 ">
+              REGISTER
+            </buttton>
+            <buttton className="w-full lg:w-[40%] text-center transparent border hover:bg-green-700 text-white font-bold py-2 px-5 ">
+              LOGIN
+            </buttton>
+          </div>
         </div>
       </div>
       <div>
@@ -122,14 +152,14 @@ export default function Landing() {
 
           <p className="px-12 pb-9 text-blue-500">
             <a href="service">
-              Learn mor about deposit and withdrawals at BullHarvest
+              Learn more about deposit and withdrawals at BullHarvest
             </a>
           </p>
         </div>
       </div>
 
       <article className="min-h-[5rem] w-full mx-auto  ">
-        <h1 className=" center-with-flex text-[1.5rem] uppercase  w-screen h-[4rem]  bg-[#03045e] ">
+        <h1 className=" center-with-flex text-[1.5rem] uppercase font-black text-white  w-screen h-[4rem]   bg-[#03045e] ">
           who we are
         </h1>
         <div className=" justify-between  block   items-center  w-screen text-black">
@@ -146,7 +176,7 @@ export default function Landing() {
             <h3 className="underline mb-2 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
               About BullHarvest Investment Company
             </h3>
-            <p className="block w-[95%] my-auto text-center">
+            <p className="block w-[95%] my-auto text-center p-3">
               {" "}
               Founded on the principles of financial excellence and strategic
               investing, BullHarvest Investment Company stands as a beacon of
@@ -160,7 +190,7 @@ export default function Landing() {
             <h3 className="underline mb-3 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
               Our Mission
             </h3>
-            <p className=" mt-2 text-md text-gray-700 ">
+            <p className=" my-2 text-md text-gray-700  p-3">
               Our mission is clear – to empower you on your financial journey.
               We're here to guide you, whether you're a new investor or looking
               to diversify your portfolio.
@@ -173,22 +203,22 @@ export default function Landing() {
 
       <article className="article-style center-with-flex ">
         <div className="w-full h-full ">
-          <h1 className="w-screen h-[3rem] center-with-flex text-[1.2rem] uppercase text-center border-t-4 border-t-[#03045e]  text-[#001845]  font-bold mt-[1rem]">
+          <h1 className="w-screen h-[3rem] center-with-flex text-[1.2rem] uppercase text-center border-t-4 border-t-[#03045e] bg-white text-[#001845]  font-bold mt-[1rem]">
             How we benefits
           </h1>
 
           <div className="flex flex-col justify-between pt-2 items-center text-white min-h-[5rem] w-screen  bg-[#03045e] list-none">
-            <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 text-center   ">
-              <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
+            <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 text-center   ">
+              <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto rounded-medium  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <MdOutlinePayment className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4">
+                <h1 className="pb-3 px-4 ">
                   The transaction is bundled into a block.
                 </h1>
               </div>
 
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <GrStatusGood className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4">
+                <h1 className="pb-3 px-4 ">
                   Miners verify whether the transaction is valid.
                 </h1>
               </div>
@@ -196,23 +226,23 @@ export default function Landing() {
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <IoBusinessOutline className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
                 <h1 className="pb-3 px-4">
-                  They select headers of the most recent block and in sert it
-                  into the new block as a hash.
+                  They select headers of the most recent block and insert it
+                  into the new block as a "hash".
                 </h1>
               </div>
 
-              <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
+              <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-3 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <MdOutlineSyncProblem className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
                 <h1 className="pb-3 px-4">
                   They solve the mathematical problem.
                 </h1>
               </div>
 
-              <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
+              <div className="bg-white md:col-span-2 lg:col-span-2  text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <RiEmotionHappyLine className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
                 <h1 className="pb-3 px-4">
-                  When the solution is found, the new block is added the
-                  blockchain and then propgated thoughout the network by this
+                  When the solution is found, the new block is added to the
+                  blockchain and then propagated throughout the network by this
                   producing profit hourly to investors account.
                 </h1>
               </div>
@@ -320,26 +350,50 @@ export default function Landing() {
         </section>
       </article>
       <div className=" center-with-flex w-screen   min-h-[6rem] text-center my-[3rem]">
-        <h2 className=" text-[1.3rem] font-bold text-center p-2 ">
-          ENJOY OUR BEST PLANS{" "}
-        </h2>
+        {/* <div className="flex justify-between items-center">
+          <span>
+            <GiPayMoney className="text-[#03045e]" />
+          </span>
+          <span>
+            {" "}
+            <GiReceiveMoney className="text-[#03045e]" />
+          </span>
+          <span>
+            <GiTakeMyMoney className="text-[#03045e]" />
+          </span>
+        </div> */}
+        <div className="flex justify-between items-center border-y-2 border-[#03045e] ">
+          <h2 className=" text-[1.2rem]  uppercase  text-[#03045e] font-bold text-center p-2 ">
+            enjoy our best plans{" "}
+          </h2>
+          {/* <div>
+            <Image
+              src="bestplan.svg"
+              width={50}
+              height={50}
+              className=" rounded-full text-[#03045e] p-1"
+            />
+          </div> */}
+        </div>
 
-        <span className=" center-with-flex block animate-bounce z-0 rounded-full bg-[#03045e] p-2 h-[2rem] w-[2rem] mx-auto ">
+        <span className=" center-with-flex block animate-bounce z-0 rounded-full bg-[#03045e] p-2 h-[2rem] w-[2rem] mx-auto mt-5 ">
           <PiArrowFatLinesDownFill className="text-white text-[1.5rem]" />
         </span>
       </div>
       <article className="article-style  mb-5  ">
         {/* bf arrow */}
-        <h1 className="underline mb-4 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
+        {/* <h1 className="underline mb-4 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
           Our Best Plan
-        </h1>
+        </h1> */}
         <div className="center-with-grid md:grid-cols-3 w-screen">
           <div className="center-with-flex  plan-style">
-            <h1>plan 1</h1>
-            <ul className="w-[90%] h-[80%]  mx-auto block">
+            <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
+              Starter plan
+            </h1>
+            <ul className="w-[92%] h-[98%]  mx-auto block">
               {starterPlan.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name} <span className="inline  ">{data.value}</span>
+                  {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -347,12 +401,14 @@ export default function Landing() {
               CHOOSE PLAN <GoArrowUpRight className="inline" />
             </Link>
           </div>
-          <div className=" center-with-flex plan-style-b">
-            <h1>plan 2</h1>
-            <ul className="w-[80%] h-[80%]  mx-auto block">
-              {starterPlan.map((data) => (
+          <div className=" center-with-flex plan-style">
+            <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
+              Premium
+            </h1>
+            <ul className="w-[92%] h-[98%]  mx-auto block">
+              {premium.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name} <span className="inline  ">{data.value}</span>
+                  {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -361,11 +417,13 @@ export default function Landing() {
             </Link>
           </div>
           <div className="center-with-flex plan-style">
-            <h1>plan 3</h1>
-            <ul className="w-[80%] h-[80%]  mx-auto block">
-              {starterPlan.map((data) => (
+            <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
+              Gold
+            </h1>
+            <ul className="w-[92%] h-[98%]  mx-auto block">
+              {gold.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name} <span className="inline  ">{data.value}</span>
+                  {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -386,7 +444,7 @@ export default function Landing() {
         </div>
       </article> */}
 
-      <article className="text-center center-with-flex w-screen min-h-[5rem]  mt-2 p-1 ">
+      <article className=" text-center center-with-flex w-screen min-h-[8rem] mb-4  p-1 ">
         <h1 className=" mr-auto my-[1rem] tracking-wide    text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[100%]">
           Cryptocurrency market
         </h1>
@@ -402,6 +460,7 @@ export default function Landing() {
         </div>
       </article>
 
+      <br />
       {/* <article className="article-style center-with-flex   ">
         <h1 className=" mr-auto my-[1rem] tracking-wide  p-3 text-left items-left text-[#03045e]  md:tracking-wide  font-bold underline underline-offset-4  decoration-2  text-[1.2rem]  rounded-r-[2rem] h-[2rem] w-[75%]">
           Crypto News Updates
@@ -427,20 +486,30 @@ export default function Landing() {
         </section>
       </article> */}
 
-      <article className="article-style mt-9 ">
-        <section className=" text-center mb-5 mx-auto w-full ">
-          <div className=" w-full ">
-            <h2 className="mb-4 text-[1.2rem] font-bold underline  text-center w-full  text-gray-900">
-              BullHarvest Testimonials
-            </h2>
-            <p className="mt-6 mb-6 max-w-3xl text-xl text-neutral-600">
-              Discover the stories of investors who have chosen BullHarvest for
-              their financial journey. Read what our clients have to say about
-              their experiences:
-            </p>
-            <div className="w-screen min-h-[10rem]  grid grid-cols-1 md:grid-cols-3 gap-1 ">
-              <div className="  bg-white text-[#03045e]  mx-auto  border-none  min-h-[5rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%] ">
-                <p className="mt-2  text-gray-700  p-3">
+      <article className="h-[29rem]  my-1 my-auto relative ">
+        <div className="h-[12rem] my-auto absolute">
+          <h2 className=" text-[1.2rem] font-bold underline  text-center w-full  text-gray-900">
+            Checkout our clients recent feedbacks and ratings
+          </h2>
+
+          <div className="w-screen min-h-full  center-with-flex">
+            <Carousel
+              autoPlay
+              autoFocus
+              swipeable
+              stopOnHover
+              showArrows
+              showIndicators
+              useKeyboardArrows
+              emulateTouch
+              dynamicHeight={false}
+              infiniteLoop
+              // showStatus
+              interval={5000}
+              className="min-h-[74%] w-full   pt-7  "
+            >
+              <div className=" center-with-flex  bg-white text-[#03045e]  mx-auto my-auto border-none my-auto   mni-h-[90%] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%]  p-3">
+                <p className="  text-gray-700 h-full w-full p-2">
                   <ImQuotesLeft className="text-[1.2rem] ml-4 mb-2" />
                   "BullHarvest has been a game-changer for me. The platform's
                   educational resources and insightful market analyses have
@@ -448,71 +517,80 @@ export default function Landing() {
                   investment decisions. It's not just a platform; it's a
                   learning experience!"
                 </p>
-                <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900 px-3">
-                  — Sarah Thompson, Investor since 2020
+                <div className="w-[60%] mx-auto flex  justify-center items-center">
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                </div>
+                <h2 className="text-lg font-semibold my-2 leading-6 text-gray-900 px-3">
+                  — Sarah Thompson —
                 </h2>
               </div>
 
-              <div className="  bg-white text-[#03045e]  mx-auto  border-none  min-h-[5rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%] ">
-                <p className="mt-2  text-gray-700  p-3">
-                  <ImQuotesLeft className="text-[1.2rem] ml-4 mb-2" />
+              <div className=" center-with-flex  bg-white text-[#03045e]  mx-auto my-auto border-none  min-h-[5rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%]  py-4 px-3">
+                <p className="  w-full h-full  text-gray-700 p-2">
+                  <ImQuotesLeft className="text-[1.2rem] " />
                   "BullHarvest has become my trusted partner in financial
                   growth. The team's dedication to transparency, coupled with
                   their commitment to security, has created an environment where
                   I feel confident in managing my investments. Kudos to
                   BullHarvest for making investing a breeze."
                 </p>
-                <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900 px-3">
-                  — Daniel Rodriguez, Active Trader
+                <div className="w-[60%] mx-auto flex  justify-center items-center">
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStarHalf className="text-yellow-500" />
+                </div>
+                <h2 className="text-lg font-semibold my-2 leading-6 text-gray-900 px-3">
+                  — Daniel Rodriguez —
                 </h2>
               </div>
 
-              <div className="  bg-white text-[#03045e]  mx-auto  border-none  min-h-[5rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[95%] ">
+              <div className=" center-with-flex  bg-white text-[#03045e]  mx-auto my-auto border-none  mni-h-[21rem] shadow-gray-500 shadow-2xl rounded-[2rem] text-center w-[95%]   p-2">
                 <p className="mt-2  text-gray-700  p-3">
-                  <ImQuotesLeft className="text-[1.2rem] ml-4 mb-2" />
+                  <ImQuotesLeft className="text-[1.2rem] " />
                   "What sets BullHarvest apart is their commitment to
                   understanding individual needs. The personalized investment
                   strategy crafted for me has delivered exceptional results.
                   BullHarvest doesn’t just manage portfolios; they build
                   financial success stories."
                 </p>
-                <h2 className="text-lg font-semibold mt-4 leading-6 text-gray-900 px-3">
-                  — Grace Chen, Long-Term Investor
+                <div className="w-[60%] mx-auto flex  justify-center items-center">
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                  <IoMdStar className="text-yellow-500" />
+                </div>
+                <h2 className="text-lg font-semibold my-2  leading-6 text-gray-900 px-3">
+                  — Grace Chen —
                 </h2>
               </div>
-            </div>
-            <button className="plan-link-style text-center items-center mb-5 justify-center mt-10">
-              See More
-            </button>
+            </Carousel>
           </div>
-        </section>
-      </article>
-
-      {/* <article className="article-style mt-5">
-        <div className="mt-6 text-center max-w-3xl text-xl text-neutral-600">
-          <p>
-            "Ready to grow your money? Start your investment journey with
-            BullHarvest. Register with us today."
-          </p>
-          <button className="plan-link-style">Register Now</button>
         </div>
-      </article> */}
-
-      <div>
-        <div className="bg-[#152238]">
-          <article className="  flex justify-center items-center z-0 h-[10rem] w-screen pl-[rem]  text-white ">
-            <h2 className=" font-light text-[1.8rem] w-[80%] leading-10  mt-[3em] text-center">
+      </article>
+      {/* <br />
+      <hr /> */}
+      <article className="article-style">
+        <div className="bg-[#03045e]">
+          <article className="  flex justify-center items-center  h-[10rem] w-screen  text-white ">
+            <h2 className=" font-light text-[1.5rem] w-[80%] leading-10 underline  text-center">
               {" "}
               The numbers that make up BullHarvest
             </h2>
           </article>
-          <div className="text-white mt-[2em] text-center pb-6">
+          <div className="text-white mt-[2em] text-center pb-6 px-2">
             <p className="leading-relaxed text-4rem mb-4">
-              From trading volume to number of active clients, we are happy to
-              share with ou the figure that make us one of the world's leading
+              From trading volume to the number of active clients, we are happy
+              to share out the figure that makes us one of the world's leading
               crypto investment company.
             </p>
-            <a href="">Learn more</a>
+            <Link href="">Learn more</Link>
           </div>
           <div>
             <div className="text-center text-white mb-8">
@@ -542,23 +620,26 @@ export default function Landing() {
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div className="px-2 pb-5">
-        <div className="mt-4 text-center max-w-3xl text-xl text-neutral-600">
-          <h2 className=" font-bold text-[1.8rem] w-full leading-10 mb-4 mt-[3em] text-center">
+      <article className="article-style center-with-flex gap-4">
+        <div className=" center-with-flex    text-center  text-neutral-600 w-[95%]">
+          <h2 className=" font-bold text-[1.8rem] w-[95%] mx-auto text-[#03045e] underline  text-center">
             {" "}
             Ready to get started?
           </h2>
-          <p className="px-3">
-            It only takes 4 minutes to get your account set up and ready for
+          <p className="px-4  text-[#03045e]  text-[1.2rem] ">
+            It only takes a few steps to get your account set up and ready for
             trading
           </p>
-          <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full rounded">
-            <a href="register">REGISTER</a>
-          </button>
+          <Link
+            href="register"
+            className="bg-[#03045e] text-white w-full font-bold py-3 px-4 w-full rounded-[2rem] my-2"
+          >
+            REGISTER NOW <MdArrowOutward className="inline text-[1.5rem]" />
+          </Link>
         </div>
-      </div>
+      </article>
     </section>
   );
 
