@@ -7,6 +7,8 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 import { set } from "mongoose";
+import { useRouter } from "next/router";
+import axios from "@/lib/axios";
 
 // import useParams from "react-router-dom";
 
@@ -17,6 +19,7 @@ export default function UsersPage() {
   const dataRender = useRef(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const axiosPrivate = useAxiosPrivate();
   const activateUser = async (id) => {
@@ -36,6 +39,8 @@ export default function UsersPage() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      router.reload();
     }
   };
 
@@ -57,6 +62,8 @@ export default function UsersPage() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      router.reload();
     }
   };
 
@@ -78,6 +85,8 @@ export default function UsersPage() {
       }
     } catch (error) {
       console.log();
+    } finally {
+      router.reload();
     }
   };
 
@@ -104,18 +113,17 @@ export default function UsersPage() {
       console.log(error);
     } finally {
       setIsLoading(false);
+      router.reload();
     }
   }
 
   useEffect(() => {
-    let isMounted = true;
+    // let isMounted = true;
     const controller = new AbortController();
     const fetchUsers = async () => {
       try {
-        const response = await axiosPrivate("/users/getallusers", {
-          signal: controller.signal,
-        });
-        isMounted && setData(response.data);
+        const response = await axios.get("/users/getallusers");
+        setData(response.data);
         console.log(data);
         // if (!response.ok) throw new Error("Network error try again later");
         // if (response.ok) {
@@ -126,13 +134,15 @@ export default function UsersPage() {
         // }
       } catch (error) {
         console.log(error);
+      } finally {
+        router.reload();
       }
     };
 
     fetchUsers();
 
     return () => {
-      isMounted = false;
+      // isMounted = false;
       controller.abort();
     };
   }, []);
