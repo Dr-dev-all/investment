@@ -100,7 +100,7 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 
   foundUser.password = newPassword;
 
-  savedUser = await foundUser.save();
+  const savedUser = await foundUser.save();
 
   if (savedUser) {
     return res.status(200).json({ message: "success" });

@@ -182,7 +182,7 @@ export default function Landing() {
             <h3 className="underline mb-2 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
               About BullHarvest Investment Company
             </h3>
-            <p className="block w-[85%] my-auto text-center mx-auto p-3">
+            <p className="block w-[98%] my-auto text-center mx-auto p-3">
               {" "}
               Founded on the principles of financial excellence and strategic
               investing, BullHarvest Investment Company stands as a beacon of
@@ -196,7 +196,7 @@ export default function Landing() {
             <h3 className="underline mb-3 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
               Our Mission
             </h3>
-            <p className=" my-2 text-md text-gray-700 w-[80%] mx-auto p-3">
+            <p className=" my-2 text-md text-gray-700 w-[98%] mx-auto p-3">
               Our mission is clear – to empower you on your financial journey.
               We're here to guide you, whether you're a new investor or looking
               to diversify your portfolio.
@@ -214,24 +214,24 @@ export default function Landing() {
           </h1>
 
           <div className="flex flex-col justify-between pt-2 items-center text-white min-h-[5rem] w-screen   list-none">
-            <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 text-center   ">
+            <div className="min-w-screen grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-5 text-center   ">
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto rounded-medium  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <MdOutlinePayment className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4 w-[50%] mx-auto ">
+                <h1 className="pb-3 px-4 w-[90%] mx-auto ">
                   The transaction is bundled into a block.
                 </h1>
               </div>
 
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <GrStatusGood className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4 w-[50%] mx-auto  ">
+                <h1 className="pb-3 px-4 w-[90%] mx-auto  ">
                   Miners verify whether the transaction is valid.
                 </h1>
               </div>
 
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <IoBusinessOutline className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4 w-[50%] mx-auto ">
+                <h1 className="pb-3 px-4 w-[85%] mx-auto ">
                   They select headers of the most recent block and insert it
                   into the new block as a "hash".
                 </h1>
@@ -239,14 +239,14 @@ export default function Landing() {
 
               <div className="bg-white   text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-3 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <MdOutlineSyncProblem className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4  w-[50%] mx-auto ">
+                <h1 className="pb-3 px-4  w-[90%] mx-auto ">
                   They solve the mathematical problem.
                 </h1>
               </div>
 
               <div className="bg-white md:col-span-2 lg:col-span-2  text-[#03045e] text-[1rem] font-bold mx-auto  border-none gap-5 min-h-[7rem] shadow-gray-500 shadow-2xl rounded    w-[96%]">
                 <RiEmotionHappyLine className=" text-[2.5em] lg:text-[3em] item-center mx-auto rounded-full lg:mt-16 mt-5  mb-3 text-white p-2 bg-[#03045e]" />
-                <h1 className="pb-3 px-4  w-[50%] mx-auto ">
+                <h1 className="pb-3 px-4  w-[95%] mx-auto ">
                   When the solution is found, the new block is added to the
                   blockchain and then propagated throughout the network by this
                   producing profit hourly to investors account.
@@ -833,7 +833,7 @@ export default function Landing() {
             </h2>
           </article>
           <div className="text-white mt-[2em] text-center pb-6 px-2">
-            <p className="leading-relaxed text-[1.3rem] mb-4 px-[3rem] mx-auto w-[70%]">
+            <p className="leading-relaxed text-[1.3rem] mb-4  mx-auto w-[98%]">
               From trading volume to the number of active clients, we are happy
               to share out the figure that makes us one of the world's leading
               crypto investment company.
