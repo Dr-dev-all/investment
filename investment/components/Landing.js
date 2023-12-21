@@ -116,7 +116,7 @@ export default function Landing() {
       >
         <div className="w-full h-full bg-black  opacity-70">
           <article className=" mb-6 flex justify-center items-center z-0 h-[10rem] w-screen pl-[rem]  text-white ">
-            <h2 className=" font-bold text-[1.9rem] w-[80%] leading-relaxed  mt-[8em] text-center lg:text-start ">
+            <h2 className=" font-bold text-[1.9rem] w-[80%] leading-relaxed  mt-[8em] text-center lg:text-center 2xl:font-black 2xl:text-[2.3rem]">
               {" "}
               Empowering Your Wealth
               <br /> Journey Today with
@@ -125,13 +125,13 @@ export default function Landing() {
               </span>{" "}
             </h2>
           </article>
-          <div className=" mb-6 md:mt-2 lg:mt-2 mt-[8em] flex justify-center items-center z-0 h-[10rem]  pl-[rem]  text-white ">
-            <p className=" font-normal text-[1.2rem] w-[80%]  tracking-wide  leading-relaxed  mt-[2em] text-left lg:text-start ">
+          <div className=" mb-3 md:mt-2 lg:mt-2 mt-[8em] 2xl:mt[em] flex justify-center items-center z-0 h-[10rem]  pl-[rem]  text-white ">
+            <p className=" font-normal text-[1.2rem] w-[80%]  tracking-wide  leading-relaxed  mt-[2em] text-left md:text-center ">
               Trade across multiple markets with the
               <br /> most stable and reliable pricing in the industry.
             </p>
           </div>
-          <div className="w-[98%] px-[4rem] mx-auto lg:items-start lg:justify-left flex flex-col md:flex-row lg:flex-row  lg:w-[50%] md:ml-[8em]  justify-between items-center ">
+          <div className="w-[98%] px-[4rem] mx-auto lg:items-start lg:justify-left flex flex-col md:flex-row lg:flex-row  lg:w-[50%]   justify-between items-center ">
             <buttton className="w-full lg:w-[40%] text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mb-2 md:mb-0 ">
               REGISTER
             </buttton>
