@@ -4,6 +4,7 @@ import { SiFacebook } from "react-icons/si";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import footerData from "./userdata.js";
 import { IoLogoLinkedin } from "react-icons/io5";
+import Image from "next/image";
 
 export default function Footer() {
   const service = [
@@ -15,9 +16,6 @@ export default function Footer() {
   const contactUs = [
     { name: "Phone: +44667367367267", url: "#", id: 1 },
     { name: "Email: support@bullyharvest.com", url: "#", id: 2 },
-    { name: "Facebook", url: "#", id: 3 },
-    { name: "Whatsapp", url: "#", id: 4 },
-    { name: "Instagram", url: "#", id: 5 },
   ];
 
   const mediaCenter = [
@@ -103,6 +101,9 @@ export default function Footer() {
             <Link href="#" className="">
               Complaints
             </Link>
+          </div>
+          <div className="mt-12 flex items-center justify-center">
+            <Image src="/certificate.jpg" height={180} width={180} />
           </div>
           <p className="  my-[2rem]  w-[90%] mx-auto">
             &copy; 2023 BULLHARVEST All Rights reserved
