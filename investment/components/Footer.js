@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   const content = (
-    <footer className="min-h-[10rem] w-full bg-[#03045e] text-white">
+    <footer className="min-h-[10rem] w-full bg-[#03045e]    text-white">
       <main className="flex flex-col justify-between items-center">
         <section className="center-with-flex h-auto py-[1rem]">
           <div className="h-[5rem] flex flex-col justify-center items-center">

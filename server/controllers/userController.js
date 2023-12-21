@@ -47,7 +47,8 @@ const getSingleUser = asyncHandler(async (req, res) => {
 });
 
 const createNewuser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password, confirmPassword } = req.body;
+  const { firstName, lastName, email, password, confirmPassword, code } =
+    req.body;
   if (!firstName || !lastName || !email || !password || !confirmPassword) {
     return res.status(400).json({
       allFields: true,
@@ -111,6 +112,7 @@ const createNewuser = asyncHandler(async (req, res) => {
     lastName,
     email,
     password: hashedPwd,
+    code,
   });
 
   if (!newUser) {

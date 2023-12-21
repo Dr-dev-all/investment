@@ -18,6 +18,7 @@ dotenv.config();
 export default function Register() {
   const [userData, setUserData] = useState({});
   const [userErrorData, setUserErrorData] = useState("");
+  const [code, setCode] = useState("");
   // const inputRef = useRef(null);
   const [serverData, setServerData] = useState(null);
   const [errorInResponse, setErrorInResponse] = useState(false);
@@ -25,6 +26,17 @@ export default function Register() {
   const router = useRouter();
   const pathname = usePathname();
   let errorResponseData;
+
+  const generateCode = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/otp/generatecode");
+      const { code } = await response.json();
+      setCode(code);
+      console.log(code);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const {
     register,
@@ -150,9 +162,33 @@ export default function Register() {
   };
 
   const content = (
-    <section className="center-with-flex min-h-[50rem] overflow-hidden w-screen">
-      <div className="div-style">
-        <article className="center-with-flex w-[90%] mx-auto my-auto h-full ">
+    <section className="flex flex-col justify-between items-center min-h-screen    w-screen">
+      <div className="div-style min-h-full">
+        <article className="center-with-flex w-[90%] mx-auto my-auto min-h-full ">
+          <div className="   mt-[2rem]">
+            <label htmlFor="code1" className="form-text-style   text-white">
+              generate code here
+            </label>
+
+            <input
+              {...register("code1")}
+              className="form-input-style"
+              type="text"
+              name="code1"
+              id="code1"
+              defaultValue={code}
+              placeholder=""
+            />
+            <button
+              onClick={() => {
+                generateCode();
+              }}
+              className="bg-green-700  text-[1.1rem]   py-1  font-bold text-white my-1 mx-auto  px-2 shadow-2xl shadow-gray-500  rounded-[2rem]"
+            >
+              Generate Secret Code{" "}
+            </button>
+          </div>
+
           <form className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 sm:gap-3 sm:grid-cols-2">
               <div>
@@ -171,15 +207,11 @@ export default function Register() {
                   placeholder="Eg: james"
                 />
                 {errors.firstName && errors.firstName.type === "required" ? (
-                  <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
-                    {errors.firstName.message}
-                  </p>
+                  <p className="form-error-style">{errors.firstName.message}</p>
                 ) : (
                   errors.firstName &&
                   errors.firstName.type === "maxLength" && (
                     <p className="form-error-style">
-                      <BiSolidError className="warning-icon-style" />
                       Please choose a shorter name
                     </p>
                   )
@@ -215,13 +247,9 @@ export default function Register() {
                   placeholder="Eg: Morgan"
                 />
                 {errors.firstName && errors.firstName.type === "required" ? (
-                  <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
-                    {errors.lastName.message}
-                  </p>
+                  <p className="form-error-style">{errors.lastName.message}</p>
                 ) : errors.lastName && errors.lastName.type === "maxLength" ? (
                   <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
                     Please choose a shorter name
                   </p>
                 ) : (
@@ -259,17 +287,11 @@ export default function Register() {
                   placeholder="Eg: jamesmorgan@gmail.com"
                 />
                 {errors.email && errors.email.type === "required" ? (
-                  <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
-                    {errors.email.message}
-                  </p>
+                  <p className="form-error-style">{errors.email.message}</p>
                 ) : (
                   errors.email &&
                   errors.email.type === "pattern" && (
-                    <p className="form-error-style">
-                      <BiSolidError className="warning-icon-style" />
-                      {errors.email?.message}
-                    </p>
+                    <p className="form-error-style">{errors.email?.message}</p>
                   )
                 )}
 
@@ -282,7 +304,6 @@ export default function Register() {
                       serverData === null ? "hidden" : "block"
                     }`}
                   >
-                    <BiSolidError className="warning-icon-style" />
                     {serverData}
                   </p>
                 ) : (
@@ -312,15 +333,11 @@ export default function Register() {
                   placeholder="Eg: Password123*@"
                 />
                 {errors.password && errors.password.type === "required" ? (
-                  <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
-                    {errors.password.message}
-                  </p>
+                  <p className="form-error-style">{errors.password.message}</p>
                 ) : (
                   errors.password &&
                   errors.password.type === "minLength" && (
                     <p className="form-error-style">
-                      <BiSolidError className="warning-icon-style" />
                       {errors.password.message}
                     </p>
                   )
@@ -361,22 +378,17 @@ export default function Register() {
                 {errors.confirmPassword &&
                 errors.confirmPassword.type === "required" ? (
                   <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
                     {errors.confirmPassword.message}
                   </p>
                 ) : errors.confirmPassword &&
                   errors.confirmPassword.type === "minLength" ? (
                   <p className="form-error-style">
-                    <BiSolidError className="warning-icon-style" />
                     {errors?.confirmPassword?.message}
                   </p>
                 ) : (
                   errors.confirmPassword &&
                   errors.confirmPassword.type === "validate" && (
-                    <p className="form-error-style">
-                      <BiSolidError className="warning-icon-style" />
-                      Password does not match
-                    </p>
+                    <p className="form-error-style">Password does not match</p>
                   )
                 )}
 
@@ -393,6 +405,27 @@ export default function Register() {
                 )}
               </div>
 
+              <div className="">
+                <label htmlFor="code" className="form-text-style">
+                  Paste your generated code here:
+                </label>
+                <input
+                  {...register("code", {
+                    required: "Secret code must provided",
+                  })}
+                  type="text"
+                  name="code"
+                  id="code"
+                  className="form-input-style"
+                  placeholder="Generated code"
+                />
+              </div>
+              {errors.code && errors.code.type === "required" && (
+                <p className="form-error-style">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+
               <div className=" w-full flex gap-2 flex-row px-3 justify-center items-center ">
                 <hr className="w-[5rem] bg-[#03045e] p-[0.6px]" />{" "}
                 <MdOutlineSecurity className="text-[#03045e] sm:text-[2rem]" />{" "}
@@ -403,7 +436,7 @@ export default function Register() {
             <div className=" center-with-flex flex-cols   w-full ">
               <button
                 onClick={() => {}}
-                className=" bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg"
+                className=" bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2  block font-bold rounded-lg"
               >
                 Register
               </button>

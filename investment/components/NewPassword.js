@@ -2,6 +2,8 @@
 import { useForm } from "react-hook-form";
 import { BiSolidError } from "react-icons/bi";
 import { MdOutlineSecurity } from "react-icons/md";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NewPassword() {
   const {
@@ -12,8 +14,33 @@ export default function NewPassword() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const router = useRouter();
+  const [errorData, setErrorData] = useState("");
+
+  const onSubmit = async (data) => {
+    console.log(message);
+    try {
+      const response = await fetch("127.0.0.1:5000/otp/changepassword", {
+        method: "POST",
+        body: JSON.stringify(data),
+        header: { "Content-Type": "application/json" },
+      });
+
+      const { message } = await response.json();
+      if (message === "required") {
+        setErrorData("Please provide your new password");
+      }
+
+      if (message === "not-match") {
+        setErrorData("Password do not match");
+      }
+
+      if (message === "success") {
+        router.push("/login");
+      }
+    } catch (error) {
+      router.push("/register");
+    }
   };
 
   const content = (

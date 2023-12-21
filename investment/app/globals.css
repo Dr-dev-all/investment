@@ -15,7 +15,7 @@ body {
 }
 
 .div-style {
-  @apply bg-no-repeat bg-left bg-cover h-[38rem]  w-screen;
+  @apply bg-no-repeat bg-left bg-cover min-h-[15rem]  w-screen;
 }
 
 .article-style {
@@ -60,7 +60,7 @@ body {
 }
 
 .form-error-style {
-  @apply flex justify-center items-center text-[#da0a1c] w-[98%] italic text-center p-[0.8px] my-1 mx-auto;
+  @apply flex justify-center items-center text-[#da0a1c] w-screen italic text-center p-[0.8px] my-[0.4px] mx-auto;
 }
 
 .warning-icon-style {

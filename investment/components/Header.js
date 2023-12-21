@@ -89,16 +89,16 @@ export default function Header() {
       </div>
 
       <nav
-        className={`flex flex-col justify-center items-center md:hidden  block h-screen transition-all duration-5000     rounded-l-lg bg-white  w-screen   ${
+        className={`flex flex-col justify-center items-center md:hidden  block h-screen transition-all duration-5000     rounded-l-lg bg-gradient-to-r from-[#03045e]  from-60%  to-40% to-white w-screen   ${
           show ? "hidden" : "block "
         }   mx-auto   text-[#03045e] text-center z-0`}
       >
-        <ul className="center-with-flex  h-[70%] w-[80%] gap-2 my-auto border-t-2  border-t-[#03045e] mx-auto">
+        <ul className="center-with-flex  h-[70%] w-[80%] gap-2 my-auto  mx-auto">
           {navItems.map((data) => (
-            <li key={data.id} className={`text-left w-[50%]  mx-auto `}>
+            <li key={data.id} className={`text-left w-[80%]  mx-auto `}>
               <Link
                 href={data.url}
-                className="text-[1.2rem] capitalize px-3 w-full text-left underline  font-bold"
+                className="text-[1.2rem] capitalize px-3 w-[8rem] text-left underline  font-bold tracking-wider text-white"
               >
                 {data.name}
 
