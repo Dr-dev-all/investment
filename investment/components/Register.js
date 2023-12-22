@@ -412,6 +412,9 @@ export default function Register() {
                 <input
                   {...register("code", {
                     required: "Secret code must provided",
+                    validate: (value) => {
+                      value.length === 15 || ~value.toUpperCase;
+                    },
                   })}
                   type="text"
                   name="code"

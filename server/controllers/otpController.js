@@ -100,13 +100,21 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 
   foundUser.password = newPassword;
 
-  const savedUser = await foundUser.save();
+  const user = await User.create({ password: foundUser.password });
 
-  if (savedUser) {
+  if (user) {
     return res.status(200).json({ message: "success" });
   } else {
     return res.status(400).json({ message: "invalid-user-data" });
   }
+
+  // const savedUser = await foundUser.save();
+
+  // if (savedUser) {
+  //   return res.status(200).json({ message: "success" });
+  // } else {
+  //   return res.status(400).json({ message: "invalid-user-data" });
+  // }
 });
 
 export default {

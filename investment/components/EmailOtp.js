@@ -160,11 +160,13 @@ export default function EmailOtp() {
             />
           </div>
           {errors.confirmPassword &&
-            errors.confirmPassword.type === "required" && (
-              <p className="form-error-style">
-                {errors.confirmPassword.message}
-              </p>
-            )}
+          errors.confirmPassword.type === "required" ? (
+            <p className="form-error-style">{errors.confirmPassword.message}</p>
+          ) : (
+            errors.confirmPassword &&
+            errors.confirmPassword.type ===
+              "validate"(<p>Password does not match</p>)
+          )}
           <div className=" w-full flex gap-2 flex-row px-3 justify-center items-center ">
             <hr className="w-[5rem] bg-[#03045e] p-[0.6px]" />{" "}
             <MdOutlineSecurity className="text-[#03045e] sm:text-[2rem]" />{" "}
