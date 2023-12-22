@@ -13,13 +13,10 @@ import { PiArrowFatLineRightFill } from "react-icons/pi";
 export default function Header() {
   const navItems = [
     { name: "About", url: "about", id: 1 },
-    { name: "Contact", url: "contact", id: 2 },
-    { name: "News", url: "blog", id: 3 },
-    { name: "Invest", url: "invest", id: 4 },
-    { name: "Services", url: "service", id: 5 },
-    { name: "Help", url: "Learn", id: 6 },
-    { name: "prices", url: "Learn", id: 7 },
-    { name: "Learn ", url: "Learn", id: 8 },
+    { name: "Services", url: "service", id: 2 },
+    { name: "prices", url: "prices", id: 3 },
+    { name: "security", url: "security", id: 4 },
+    { name: "Contact", url: "contact", id: 5 },
   ];
 
   const [show, setShow] = useState(true);
