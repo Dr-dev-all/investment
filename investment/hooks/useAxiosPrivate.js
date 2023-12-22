@@ -4,6 +4,7 @@ import useRefreshToken from "./useRefreshToken";
 import { AuthProvider } from "@/app/Authprovider";
 import { jwtDecode } from "jwt-decode";
 import axios from "@/lib/axios";
+import { useRouter, usePathname } from "next/navigation";
 
 const useAxiosPrivate = () => {
   // data changes
@@ -11,10 +12,12 @@ const useAxiosPrivate = () => {
   let effectRan = useRef(false);
 
   // end of data changes
-  const refresh = useRefreshToken();
-  const { auth } = useContext(AuthProvider);
-  console.log(auth);
-  console.log(refresh);
+  // const refresh = useRefreshToken();
+  // const { auth } = useContext(AuthProvider);
+
+  const router = useRouter();
+
+  const pathname = usePathname();
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -36,6 +39,35 @@ const useAxiosPrivate = () => {
 
       // end of modification
       const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+      const userinfo = jwtDecode(accessToken);
+
+      console.log(userinfo);
+
+      // route protection
+
+      // if (
+      //   (!userinfo?.Active && !accessToken && pathname === "/login/userdash") ||
+      //   (!userinfo?.Active && !accessToken && pathname === "/login/adminDash")
+      // ) {
+      //   router.push("/register");
+      // }
+
+      // if (
+      //   userinfo?.Active &&
+      //   accessToken &&
+      //   userinfo.Admin === false &&
+      //   pathname === "/login/adminDash"
+      // ) {
+      //   router.push("/login");
+      // }
+
+      // if (userinfo?.Active && accessToken && userinfo?.Admin === true) {
+      //   router.push("/login/adminDash");
+      // } else {
+      // }
+
+      // route protection ends
+
       const requestIntercept = axiosPrivate.interceptors.request.use(
         (config) => {
           if (!config.headers["Authorization"]) {
@@ -45,7 +77,6 @@ const useAxiosPrivate = () => {
         },
         (error) => Promise.reject(error)
       );
-      console.log("USEAXIOSPRIVATE");
 
       // start of modification
 

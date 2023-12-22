@@ -39,7 +39,6 @@ export default function UserDashboardHeader() {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -53,48 +52,6 @@ export default function UserDashboardHeader() {
     };
   }, []);
 
-  console.log(user);
-  // BEFORE-------
-  // const { auth } = useContext(AuthProvider);
-  // const userTokenData = jwtDecode(
-  //   auth.accessToken,
-  //   "k1J22I2B2KJCBKDNBJNJNSS786BDBNX"
-  // );
-  // let effectRan = useRef(false);
-  // let compMount = useRef(false);
-  // const { _id: userID } = userTokenData;
-  // console.log(userID);
-  // const [userData, setUserData] = useState(null);
-
-  // useEffect(() => {
-  //   if (effectRan.current === true) {
-  //     const fetchData = async () => {
-  //       try {
-  //         if (!userID) throw new Error("User id must be provided");
-  //         const response = await fetch(
-  //           `http://127.0.0.1:5000/users/getsingleuser/${userID}`
-  //         );
-  //         if (!response.ok) throw new Error("An error occured");
-  //         if (response.ok) {
-  //           const serverData = await response.json();
-  //           console.log(serverData);
-  //           setUserData(serverData);
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }
-
-  //   return () => {
-  //     effectRan.current = true;
-  //   };
-  // }, []);
-  // before------
-  // console.log(userData);
-  // if (compMount.current === true) {
   const content = (
     <header className=" bg-[#03045e] w-full min-h-[3rem] text-white fixed top-0  mb-[2rem]  ">
       <section className="w-full max-h-[3rem] flex flex-row justify-between items-center  py-2 px-5">
@@ -117,7 +74,6 @@ export default function UserDashboardHeader() {
             <BeatLoader
               color={{ color: "white" }}
               loading={true}
-              // cssOverride={override}
               size={150}
               aria-label="Loading Spinner"
               data-testid="loader"
@@ -154,5 +110,3 @@ export default function UserDashboardHeader() {
 
   return content;
 }
-// compMount.current = true;
-// }

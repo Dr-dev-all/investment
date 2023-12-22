@@ -55,7 +55,6 @@ export default function Login() {
   // FORM SUBMIT HANDLER
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const response = await fetch("http://127.0.0.1:5000/auths/login", {
         method: "POST",
@@ -110,7 +109,6 @@ export default function Login() {
               dataErrorStatus: errorResponseData.successStatus,
               allDataField: errorResponseData.allFields,
             }));
-            console.log(serverData);
           }
         }
       } else if (response.ok && response.status === 200) {
@@ -147,7 +145,7 @@ export default function Login() {
 
       // isSubmitted || (isSubmitSuccessful && setServerData(null));
     } catch (error) {
-      console.log(error);
+      router.push("/register");
     } finally {
       reset();
     }
@@ -155,17 +153,6 @@ export default function Login() {
   // END OF FORM SUBMIT HANDLER
 
   // GENERATE OTP FOR THE USER
-
-  const generateOtp = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:5000/otp/generateotp");
-      console.log(response);
-      const serverData = await response.json();
-      console.log(serverData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   // END OF OTP GENERATOR
 

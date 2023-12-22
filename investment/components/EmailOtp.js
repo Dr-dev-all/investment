@@ -79,7 +79,7 @@ export default function EmailOtp() {
       <section className="flex flex-col justify-center items-center min-h-[20rem] w-[90%]  border-none rounded-[2rem] p-2 text-center ">
         <form className="flex flex-col justify-center items-center h-[20rem] w-[80%]   p-2 text-center ">
           <div className="">
-            <label htmlFor="email" className=" form-text-style ">
+            <label htmlFor="email" className="mt-[2rem] form-text-style ">
               Email:{" "}
             </label>
             <input

@@ -40,6 +40,7 @@ const getSingleUser = asyncHandler(async (req, res) => {
     firstName: foundUser.firstName,
     lastName: foundUser.lastName,
     balance: foundUser.balance,
+    active: foundUser.isActive,
   };
 
   // res.setHeader("Access-Control-Allow-Credentials", true);

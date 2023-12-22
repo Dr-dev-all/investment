@@ -92,29 +92,21 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 
   const userKey = await User.findOne({ code: foundUser.code }).exec();
 
-  console.log({ key: userKey, code });
+  console.log(userKey.code);
 
   if (userKey.code !== code) {
     return res.status(400).json({ message: "invalid-code" });
   }
 
-  foundUser.password = newPassword;
+  foundUser.password = await bcrypt.hash(newPassword, 10);
 
-  const user = await User.create({ password: foundUser.password });
+  const savedUser = await foundUser.save();
 
-  if (user) {
+  if (savedUser) {
     return res.status(200).json({ message: "success" });
   } else {
     return res.status(400).json({ message: "invalid-user-data" });
   }
-
-  // const savedUser = await foundUser.save();
-
-  // if (savedUser) {
-  //   return res.status(200).json({ message: "success" });
-  // } else {
-  //   return res.status(400).json({ message: "invalid-user-data" });
-  // }
 });
 
 export default {

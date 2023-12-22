@@ -102,8 +102,14 @@ export default function Footer() {
               Complaints
             </Link>
           </div>
-          <div className="mt-12 flex items-center justify-center">
-            <Image src="/certificate.jpg" height={180} width={180} />
+          <div className=" center-with-flex   mt-12   h-full w-full">
+            <Image
+              src="/certificate.jpg"
+              alt="certificate-image"
+              height={180}
+              width={180}
+              className="w-auto h-auto"
+            />
           </div>
           <p className="  my-[2rem]  w-[90%] mx-auto">
             &copy; 2023 BULLHARVEST All Rights reserved

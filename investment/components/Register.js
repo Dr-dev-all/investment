@@ -13,18 +13,21 @@ import { BiSolidError } from "react-icons/bi";
 import dotenv from "dotenv";
 import { sendStatusCode } from "next/dist/server/api-utils";
 import { useRouter, usePathname } from "next/navigation";
+import { BiSolidDownArrow } from "react-icons/bi";
 dotenv.config();
 
 export default function Register() {
   const [userData, setUserData] = useState({});
   const [userErrorData, setUserErrorData] = useState("");
   const [code, setCode] = useState("");
+  const [warn, setWarn] = useState(true);
   // const inputRef = useRef(null);
   const [serverData, setServerData] = useState(null);
   const [errorInResponse, setErrorInResponse] = useState(false);
   const [userOptions, setUserOptions] = useState({});
   const router = useRouter();
   const pathname = usePathname();
+
   let errorResponseData;
 
   const generateCode = async () => {
@@ -165,7 +168,7 @@ export default function Register() {
     <section className="flex flex-col justify-between items-center min-h-screen    w-screen">
       <div className="div-style min-h-full">
         <article className="center-with-flex w-[90%] mx-auto my-auto min-h-full ">
-          <div className="   mt-[2rem]">
+          <div className=" w-ful  mt-[2rem]">
             <label htmlFor="code1" className="form-text-style   text-white">
               generate code here
             </label>
@@ -183,10 +186,37 @@ export default function Register() {
               onClick={() => {
                 generateCode();
               }}
-              className="bg-green-700  text-[1.1rem]   py-1  font-bold text-white my-1 mx-auto  px-2 shadow-2xl shadow-gray-500  rounded-[2rem]"
+              className="bg-green-700  text-[1.1rem]   py-1  font-bold text-white my-1 mx-auto    w-[90%]  mx-auto    px-2 shadow-2xl shadow-gray-500  rounded-[2rem]"
             >
-              Generate Secret Code{" "}
+              Generate Secret key{" "}
             </button>
+          </div>
+
+          <div>
+            <button
+              onClick={() => {
+                setWarn(!warn);
+              }}
+              className="bg-yellow-500 font-bold  px-2 shadow-2xl  w-full  h-[2rem] mx-auto   shadow-gray-500"
+            >
+              security alert
+              <BiSolidDownArrow className="inline ml-3" />
+            </button>
+            <p
+              className={`${
+                warn
+                  ? "hidden"
+                  : "block text-center z-10  w-[97%] mx-auto bg-white text-black  border-2"
+              }`}
+            >
+              This has been mentioned already, but it doesn’t hurt to be
+              thorough: anyone who has your secret keys can remove tokens from
+              your accounts. Never share your Secret keys with anyone — not even
+              the BullHarvest team, even though we will never ask you for this
+              information. If anyone claims to be a BullHarvest team member and
+              asks you for this information, please report them immediately
+              using our official support channels.
+            </p>
           </div>
 
           <form className="" onSubmit={handleSubmit(onSubmit)}>
@@ -407,7 +437,7 @@ export default function Register() {
 
               <div className="">
                 <label htmlFor="code" className="form-text-style">
-                  Paste your generated code here:
+                  Paste your generated key here/ use your own key:
                 </label>
                 <input
                   {...register("code", {

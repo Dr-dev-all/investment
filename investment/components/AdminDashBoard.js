@@ -1,9 +1,17 @@
 "use client";
-import { memo } from "react";
+import { memo, useContext } from "react";
 import { BsBank2 } from "react-icons/bs";
 import { BiMoneyWithdraw } from "react-icons/bi";
+import jwtDecode from "jwt-decode";
+import Authproviders from "@/app/Authprovider";
 
 export default function AdminDashBoard() {
+  // const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  // const userinfo = jwtDecode(accessToken);
+  // const { auth } = useContext(Authproviders);
+
+  // console.log(userinfo);
+
   const content = (
     <main className="min-h-screen w-full  bg-black text-white ">
       <section className="bg-white text-black w-[80%] min-h-full rounded-[2rem]  min-w-full mx-auto gap-3 p-3   ">

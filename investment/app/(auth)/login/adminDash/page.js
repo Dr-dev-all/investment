@@ -7,6 +7,7 @@ import { AuthProvider } from "@/app/Authprovider";
 import { redirect, useRouter, usePathname } from "next/navigation";
 import { useContext } from "react";
 import dynamic from "next/dynamic";
+import jwtDecode from "jwt-decode";
 
 export default function page() {
   let compoMount = useRef(false);
@@ -15,7 +16,6 @@ export default function page() {
   const pathname = usePathname();
   let logicMount = useRef(false);
 
-  // if (compoMount.current === true) {
   const content = (
     <>
       <AdminHeader />
@@ -25,6 +25,4 @@ export default function page() {
   );
 
   return content;
-  // }
-  // compoMount.current = true;
 }
