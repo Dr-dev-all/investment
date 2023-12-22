@@ -1,9 +1,10 @@
-import { axiosPrivate } from "@/lib/axios";
-import { useEffect, useContext, useState, useRef } from "react";
-import useRefreshToken from "./useRefreshToken";
-import { AuthProvider } from "@/app/Authprovider";
-import { jwtDecode } from "jwt-decode";
-import axios from "@/lib/axios";
+import { axiosPrivate } from '@/lib/axios';
+import { useEffect, useContext, useState, useRef } from 'react';
+import useRefreshToken from './useRefreshToken';
+import { AuthProvider } from '@/app/Authprovider';
+import { jwtDecode } from 'jwt-decode';
+import axios from '@/lib/axios';
+import { useRouter } from 'next/navigation';
 
 const useAxiosPrivate = () => {
   // data changes
@@ -13,8 +14,7 @@ const useAxiosPrivate = () => {
   // end of data changes
   const refresh = useRefreshToken();
   const { auth } = useContext(AuthProvider);
-  console.log(auth);
-  console.log(refresh);
+  const router = useRouter();
 
   useEffect(() => {
     if (effectRan.current === true) {
@@ -22,30 +22,29 @@ const useAxiosPrivate = () => {
 
       const fetchRefresh = async () => {
         try {
-          const response = await axios.get("/auths/refresh", {
+          const response = await axios.get('/auths/refresh', {
             withCredentials: true,
           });
 
-          if (response.status === 200 || response.statusText === "OK") {
+          if (response.status === 200 || response.statusText === 'OK') {
             return response.data.accessToken;
           }
         } catch (error) {
-          console.log(error);
+          router.push('/login');
         }
       };
 
       // end of modification
-      const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+      const accessToken = JSON.parse(localStorage.getItem('accessToken'));
       const requestIntercept = axiosPrivate.interceptors.request.use(
         (config) => {
-          if (!config.headers["Authorization"]) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
+          if (!config.headers['Authorization']) {
+            config.headers['Authorization'] = `Bearer ${accessToken}`;
           }
           return config;
         },
         (error) => Promise.reject(error)
       );
-      console.log("USEAXIOSPRIVATE");
 
       // start of modification
 
@@ -57,7 +56,7 @@ const useAxiosPrivate = () => {
           if (error?.response?.status === 403 && !prevRequest?.sent) {
             prevRequest.sent = true;
             const newAccessToken = await fetchRefresh();
-            prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
             return axiosPrivate(prevRequest);
           }
           return Promise.reject(error);
