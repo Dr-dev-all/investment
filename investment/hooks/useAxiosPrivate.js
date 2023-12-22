@@ -1,17 +1,10 @@
 import { axiosPrivate } from "@/lib/axios";
 import { useEffect, useContext, useState, useRef } from "react";
-import useRefreshToken from "./useRefreshToken";
-import { AuthProvider } from "@/app/Authprovider";
-import { jwtDecode } from "jwt-decode";
-import axios from "@/lib/axios";
 import { useRouter, usePathname } from "next/navigation";
-import { axiosPrivate } from "@/lib/axios";
-import { useEffect, useContext, useState, useRef } from "react";
 import useRefreshToken from "./useRefreshToken";
 import { AuthProvider } from "@/app/Authprovider";
 import { jwtDecode } from "jwt-decode";
 import axios from "@/lib/axios";
-import { useRouter } from "next/navigation";
 
 const useAxiosPrivate = () => {
   // data changes
