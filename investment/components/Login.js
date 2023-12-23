@@ -127,19 +127,25 @@ export default function Login() {
           }));
 
           const token = errorResponseData.accessToken;
+
           const userInfo = jwtDecode(token);
           // const { _id: userId } = userInfo;
           setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
           localStorage.setItem("accessToken", JSON.stringify(token));
           setDecodedItem(userInfo._id);
-          if (userInfo.Admin === true) {
-            router.push("/login/adminDash");
-          } else {
-            router.push("/login/userdash");
+
+          if (!token && pathname === "/login/userdash") {
+            router.push("/register");
           }
+
+          // if (userInfo.Admin === true) {
+          //   router.push("/login/adminDash");
+          // } else {
+          //   router.push("/login/userdash");
+          // }
         }
       } else {
-        router.push(`/${pathname}`);
+        // router.push(`/${pathname}`);
         setUserErrorData("Invalid user data recieved");
       }
 

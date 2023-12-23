@@ -30,6 +30,7 @@ import { GiMoneyStack } from "react-icons/gi";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { TiArrowRight } from "react-icons/ti";
 import { BiSolidUpArrow } from "react-icons/bi";
+import { MdVerifiedUser } from "react-icons/md";
 
 //import tradingchart
 
@@ -221,118 +222,174 @@ export default function page() {
           </article>
         </section>
 
-        <section className="min-h-[5rem]   min-w-full  px-2 text-center ">
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              Crypto security starts with internet security
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              One of the most important considerations in protecting
-              cryptocurrency is having overall good online security.
-            </p>
-          </article>
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              Securing your seed phrase
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              When it comes to crypto storage, there are a few basic universal
-              rules most crypto enthusiasts agree upon. First off, don’t keep
-              all or most of your crypto on an exchange. If your crypto is left
-              on an exchange, there’s the risk of the exchange getting hacked or
-              going bankrupt. The safest place to store crypto is a
-              non-custodial wallet like the BitPay Wallet. With a non-custodial
-              wallet, you have complete control of your private keys.
-            </p>
-          </article>
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              Crypto wallet security best practices
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              One of the most important considerations for managing your crypto
-              is properly storing your seed phrase, which is also commonly
-              referred to as a recovery phrase. Your twelve word phrase allows
-              you to recover your crypto on another device. Therefore, it’s
-              extremely important that you keep store your security phrase
-              properly, and that no one else can access it.
-            </p>
-          </article>
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              Use good passwords
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              The first rule in internet security - have good passwords. Good
-              passwords are lengthy, complex and hard-to-guess. The longer, the
-              better. Find this challenging? Probably because it is.
-            </p>
-          </article>
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h2 className="text-center  text-[1rem] font-bold">
-              Have a password manager
-            </h2>
-            <p className="text-center  tracking-wide px-1 w-full">
-              {" "}
-              Bitwarden is a good one. Most password managers offer the option
-              of generating random passwords which are complete gibberish. If
-              you have a good password manager and can make sure to remember the
-              one password to unlock the manager, you won’t need to worry that
-              you haven’t a clue what your other passwords are.
-            </p>
-          </article>
+        <section>
+          <section>
+            <div className="center-with-flex   mx-[1.2rem]     w-full bg-[#03045e]  ">
+              <MdVerifiedUser className="text-[4rem]    w-[80%] mx-auto  text-white bg-   ]" />
+            </div>
+            <h3>Check out security updates</h3>
+          </section>
+          <section className="min-h-[5rem]   min-w-full  px-2 text-center hidden">
+            <article className="text-left  border-2   border-[#03045e]   w-full  p-2   w-full  m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                Crypto security starts with internet security
+                <BiSolidDownArrow
+                  className={`text-[#03045e]   text-[1.5rem]  ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                One of the most important considerations in protecting
+                cryptocurrency is having overall good online security.
+              </p>
+            </article>
+            <article className="text-left   border-2   border-[#03045e]   w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                Securing your seed phrase
+                <BiSolidDownArrow
+                  className={`text-[#03045e]  w-[10%]    ml-4`}
+                />
+              </button>
+              <p
+                className={`text-center  tracking-wide px-1 w-full        hidden`}
+              >
+                When it comes to crypto storage, there are a few basic universal
+                rules most crypto enthusiasts agree upon. First off, don’t keep
+                all or most of your crypto on an exchange. If your crypto is
+                left on an exchange, there’s the risk of the exchange getting
+                hacked or going bankrupt. The safest place to store crypto is a
+                non-custodial wallet like the BitPay Wallet. With a
+                non-custodial wallet, you have complete control of your private
+                keys.
+              </p>
+            </article>
+            <article className="text-left  border-2   border-[#03045e]    w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                Crypto wallet security best practices
+                <BiSolidDownArrow
+                  className={`text-[#03045e]    w-[10%]  ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                One of the most important considerations for managing your
+                crypto is properly storing your seed phrase, which is also
+                commonly referred to as a recovery phrase. Your twelve word
+                phrase allows you to recover your crypto on another device.
+                Therefore, it’s extremely important that you keep store your
+                security phrase properly, and that no one else can access it.
+              </p>
+            </article>
+            <article className="text-left   border-2   border-[#03045e]    w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                Use good passwords
+                <BiSolidDownArrow
+                  className={`text-[#03045e]   w-[10%]  ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                The first rule in internet security - have good passwords. Good
+                passwords are lengthy, complex and hard-to-guess. The longer,
+                the better. Find this challenging? Probably because it is.
+              </p>
+            </article>
+            <article className="text-left   border-2   border-[#03045e]    w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                Have a password manager
+                <BiSolidDownArrow
+                  className={`text-[#03045e]     w-[10%]  ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full hidden`}>
+                {" "}
+                Bitwarden is a good one. Most password managers offer the option
+                of generating random passwords which are complete gibberish. If
+                you have a good password manager and can make sure to remember
+                the one password to unlock the manager, you won’t need to worry
+                that you haven’t a clue what your other passwords are.
+              </p>
+            </article>
 
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              don’t reuse the same password
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              across multiple sites. If one gets compromised, and your username
-              is simply your email or something common such as First Initial,
-              Last Name, a hacker can easily go down the list and get access to
-              your information on other websites, including credit cards and
-              addresses. Which brings up the next point….
-            </p>
-          </article>
+            <article className="text-left  border-2   border-[#03045e]    w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                don’t reuse the same password
+                <BiSolidDownArrow
+                  className={`text-[#03045e]   w-[10%]   ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full hidden`}>
+                across multiple sites. If one gets compromised, and your
+                username is simply your email or something common such as First
+                Initial, Last Name, a hacker can easily go down the list and get
+                access to your information on other websites, including credit
+                cards and addresses. Which brings up the next point….
+              </p>
+            </article>
 
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              advise against storing your passwords in a browser
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              (such as allowing Google chrome to remember your password). If
-              someone gets access to your device, your passwords are easily
-              available. Having your passwords in only one place (password
-              manager) is more secure. Although it might not make things easier,
-              it’s advisable to not store your credit card information on
-              websites. Should the website get compromised, hackers can get
-              access. Additionally, never type your credit card information into
-              a website that isn’t encrypted - in other words - doesn’t start
-              with ‘https
-            </p>
-            <p className="text-center  tracking-wide px-1 w-full">
-              If you want to be extra careful when it comes to credit cards, as
-              well as other very sensitive information, some will advise to turn
-              off potential ‘listening’ devices (such as Alexa or Echo, or if
-              you’re feeling skeptical, anything with the Facebook app
-              installed) for an extra layer of protection.
-            </p>
-          </article>
-          <article className="text-left  border-2  w-full  p-2    m-auto">
-            <h1 className="text-center  text-[1rem] font-bold">
-              Overall Security
-            </h1>
-            <p className="text-center  tracking-wide px-1 w-full">
-              Overall, when it comes to cybersecurity and securing your crypto,
-              the single most important thing is to always be alert and
-              diligent. Hackers are perpetually becoming more and more
-              sophisticated, especially in the crypto space. There’s always a
-              new scam, and no one wants to be patient zero. Using secure buying
-              and storage tools, in addition to being security-minded and having
-              overall good security practices in place across the board, are
-              essential for crypto holders.
-            </p>
-          </article>
+            <article className="text-left  border-2   border-[#03045e]    w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto"
+              >
+                advise against storing your passwords in a browser
+                <BiSolidDownArrow
+                  className={`text-[#03045e]   w-[10%]  ml-4`}
+                />
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                (such as allowing Google chrome to remember your password). If
+                someone gets access to your device, your passwords are easily
+                available. Having your passwords in only one place (password
+                manager) is more secure. Although it might not make things
+                easier, it’s advisable to not store your credit card information
+                on websites. Should the website get compromised, hackers can get
+                access. Additionally, never type your credit card information
+                into a website that isn’t encrypted - in other words - doesn’t
+                start with ‘https
+              </p>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                If you want to be extra careful when it comes to credit cards,
+                as well as other very sensitive information, some will advise to
+                turn off potential ‘listening’ devices (such as Alexa or Echo,
+                or if you’re feeling skeptical, anything with the Facebook app
+                installed) for an extra layer of protection.
+              </p>
+            </article>
+            <article className="text-left  border-2  w-full  p-2    m-auto">
+              <button
+                onClick={() => {}}
+                className="text-center  text-[1rem] font-bold"
+              >
+                Overall Security
+              </button>
+              <p className={`text-center  tracking-wide px-1 w-full  hidden`}>
+                Overall, when it comes to cybersecurity and securing your
+                crypto, the single most important thing is to always be alert
+                and diligent. Hackers are perpetually becoming more and more
+                sophisticated, especially in the crypto space. There’s always a
+                new scam, and no one wants to be patient zero. Using secure
+                buying and storage tools, in addition to being security-minded
+                and having overall good security practices in place across the
+                board, are essential for crypto holders.
+              </p>
+            </article>
+          </section>
         </section>
       </main>
       <UserDashboardFooter />
