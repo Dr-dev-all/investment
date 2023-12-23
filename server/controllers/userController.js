@@ -41,6 +41,9 @@ const getSingleUser = asyncHandler(async (req, res) => {
     lastName: foundUser.lastName,
     balance: foundUser.balance,
     active: foundUser.isActive,
+    investment: foundUser.investment,
+    profit: foundUser.profit,
+    loss: foundUser.loss,
   };
 
   // res.setHeader("Access-Control-Allow-Credentials", true);
@@ -134,8 +137,27 @@ const createNewuser = asyncHandler(async (req, res) => {
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  const { id, firstName, lastName, email, plan, balance } = req.body;
-  if (!firstName || !lastName || !email || !plan || !balance) {
+  const {
+    id,
+    firstName,
+    lastName,
+    email,
+    plan,
+    balance,
+    profit,
+    investment,
+    loss,
+  } = req.body;
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !plan ||
+    !balance ||
+    !investment ||
+    !loss ||
+    !profit
+  ) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -171,6 +193,15 @@ const updateUser = asyncHandler(async (req, res) => {
       }
       if (balance) {
         user.balance = balance;
+      }
+      if (investment) {
+        user.investment = investment;
+      }
+      if (profit) {
+        user.profit = profit;
+      }
+      if (loss) {
+        user.loss = loss;
       }
     }
 
