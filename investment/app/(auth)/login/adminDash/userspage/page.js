@@ -29,7 +29,7 @@ export default function page() {
   const effectRan = useRef(false);
   const [userData, setUserData] = useState({});
   const [mainData, setMainData] = useState({});
-  // const dataRender = useRef(true);
+  const dataRender = useRef(true);
   const [userFormData, setUserFormData] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -191,6 +191,15 @@ export default function page() {
       if (pair[0] === "balance") {
         data3.balance = pair[1];
       }
+      if (pair[0] === "investment") {
+        data3.investment = pair[1];
+      }
+      if (pair[0] === "loss") {
+        data3.loss = pair[1];
+      }
+      if (pair[0] === "profit") {
+        data3.profit = pair[1];
+      }
       if (pair[0] === "id") {
         data3.id = pair[1];
       }
@@ -203,6 +212,7 @@ export default function page() {
       const response = await axios.patch(
         "http://127.0.0.1:5000/users/edituser",
         JSON.stringify(data3),
+
         {
           headers: { "Content-Type": "application/json" },
         }
@@ -320,6 +330,60 @@ export default function page() {
                             </span>
                           </li>
                           <li className="plan-items">
+                            Investment:
+                            <span>
+                              <input
+                                type="text"
+                                name="investment"
+                                defaultValue={user.investment}
+                                // defaultValue={user.balance}
+                                // onChange={(e) =>
+                                //   setUserFormData((prev) => ({
+                                //     ...prev,
+                                //     balance: e.target.value || user.balance,
+                                //   }))
+                                // }
+                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                              />
+                            </span>
+                          </li>
+                          <li className="plan-items">
+                            Profit:
+                            <span>
+                              <input
+                                type="text"
+                                name="profit"
+                                defaultValue={user.profit}
+                                // defaultValue={user.balance}
+                                // onChange={(e) =>
+                                //   setUserFormData((prev) => ({
+                                //     ...prev,
+                                //     balance: e.target.value || user.balance,
+                                //   }))
+                                // }
+                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                              />
+                            </span>
+                          </li>
+                          <li className="plan-items">
+                            Loss:
+                            <span>
+                              <input
+                                type="text"
+                                name="loss"
+                                defaultValue={user.loss}
+                                // defaultValue={user.balance}
+                                // onChange={(e) =>
+                                //   setUserFormData((prev) => ({
+                                //     ...prev,
+                                //     balance: e.target.value || user.balance,
+                                //   }))
+                                // }
+                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                              />
+                            </span>
+                          </li>
+                          <li className="plan-items">
                             Balance:
                             <span>
                               <input
@@ -427,8 +491,8 @@ export default function page() {
       <AdminFooter />
     </>
   );
-  // dataRender.current = true;
-  // dataRender.current === true &&
+  dataRender.current = true;
+  // dataRender.current === true
 
   return content;
 }

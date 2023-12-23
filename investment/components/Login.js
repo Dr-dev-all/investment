@@ -134,15 +134,15 @@ export default function Login() {
           localStorage.setItem("accessToken", JSON.stringify(token));
           setDecodedItem(userInfo._id);
 
-          if (!token && pathname === "/login/userdash") {
-            router.push("/register");
-          }
-
-          // if (userInfo.Admin === true) {
-          //   router.push("/login/adminDash");
-          // } else {
-          //   router.push("/login/userdash");
+          // if (!token && pathname === "/login/userdash") {
+          //   router.push("/register");
           // }
+
+          if (userInfo.Admin === true) {
+            router.push("/login/adminDash");
+          } else {
+            router.push("/login/userdash");
+          }
         }
       } else {
         // router.push(`/${pathname}`);

@@ -65,5 +65,5 @@ export default function AdminDashBoard() {
     </main>
   );
 
-  return memo(content);
+  return content;
 }
