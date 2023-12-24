@@ -1,10 +1,10 @@
-import { axiosPrivate } from "@/lib/axios";
-import { useEffect, useContext, useState, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import useRefreshToken from "./useRefreshToken";
-import { AuthProvider } from "@/app/Authprovider";
-import { jwtDecode } from "jwt-decode";
-import axios from "@/lib/axios";
+import { axiosPrivate } from '@/lib/axios';
+import { useEffect, useContext, useState, useRef } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import useRefreshToken from './useRefreshToken';
+import { AuthProvider } from '@/app/Authprovider';
+import { jwtDecode } from 'jwt-decode';
+import axios from '@/lib/axios';
 
 const useAxiosPrivate = () => {
   // data changes
@@ -12,9 +12,6 @@ const useAxiosPrivate = () => {
   let effectRan = useRef(false);
 
   // end of data changes
-
-  // const refresh = useRefreshToken();
-  // const { auth } = useContext(AuthProvider);
 
   const router = useRouter();
 
@@ -26,53 +23,32 @@ const useAxiosPrivate = () => {
 
       const fetchRefresh = async () => {
         try {
-          const response = await axios.get("/auths/refresh", {
+          const response = await axios.get('/auths/refresh', {
             withCredentials: true,
           });
 
-          if (response.status === 200 || response.statusText === "OK") {
+          if (response.status === 200 || response.statusText === 'OK') {
             return response.data.accessToken;
           }
         } catch (error) {
-          router.push("/login");
+          if (error) {
+            router.push('/login');
+          }
         }
       };
 
       // end of modification
-      const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-      const userinfo = jwtDecode(accessToken);
+      const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+      // const userinfo = jwtDecode(accessToken);
 
-      console.log(userinfo);
-
-      // route protection
-
-      // if (
-      //   (!userinfo?.Active && !accessToken && pathname === "/login/userdash") ||
-      //   (!userinfo?.Active && !accessToken && pathname === "/login/adminDash")
-      // ) {
-      //   router.push("/register");
-      // }
-
-      // if (
-      //   userinfo?.Active &&
-      //   accessToken &&
-      //   userinfo.Admin === false &&
-      //   pathname === "/login/adminDash"
-      // ) {
-      //   router.push("/login");
-      // }
-
-      // if (userinfo?.Active && accessToken && userinfo?.Admin === true) {
-      //   router.push("/login/adminDash");
-      // } else {
-      // }
+      // console.log(userinfo);
 
       // route protection ends
 
       const requestIntercept = axiosPrivate.interceptors.request.use(
         (config) => {
-          if (!config.headers["Authorization"]) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
+          if (!config.headers['Authorization']) {
+            config.headers['Authorization'] = `Bearer ${accessToken}`;
           }
           return config;
         },
@@ -89,7 +65,7 @@ const useAxiosPrivate = () => {
           if (error?.response?.status === 403 && !prevRequest?.sent) {
             prevRequest.sent = true;
             const newAccessToken = await fetchRefresh();
-            prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
             return axiosPrivate(prevRequest);
           }
           return Promise.reject(error);
