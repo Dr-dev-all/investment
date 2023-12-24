@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
     isActive: { type: Boolean, default: true },
     isAdmin: { type: Boolean, default: false },
     code: { type: String, default: "" },
+    userToken: { type: String, default: "" },
   },
   { timestamps: true }
 );

@@ -1,19 +1,45 @@
-import { FaUserCircle } from 'react-icons/fa';
-import { MdOutlineMenuBook } from 'react-icons/md';
-import { MdOutlinePrivacyTip } from 'react-icons/md';
-import Link from 'next/link';
+import { FaUserCircle } from "react-icons/fa";
+import { MdOutlineMenuBook } from "react-icons/md";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import Link from "next/link";
+import { userouter, usePathname } from "next/navigation";
+import { useAxioPrivate } from "@/hooks/useAxioPrivate";
 
 export default function AdminSetting() {
+  const axiosPrivate = useAxiosPrivate(0);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const logout = async () => {
+    localStorage.setItem("accessToken", "");
+
+    try {
+      const response = await axiosPrivate("/auths/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.statusText === "OK") {
+        router.push("/login");
+      } else {
+        router.push("/register");
+      }
+    } catch (error) {
+      router.push("/");
+    }
+  };
+
   // admin route protection
 
   // end of admin route protection
 
   const content = (
-    <main className='min-h-screen w-full  bg-black text-white '>
+    <main className="min-h-screen w-full  bg-black text-white ">
       <section>
-        <Link href='#'>
-          <div className='flex flex-col-2 bg-[#03045e] mx-5 rounded-lg mb-4 space-between text-start items-center gap-[2em]  '>
-            <FaUserCircle className='  text-[3.2em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]' />
+        <Link href="#">
+          <div className="flex flex-col-2 bg-[#03045e] mx-5 rounded-lg mb-4 space-between text-start items-center gap-[2em]  ">
+            <FaUserCircle className="  text-[3.2em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]" />
             <div>
               <h1>adminbullharvest@gmail.com</h1>
               <p>+1 388 7333 838</p>
@@ -23,25 +49,32 @@ export default function AdminSetting() {
       </section>
 
       <section>
-        <Link href='/terms'>
-          <div className='flex flex-col-2 bg-[#03045e] mb-2 mx-5 rounded-lg space-between text-start items-center gap-[3em] '>
-            <MdOutlineMenuBook className='  text-[2.8em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]' />
+        <Link href="/terms">
+          <div className="flex flex-col-2 bg-[#03045e] mb-2 mx-5 rounded-lg space-between text-start items-center gap-[3em] ">
+            <MdOutlineMenuBook className="  text-[2.8em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]" />
             <h1>Terms and Conditions</h1>
           </div>
         </Link>
       </section>
 
       <section>
-        <Link href='/privacy'>
-          <div className='flex flex-col-2 bg-[#03045e] mx-5 mb-6 rounded-lg space-between text-start items-center gap-[3em]'>
-            <MdOutlinePrivacyTip className='  text-[2.8em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]' />
+        <Link href="/privacy">
+          <div className="flex flex-col-2 bg-[#03045e] mx-5 mb-6 rounded-lg space-between text-start items-center gap-[3em]">
+            <MdOutlinePrivacyTip className="  text-[2.8em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]" />
             <h1>Privacy Policy</h1>
           </div>
         </Link>
       </section>
 
-      <section class='flex justify-center'>
-        <button class='bg-blue-800 text-white px-4 py-2 rounded'>LOGOUT</button>
+      <section className="flex justify-center">
+        <button
+          onClick={() => {
+            logout();
+          }}
+          className="bg-blue-800 text-white px-4 py-2 rounded"
+        >
+          LOGOUT
+        </button>
       </section>
     </main>
   );

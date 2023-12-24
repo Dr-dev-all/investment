@@ -53,6 +53,13 @@ export default function page() {
   // const { userId } = auth;
   console.log(auth);
   // const router = useRouter(west);
+  // const token = localStorage.getItem("accessToken");
+  // console.log({ access: token });
+  // protect this route  /login/userdash
+
+  // if (!token && pathname) {
+  //   router.push("/login");
+  // }
 
   // const router = useRouter();
 

@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+let varToken = "";
+
 const login = asyncHandler(async (req, res) => {
   // console.log(req.originalUrl);
   const { email, password } = req.body;
@@ -58,10 +60,11 @@ const login = asyncHandler(async (req, res) => {
     },
     process.env.ACCESS_TOKEN_SEC,
     {
-      expiresIn: "1d",
+      expiresIn: "4m",
     }
   );
 
+  varToken = accessToken;
   // create refreshtoken
 
   const refreshToken = jwt.sign(
@@ -74,9 +77,10 @@ const login = asyncHandler(async (req, res) => {
       isLoggedIn: true,
     },
     process.env.REFRESH_TOKEN_SEC,
-    { expiresIn: "7d" }
+    { expiresIn: "5m" }
   );
 
+  varToken = refreshToken;
   res.cookie("jwt", refreshToken, {
     sameSite: "None",
     secure: true,
@@ -115,8 +119,19 @@ const refresh = asyncHandler(async (req, res) => {
       { expiresIn: "1d" }
     );
 
+    varToken = accessToken;
     res.json({ accessToken });
   });
+});
+
+const getUserToken = asyncHandler((req, res) => {
+  if (!varToken) {
+    return res.status(400).json("No token found");
+  }
+
+  if (varToken) {
+    return res.status(400).json({ token: varToken });
+  }
 });
 
 const logout = asyncHandler(async (req, res) => {
@@ -132,4 +147,5 @@ export default {
   login,
   refresh,
   logout,
+  getUserToken,
 };
