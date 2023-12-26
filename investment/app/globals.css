@@ -82,3 +82,11 @@ body {
 .button-style-close {
   @apply center-with-flex   text-[1.5rem] bg-red-500 text-white font-bold px-4  py-1   rounded-full w-[7rem] mx-auto my-4;
 }
+
+.wallet-text-style {
+  @apply bg-white text-black text-center p-2;
+}
+
+.wallet-address-style {
+  @apply bg-white text-black  p-1  border-2;
+}

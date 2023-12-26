@@ -32,43 +32,13 @@ const useAxiosPrivate = () => {
           }
         } catch (error) {
           if (error) {
-            console.log(error);
+            router.push("/login");
           }
         }
       };
 
-      const getToken = async () => {
-        try {
-          const response = await fetch(
-            "http://127.0.0.1:5000/auths/getusertoken",
-            {
-              method: "GET",
-              headers: { "Content-Type": "application/json" },
-            }
-          );
-
-          const { token } = await response.json();
-          return token;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
       // end of modification
-      // const accessToken = JSON.parse(localStorage.getItem("accessToken"));/
-
-      // IF REQUEST DOES'NT HAVE A TOKEN
-      // if (!accessToken && pathname === "/login/userdash") {
-      //   return router.push("/login");
-      // }
-
-      // const userinfo = jwtDecode(accessToken);
-
-      // console.log(userinfo);
-
-      // route protection ends
-
-      let accessToken = getToken();
+      const accessToken = localStorage.getItem("accessToken");
 
       const requestIntercept = axiosPrivate.interceptors.request.use(
         (config) => {

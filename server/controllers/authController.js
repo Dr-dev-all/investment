@@ -127,23 +127,25 @@ const refresh = asyncHandler(async (req, res) => {
   });
 });
 
-const getUserToken = asyncHandler((req, res) => {
-  if (!varToken) {
-    return res.status(400).json("No token found");
-  }
-
-  if (varToken) {
-    return res.status(400).json({ token: varToken });
-  }
-});
-
 const logout = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
+  varToken = "";
   if (!cookie) {
     return sendStatus(204); //empty content
   }
+
   res.clearCookie("jwt", { sameSite: "None", secure: true, httpOnly: true });
   res.json({ message: "cookie cleard" });
+});
+
+const getUserToken = asyncHandler((req, res) => {
+  if (!varToken) {
+    return res.status(400).json("no-token-found");
+  }
+
+  if (varToken) {
+    return res.status(200).json({ token: varToken });
+  }
 });
 
 export default {

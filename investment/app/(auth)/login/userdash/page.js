@@ -61,47 +61,6 @@ export default function page() {
   // }
 
   let tokenVar = "";
-  // useEffect(() => {
-  //   const protectUser = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "http://127.0.0.1:5000/auths/getusertoken",
-  //         {
-  //           method: "GET",
-  //           headers: { "Content-Type": "application/json" },
-  //         }
-  //       );
-
-  //       const { token } = await response.json();
-  //       setToken_(token);
-
-  //       console.log(token);
-
-  //       if (token === "" && pathname === "/login/userdash" && !isLoading) {
-  //         return router.push("/");
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   protectUser();
-
-  //   return () => {};
-  // }, []);
-
-  // // console.log(token_);
-  // if (isLoading && token_ === "") {
-  //   // <RotateLoader />;
-  //   console.log("i was called");
-  //   return router.push("/login");
-  // }
-
-  // ROUTE PROTECTION
-
-  // END OF ROUTE PROTECTION
-
-  // getting user effect-call
 
   useEffect(() => {
     let isMounted = true;
@@ -122,10 +81,12 @@ export default function page() {
 
         // PROTECTING ROUTE
 
-        if (!token && pathname === "/login/userdash") {
-          router.push("/login");
-        }
+        // if (!token && pathname === "/login/userdash") {
+        //   router.push("/login");
+        // }
       };
+
+      getUserData();
     }
 
     return () => {
@@ -135,10 +96,10 @@ export default function page() {
     };
   }, []);
 
-  if (!token_ && pathname === "/login/userdash") {
-    // return <RotateLoader />;
-    return router.push("/login");
-  }
+  // if (!token_ && pathname === "/login/userdash") {
+  //   // return <RotateLoader />;
+  //   return router.push("/login");
+  // }
 
   // ROUTE MANIPULATION
   console.log(token_);
