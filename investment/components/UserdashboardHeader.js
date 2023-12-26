@@ -14,6 +14,7 @@ import axios from "@/lib/axios";
 import BeatLoader from "react-spinners/BeatLoader";
 import { FaCircle } from "react-icons/fa6";
 import { PiPottedPlantFill } from "react-icons/pi";
+import { IoNotificationsOffSharp } from "react-icons/io5";
 // import { jwtDecode } from "jwt-decode";
 
 export default function UserDashboardHeader() {
@@ -36,15 +37,7 @@ export default function UserDashboardHeader() {
 
     const controller = new AbortController();
 
-    // console.log({ headerToken: userInfo });
-
     const getUser = async () => {
-      // if (isMounted) {
-      //   const token = localStorage.getItem("accessToken");
-      //   const userInfo = jwtDecode(token);
-      //   console.log(userInfo);
-      //   setUser((prev) => ({ ...prev, data: userInfo }));
-      // }
       try {
         const response = await axiosPrivate.get("/users/getsingleuser", {
           signal: controller.signal,
@@ -90,17 +83,21 @@ export default function UserDashboardHeader() {
             />
           )}{" "}
         </h1>
-        <div className=" flex flex-col items-between      justify-center">
-          <FaCircle
-            className={`    mx-auto  text-[0.9rem] ${
-              user?.data?.Active === true ? "text-green-500" : "text-red-500"
-            } `}
-          />
-          <p className="text-white w-[97%]  mx-auto  text-[9px]"> active</p>
+        <div className=" center-with-flex items-center  text-center    justify-center">
+          <div className="flex flex-col">
+            <FaCircle
+              className={`    mx-auto  text-[0.9rem] ${
+                user?.data?.active === true ? "text-green-500" : "text-red-500"
+              } `}
+            />
+            <p className="text-white text-[10px]   text-center">
+              {user?.data?.active ? "Active" : "Disabled"}
+            </p>
+          </div>
         </div>
         <h1>
           {" "}
-          <IoNotificationsSharp />{" "}
+          <IoNotificationsOffSharp />{" "}
         </h1>
       </section>
       <section>

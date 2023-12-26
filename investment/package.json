@@ -38,6 +38,7 @@
     "react-tradingview-embed": "^3.0.6",
     "react-tradingview-widget-components": "^1.0.4",
     "reactjs-popup": "^2.0.6",
+    "uuid": "^9.0.1",
     "validator": "^13.11.0",
     "zod": "^3.22.4"
   },

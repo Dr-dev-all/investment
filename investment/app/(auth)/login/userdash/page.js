@@ -66,37 +66,24 @@ export default function page() {
 
   useEffect(() => {
     let isMounted = true;
+
     const controller = new AbortController();
 
-    if (effectRan.current === true) {
-      const getUserData = () => {
-        // checking for redirects
-        let token = localStorage.getItem("accessToken");
-        if (token) {
-          setStatus(true);
-          setToken_(token);
-        }
-        console.log({ parsed_token: token });
-        console.log(token_);
-        // end of redirection
+    const getUser = async () => {
+      try {
+        const response = await axiosPrivate.get("/users/getsingleuser", {
+          signal: controller.signal,
+        });
+        isMounted && setUser((prev) => ({ ...prev, data: response.data }));
+        console.log({ serverdata: data });
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-        let userData = jwtDecode(token);
-        console.log(userData);
-
-        setNewData(userData);
-
-        // PROTECTING ROUTE
-
-        // if (!token && pathname === "/login/userdash") {
-        //   router.push("/login");
-        // }
-      };
-
-      getUserData();
-    }
+    getUser();
 
     return () => {
-      effectRan.current = true;
       isMounted = false;
       controller.abort();
     };
@@ -122,12 +109,12 @@ export default function page() {
               Total Balance:{" "}
               <span className="font-black">
                 {" "}
-                {newData?.Balance && newData?.Balance !== "00" ? (
-                  ` $${newData?.Balance}`
+                {user?.data?.balance && user?.data?.balance !== "00" ? (
+                  ` $${user?.data?.balance}`
                 ) : isLoading ? (
                   <p className="animate-pulse  ">Loading...</p>
                 ) : (
-                  newData?.Balance === "00" && "$00.00"
+                  user?.data?.balance === "00" && "$00.00"
                 )}
               </span>
             </h1>
@@ -136,12 +123,12 @@ export default function page() {
             <h1 className="flex flex-col  font-black   h-[3.5rem]">
               Investment{" "}
               <span className="font-black">
-                {newData?.Investment && newData?.Investment !== "00" ? (
-                  ` $${newData?.Investment}`
+                {user?.data?.investment && user?.data?.investment !== "00" ? (
+                  ` $${user?.data?.investment}`
                 ) : isLoading ? (
                   <p className="animate-pulse  ">Loading...</p>
                 ) : (
-                  newData?.Investment === "00" && "$00.00"
+                  user?.data?.investment === "00" && "$00.00"
                 )}
               </span>
             </h1>
@@ -156,12 +143,12 @@ export default function page() {
                 Loss{" "}
                 <span className="font-black">
                   {" "}
-                  {newData?.Loss && newData?.Loss !== "00" ? (
-                    ` $${newData?.Loss}`
+                  {user?.data?.loss && user?.data?.loss !== "00" ? (
+                    ` $${user?.data?.loss}`
                   ) : isLoading ? (
                     <p className="animate-pulse">Loading...</p>
                   ) : (
-                    newData?.Loss === "00" && "$00.00"
+                    user?.data?.loss === "00" && "$00.00"
                   )}
                 </span>
               </h1>
@@ -170,12 +157,12 @@ export default function page() {
               <h1 className="flex flex-col  font-black  h-[3.5rem]">
                 Profits
                 <span className="font-black">
-                  {newData?.Profit && newData?.Profit !== "00" ? (
-                    `$${newData?.Profit}`
+                  {user?.data?.profit && user?.data?.profit !== "00" ? (
+                    `$${user?.data?.profit}`
                   ) : isLoading ? (
                     <p className="animate-pulse  ">Loading...</p>
                   ) : (
-                    newData?.Profit === "00" && "$00.00"
+                    user?.data?.profit === "00" && "$00.00"
                   )}
                 </span>
               </h1>
