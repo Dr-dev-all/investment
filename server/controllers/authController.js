@@ -63,7 +63,7 @@ const login = asyncHandler(async (req, res) => {
     },
     process.env.ACCESS_TOKEN_SEC,
     {
-      expiresIn: "5m",
+      expiresIn: "1d",
     }
   );
 
@@ -80,7 +80,7 @@ const login = asyncHandler(async (req, res) => {
       isLoggedIn: true,
     },
     process.env.REFRESH_TOKEN_SEC,
-    { expiresIn: "5m" }
+    { expiresIn: "7d" }
   );
 
   varToken = refreshToken;

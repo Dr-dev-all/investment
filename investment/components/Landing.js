@@ -58,7 +58,7 @@ export default function Landing() {
   const premium = [
     { name: "Interest", value: "130.1%", id: 1 },
     { name: "Investment", value: "$5000-$10000", id: 2 },
-    { name: "Capital Back", value: "No", id: 3 },
+    { name: "Capital Back", value: "Yes", id: 3 },
     { name: "Return Type", value: "Period", id: 4 },
     { name: "Number of Period", value: "7 Times", id: 5 },
     { name: "Profit Withdraw", value: "Anytime", id: 6 },
@@ -67,7 +67,7 @@ export default function Landing() {
   const gold = [
     { name: "Interest", value: "180%", id: 1 },
     { name: "Investment", value: "$10000-$50000", id: 2 },
-    { name: "Capital Bank", value: "No", id: 3 },
+    { name: "Capital Bank", value: "Yes", id: 3 },
     { name: "Return Type", value: "Period", id: 4 },
     { name: "Number of Period", value: "7 Times", id: 5 },
     { name: "Profit Withdraw", value: "Anytime", id: 6 },
@@ -132,12 +132,12 @@ export default function Landing() {
             </p>
           </div>
           <div className="w-[98%] px-[4rem] mx-auto lg:items-start lg:justify-left flex flex-col md:flex-row lg:flex-row  lg:w-[50%]   justify-between items-center ">
-            <button className="w-full lg:w-[40%] text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mb-2 md:mb-0 ">
+            <buttton className="w-full lg:w-[40%] text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  mb-2 md:mb-0 ">
               <a href="/register">REGISTER</a>
-            </button>
-            <button className="w-full lg:w-[40%] text-center transparent border hover:bg-green-700 text-white font-bold py-2 px-5 ">
+            </buttton>
+            <buttton className="w-full lg:w-[40%] text-center transparent border hover:bg-green-700 text-white font-bold py-2 px-5 ">
               <a href="/login">LOGIN</a>
-            </button>
+            </buttton>
           </div>
         </div>
       </div>
@@ -316,9 +316,9 @@ export default function Landing() {
       </article>
 
       <article className="article-style center-with-flex my-3 ">
-        <h1 className="flex flex-row justify-between px-3 items-center bg-[#03045e] text-bold text-[1.3rem] h-[3rem] w-screen">
-          <hr className="bg-white p-[0.2px] w-[3rem] " /> HOW IT WORKS{" "}
-          <hr className="bg-white p-[0.2px] w-[3rem] " />
+        <h1 className="flex flex-row justify-center px-3 items-center bg-[#03045e] text-center text-bold text-[1.3rem] h-[3rem] w-screen">
+          <hr className="bg-white p-[0.2px] w-[3rem] sm:hidden" /> HOW IT WORKS{" "}
+          <hr className="bg-white p-[0.2px] w-[3rem] sm:hidden" />
         </h1>
         <section className="2xl:mx-13 md:px-8 lg:px-10 grid grid-cols-2  gap-2 sm:grid-cols-2 md:grid-cols-3 h-full w-full p-5 ">
           <div className="help-div-style">
@@ -590,117 +590,6 @@ export default function Landing() {
                 className="  button-style-close"
               >
                 {" "}
-                close
-              </button>
-            </div>
-          </div>
-          <div className="w-screen">
-            <button
-              onClick={() => setShowDataD(!showDataD)}
-              href=""
-              className=" bitcoin-button-style"
-            >
-              <span className=" bitcoin-text-style">
-                {" "}
-                Risks of Bitcoin mining
-              </span>
-            </button>
-            <div
-              className={`${
-                showDataD
-                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
-                  : "hidden"
-              }`}
-            >
-              <div>
-                <h2 className="text-[1.5rem]  font-bold">Price volatility:</h2>
-                <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                  {" "}
-                  Bitcoin’s price has varied widely since it was introduced in
-                  2009. Since just November 2021, Bitcoin has traded for less
-                  than $20,000 and nearly as high as $69,000. This kind of
-                  volatility makes it difficult for miners to know if their
-                  reward will outweigh the high costs of mining.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-[1.5rem]  font-bold">Regulation:</h2>
-                <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                  {" "}
-                  Very few governments have embraced cryptocurrencies such as
-                  Bitcoin, and many are more likely to view them skeptically
-                  because the currencies operate outside government control.
-                  There is always the risk that governments could outlaw the
-                  mining of Bitcoin or cryptocurrencies altogether as China did
-                  in 2021, citing financial risks and increased speculative
-                  trading.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowDataD(!showDataD)}
-                href=""
-                className=" button-style-close"
-              >
-                close
-              </button>
-            </div>
-          </div>
-          <div className="w-screen">
-            <button
-              onClick={() => setShowDataE(!showDataE)}
-              href=""
-              className="bitcoin-button-style"
-            >
-              <span className=" text-[1.2rem] font-bold   text-white">
-                {" "}
-                Taxes on Bitcoin mining
-              </span>
-            </button>
-            <div
-              className={`    ${
-                showDataE
-                  ? "block w-full w-[90%] px-5  py-3   tracking-tight bg-white"
-                  : "hidden"
-              }`}
-            >
-              <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                It’s important to remember the impact that taxes can have on
-                Bitcoin mining. The IRS has been looking to crack down on owners
-                and traders of cryptocurrencies as the asset prices have
-                ballooned in recent years. Here are the key tax considerations
-                to keep in mind for Bitcoin mining.
-              </p>
-              <div>
-                <span>Are you a business:</span>
-                <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                  If Bitcoin mining is your business, you may be able to deduct
-                  expenses you incur for tax purposes. Revenue would be the
-                  value of the bitcoins you earn. But if mining is a hobby for
-                  you, it’s not likely you’ll be able to deduct expenses.
-                </p>
-              </div>
-              <div>
-                <span>Mined bitcoin is income:</span>
-                <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                  If you’re successfully able to mine Bitcoin or other
-                  cryptocurrencies, the fair market value of the currencies at
-                  the time of receipt will be taxed at ordinary income rates.
-                </p>
-              </div>
-              <div>
-                <span>Capital gains:</span>
-                <p className="2xl:px-13 md:px-8 lg:px-[12em]">
-                  If you sell bitcoins at a price above where you received them,
-                  that qualifies as a capital gain, which would be taxed the
-                  same way it would for traditional assets such as stocks or
-                  bonds.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowDataE(!showDataE)}
-                href=""
-                className="button-style-close"
-              >
                 close
               </button>
             </div>

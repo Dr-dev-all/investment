@@ -46,7 +46,9 @@ export default function page() {
   const pathname = usePathname();
   const router = useRouter();
   const [show, setShow] = useState(true);
-  const [token_, setToken_] = useState("");
+  const [token_, setToken_] = useState(null);
+  const [status, setStatus] = useState(true);
+  const showContent = useRef(false);
 
   // navigate = useNavigate();
   // location = useLocation();
@@ -70,8 +72,12 @@ export default function page() {
       const getUserData = () => {
         // checking for redirects
         let token = localStorage.getItem("accessToken");
-        setToken_(token);
+        if (token) {
+          setStatus(true);
+          setToken_(token);
+        }
         console.log({ parsed_token: token });
+        console.log(token_);
         // end of redirection
 
         let userData = jwtDecode(token);
@@ -101,8 +107,7 @@ export default function page() {
   //   return router.push("/login");
   // }
 
-  // ROUTE MANIPULATION
-  console.log(token_);
+  console.log({ tk_: token_ });
 
   console.log({ newdata: newData });
 
@@ -298,8 +303,19 @@ export default function page() {
       <UserDashboardFooter />
     </>
   );
+  if (showContent.current === true) {
+    console.log("show content render");
+    if (token_ !== null && status === true) {
+      console.log("number of renders");
+      return content;
+    }
+    if (token_ === null && pathname === "/login/userdash") {
+      console.log("checked");
+      return router.push("/login");
+    }
+  }
+  showContent.current = true;
 
-  return content;
   // }
   // }
 

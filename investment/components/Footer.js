@@ -42,8 +42,13 @@ export default function Footer() {
         <hr className="w-[80%]" />
         <section className="  h-[70%] grow grid  grid-cols-1 md:grid-cols-4  mb-4 p-2 gap-3 w-[90%] mx-auto ">
           <div>
-            <h1>BH-logo </h1>
-            <p>text about the comopany address</p>
+            <Link href="/" className=" mt-4">
+              <Image src="/bhlogo.jpeg" alt="bh-logo" width={60} height={60} />
+            </Link>
+            <p>
+              At Bullharvest Investment, we believe in cultivating prosperity
+              through strategic and informed investment.
+            </p>
           </div>
           <div>
             <h3>Our services</h3>
