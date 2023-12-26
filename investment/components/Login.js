@@ -138,12 +138,13 @@ export default function Login() {
 
           console.log(userInfo);
           console.log({ info: userInfo, tk: token });
-          if (!token) {
-            console.log("moved backed to login");
+          //  if (!token) {
+          //     console.log("moved backed to login");
 
-            return router.push("/login");
-          }
+          //     return router.push("/login");
+          //   }
 
+          // if (token) {
           if (token && userInfo.Admin === true) {
             console.log("pushed to userdash via admin");
 
@@ -154,6 +155,7 @@ export default function Login() {
             console.log("pushed to userdash via user");
             return router.push("/login/userdash");
           }
+          // }
         }
       } else {
         setUserErrorData("Invalid user data recieved");

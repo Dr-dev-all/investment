@@ -32,7 +32,7 @@ const useAxiosPrivate = () => {
           }
         } catch (error) {
           if (error) {
-            router.push("/login");
+            console.log("should redirecct");
           }
         }
       };

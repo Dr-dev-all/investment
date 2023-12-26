@@ -44,6 +44,7 @@ const getSingleUser = asyncHandler(async (req, res) => {
     investment: foundUser.investment,
     profit: foundUser.profit,
     loss: foundUser.loss,
+    plan: foundUser.plan,
   };
 
   // res.setHeader("Access-Control-Allow-Credentials", true);

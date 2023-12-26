@@ -303,17 +303,9 @@ export default function page() {
       <UserDashboardFooter />
     </>
   );
-  if (showContent.current === true) {
-    console.log("show content render");
-    if (token_ !== null && status === true) {
-      console.log("number of renders");
-      return content;
-    }
-    if (token_ === null && pathname === "/login/userdash") {
-      console.log("checked");
-      return router.push("/login");
-    }
-  }
+
+  return content;
+
   showContent.current = true;
 
   // }
