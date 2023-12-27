@@ -71,7 +71,7 @@ export default function () {
                 </li>
               ))}
             </ul>
-            <Link href="/prices" className="plan-link-style">
+            <Link href="/login" className="plan-link-style">
               CHOOSE PLAN <GoArrowUpRight className="inline" />
             </Link>
           </div>
@@ -86,7 +86,7 @@ export default function () {
                 </li>
               ))}
             </ul>
-            <Link href="/prices" className="plan-link-style">
+            <Link href="/login" className="plan-link-style">
               CHOOSE PLAN <GoArrowUpRight className="inline" />
             </Link>
           </div>
@@ -101,7 +101,7 @@ export default function () {
                 </li>
               ))}
             </ul>
-            <Link href="/prices" className="plan-link-style">
+            <Link href="/login" className="plan-link-style">
               CHOOSE PLAN <GoArrowUpRight className="inline" />
             </Link>
           </div>
@@ -117,9 +117,9 @@ export default function () {
                 comprehensive financial management experience, including
                 personalized advice and strategic planning.
               </p>
-              <button className="plan-link-style">
-                <a href="register">Sign Up Now</a>
-              </button>
+              <Link href="/register" className="plan-link-style">
+                Sign Up Now
+              </Link>
             </div>
           </div>
         </div>
@@ -171,9 +171,9 @@ export default function () {
                 choosing the right one for you? Our support team is ready to
                 help. Contact us here.
               </p>
-              <button className="plan-link-style">
-                <a href="contact">Contact</a>
-              </button>
+              <Link href="/contact" className="plan-link-style">
+                Contact
+              </Link>
             </div>
           </div>
         </div>
@@ -194,9 +194,9 @@ export default function () {
                 plan, sign up today, and embark on your investment journey with
                 BullHarvest.
               </p>
-              <button className="plan-link-style">
-                <a href="register">Get Started Now</a>
-              </button>
+              <Link href="/register" className="plan-link-style">
+                Get Started Now
+              </Link>
             </div>
           </div>
         </div>

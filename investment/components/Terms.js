@@ -1,11 +1,14 @@
 import { FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Terms() {
   const content = (
     <main>
-      <div className="p-5 bg-[#03045e] text-white">
-        <FaArrowLeft />
-      </div>
+      <Link href="/login/userdash">
+        <div className="p-5 bg-[#03045e] text-white">
+          <FaArrowLeft />
+        </div>
+      </Link>
       <section className="container mt-3 mx-auto px-4  ">
         <h1 className="text-lg font-semibold leading-6 text-gray-900">
           Welcome to BullHarvest! By accessing or using our website, you agree

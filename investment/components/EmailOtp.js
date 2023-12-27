@@ -28,7 +28,7 @@ export default function EmailOtp() {
   // end of otp generator handler
   // FORM SUBMISSION
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     try {
       const response = await fetch("http://127.0.0.1:5000/otp/changepassword", {
         method: "POST",
@@ -40,7 +40,7 @@ export default function EmailOtp() {
 
       const { message } = await response.json();
 
-      console.log(message);
+      // console.log(message);
 
       if (message === "required") {
         setErrorData("All fields are required");
@@ -63,7 +63,8 @@ export default function EmailOtp() {
       }
     } catch (error) {
       if (error) {
-        console.log(error);
+        // console.log(error);
+        throw new Error("Network error, try again later");
       }
     } finally {
       reset();

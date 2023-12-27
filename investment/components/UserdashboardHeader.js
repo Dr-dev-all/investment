@@ -45,7 +45,7 @@ export default function UserDashboardHeader() {
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
         console.log({ serverdata: data });
       } catch (error) {
-        console.log(error);
+        throw new Error("Network error, try again later");
       }
     };
 
@@ -59,18 +59,18 @@ export default function UserDashboardHeader() {
 
   console.log({ api_user: user });
   const content = (
-    <header className=" bg-[#03045e]  w-full min-h-[3rem] text-white fixed top-0  mb-[2rem]  ">
-      <section className="w-full max-h-[3rem] flex flex-row justify-between items-center  py-2 px-1">
-        <div className=" mb-[0.2rem] flex flex-col justify-center items-center gap-1 h-[55%] w-[2rem]   border-2 border-white  p-1      mx-auto">
+    <header className=" bg-[#03045e]  w-full min-h-[3rem] text-white fixed top-0    z-30    mb-[2rem] border-b-2 border-b-white ">
+      <section className="w-full h-[4rem] flex flex-row justify-between items-center  min-w-screen        py-2 px-2">
+        <div className="  flex flex-col justify-center items-center gap-1 h-[98%]  m-auto   w-[50%]     mr-3  border-2            rounded-[2rem]   border-white  px-2  py-1    my-auto">
           <span className="text-white    text-center   text-[10px] ">
             Active plan:
           </span>
-          <h2 className="text-[#03045e] p-1  font-bold  text-[12px]  text-center  bg-white w-full mx-auto">
+          <h2 className="text-[#03045e] px-1  font-bold  text-[12px]  text-center  rounded-full  bg-white w-[86%] mx-auto">
             {user?.data?.plan ? user?.data?.plan : "None"}
           </h2>
         </div>
-        <h1>
-          Hi{" "}
+        <div className="w-[25%] m-auto h-[2rem]  text-[10px] ">
+          <span className="italic text-[13px] font-bold "> Hi </span>{" "}
           {user?.data?.firstName ? (
             user?.data?.firstName
           ) : (
@@ -82,8 +82,8 @@ export default function UserDashboardHeader() {
               data-testid="loader"
             />
           )}{" "}
-        </h1>
-        <div className=" center-with-flex items-center  text-center    justify-center">
+        </div>
+        <div className=" center-with-flex  w-[25%]  m-auto ">
           <div className="flex flex-col">
             <FaCircle
               className={`    mx-auto  text-[0.9rem] ${
@@ -95,17 +95,17 @@ export default function UserDashboardHeader() {
             </p>
           </div>
         </div>
-        <h1>
+        <div className=" center-with-flex    w-[25%]  m-auto">
           {" "}
           <IoNotificationsOffSharp />{" "}
-        </h1>
+        </div>
       </section>
       <section>
         <hr className="w-full mb-1 mx-auto " />
         <article className="flex justify-between items-center  py-1 px-[2rem]">
           <div className="flex flex-col justify-center items-center ">
             <Link href="/login/userdash/withdraw" className="center-with-flex">
-              <FaMinusCircle />
+              <FaMinusCircle className="text-[1.7rem]" />
               <h1 className="  text-white mx-auto ">Withdraw</h1>
             </Link>
           </div>
@@ -114,7 +114,7 @@ export default function UserDashboardHeader() {
               href="/login/userdash/chooseplan"
               className="center-with-flex"
             >
-              <IoAddCircleSharp className="text-[2rem]" />
+              <IoAddCircleSharp className="text-[1.7rem]" />
               <h1 className=" text-white mx-auto ">Choose Plan</h1>
             </Link>
           </div>

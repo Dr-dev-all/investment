@@ -136,8 +136,8 @@ export default function Login() {
           setDecodedItem(userInfo._id);
           // second logic
 
-          console.log(userInfo);
-          console.log({ info: userInfo, tk: token });
+          // console.log(userInfo);
+          // console.log({ info: userInfo, tk: token });
           //  if (!token) {
           //     console.log("moved backed to login");
 
@@ -146,13 +146,13 @@ export default function Login() {
 
           // if (token) {
           if (token && userInfo.Admin === true) {
-            console.log("pushed to userdash via admin");
+            // console.log("pushed to userdash via admin");
 
             return router.push("/login/adminDash");
           }
 
           if (token && userInfo.Admin === false) {
-            console.log("pushed to userdash via user");
+            // console.log("pushed to userdash via user");
             return router.push("/login/userdash");
           }
           // }
@@ -161,7 +161,8 @@ export default function Login() {
         setUserErrorData("Invalid user data recieved");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw new Error("Network error, try again later");
     } finally {
       reset();
     }

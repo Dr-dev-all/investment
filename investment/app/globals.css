@@ -88,5 +88,5 @@ body {
 }
 
 .wallet-address-style {
-  @apply bg-white text-black  p-1  border-2;
+  @apply bg-white text-black  p-1 w-[50%] h-[5rem]   mx-auto  bg-yellow-500    text-center border-2;
 }

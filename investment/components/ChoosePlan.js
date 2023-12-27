@@ -8,6 +8,8 @@ import { TiArrowRight } from "react-icons/ti";
 import { GiPayMoney } from "react-icons/gi";
 import { FaEthereum } from "react-icons/fa";
 import { HiCurrencyDollar } from "react-icons/hi2";
+import copy from "clipboard-copy";
+import { FaCopy } from "react-icons/fa";
 
 export default function ChoosePlan() {
   // starter plan
@@ -31,11 +33,24 @@ export default function ChoosePlan() {
   const [premiumUsdt, setPremiumUsdt] = useState(true);
   const [premiumTrx, setPremiumTrx] = useState(true);
 
+  const copyWallet = async (wall_addr) => {
+    try {
+      const success = await copy(wall_addr);
+      if (success) {
+        alert("Wallet address copied");
+      }
+    } catch (error) {
+      if (error) {
+        alert("Unable to copy waallet address, please try again later");
+      }
+    }
+  };
+
   const content = (
     <section className="min-h-screen w-full text-[#03045e]  mt-[6.9rem] mb-[9em]  rounded-b-lg  flex flex-col">
-      <div className="w-[96%] p-1 text-center bg-white   mx-auto  mt-[1rem]   text-black  bg-[#ffdf64]   rounded-[2rem] ">
+      <div className="w-[96%] p-1 text-center bg-white   mx-auto  mt-[1rem]   text-black     rounded-[2rem] ">
         <h1 className="font-bold ">Warning </h1>
-        <p className="p-3  ">
+        <p className="p-3 bg-[#ffdf64] ">
           Please ensure that your investment value is in accordance or conforms
           with your chosen plan, if your investment value is above your chosen
           plan you will be automatically switched to the higher plan with their
@@ -112,9 +127,27 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     Bitcoin address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">4HxdwanKkXp14tM</span>
                 </p>
+                <br />
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 ">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -164,12 +197,32 @@ export default function ChoosePlan() {
                 <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                   <span className="bg-[#03045e] p-2 text-white">
                     Etheruem address :
-                  </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">
-                    3887454C233cbEA102rjrthrt
                   </span>
                 </p>
+
+                <br />
+
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2  text-black ">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -216,12 +269,33 @@ export default function ChoosePlan() {
                   crypto wallet. (starter plan range ($50 - $500))
                 </p>
                 <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
-                  <br />
                   <span className="bg-[#03045e] p-2 text-white">
                     USDT address :
                   </span>{" "}
-                  <span className="wallet-address-style">td7bfR3UT6ds5sJ</span>
                 </p>
+                <br />
+
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -272,9 +346,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     TRX address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">7bfR3UT6ds5sJ</span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -345,9 +439,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     Bitcoin address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">4HxdwanKkXp14tM</span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -398,11 +512,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white">
                     Etheruem address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">
-                    3887454C233cbEA102rjrthrt
-                  </span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -451,8 +583,28 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white">
                     USDT address :
                   </span>{" "}
-                  <span className="wallet-address-style">td7bfR3UT6ds5sJ</span>
                 </p>
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -497,15 +649,35 @@ export default function ChoosePlan() {
                 <p className="wallet-text-style">
                   Please copy the TRX (TRX) wallet address bellow and make
                   deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($50 - $500))
+                  crypto wallet. (starter plan range ($5000 - $10000))
                 </p>
                 <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     TRX address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">7bfR3UT6ds5sJ</span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -576,9 +748,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     Bitcoin address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">4HxdwanKkXp14tM</span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -629,11 +821,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white">
                     Etheruem address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">
-                    3887454C233cbEA102rjrthrt
-                  </span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -684,8 +894,28 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white">
                     USDT address :
                   </span>{" "}
-                  <span className="wallet-address-style">td7bfR3UT6ds5sJ</span>
                 </p>
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>
@@ -736,9 +966,29 @@ export default function ChoosePlan() {
                   <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                     TRX address :
                   </span>{" "}
-                  <br />
-                  <span className="wallet-address-style">7bfR3UT6ds5sJ</span>
                 </p>
+                <br />
+                {/* start */}
+                <div className="  center-with-flex  w-full">
+                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                      19S3BzZG3bf5EkL4iWF
+                      <br />
+                      4HxdwanKkXp14tM
+                    </span>
+
+                    <button
+                      onClick={() => {
+                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                      }}
+                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                    >
+                      Copy wallet
+                      <FaCopy />
+                    </button>
+                  </div>
+                </div>
+                {/* end */}
               </div>
             </div>
           </div>

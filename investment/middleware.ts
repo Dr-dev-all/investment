@@ -13,13 +13,10 @@ export async function middleware(req: NextRequest) {
     // console.log(authorization);
     const { token } = await response.json();
 
-    console.log(token);
-
     if (
       typeof token === "undefined" &&
       req.nextUrl.pathname.includes("/login/userdash")
     ) {
-      console.log("would have redirected");
       return NextResponse.redirect(new URL("/login", req.url));
     }
 
@@ -30,19 +27,9 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
 
-    // if (token) {
-    // const userData: any = jwtDecode(token);
-    // if (userData.Admin === true) {
-    //   return NextResponse.rewrite(new URL("/login/adminDash", req.url));
-    // }
-    // if (userData.Admin === false) {
-    //   return NextResponse.rewrite(new URL("/login/userdash", req.url));
-    // }
-    // }
-
     return NextResponse.next();
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    throw new Error(error);
   }
 }
 

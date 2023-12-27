@@ -75,9 +75,10 @@ export default function page() {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
-        console.log({ serverdata: data });
+        // console.log({ serverdata: data });
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        throw new Error("Network error, try again later");
       }
     };
 
@@ -102,7 +103,7 @@ export default function page() {
   const content = (
     <>
       <UserDashboardHeader />{" "}
-      <main className="min-h-full w-full text-[#03045e]  mt-[6.9rem]  rounded-b-lg  flex flex-col  flex-grow">
+      <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow">
         <section className="flex justify-between  bg-[#03045e]  items-center w-full min-h-[4rem]   p-1 ">
           <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white    rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
             <h1 className="flex flex-col h-[3.5rem] font-black  ">
@@ -236,10 +237,10 @@ export default function page() {
                 }`}
               >
                 {" "}
-                There are a lot of stories of ordinary people and early
-                investors who made their fortune in BTC with relatively little
-                initial investment. Even the early miners are not left out as
-                they earned BTC with ease
+                There are a lot of stories about early investors who made their
+                fortune through our chosen assets with relatively little initial
+                investment. Even the early miners are not left out as they
+                earned BTC and other assets with ease here in BullHarvest.
               </p>
             </div>
           </article>
@@ -293,7 +294,7 @@ export default function page() {
 
   return content;
 
-  showContent.current = true;
+  // showContent.current = true;
 
   // }
   // }

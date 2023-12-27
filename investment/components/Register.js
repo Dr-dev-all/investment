@@ -35,9 +35,10 @@ export default function Register() {
       const response = await fetch("http://127.0.0.1:5000/otp/generatecode");
       const { code } = await response.json();
       setCode(code);
-      console.log(code);
+      // console.log(code);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw new Error("Error occured, try again later");
     }
   };
 
@@ -72,7 +73,7 @@ export default function Register() {
             errorResponseData.successStatus === false
           ) {
             setServerData(errorResponseData.message);
-            console.log(errorResponseData.message);
+            // console.log(errorResponseData.message);
 
             setUserOptions(() => ({
               ...userOptions,
@@ -158,7 +159,8 @@ export default function Register() {
 
       // isSubmitted || (isSubmitSuccessful && setServerData(null));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw new Error("Network error, try again later");
     } finally {
       reset();
     }
