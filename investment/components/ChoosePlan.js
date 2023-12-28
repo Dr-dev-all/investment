@@ -64,938 +64,925 @@ export default function ChoosePlan() {
         <h2 className="text-lg font-medium mt-5 text-md tecxt-center text-gray-700 flex items-center justify-center mb-3 ">
           Make choice of your best plan
         </h2>
-        {/* $$$$$$$$$$$$$ */}
-        {/*  STARTER PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
-        <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
-          <h1 className="text-[1.2rem] font-bold text-center ">Starter Plan</h1>
-          <div className="plan">
-            <h3>
-              Interest <span className="float-right">20%</span>
-            </h3>
-            <h3>
-              Investment <span className="float-right">$50 - $500</span>
-            </h3>
-            <h3>
-              Withdraw <span className="float-right">Anytime</span>
-            </h3>
-          </div>
-
-          {/* starter btc */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <GrBitcoin className="text-white" />{" "}
-                </div>
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setStarterBtc(!starterBtc);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose bitcoin wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {starterBtc ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  starterBtc ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style ">
-                  Please copy the bitcoin (btc) wallet address bellow and make
-                  deposit of your investment value in bitcoin through your
-                  crypto wallet. (starter plan range ($50 - $500))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    Bitcoin address :
-                  </span>{" "}
-                </p>
-                <br />
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 ">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
+        <div className="2xl:mx-18 md:px-8 lg:px-8 center-with-grid md:grid-cols-3 w-screen">
+          {/* $$$$$$$$$$$$$ */}
+          {/*  STARTER PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
+          <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
+            <h1 className="text-[1.2rem] font-bold text-center ">
+              Starter Plan
+            </h1>
+            <div className="plan">
+              <h3>
+                Interest <span className="float-right">20%</span>
+              </h3>
+              <h3>
+                Investment <span className="float-right">$50 - $500</span>
+              </h3>
+              <h3>
+                Withdraw <span className="float-right">Anytime</span>
+              </h3>
+            </div>
+            {/* starter btc */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <GrBitcoin className="text-white" />{" "}
+                  </div>
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        setStarterBtc(!starterBtc);
                       }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
                     >
-                      Copy wallet
-                      <FaCopy />
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose bitcoin wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {starterBtc ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* END OF STARTER BTC */}
-          {/* starter Etheruem */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setStarterEth(!starterEth);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
-                  >
-                    {/* <FaEthereum className="text-white inline mr-2" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose Etheruem wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {starterEth ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  starterEth ? "hidden" : "block    bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the Etheruem (Etheruem) wallet address bellow and
-                  make deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($50 - $500))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
-                  <span className="bg-[#03045e] p-2 text-white">
-                    Etheruem address :
-                  </span>
-                </p>
-
-                <br />
-
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2  text-black ">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end of starter ethereum */}
-          {/* starter USDT */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setStarterUsdt(!starterUsdt);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
-                  >
-                    {/* <HiCurrencyDollar className="text-white   inline" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose USDT wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {starterUsdt ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${starterUsdt ? "hidden" : "block bg-white "}    `}
-              >
-                <p className="wallet-text-style ">
-                  Please copy the USDT (USDT) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($50 - $500))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
-                  <span className="bg-[#03045e] p-2 text-white">
-                    USDT address :
-                  </span>{" "}
-                </p>
-                <br />
-
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end starter usdt */}
-          {/* starter TRX */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setStarterTrx(!starterTrx);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose TRX wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {starterTrx ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  starterTrx ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the TRX (TRX) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($50 - $500))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    TRX address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* $$$$$$$$$$$$$ */}
-        {/* END OF STARTER PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
-
-        {/*  GOLD PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
-        <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
-          <h1 className="text-[1.2rem] font-bold text-center ">Gold Plan</h1>
-          <div className="plan">
-            <h3>
-              Interest <span className="float-right">130.1%</span>
-            </h3>
-            <h3>
-              Investment <span className="float-right">$5000 - $10000</span>
-            </h3>
-            <h3>
-              Withdraw <span className="float-right">Anytime</span>
-            </h3>
-          </div>
-
-          {/* Gold btc */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <GrBitcoin className="text-white" />{" "}
-                </div>
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setGoldBtc(!goldBtc);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose bitcoin wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {goldBtc ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  goldBtc ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style ">
-                  Please copy the bitcoin (btc) wallet address bellow and make
-                  deposit of your investment value in bitcoin through your
-                  crypto wallet. (starter plan range ($5000 - $10000))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    Bitcoin address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* END OF Gold BTC */}
-          {/* Gold Etheruem */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setGoldEth(!goldEth);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
-                  >
-                    {/* <FaEthereum className="text-white inline mr-2" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose Etheruem wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {goldEth ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  goldEth ? "hidden" : "block    bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the Etheruem (Etheruem) wallet address bellow and
-                  make deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($5000 - $10000))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
-                  <span className="bg-[#03045e] p-2 text-white">
-                    Etheruem address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end of gold ethereum */}
-          {/* gold USDT */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setGoldUsdt(!goldUsdt);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
-                  >
-                    {/* <HiCurrencyDollar className="text-white   inline" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose USDT wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {goldUsdt ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div className={`${goldUsdt ? "hidden" : "block bg-white "}    `}>
-                <p className="wallet-text-style ">
-                  Please copy the USDT (USDT) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($5000 - $10000))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                <div
+                  className={`${
+                    starterBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the bitcoin (btc) wallet address bellow and make
+                    deposit of your investment value in bitcoin through your
+                    crypto wallet. (starter plan range ($50 - $500))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      Bitcoin address :
+                    </span>{" "}
+                  </p>
                   <br />
-                  <span className="bg-[#03045e] p-2 text-white">
-                    USDT address :
-                  </span>{" "}
-                </p>
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 ">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* END OF STARTER BTC */}
+            {/* starter Etheruem */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        setStarterEth(!starterEth);
                       }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
                     >
-                      Copy wallet
-                      <FaCopy />
+                      {/* <FaEthereum className="text-white inline mr-2" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose Etheruem wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {starterEth ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
                     </button>
                   </div>
                 </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end gold usdt */}
-          {/* gold TRX */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setGoldTrx(!goldTrx);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose TRX wallet
+                <div
+                  className={`${
+                    starterEth
+                      ? "hidden"
+                      : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the Etheruem (Etheruem) wallet address bellow
+                    and make deposit of your investment value in Etheruem
+                    through your crypto wallet. (starter plan range ($50 -
+                    $500))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <span className="bg-[#03045e] p-2 text-white">
+                      Etheruem address :
                     </span>
-                    <span className="w-[99%]  mx-auto">
-                      {goldTrx ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  goldTrx ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the TRX (TRX) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($5000 - $10000))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    TRX address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* $$$$$$$$$$$$$ */}
-        {/* END OF GOLD PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
-
-        {/*  PREMIUM PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
-        <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
-          <h1 className="text-[1.2rem] font-bold text-center ">Premium Plan</h1>
-          <div className="plan">
-            <h3>
-              Interest <span className="float-right">180%</span>
-            </h3>
-            <h3>
-              Investment <span className="float-right">$10000 - $50000</span>
-            </h3>
-            <h3>
-              Withdraw <span className="float-right">Anytime</span>
-            </h3>
-          </div>
-
-          {/* Premium btc */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <GrBitcoin className="text-white" />{" "}
-                </div>
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setPremiumBtc(!premiumBtc);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose bitcoin wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {premiumBtc ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  premiumBtc ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style ">
-                  Please copy the bitcoin (btc) wallet address bellow and make
-                  deposit of your investment value in bitcoin through your
-                  crypto wallet. (starter plan range ($10000 - $50000))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    Bitcoin address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* END OF Premium BTC */}
-          {/* Premium Etheruem */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setPremiumEth(!premiumEth);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
-                  >
-                    {/* <FaEthereum className="text-white inline mr-2" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose Etheruem wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {premiumEth ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${
-                  premiumEth ? "hidden" : "block    bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the Etheruem (Etheruem) wallet address bellow and
-                  make deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($10000 - $50000))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
-                  <span className="bg-[#03045e] p-2 text-white">
-                    Etheruem address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
-                    <button
-                      onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
-                      }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
-                    >
-                      Copy wallet
-                      <FaCopy />
-                    </button>
-                  </div>
-                </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end of premium ethereum */}
-          {/* premium USDT */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setPremiumUsdt(!premiumUsdt);
-                    }}
-                    className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
-                  >
-                    {/* <HiCurrencyDollar className="text-white   inline" /> */}
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose USDT wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {premiumUsdt ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`${premiumUsdt ? "hidden" : "block bg-white "}    `}
-              >
-                <p className="wallet-text-style ">
-                  Please copy the USDT (USDT) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($10000 - $50000))
-                </p>
-                <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                  </p>
                   <br />
-                  <span className="bg-[#03045e] p-2 text-white">
-                    USDT address :
-                  </span>{" "}
-                </p>
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2  text-black ">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* end of starter ethereum */}
+            {/* starter USDT */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        setStarterUsdt(!starterUsdt);
                       }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
                     >
-                      Copy wallet
-                      <FaCopy />
+                      {/* <HiCurrencyDollar className="text-white   inline" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose USDT wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {starterUsdt ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
                     </button>
                   </div>
                 </div>
-                {/* end */}
-              </div>
-            </div>
-          </div>
-          {/* end gold usdt */}
-          {/* gold TRX */}
-          <div>
-            <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
-              <div className="btc-btn  w-full">
-                {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
-                  <GiPayMoney className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white  " />
-                  <RiSecurePaymentFill className="text-white" />
-                  <TiArrowRight className="animate-ping   text-white" />
-                  <HiCurrencyDollar className="text-white" />{" "}
-                </div> */}
-
-                <div className="     flex justify-between items-center w-full mx-auto   py-2">
-                  <button
-                    onClick={() => {
-                      setPremiumTrx(!premiumTrx);
-                    }}
-                    className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
-                  >
-                    <span className="w-[99%]  mx-auto">
-                      Click to choose TRX wallet
-                    </span>
-                    <span className="w-[99%]  mx-auto">
-                      {premiumTrx ? (
-                        <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
-                      ) : (
-                        <IoMdArrowDropupCircle className="inline  ml-3" />
-                      )}
-                    </span>
-                  </button>
+                <div
+                  className={`${
+                    starterUsdt ? "hidden" : "block bg-white "
+                  }    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the USDT (USDT) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($50 - $500))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <span className="bg-[#03045e] p-2 text-white">
+                      USDT address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
                 </div>
               </div>
-              <div
-                className={`${
-                  premiumTrx ? "hidden" : "block   bg-white    text-[#03045e]"
-                }    `}
-              >
-                <p className="wallet-text-style">
-                  Please copy the TRX (TRX) wallet address bellow and make
-                  deposit of your investment value in Etheruem through your
-                  crypto wallet. (starter plan range ($10000 - $50000))
-                </p>
-                <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
-                  <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
-                    TRX address :
-                  </span>{" "}
-                </p>
-                <br />
-                {/* start */}
-                <div className="  center-with-flex  w-full">
-                  <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
-                    <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                      19S3BzZG3bf5EkL4iWF
-                      <br />
-                      4HxdwanKkXp14tM
-                    </span>
-
+            </div>
+            {/* end starter usdt */}
+            {/* starter TRX */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
-                        copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        setStarterTrx(!starterTrx);
                       }}
-                      className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
                     >
-                      Copy wallet
-                      <FaCopy />
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose TRX wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {starterTrx ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
                     </button>
                   </div>
                 </div>
-                {/* end */}
+                <div
+                  className={`${
+                    starterTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the TRX (TRX) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($50 - $500))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      TRX address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
               </div>
             </div>
           </div>
+          {/* $$$$$$$$$$$$$ */}
+          {/* END OF STARTER PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
+          {/*  GOLD PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
+          <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
+            <h1 className="text-[1.2rem] font-bold text-center ">Gold Plan</h1>
+            <div className="plan">
+              <h3>
+                Interest <span className="float-right">130.1%</span>
+              </h3>
+              <h3>
+                Investment <span className="float-right">$5000 - $10000</span>
+              </h3>
+              <h3>
+                Withdraw <span className="float-right">Anytime</span>
+              </h3>
+            </div>
+            {/* Gold btc */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <GrBitcoin className="text-white" />{" "}
+                  </div>
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setGoldBtc(!goldBtc);
+                      }}
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose bitcoin wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {goldBtc ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    goldBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the bitcoin (btc) wallet address bellow and make
+                    deposit of your investment value in bitcoin through your
+                    crypto wallet. (starter plan range ($5000 - $10000))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      Bitcoin address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* END OF Gold BTC */}
+            {/* Gold Etheruem */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setGoldEth(!goldEth);
+                      }}
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
+                    >
+                      {/* <FaEthereum className="text-white inline mr-2" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose Etheruem wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {goldEth ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    goldEth ? "hidden" : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the Etheruem (Etheruem) wallet address bellow
+                    and make deposit of your investment value in Etheruem
+                    through your crypto wallet. (starter plan range ($5000 -
+                    $10000))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <span className="bg-[#03045e] p-2 text-white">
+                      Etheruem address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* end of gold ethereum */}
+            {/* gold USDT */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setGoldUsdt(!goldUsdt);
+                      }}
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
+                    >
+                      {/* <HiCurrencyDollar className="text-white   inline" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose USDT wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {goldUsdt ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${goldUsdt ? "hidden" : "block bg-white "}    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the USDT (USDT) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($5000 - $10000))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <br />
+                    <span className="bg-[#03045e] p-2 text-white">
+                      USDT address :
+                    </span>{" "}
+                  </p>
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* end gold usdt */}
+            {/* gold TRX */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setGoldTrx(!goldTrx);
+                      }}
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose TRX wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {goldTrx ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    goldTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the TRX (TRX) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($5000 - $10000))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      TRX address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* $$$$$$$$$$$$$ */}
+          {/* END OF GOLD PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
+          {/*  PREMIUM PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
+          <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
+            <h1 className="text-[1.2rem] font-bold text-center ">
+              Premium Plan
+            </h1>
+            <div className="plan">
+              <h3>
+                Interest <span className="float-right">180%</span>
+              </h3>
+              <h3>
+                Investment <span className="float-right">$10000 - $50000</span>
+              </h3>
+              <h3>
+                Withdraw <span className="float-right">Anytime</span>
+              </h3>
+            </div>
+            {/* Premium btc */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <GrBitcoin className="text-white" />{" "}
+                  </div>
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setPremiumBtc(!premiumBtc);
+                      }}
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose bitcoin wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {premiumBtc ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    premiumBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the bitcoin (btc) wallet address bellow and make
+                    deposit of your investment value in bitcoin through your
+                    crypto wallet. (starter plan range ($10000 - $50000))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      Bitcoin address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* END OF Premium BTC */}
+            {/* Premium Etheruem */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setPremiumEth(!premiumEth);
+                      }}
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
+                    >
+                      {/* <FaEthereum className="text-white inline mr-2" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose Etheruem wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {premiumEth ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    premiumEth
+                      ? "hidden"
+                      : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the Etheruem (Etheruem) wallet address bellow
+                    and make deposit of your investment value in Etheruem
+                    through your crypto wallet. (starter plan range ($10000 -
+                    $50000))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <span className="bg-[#03045e] p-2 text-white">
+                      Etheruem address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* end of premium ethereum */}
+            {/* premium USDT */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setPremiumUsdt(!premiumUsdt);
+                      }}
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
+                    >
+                      {/* <HiCurrencyDollar className="text-white   inline" /> */}
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose USDT wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {premiumUsdt ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    premiumUsdt ? "hidden" : "block bg-white "
+                  }    `}
+                >
+                  <p className="wallet-text-style ">
+                    Please copy the USDT (USDT) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($10000 - $50000))
+                  </p>
+                  <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
+                    <br />
+                    <span className="bg-[#03045e] p-2 text-white">
+                      USDT address :
+                    </span>{" "}
+                  </p>
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+            {/* end gold usdt */}
+            {/* gold TRX */}
+            <div>
+              <div className=" w-full   btc border-y-2 border-y-[#03045e] py-2   px-2">
+                <div className="btc-btn  w-full">
+                  {/* <div className="     flex justify-between items-center w-full mx-auto px-[3rem]  bg-[#03045e]  border-y-2 border-y-[#03045e]    py-2">
+                    <GiPayMoney className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white  " />
+                    <RiSecurePaymentFill className="text-white" />
+                    <TiArrowRight className="animate-ping   text-white" />
+                    <HiCurrencyDollar className="text-white" />{" "}
+                  </div> */}
+                  <div className="     flex justify-between items-center w-full mx-auto   py-2">
+                    <button
+                      onClick={() => {
+                        setPremiumTrx(!premiumTrx);
+                      }}
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
+                      <span className="w-[99%]  mx-auto">
+                        Click to choose TRX wallet
+                      </span>
+                      <span className="w-[99%]  mx-auto">
+                        {premiumTrx ? (
+                          <IoMdArrowDropdownCircle className="inline   animate-pulse  ml-3" />
+                        ) : (
+                          <IoMdArrowDropupCircle className="inline  ml-3" />
+                        )}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    premiumTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
+                  <p className="wallet-text-style">
+                    Please copy the TRX (TRX) wallet address bellow and make
+                    deposit of your investment value in Etheruem through your
+                    crypto wallet. (starter plan range ($10000 - $50000))
+                  </p>
+                  <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
+                    <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
+                      TRX address :
+                    </span>{" "}
+                  </p>
+                  <br />
+                  {/* start */}
+                  <div className="  center-with-flex  w-full">
+                    <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
+                      <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
+                        19S3BzZG3bf5EkL4iWF
+                        <br />
+                        4HxdwanKkXp14tM
+                      </span>
+                      <button
+                        onClick={() => {
+                          copyWallet("19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM");
+                        }}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
+                        Copy wallet
+                        <FaCopy />
+                      </button>
+                    </div>
+                  </div>
+                  {/* end */}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* $$$$$$$$$$$$$ */}
+          {/* END OF PREMIUM PLAN  */}
+          {/* $$$$$$$$$$$$$ */}
         </div>
-        {/* $$$$$$$$$$$$$ */}
-        {/* END OF PREMIUM PLAN  */}
-        {/* $$$$$$$$$$$$$ */}
       </div>{" "}
     </section>
   );
