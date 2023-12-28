@@ -32,6 +32,9 @@ import { TiArrowRight } from "react-icons/ti";
 import { BiSolidUpArrow } from "react-icons/bi";
 import { MdVerifiedUser } from "react-icons/md";
 import RotateLoader from "react-spinners/RotateLoader";
+import { AdvancedChart } from "react-tradingview-embed";
+import { ForexCrossRates } from "react-tradingview-embed";
+import { TechnicalAnalysis } from "react-tradingview-embed";
 
 //import tradingchart
 
@@ -78,7 +81,10 @@ export default function page() {
         // console.log({ serverdata: data });
       } catch (error) {
         // console.log(error);
-        throw new Error("Network error, try again later");
+        if (error) {
+          // throw new Error("Network error, try again later");
+          console.log("error");
+        }
       }
     };
 
@@ -104,41 +110,81 @@ export default function page() {
     <>
       <UserDashboardHeader />{" "}
       <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow">
-        <section className="flex justify-between  bg-[#03045e]  items-center w-full min-h-[4rem]   p-1 ">
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white    rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col h-[3.5rem] font-black  ">
-              Total Balance:{" "}
-              <span className="font-black">
-                {" "}
-                {user?.data?.balance && user?.data?.balance !== "00" ? (
-                  ` $${user?.data?.balance}`
-                ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
-                ) : (
-                  user?.data?.balance === "00" && "$00.00"
-                )}
-              </span>
-            </h1>
-          </div>
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white    rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col  font-black   h-[3.5rem]">
-              Investment{" "}
-              <span className="font-black">
-                {user?.data?.investment && user?.data?.investment !== "00" ? (
-                  ` $${user?.data?.investment}`
-                ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
-                ) : (
-                  user?.data?.investment === "00" && "$00.00"
-                )}
-              </span>
-            </h1>
-          </div>
+        <section className="grid     md:grid-cols-2         bg-[#03045e]  items-center w-[99%]   mx-auto       min-h-[4rem]   p-1 ">
+          {/* investment and balance */}
+          <article className="grid grid-cols-2 w-[90%] mx-auto">
+            <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
+              <h1 className="flex flex-col h-[4rem] font-black   ">
+                Total Balance:{" "}
+                <span className="font-black">
+                  {" "}
+                  {user?.data?.balance && user?.data?.balance !== "00" ? (
+                    ` $${user?.data?.balance}`
+                  ) : isLoading ? (
+                    <p className="animate-pulse  ">Loading...</p>
+                  ) : (
+                    user?.data?.balance === "00" && "$00.00"
+                  )}
+                </span>
+              </h1>
+            </div>
+            <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
+              <h1 className="flex flex-col  font-black   h-[4rem]  ">
+                Investment{" "}
+                <span className="font-black">
+                  {user?.data?.investment && user?.data?.investment !== "00" ? (
+                    ` $${user?.data?.investment}`
+                  ) : isLoading ? (
+                    <p className="animate-pulse  ">Loading...</p>
+                  ) : (
+                    user?.data?.investment === "00" && "$00.00"
+                  )}
+                </span>
+              </h1>
+            </div>
+          </article>
+
+          {/* end of investment and balance */}
+
+          {/* LOSS AND PROFIT */}
+          <article className="grid grid-cols-2 w-[90%] mx-auto">
+            <div className="center-with-flex text-[#03045e] w-[85%]  bg-white  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2">
+              <h1 className="flex flex-col h-[4rem] font-black    ">
+                Loss{" "}
+                <span className="font-black">
+                  {" "}
+                  {user?.data?.loss && user?.data?.loss !== "00" ? (
+                    ` $${user?.data?.loss}`
+                  ) : isLoading ? (
+                    <p className="animate-pulse">Loading...</p>
+                  ) : (
+                    user?.data?.loss === "00" && "$00.00"
+                  )}
+                </span>
+              </h1>
+            </div>
+            <div className="  center-with-flex text-[#03045e] w-[85%]  bg-white h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2">
+              <h1 className="flex flex-col h-[4rem] font-black ">
+                Profits
+                <span className="font-black">
+                  {user?.data?.profit && user?.data?.profit !== "00" ? (
+                    `$${user?.data?.profit}`
+                  ) : isLoading ? (
+                    <p className="animate-pulse  ">Loading...</p>
+                  ) : (
+                    user?.data?.profit === "00" && "$00.00"
+                  )}
+                </span>
+              </h1>
+            </div>
+          </article>
+
+          {/* END OF LOSS AND PROFIT */}
         </section>
 
         {/* choose plan */}
         <section className=" center-with-flex w-full min-h-full gap-3    my-2 py-2 px-3">
-          <article className="flex justify-between   mb-4  bg-[#03045e] text-white  items-center w-full min-h-[6rem]  shadow-lg shadow-gray-500   border-white border-2  p-1 rounded-[2rem]">
+          <article className="flex justify-between   mb-4  bg-[#03045e] text-white  items-center w-full   hidden      min-h-[6rem]  shadow-lg shadow-gray-500   border-white border-2  p-1 rounded-[2rem]">
             <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white   shadow-2xl shadow-black    rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
               <h1 className="flex flex-col  font-black  h-[3.5rem]    ">
                 Loss{" "}
@@ -170,7 +216,7 @@ export default function page() {
             </div>
           </article>
           <article className="center-with-flex text-center w-[97%] border-2 py-1 shadow-lg shadow-gray-500  mb-2 bg-white   bg-[#a0ccda]  rounded-[1rem]">
-            <div className="  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]">
+            <div className="  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]    md:bg-yellow-500 md:px-[10rem]   ">
               <GiPayMoney className="text-[1.5rem]" />
               <TiArrowRight className="animate-ping" />
               <FaMoneyBillTrendUp className="text-[1.5rem] " />
@@ -205,7 +251,7 @@ export default function page() {
               </h4>
               <div></div>
             </div>
-            <div className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg">
+            <div className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[12rem] md:bg-red-500   ">
               <FaBitcoin className="text-[2rem]" />
               <SiLitecoin className="text-[2rem]" />
               <SiDogecoin className="text-[2rem]  " />
@@ -244,6 +290,57 @@ export default function page() {
               </p>
             </div>
           </article>
+        </section>
+        {/* TechnicalAnalysis */}
+
+        {/* FOREX CROSS RATES */}
+
+        <section className="bg-green-500  grid md:grid-cols-2 md:bg-yellow-500">
+          <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
+            <article className="   min-w-[20rem] min-h-[4rem]         ">
+              <TechnicalAnalysis
+                widgetProps={{
+                  theme: "dark",
+                  width: "100%",
+                  minHeight: "100%",
+                }}
+              />
+            </article>
+          </section>
+
+          {/* END OF FOREX CROSS RATES */}
+
+          {/* FOREX CROSS RATES */}
+
+          <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
+            <article className="   min-w-[20rem] min-h-[4rem]        ">
+              <ForexCrossRates
+                widgetProps={{
+                  theme: "dark",
+                  width: "100%",
+                  minHeight: "100%",
+                }}
+              />
+            </article>
+          </section>
+
+          {/* END OF FOREX CROSS RATES */}
+
+          {/* CRYPTO ADVANCED CHAT */}
+
+          <section className="  min-h-[3] min-w-[97%]  mx-auto p-5         md:min-w-[90%]  md:col-span-2     ">
+            <article className="   min-w-[5rem] min-h-[4rem]     ">
+              <AdvancedChart
+                widgetProps={{
+                  theme: "dark",
+                  minWidth: "100%",
+                  minHeight: "100%",
+                }}
+              />
+            </article>
+          </section>
+
+          {/* END OF CRYPTO ADVANCED CHAT */}
         </section>
 
         <section className="  mb-[5rem] center-with-flex w-full    min-h-full  gap-3   px-3 py-3    text-white">

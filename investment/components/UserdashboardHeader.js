@@ -45,7 +45,10 @@ export default function UserDashboardHeader() {
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
         console.log({ serverdata: data });
       } catch (error) {
-        throw new Error("Network error, try again later");
+        if (error) {
+          // throw new Error("Network error, try again later");
+          console.log(error);
+        }
       }
     };
 

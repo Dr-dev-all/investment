@@ -40,6 +40,8 @@ import {
   CryptocurrencyMarket,
   TickerTape,
   MarketOverview,
+  Timeline,
+  StockMarket,
 } from "react-tradingview-embed";
 import { MdOutlineMoreTime } from "react-icons/md";
 import { ImQuotesLeft } from "react-icons/im";
@@ -91,22 +93,22 @@ export default function Landing() {
   const [showDataD, setShowDataD] = useState(false);
   const [showDataE, setShowDataE] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const options = { method: "GET", "Content-Type": "application/json" };
-        const apiResponse = await fetch("/api/latestnews/", options);
-        if (!apiResponse.ok) return "No data";
-        const newsData = await apiResponse.json();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const options = { method: "GET", "Content-Type": "application/json" };
+  //       const apiResponse = await fetch("/api/latestnews/", options);
+  //       if (!apiResponse.ok) return "No data";
+  //       const newsData = await apiResponse.json();
 
-        setAllData(newsData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  //       setAllData(newsData);
+  //     } catch (error) {
+  //       // console.log(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const content = (
     <section className="section-style bg-[#eae0c9]">
@@ -386,20 +388,27 @@ export default function Landing() {
           <PiArrowFatLinesDownFill className="text-white text-[1.5rem]" />
         </span>
       </div>
-      <article className="article-style  mb-5  ">
+      <article className="   center-with-flex  gap-3  w-full   min-h-full mb-5  ">
         {/* bf arrow */}
         {/* <h1 className="underline mb-4 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
           Our Best Plan
-        </h1> */}
-        <div className="2xl:mx-18 md:px-8 lg:px-8 center-with-grid md:grid-cols-3 w-screen">
-          <div className="center-with-flex  plan-style">
+        </h1> 
+        
+        
+        /2xl:mx-18 md:px-8 lg:px-8 center-with-grid          md:grid-cols-3 w-screen/
+        // flex flex-col grow justify-center items-center text-white
+        
+        */}
+        <div className="center-with-grid   sm:grid-cols-2  md:grid-cols-3  w-[90%]  mx-auto">
+          <div className="center-with-flex     plan-style    ">
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
               Starter plan
             </h1>
-            <ul className="w-[92%] h-[98%]  mx-auto block">
+            <ul className="min-w-[92%] h-[98%]         mx-auto block">
               {starterPlan.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}: <span className="inline  ">{data.value}</span>
+                  {data.name}:{" "}
+                  <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -411,10 +420,11 @@ export default function Landing() {
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
               Premium
             </h1>
-            <ul className="w-[92%] h-[98%]  mx-auto block">
+            <ul className="min-w-[92%] h-[98%]  mx-auto block">
               {premium.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}: <span className="inline  ">{data.value}</span>
+                  {data.name}:{" "}
+                  <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -426,10 +436,11 @@ export default function Landing() {
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
               Gold
             </h1>
-            <ul className="w-[92%] h-[98%]  mx-auto block">
+            <ul className="min-w-[92%] h-[98%]  mx-auto block">
               {gold.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}: <span className="inline  ">{data.value}</span>
+                  {data.name}:{" "}
+                  <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
             </ul>
@@ -596,6 +607,52 @@ export default function Landing() {
           </div>
         </div>
       </article>
+      <br />
+
+      <button className=" flex justify-between items-center  gap-3  px-4   h-[78%] w-[99%]  border-2  shadow-2xl shadow-black">
+        <h2 className=" font-bold">
+          See the top five <span className="text-green-500">gaining</span>,{" "}
+          <span className="text-red-500">losing</span>, and most{" "}
+          <span className="text-blue-700">active</span> stocks for the day.
+        </h2>
+        <Image
+          src="/stock.svg"
+          height={100}
+          width={100}
+          className="shadow-2xl shadow-black"
+        />
+      </button>
+      {/* CRYPTO ADVANCED CHAT */}
+
+      <section className="  min-h-[3] min-w-[97%]  mx-auto p-5           ">
+        <article className="   min-w-[5rem] min-h-[4rem]     bg-yellow-500    ">
+          <StockMarket
+            widgetProps={{
+              theme: "light",
+              width: "100%",
+              minHeight: "100%",
+            }}
+          />
+        </article>
+      </section>
+
+      {/* END OF CRYPTO ADVANCED CHAT */}
+
+      {/* CRYPTO ADVANCED CHAT */}
+
+      <section className="  min-h-[3] min-w-[97%]  mx-auto p-5           ">
+        <article className="   min-w-[5rem] min-h-[4rem]     bg-yellow-500    ">
+          <Timeline
+            widgetProps={{
+              theme: "light",
+              width: "100%",
+              minHeight: "100%",
+            }}
+          />
+        </article>
+      </section>
+
+      {/* END OF CRYPTO ADVANCED CHAT */}
 
       <br />
       {/* <article className="article-style center-with-flex   ">
