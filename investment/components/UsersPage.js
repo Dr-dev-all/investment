@@ -20,6 +20,7 @@ export default function UsersPage() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [appError, setAppError] = useState("");
 
   const axiosPrivate = useAxiosPrivate();
   const activateUser = async (id) => {
@@ -109,7 +110,6 @@ export default function UsersPage() {
       console.log(response);
     } catch (error) {
       setError(error.message);
-      console.log(error.message);
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -124,16 +124,9 @@ export default function UsersPage() {
       try {
         const response = await axios.get("/users/getallusers");
         setData(response.data);
-        console.log(data);
-        // if (!response.ok) throw new Error("Network error try again later");
-        // if (response.ok) {
-        //   const serverData = await response;
-        //   console.log(serverData);
-        //   localStorage.setItem("userData", JSON.stringify(serverData));
-        //   setData(serverData);
-        // }
+        // console.log(data);
       } catch (error) {
-        console.log(error);
+        setError("Network error..., please try again later");
       } finally {
         router.reload();
       }

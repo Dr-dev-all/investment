@@ -4,7 +4,7 @@ import { MdOutlineShowChart } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import Link from "next/link";
 
-export default function UserDashboardFooter() {
+export default function UserdashboardFooter() {
   const content = (
     <footer className="min-w-screen px-3 flex h-[3rem] flex-row justify-center items-center text-[1.3rem]  bg-[#03045e] fixed overflow-hidden bottom-0  text-white">
       <section>
