@@ -1,31 +1,18 @@
 "use client";
-import AdminHeader from "@/components/AdminHeader";
-import AdminFooter from "@/components/AdminFooter";
-import UsersPage from "@/components/Userspage";
-import {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  memo,
-  CSSProperties,
-} from "react";
+
+import { useState, useEffect, useRef } from "react";
 import { ThreeCircles } from "react-loader-spinner";
-import { useForm } from "react-hook-form";
 import { BiSolidSquareRounded } from "react-icons/bi";
 import { IoPersonAddSharp } from "react-icons/io5";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-// import { axiosPrivate } from "@/axios/axiosPrivate";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
-// import AdminFooter from "@/components/AdminFooter";
-// import AdminHeader from "@/components/AdminHeader";
 
 export default function Userspage() {
   const axiosPrivate = useAxiosPrivate();
   const router = useRouter();
+  const [appError, setAppError] = useState("");
   const effectRan = useRef(false);
   const [userData, setUserData] = useState({});
   const [mainData, setMainData] = useState({});
@@ -109,32 +96,6 @@ export default function Userspage() {
     }
   };
 
-  // async function onSubmit(event) {
-  //   event.preventDefault();
-  //   setIsLoading(true);
-  //   setError(null);
-
-  //   try {
-  //     const formData = new FormData(event.currentTarget);
-  //     const response = await fetch("http://127.0.0.1/users/edituser", {
-  //       method: "PATCH",
-  //       body: formData,
-  //     });
-
-  //     //   if (!response.ok) {
-  //     //     throw new Error("Failed to submit the data. Please try again.");
-  //     //   }
-
-  //     console.log(response);
-  //   } catch (error) {
-  //     setError(error.message);
-  //     console.log(error.message);
-  //     console.log(error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }
-
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -144,15 +105,13 @@ export default function Userspage() {
         const response = await axiosPrivate("/users/getallusers", {
           signal: controller.signal,
         });
-        // if (!response.ok) throw new Error("Network error try again later");
         if (response.statusText === "OK") {
           const serverData = await response.data;
-          console.log(serverData);
           localStorage.setItem("userData", JSON.stringify(serverData));
           setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
-        console.log(error);
+        setAppError("Netork error...., please try again later");
       }
     };
 
@@ -162,7 +121,7 @@ export default function Userspage() {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -170,10 +129,6 @@ export default function Userspage() {
     setError(null);
 
     const formData = new FormData(event.target);
-    // formData.append("firstName", "mike");
-    // console.log(formData.entries());
-
-    // Log the key/value pairs
 
     for (var pair of formData.entries()) {
       if (pair[0] === "firstName") {
@@ -205,8 +160,6 @@ export default function Userspage() {
       }
     }
 
-    console.log(data3);
-
     try {
       // console.log(userFormData);
       const response = await axios.patch(
@@ -219,18 +172,15 @@ export default function Userspage() {
       );
 
       if (response) {
-        console.log(response);
         const recievedData = await response.json();
-        console.log(recievedData);
       }
     } catch (error) {
-      console.log(error);
+      setAppError("Network error..., please try again later");
     } finally {
       window.location.reload();
     }
   };
 
-  console.log(userData);
   const content = (
     <>
       <main className="min-h-full px-4 w-screen bg-white mt-4 mb-[4rem]">

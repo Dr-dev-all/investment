@@ -41,6 +41,7 @@
     "components/AdminDashBoard.js",
     "components/UserdashboardHeader.js",
     "components/UserdashboardFooter.js",
+    "components/Userspage",
     "components/Contact.js",
     "components/Header.js",
     "app/(auth)/register/page.js",
