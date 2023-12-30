@@ -251,7 +251,10 @@ export default function page() {
               </h4>
               <div></div>
             </div>
-            <div className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[15rem]    ">
+            <div
+              className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[15rem] 
+               "
+            >
               <FaBitcoin className="text-[2rem]" />
               <SiLitecoin className="text-[2rem]" />
               <SiDogecoin className="text-[2rem]  " />

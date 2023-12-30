@@ -45,7 +45,8 @@
     "app/(auth)/login/page.js",
     "../server/models/userModels.js",
     "app/api/register/route.ts",
-    "app/(auth)/layout.js"
+    "app/(auth)/layout.js",
+    "middleware.js"
   ],
   "exclude": ["node_modules"]
 }
