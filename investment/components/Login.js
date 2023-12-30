@@ -1,18 +1,12 @@
 "use client";
-import Header from "./Header";
-import Footer from "./Footer";
-// import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
-import { PiSortDescending } from "react-icons/pi";
 import Link from "next/link";
 import { MdOutlineSecurity } from "react-icons/md";
-import { GoAlertFill } from "react-icons/go";
-import { useContext, useState, useEffect, useRef, use } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { AuthProvider } from "@/app/Authprovider";
-import validator from "validator";
 import { BiSolidError } from "react-icons/bi";
 import dotenv from "dotenv";
-// import { sendStatusCode } from "next/dist/server/api-utils";
 import { useRouter, usePathname } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,8 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import jwt from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
 import { config } from "dotenv";
-import axios from "@/lib/axios";
-import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+
 dotenv.config();
 
 config();
