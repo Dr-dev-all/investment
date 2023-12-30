@@ -43,7 +43,13 @@ export default function Footer() {
         <section className="  h-[70%] grow grid  grid-cols-1 md:grid-cols-4  mb-4 p-2 gap-3 w-[90%] mx-auto ">
           <div>
             <Link href="/" className=" mt-4">
-              <Image src="/bhlogo.jpeg" alt="bh-logo" width={60} height={60} />
+              <Image
+                src="/bhlogo.jpeg"
+                alt="bh-logo"
+                width={80}
+                height={80}
+                className="border-2  m-3  "
+              />
             </Link>
             <p>
               At Bullharvest Investment, we believe in cultivating prosperity
@@ -113,7 +119,7 @@ export default function Footer() {
               alt="certificate-image"
               height={180}
               width={180}
-              className="w-auto h-auto"
+              className="w-auto h-auto border-4"
             />
           </div>
           <p className="  my-[2rem]  w-[90%] mx-auto">

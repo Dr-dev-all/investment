@@ -626,7 +626,7 @@ export default function Landing() {
       {/* CRYPTO ADVANCED CHAT */}
 
       <section className="  min-h-[3] min-w-[97%]  mx-auto p-5           ">
-        <article className="   min-w-[5rem] min-h-[4rem]     bg-yellow-500    ">
+        <article className="   min-w-[5rem] min-h-[4rem]        ">
           <StockMarket
             widgetProps={{
               theme: "light",
@@ -642,7 +642,7 @@ export default function Landing() {
       {/* CRYPTO ADVANCED CHAT */}
 
       <section className="  min-h-[3] min-w-[97%]  mx-auto p-5           ">
-        <article className="   min-w-[5rem] min-h-[4rem]     bg-yellow-500    ">
+        <article className="   min-w-[5rem] min-h-[4rem]        ">
           <Timeline
             widgetProps={{
               theme: "light",

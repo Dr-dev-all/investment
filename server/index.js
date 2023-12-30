@@ -18,15 +18,6 @@ dotenv.config();
 dbConnection();
 const port = process.env.PORT || 4000;
 
-// app.use(function (req, res, next) {
-//  ;
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
@@ -36,19 +27,6 @@ app.use(cookieParser());
 app.use("/auths", authRoutes);
 app.use("/users", userRoutes);
 app.use("/otp", otpRoutes);
-
-// app.use("http://127.0.0.1:3000/login/adminDash", async (req, res, next) => {
-//   console.log("incoming");
-//   if (req.user.isAdmin === false) {
-//     if (req.user.isActive) {
-//       return res.redirect("http://127.0.0.1:3000/login");
-//     } else {
-//       return res.redirect("http://127.0.0.1:3000/register");
-//     }
-//   }
-
-//   next();
-// });
 
 app.all("*", (req, res) => {
   res.status(404);
