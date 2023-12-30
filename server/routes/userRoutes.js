@@ -18,5 +18,6 @@ router.route("/deactivateuser/:id").patch(userController.deactivateUser);
 router.route("/activateuser/:id").patch(userController.activateUser);
 router.route("/edituser").patch(userController.updateUser);
 router.route("/deleteuser/:id").delete(userController.deleteUser);
+router.route("/withdraw").post(verifyjwt, userController.withdraw);
 
 export default router;

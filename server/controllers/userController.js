@@ -289,6 +289,28 @@ const activateUser = asyncHandler(async (req, res) => {
   return res.status(400).json({ message: "Unable to activate user" });
 });
 
+const withdraw = asyncHandler(async (req, res) => {
+  const userid = req.user;
+  const { amount, wallet, walletType } = req.body;
+
+  if (!userid) {
+    return res.status(200).json({ message: "user-required" });
+  }
+
+  if (!amount || !wallet || !wallet) {
+    return res.status(400).jsons({ message: "data-required" });
+  }
+
+  const foundUser = await User.findById(userid).exec();
+
+  if (!foundUser) {
+    return res.status(400).json({ message: "invalid-user" });
+  }
+
+  return res.status(200).json({ amount, wallet, walletType, user: userid });
+  // console.log({ amount, wallet });
+});
+
 export default {
   getAllUsers,
   createNewuser,
@@ -297,4 +319,5 @@ export default {
   getSingleUser,
   deactivateUser,
   activateUser,
+  withdraw,
 };

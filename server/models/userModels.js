@@ -19,8 +19,22 @@ const userSchema = new mongoose.Schema(
     isAdmin: { type: Boolean, default: false },
     code: { type: String, default: "" },
     userToken: { type: String, default: "" },
+    history: [
+      {
+        amount: { type: String, default: "" },
+        wallet: { type: String, default: "" },
+        date: { type: Date, default: Date.now() },
+        reqid: { type: String, default: "" },
+        email: { type: String, default: "" },
+        firstname: { type: String, default: "" },
+        lastname: { type: String, default: "" },
+        userplan: { type: String, default: "none" },
+      },
+    ],
   },
   { timestamps: true }
 );
 
-export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
+
+// mongoose.models.User ||

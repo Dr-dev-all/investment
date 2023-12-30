@@ -216,7 +216,7 @@ export default function page() {
             </div>
           </article>
           <article className="center-with-flex text-center w-[97%] border-2 py-1 shadow-lg shadow-gray-500  mb-2 bg-white   bg-[#a0ccda]  rounded-[1rem]">
-            <div className="  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]    md:bg-yellow-500 md:px-[10rem]   ">
+            <div className="  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]   md:px-[10rem]   ">
               <GiPayMoney className="text-[1.5rem]" />
               <TiArrowRight className="animate-ping" />
               <FaMoneyBillTrendUp className="text-[1.5rem] " />
@@ -251,7 +251,7 @@ export default function page() {
               </h4>
               <div></div>
             </div>
-            <div className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[12rem] md:bg-red-500   ">
+            <div className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[15rem]    ">
               <FaBitcoin className="text-[2rem]" />
               <SiLitecoin className="text-[2rem]" />
               <SiDogecoin className="text-[2rem]  " />
