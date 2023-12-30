@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 // import Userdash from "@/components/Userdash";
-import UserDashboardHeader from "@/components/UserDashboardHeader";
-import UserDashboardFooter from "@/components/UserDashboardFooter";
+import UserdashboardFooter from "@/components/UserdashboardFooter";
+import UserdashboardHeader from "@/components/UserdashboardHeader";
 // import { useState, useEffect } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useContext, useState, useEffect, useRef } from "react";
@@ -52,6 +52,7 @@ export default function page() {
   const [token_, setToken_] = useState(null);
   const [status, setStatus] = useState(true);
   const showContent = useRef(false);
+  const [appError, setAppError] = useState("");
 
   // navigate = useNavigate();
   // location = useLocation();
@@ -82,8 +83,7 @@ export default function page() {
       } catch (error) {
         // console.log(error);
         if (error) {
-          // throw new Error("Network error, try again later");
-          console.log("error");
+          setAppError("Network error... try again later");
         }
       }
     };
@@ -101,21 +101,22 @@ export default function page() {
   //   return router.push("/login");
   // }
 
-  console.log({ tk_: token_ });
+  // console.log({ tk_: token_ });
 
-  console.log({ newdata: newData });
+  // console.log({ newdata: newData });
 
-  console.log(user);
+  // console.log(user);
+
   const content = (
     <>
-      <UserDashboardHeader />{" "}
-      <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow">
-        <section className="grid     md:grid-cols-2         bg-[#03045e]  items-center w-[99%]   mx-auto       min-h-[4rem]   p-1 ">
+      <UserdashboardHeader />{" "}
+      <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow   scroll-smooth focus:scroll-auto ">
+        <section className="grid     md:grid-cols-2         bg-[#03045e]  items-center w-[99%]   mx-auto  rounded-b-[2rem]     min-h-[4rem]   p-1 ">
           {/* investment and balance */}
           <article className="grid grid-cols-2 w-[90%] mx-auto">
             <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-              <h1 className="flex flex-col h-[4rem] font-black   ">
-                Total Balance:{" "}
+              <h1 className="flex flex-col  font-black  h-[3.5rem]     ">
+                Balance:{" "}
                 <span className="font-black">
                   {" "}
                   {user?.data?.balance && user?.data?.balance !== "00" ? (
@@ -129,7 +130,7 @@ export default function page() {
               </h1>
             </div>
             <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-              <h1 className="flex flex-col  font-black   h-[4rem]  ">
+              <h1 className="flex flex-col  font-black  h-[3.5rem]    ">
                 Investment{" "}
                 <span className="font-black">
                   {user?.data?.investment && user?.data?.investment !== "00" ? (
@@ -298,9 +299,9 @@ export default function page() {
 
         {/* FOREX CROSS RATES */}
 
-        <section className="bg-green-500  grid md:grid-cols-2 md:bg-yellow-500">
+        <section className="bg-[#0f110c]  grid md:grid-cols-2 md:bg-yellow-500">
           <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
-            <article className="   min-w-[20rem] min-h-[4rem]         ">
+            <article className="   min-w-[5rem] min-h-[4rem]         ">
               <TechnicalAnalysis
                 widgetProps={{
                   theme: "dark",
@@ -316,7 +317,7 @@ export default function page() {
           {/* FOREX CROSS RATES */}
 
           <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
-            <article className="   min-w-[20rem] min-h-[4rem]        ">
+            <article className="   min-w-[5rem] min-h-[4rem]        ">
               <ForexCrossRates
                 widgetProps={{
                   theme: "dark",
@@ -388,7 +389,7 @@ export default function page() {
           </section>
         </section>
       </main>
-      <UserDashboardFooter />
+      <UserdashboardFooter />
     </>
   );
 

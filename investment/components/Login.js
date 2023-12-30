@@ -59,7 +59,7 @@ export default function Login() {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
+      // console.log(response);
       // const dataResponse = await response.json();
       // console.log(dataResponse);
 
@@ -108,7 +108,7 @@ export default function Login() {
         }
       } else if (response.ok && response.status === 200) {
         errorResponseData = await response.json();
-        console.log(errorResponseData);
+        // console.log(errorResponseData);
 
         if (
           errorResponseData.errorStatus === false &&
@@ -154,9 +154,9 @@ export default function Login() {
         setUserErrorData("Invalid user data recieved");
       }
     } catch (error) {
-      // console.log(error);
-      throw new Error("Network error, try again later");
+      setUserErrorData("Network error...");
     } finally {
+      setLoading(true);
       reset();
     }
   };

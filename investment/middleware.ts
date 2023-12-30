@@ -29,7 +29,7 @@ export async function middleware(req: NextRequest) {
 
     return NextResponse.next();
   } catch (error: any) {
-    throw new Error(error);
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 }
 

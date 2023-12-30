@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import UserDashboardHeader from "./UserdashboardHeader";
-import UserDashboardFooter from "./UserDashboardFooter";
+import UserdashboardHeader from "./UserdashboardHeader";
+import UserdashboardFooter from "./UserdashboardFooter";
 
-export { Header, Footer, UserDashboardHeader, UserDashboardFooter };
+export { Header, Footer, UserdashboardHeader, UserdashboardFooter };

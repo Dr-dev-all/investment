@@ -1,13 +1,13 @@
-import UserDashboardFooter from '@/components/UserDashboardFooter';
-import UserDashboardHeader from '@/components/UserDashboardHeader';
-import Withdraw from '@/components/Withdraw';
+import UserdashboardFooter from "@/components/UserdashboardFooter";
+import UserdashboardHeader from "@/components/UserdashboardHeader";
+import Withdraw from "@/components/Withdraw";
 
 export default function page() {
   const content = (
     <main>
-      <UserDashboardHeader />
+      <UserdashboardHeader />
       <Withdraw />
-      <UserDashboardFooter />
+      <UserdashboardFooter />
     </main>
   );
 

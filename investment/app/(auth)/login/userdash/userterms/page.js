@@ -1,6 +1,6 @@
 import Terms from "@/components/Terms";
 // import UserdashboardHeader from "@/components/UserdashboardHeader";
-// import UserDashboardFooter from "@/components/UserdashboardFooter";
+// import UserdashboardFooter from "@/components/UserdashboardFooter";
 
 export default function page() {
   const content = (

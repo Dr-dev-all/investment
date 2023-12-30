@@ -39,6 +39,8 @@
     "components/Userdash.js",
     "components/About.js",
     "components/AdminDashBoard.js",
+    "components/userdashboardHeader.js",
+    "components/userdashboardFooter.js",
     "components/Contact.js",
     "components/Header.js",
     "app/(auth)/register/page.js",

@@ -31,6 +31,7 @@ export default function UserDashboardHeader() {
 
   const { auth } = useContext(AuthProvider);
   const [user, setUser] = useState({});
+  const [appError, setAppError] = useState("");
 
   useEffect(() => {
     let isMounted = true;
@@ -43,12 +44,13 @@ export default function UserDashboardHeader() {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
-        console.log({ serverdata: user });
+        // console.log({ serverdata: user });
         //
       } catch (error) {
         if (error) {
           // throw new Error("Network error, try again later");
-          console.log(error);
+          // console.log(error);
+          setAppError("Network error..., please try again later");
         }
       }
     };
@@ -61,7 +63,7 @@ export default function UserDashboardHeader() {
     };
   }, []);
 
-  console.log({ api_user: user });
+  // console.log({ api_user: user });
   const content = (
     <header className=" bg-[#03045e]  w-full min-h-[3rem] text-white fixed top-0    z-30    mb-[2rem] border-b-2 border-b-white ">
       <section className="w-full h-[4rem] flex flex-row justify-between items-center  min-w-screen        py-2 px-2">

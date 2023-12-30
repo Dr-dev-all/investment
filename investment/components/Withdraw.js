@@ -2,9 +2,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosPrivate from "@/hooks/useAxiosPrivate";
 import { User } from "../../server/models/userModels";
+import { useState } from "react";
 
 export default function Withdraw() {
   const axiosPrivate = useAxiosPrivate();
+
+  const [appError, setAppError] = useState("");
 
   const {
     register,
@@ -19,7 +22,7 @@ export default function Withdraw() {
 
     let userData = {};
     const formData = new FormData(event.target);
-    console.log(formData);
+    // console.log(formData);
 
     // getting user data via form
     for (let [key, value] of formData) {
@@ -47,10 +50,11 @@ export default function Withdraw() {
         headers: { "Content-Type": "application/json" },
       });
       const serverData = await response.data;
-      console.log("passing to the database");
-      console.log(serverData);
+      // console.log("passing to the database");
+      // console.log(serverData);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setAppError("Network error...., try again later");
     }
   };
 

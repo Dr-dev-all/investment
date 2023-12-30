@@ -1,15 +1,15 @@
-import UserDashboardFooter from "@/components/UserDashboardFooter";
-import UserDashboardHeader from "@/components/UserDashboardHeader";
+import UserdashboardFooter from "@/components/UserdashboardFooter";
+import UserdashboardHeader from "@/components/UserdashboardHeader";
 import ChoosePlan from "@/components/ChoosePlan";
 
 export default function page() {
   const content = (
     <>
-      <UserDashboardHeader />
+      <UserdashboardHeader />
       <main>
         <ChoosePlan />
       </main>
-      <UserDashboardFooter />
+      <UserdashboardFooter />
     </>
   );
 
