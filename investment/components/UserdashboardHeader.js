@@ -61,7 +61,7 @@ export default function UserDashboardHeader() {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [axiosPrivate]);
 
   // console.log({ api_user: user });
   const content = (

@@ -71,7 +71,7 @@ export default function About() {
           <div className="opacity: 1; transform: none;">
             <h1>
               <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
-                What Sets Us Apart
+                {" What Sets Us Apart"}
               </span>
               <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
                 Innovation at the Core

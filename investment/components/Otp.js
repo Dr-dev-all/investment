@@ -90,7 +90,9 @@ export default function Otp() {
         <hr className="w-[9rem] mb-2 bg-[#03045e] p-[0.3px]" />
 
         <div className="mb-2">
-          <p className="underline font-bold text-[#03045e]">Didn't get otp</p>
+          <p className="underline font-bold text-[#03045e]">
+            {"Didn't get otp"}
+          </p>
           <button className=" bg-[#03045e] mx-auto w-[7rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg">
             Resend OTP
           </button>

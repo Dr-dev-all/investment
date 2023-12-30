@@ -619,6 +619,7 @@ export default function Landing() {
           src="/stock.svg"
           height={100}
           width={100}
+          alt="stock image"
           className="shadow-2xl shadow-black"
         />
       </button>

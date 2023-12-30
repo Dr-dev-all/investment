@@ -1,13 +1,13 @@
-import UserDashboardHeader from "@/components/UserDashboardHeader";
-import UserDashboardFooter from "@/components/UserDashboardFooter";
+import UserdashboardHeader from "@/components/UserdashboardHeader";
+import UserdashboardFooter from "@/components/UserdashboardFooter";
 import History from "@/components/History";
 
 export default function page() {
   const content = (
     <main>
-      <UserDashboardHeader />
+      <UserdashboardHeader />
       <History />
-      <UserDashboardFooter />
+      <UserdashboardFooter />
     </main>
   );
 

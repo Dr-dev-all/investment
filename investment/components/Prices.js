@@ -1,7 +1,7 @@
 import { GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";
 
-export default function () {
+export default function Prices() {
   const starterPlan = [
     { name: "Interest", value: "20%", id: 1 },
     { name: "Investment", value: "$500-$5000", id: 2 },
