@@ -26,7 +26,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/users/activateuser`,
+        `https://bullharvest.com/api/users/activateuser`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -50,7 +50,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/users/deactivateuser`,
+        `https://bullharvest.com/api/users/deactivateuser`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -75,7 +75,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/users/deleteuser`,
+        `https://bullharvest.com/api/users/deleteuser`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -111,7 +111,7 @@ export default function Userspage() {
           setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
-        setAppError("Netork error...., please try again later");
+        setAppError("Network error...., please try again later");
       }
     };
 
@@ -163,7 +163,7 @@ export default function Userspage() {
     try {
       // console.log(userFormData);
       const response = await axios.patch(
-        "/api/users/edituser",
+        "/users/edituser",
         JSON.stringify(data3),
 
         {

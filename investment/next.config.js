@@ -13,10 +13,5 @@ const nextConfig = {
     REFRESH_TOKEN_SEC: 'knosdnonkslsm889r9rmmff86BDvvv',
   },
 
-  webpack: (config) => {
-    config.resolve.fallback = {
-      'mongodb-client-encryption': false,
-      aws4: false,
-    };
-  },
+ 
 };

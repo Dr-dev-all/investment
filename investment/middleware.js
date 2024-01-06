@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { jwtDecode } from 'jwt-decode';
 import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
 // import { isJwtExpired } from "jwt-check-expiration";
 
 // CONDITIONAL VERSION BASED ON INCOMING REQUEST
@@ -11,8 +11,8 @@ export function middleware(req) {
     req.nextUrl.pathname.includes('/login/userdash') ||
     req.nextUrl.pathname.includes('/login/admindash')
   ) {
-    const authHeader = req.header.authorization || req.header.Authorization;
-    if (!authHeader?.startWith('Bearer ')) {
+    const authHeader = req.headers?.authorization || req.headers?.Authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
       return NextResponse.rewrite(new Url('/login'), req.url);
     }
 

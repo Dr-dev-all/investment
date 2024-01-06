@@ -10,8 +10,6 @@ import dotenv from 'dotenv';
 import { useRouter, usePathname } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import axios from "axios";
-// import jwt from "jsonwebtoken";
 import { jwtDecode } from 'jwt-decode';
 import { config } from 'dotenv';
 
@@ -51,7 +49,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await fetch('/auths/api/login', {
+      const response = await fetch('https://bullharvest.com/auths/api/login', {
         method: 'POST',
 
         headers: {
@@ -59,12 +57,9 @@ export default function Login() {
         },
         body: JSON.stringify(data),
       });
-      // console.log(response);
-      // const dataResponse = await response.json();
-      // console.log(dataResponse);
+      
 
       if (response.statusText !== 'OK') {
-        // HANDLING 401
 
         setErrorInResponse(true);
 

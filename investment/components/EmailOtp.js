@@ -30,7 +30,7 @@ export default function EmailOtp() {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      const response = await fetch("/api/auths/changepassword", {
+      const response = await fetch("https://bullharvest.com/api/auths/changepassword", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

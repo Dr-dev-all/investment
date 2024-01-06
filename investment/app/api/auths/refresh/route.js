@@ -15,7 +15,7 @@ dbConnection();
 
 export async function GET(req) {
   try {
-    const token = cookies.get('jwt');
+    const token = cookies().get('jwt');
     // console.log(RequestCookies);
     if (!token?.value) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });

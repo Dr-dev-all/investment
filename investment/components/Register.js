@@ -10,11 +10,9 @@ import { GoAlertFill } from "react-icons/go";
 import { useState, useEffect, useRef } from "react";
 import validator from "validator";
 import { BiSolidError } from "react-icons/bi";
-import dotenv from "dotenv";
 import { sendStatusCode } from "next/dist/server/api-utils";
 import { useRouter, usePathname } from "next/navigation";
 import { BiSolidDownArrow } from "react-icons/bi";
-dotenv.config();
 
 export default function Register() {
   const [userData, setUserData] = useState({});
