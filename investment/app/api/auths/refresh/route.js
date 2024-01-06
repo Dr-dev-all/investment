@@ -15,7 +15,6 @@ dbConnection()
 
 export async function GET(req) {
   try {
-    const cookie = req.cookies;
     const token = cookies.get('jwt');
     // console.log(RequestCookies);
     if (!token?.value) {
