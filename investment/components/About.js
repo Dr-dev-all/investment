@@ -1,5 +1,5 @@
 import { IoLogoBitcoin } from "react-icons/io";
-import { FaBitcoin } from "react-icons/fa6";
+import { FaBitcoin } from "react-icons/fa";
 
 export default function About() {
   const content = (

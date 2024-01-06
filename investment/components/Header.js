@@ -1,22 +1,22 @@
-"use client";
-import { BiSolidDownArrow } from "react-icons/bi";
-import Link from "next/link";
-import { useState } from "react";
-import { IoMdArrowDropupCircle } from "react-icons/io";
-import { TiArrowUnsorted } from "react-icons/ti";
-import { PiArrowUpRightFill } from "react-icons/pi";
-import Image from "next/image";
-import { MdOutlineHeight } from "react-icons/md";
-import { TickerTape } from "react-tradingview-embed";
-import { PiArrowFatLineRightFill } from "react-icons/pi";
+'use client';
+import { BiSolidDownArrow } from 'react-icons/bi';
+import Link from 'next/link';
+import { useState } from 'react';
+import { IoMdArrowDropupCircle } from 'react-icons/io';
+import { TiArrowUnsorted } from 'react-icons/ti';
+import { PiArrowUpRightFill } from 'react-icons/pi';
+import Image from 'next/image';
+import { MdOutlineHeight } from 'react-icons/md';
+import { TickerTape } from 'react-tradingview-embed';
+import { PiArrowFatLineRightFill } from 'react-icons/pi';
 
 export default function Header() {
   const navItems = [
-    { name: "About", url: "about", id: 1 },
-    { name: "Services", url: "service", id: 2 },
-    { name: "prices", url: "prices", id: 3 },
-    { name: "security", url: "security", id: 4 },
-    { name: "Contact", url: "contact", id: 5 },
+    { name: 'About', url: 'about', id: 1 },
+    { name: 'Services', url: 'service', id: 2 },
+    { name: 'prices', url: 'prices', id: 3 },
+    { name: 'security', url: 'security', id: 4 },
+    { name: 'Contact', url: 'contact', id: 5 },
   ];
 
   const [show, setShow] = useState(true);
@@ -25,13 +25,11 @@ export default function Header() {
     <header
       className={`w-screen 
        flex justify-center  flex-col items-center  top-0 flex-col 
-          fixed z-10`}
-    >
+          fixed z-10`}>
       <div>
         <div
           className={`flex flex-row h-[40%] border-b-2 border-white py-2 bg-[#03045e]  w-screen text-white justify-between   z-10 px-4 md:px-6  
-             text-white  items-center`}
-        >
+             text-white  items-center`}>
           <Link href="/" className="border-white border-2">
             <Image src="/bhlogo.jpeg" alt="bh-logo" width={28} height={28} />
           </Link>
@@ -41,8 +39,7 @@ export default function Header() {
 
           <Link
             href="/login"
-            className="font-bold max-[283px]:hidden min:[300]:block"
-          >
+            className="font-bold max-[283px]:hidden min:[300]:block">
             Login
           </Link>
 
@@ -60,8 +57,7 @@ export default function Header() {
 
           <Link
             href="/security"
-            className="font-bold hidden md:block  hover:underline transition-all duration-300"
-          >
+            className="font-bold hidden md:block  hover:underline transition-all duration-300">
             Security
           </Link>
 
@@ -73,9 +69,8 @@ export default function Header() {
             className=" md:hidden"
             onClick={() => {
               setShow(!show);
-            }}
-          >
-            MENU{" "}
+            }}>
+            MENU{' '}
             {show ? (
               <BiSolidDownArrow className="inline" />
             ) : (
@@ -87,20 +82,18 @@ export default function Header() {
 
       <nav
         className={`flex flex-col justify-center items-center md:hidden  block h-screen transition-all duration-5000     rounded-l-lg bg-gradient-to-r from-[#03045e]  from-60%  to-40% to-white w-screen   ${
-          show ? "hidden" : "block "
-        }   mx-auto   text-[#03045e] text-center z-0`}
-      >
+          show ? 'hidden' : 'block '
+        }   mx-auto   text-[#03045e] text-center z-0`}>
         <ul className="center-with-flex  h-[70%] w-[80%] gap-2 my-auto  mx-auto">
           {navItems.map((data) => (
             <li key={data.id} className={`text-left w-[80%]  mx-auto `}>
               <Link
-                href={data.url}
-                className="text-[1.2rem] capitalize px-3 w-[8rem] text-left underline  font-bold tracking-wider text-white"
-              >
+                href={`/${data.url}`}
+                className="text-[1.2rem] capitalize px-3 w-[8rem] text-left underline  font-bold tracking-wider text-white">
                 {data.name}
 
                 <PiArrowFatLineRightFill className="inline" />
-              </Link>{" "}
+              </Link>{' '}
             </li>
           ))}
         </ul>
