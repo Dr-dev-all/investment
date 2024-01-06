@@ -14,13 +14,13 @@ import { dbConnection } from '@/dbconfig/dbConnection.js';
 export async function GET(req) {
   try {
     const cookie = req.cookies;
-    const { RequestCookies } = cookie;
-    console.log(RequestCookies);
-    if (!cookie?.jwt) {
+    const token = cookies.get('jwt');
+    // console.log(RequestCookies);
+    if (!token?.value) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    refreshToken = cookie.jwt;
+    refreshToken = cookie.value;
 
     jwt.verify('jwt', refreshToken, async (err, decoded) => {
       if (err) {

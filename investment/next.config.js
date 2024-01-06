@@ -12,6 +12,11 @@ const nextConfig = {
     ACCESS_TOKEN_SEC: 'k1J22I2B2KJCBKDNBJNJNSS786BDBNX',
     REFRESH_TOKEN_SEC: 'knosdnonkslsm889r9rmmff86BDvvv',
   },
-};
 
-module.exports = nextConfig;
+  webpack: (config) => {
+    config.resolve.fallback = {
+      'mongodb-client-encryption': false,
+      aws4: false,
+    };
+  },
+};
