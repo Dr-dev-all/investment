@@ -11,7 +11,7 @@ import { dbConnection } from '@/dbconfig/dbConnection.js';
 // import { cookies } from 'next/headers';
 // import dotenv from 'dotenv';
 
-dbConnection()
+dbConnection();
 
 export async function GET(req) {
   try {
@@ -21,7 +21,7 @@ export async function GET(req) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    refreshToken = cookie.value;
+    refreshToken = token.value;
 
     jwt.verify('jwt', refreshToken, async (err, decoded) => {
       if (err) {
