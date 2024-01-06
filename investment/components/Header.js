@@ -46,11 +46,11 @@ export default function Header() {
             Login
           </Link>
 
-          <Link href="about" className="font-bold hidden md:block">
+          <Link href="/about" className="font-bold hidden md:block">
             About
           </Link>
 
-          <Link href="service" className="font-bold hidden md:block">
+          <Link href="/service" className="font-bold hidden md:block">
             Services
           </Link>
 
