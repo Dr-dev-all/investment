@@ -32,7 +32,7 @@ export default function Register() {
 
   const generateCode = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/otp/generatecode");
+      const response = await fetch("/api/auths/generatecode");
       const { code } = await response.json();
       setCode(code);
       // console.log(code);
@@ -54,7 +54,7 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/users/register", {
+      const response = await fetch("/api/users/register", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },

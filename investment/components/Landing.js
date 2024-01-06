@@ -93,22 +93,7 @@ export default function Landing() {
   const [showDataD, setShowDataD] = useState(false);
   const [showDataE, setShowDataE] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const options = { method: "GET", "Content-Type": "application/json" };
-  //       const apiResponse = await fetch("/api/latestnews/", options);
-  //       if (!apiResponse.ok) return "No data";
-  //       const newsData = await apiResponse.json();
-
-  //       setAllData(newsData);
-  //     } catch (error) {
-  //       // console.log(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+ 
 
   const content = (
     <section className="section-style bg-[#eae0c9]">

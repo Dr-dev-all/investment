@@ -5,9 +5,12 @@ import useRefreshToken from "./useRefreshToken";
 import { AuthProvider } from "@/app/Authprovider";
 import { jwtDecode } from "jwt-decode";
 import axios from "@/lib/axios";
+import { Error } from "mongoose";
 
 const useAxiosPrivate = () => {
   // data changes
+
+  const [appError, setAppError] = useState('')
 
   let effectRan = useRef(false);
 
@@ -23,7 +26,7 @@ const useAxiosPrivate = () => {
 
       const fetchRefresh = async () => {
         try {
-          const response = await axios.get("/auths/refresh", {
+          const response = await axios.get("/api/auths/refresh", {
             withCredentials: true,
           });
 
@@ -32,7 +35,7 @@ const useAxiosPrivate = () => {
           }
         } catch (error) {
           if (error) {
-            console.log("should redirecct");
+           setAppError(Error)
           }
         }
       };

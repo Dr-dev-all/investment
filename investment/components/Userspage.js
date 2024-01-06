@@ -22,11 +22,11 @@ export default function Userspage() {
   const [isLoading, setIsLoading] = useState(false);
   let data3 = {};
 
-  const activateUser = async (id) => {
+  const activateUser = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/users/activateuser/${id}`,
+        `/api/users/activateuser`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -46,11 +46,11 @@ export default function Userspage() {
     }
   };
 
-  const deactivateUser = async (id) => {
+  const deactivateUser = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/users/deactivateuser/${id}`,
+        `/api/users/deactivateuser`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -71,11 +71,11 @@ export default function Userspage() {
     }
   };
 
-  const deleteUser = async (id) => {
+  const deleteUser = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/users/deleteuser/${id}`,
+        `/api/users/deleteuser`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -163,7 +163,7 @@ export default function Userspage() {
     try {
       // console.log(userFormData);
       const response = await axios.patch(
-        "http://127.0.0.1:5000/users/edituser",
+        "/api/users/edituser",
         JSON.stringify(data3),
 
         {
@@ -397,7 +397,7 @@ export default function Userspage() {
                         </button>
                         <button
                           onClick={() => {
-                            deactivateUser(user._id);
+                            deactivateUser();
                           }}
                           className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold"
                         >
@@ -406,7 +406,7 @@ export default function Userspage() {
                         </button>
                         <button
                           onClick={() => {
-                            deleteUser(user._id);
+                            deleteUser();
                           }}
                           className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold"
                         >

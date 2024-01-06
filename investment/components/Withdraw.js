@@ -44,7 +44,7 @@ export default function Withdraw() {
     // console.log(userData);
 
     try {
-      const response = await axiosPrivate("/users/withdraw", {
+      const response = await axiosPrivate("/api/users/withdraw", {
         method: "POST",
         data: JSON.stringify(userData),
         headers: { "Content-Type": "application/json" },

@@ -50,6 +50,6 @@
     "app/api/register/route.ts",
     "app/(auth)/layout.js",
     "middleware.js"
-  ],
+, "app/api/auths/login/route.js", "app/api/users/getsingleuser/route.js"  ],
   "exclude": ["node_modules"]
 }

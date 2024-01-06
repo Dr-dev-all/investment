@@ -1,25 +1,13 @@
-import { User } from "../models/userModels.js";
-import bcrypt from "bcrypt";
-import asyncHandler from "express-async-handler";
-import isEmail from "validator/lib/isEmail.js";
+import { User } from '../models/userModels.js';
+import bcrypt from 'bcrypt';
+import asyncHandler from 'express-async-handler';
+import isEmail from 'validator/lib/isEmail.js';
 
 const getAllUsers = asyncHandler(async (req, res) => {
-  // const userId = req.user;
-  // if (!userId) {
-  //   return res.status(401).json({ message: "Unauthorized" });
-  // }
-
-  // const foundUser = await User.findById(userId).exec();
-  // if (!foundUser) {
-  //   return res.status(401).json({ message: "Unauthorized" });
-  // }
-
-  // console.log(foundUser.email);
-
-  const users = await User.find({ email: { $ne: "Otb9007@gmail.com" } })
-    .select("-password")
+  const users = await User.find({ email: { $ne: 'Otb9007@gmail.com' } })
+    .select('-password')
     .lean();
-  if (!users?.length) return res.status(400).json({ message: "No user found" });
+  if (!users?.length) return res.status(400).json({ message: 'No user found' });
   return res.status(200).json({ users });
 });
 
@@ -27,12 +15,12 @@ const getSingleUser = asyncHandler(async (req, res) => {
   const userId = req.user;
 
   if (!userId) {
-    return res.status(400).json({ message: "User id is required" });
+    return res.status(400).json({ message: 'User id is required' });
   }
 
   const foundUser = await User.findById(userId).exec();
   if (!foundUser) {
-    return res.status(400).json({ message: "Invalid user" });
+    return res.status(400).json({ message: 'Invalid user' });
   }
 
   const userData = {
@@ -59,30 +47,30 @@ const createNewuser = asyncHandler(async (req, res) => {
       allFields: true,
       errorStatus: true,
       successStatus: false,
-      message: "All fields are required",
+      message: 'All fields are required',
     });
   }
 
   if (!isEmail(email)) {
     return res.status(400).json({
-      field: "email",
+      field: 'email',
       allFields: false,
       errorStatus: true,
       successStatus: false,
-      message: "Invalid mail address",
+      message: 'Invalid mail address',
     });
   }
 
   const duplicateEmail = await User.findOne({ email })
-    .collation({ locale: "en", strength: 2 })
+    .collation({ locale: 'en', strength: 2 })
     .lean()
     .exec();
   if (duplicateEmail) {
     return res.status(409).json({
-      field: "email",
+      field: 'email',
       errorStatus: true,
       successStatus: false,
-      message: "Email already exist",
+      message: 'Email already exist',
     });
   }
 
@@ -91,18 +79,18 @@ const createNewuser = asyncHandler(async (req, res) => {
       errorStatus: true,
       allFields: false,
       successStatus: false,
-      field: "password",
-      message: "Password must be greater than 6 characters",
+      field: 'password',
+      message: 'Password must be greater than 6 characters',
     });
   }
 
   if (password.toString().trim() !== confirmPassword.toString().trim()) {
     return res.status(400).json({
       errorStatus: true,
-      field: "confirmPassword",
+      field: 'confirmPassword',
       allFields: false,
       successStatus: false,
-      message: "Password does not match",
+      message: 'Password does not match',
     });
   }
 
@@ -125,7 +113,7 @@ const createNewuser = asyncHandler(async (req, res) => {
       errorStatus: true,
       successStatus: false,
       allFields: true,
-      message: "wrong user data recieved",
+      message: 'wrong user data recieved',
     });
   } else {
     return res.status(201).json({
@@ -159,23 +147,23 @@ const updateUser = asyncHandler(async (req, res) => {
     !loss ||
     !profit
   ) {
-    return res.status(400).json({ message: "All fields are required" });
+    return res.status(400).json({ message: 'All fields are required' });
   }
 
   const user = await User.findById(id).exec();
-  if (!user) return res.status(400).json({ message: "User not found" });
+  if (!user) return res.status(400).json({ message: 'User not found' });
 
   if (!isEmail(email)) {
-    return res.status(400).json({ message: "Invalid mail address" });
+    return res.status(400).json({ message: 'Invalid mail address' });
   }
   if (!user.isAdmin) {
     const duplicateEmail = await User.findOne({ email })
-      .collation({ locale: "en", strength: 2 })
+      .collation({ locale: 'en', strength: 2 })
       .lean()
       .exec();
 
     if (duplicateEmail && duplicateEmail._id.toString() !== id) {
-      return res.status(409).json({ message: "Email already exist" });
+      return res.status(409).json({ message: 'Email already exist' });
     }
 
     if (user && user.isAdmin === false) {
@@ -208,40 +196,40 @@ const updateUser = asyncHandler(async (req, res) => {
 
     const updateduser = await user.save();
     if (!updateduser) {
-      return res.status(500).json({ message: "Error in updating the user" });
+      return res.status(500).json({ message: 'Error in updating the user' });
     }
-    return res.status(200).json({ message: "Successfully Updated" });
+    return res.status(200).json({ message: 'Successfully Updated' });
   }
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if (!id) {
-    return res.status(400).json({ message: "User id is required" });
+    return res.status(400).json({ message: 'User id is required' });
   }
 
   const foundUser = await User.findById(id).exec();
 
   if (!foundUser) {
-    return res.status(404).json({ message: "User does not exist" });
+    return res.status(404).json({ message: 'User does not exist' });
   }
 
   const deletedUser = await User.deleteOne({ email: foundUser.email }).exec();
   if (!deletedUser) {
     return res.status(404).json({ message: "User doesn't exists" });
   }
-  return res.status(200).json({ message: "Deletion Successful" });
+  return res.status(200).json({ message: 'Deletion Successful' });
 });
 
 const deactivateUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if (!id) {
-    return res.status(400).json({ message: "userid must be provided" });
+    return res.status(400).json({ message: 'userid must be provided' });
   }
 
   const foundUser = await User.findById(id).exec();
   if (!foundUser) {
-    return res.status(404).json({ message: "User not found!" });
+    return res.status(404).json({ message: 'User not found!' });
   }
 
   if (foundUser.isActive === true && foundUser.isAdmin === false) {
@@ -250,7 +238,7 @@ const deactivateUser = asyncHandler(async (req, res) => {
     if (!updatedUser) {
       return res
         .status(500)
-        .json({ message: "Error in deactivating the user!" });
+        .json({ message: 'Error in deactivating the user!' });
     } else {
       return res
         .status(200)
@@ -258,18 +246,18 @@ const deactivateUser = asyncHandler(async (req, res) => {
     }
   }
 
-  return res.status(400).json({ message: "Unable to deactivate user" });
+  return res.status(400).json({ message: 'Unable to deactivate user' });
 });
 
 const activateUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if (!id) {
-    return res.status(400).json({ message: "userid must be provided" });
+    return res.status(400).json({ message: 'userid must be provided' });
   }
 
   const foundUser = await User.findById(id).exec();
   if (!foundUser) {
-    return res.status(404).json({ message: "User not found!" });
+    return res.status(404).json({ message: 'User not found!' });
   }
 
   if (foundUser.isActive === false && foundUser.isAdmin === false) {
@@ -278,7 +266,7 @@ const activateUser = asyncHandler(async (req, res) => {
     if (!updatedUser) {
       return res
         .status(500)
-        .json({ message: "Error in activating this user!" });
+        .json({ message: 'Error in activating this user!' });
     } else {
       return res
         .status(200)
@@ -286,7 +274,7 @@ const activateUser = asyncHandler(async (req, res) => {
     }
   }
 
-  return res.status(400).json({ message: "Unable to activate user" });
+  return res.status(400).json({ message: 'Unable to activate user' });
 });
 
 const withdraw = asyncHandler(async (req, res) => {
@@ -294,17 +282,17 @@ const withdraw = asyncHandler(async (req, res) => {
   const { amount, wallet, walletType } = req.body;
 
   if (!userid) {
-    return res.status(200).json({ message: "user-required" });
+    return res.status(200).json({ message: 'user-required' });
   }
 
-  if (!amount || !wallet || !wallet) {
-    return res.status(400).jsons({ message: "data-required" });
+  if (!amount || !wallet || !walletType) {
+    return res.status(400).jsons({ message: 'data-required' });
   }
 
   const foundUser = await User.findById(userid).exec();
 
   if (!foundUser) {
-    return res.status(400).json({ message: "invalid-user" });
+    return res.status(400).json({ message: 'invalid-user' });
   }
 
   return res.status(200).json({ amount, wallet, walletType, user: userid });

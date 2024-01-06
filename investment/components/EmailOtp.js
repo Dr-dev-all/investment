@@ -30,7 +30,7 @@ export default function EmailOtp() {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      const response = await fetch("http://127.0.0.1:5000/otp/changepassword", {
+      const response = await fetch("/api/auths/changepassword", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
