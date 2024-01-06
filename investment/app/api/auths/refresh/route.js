@@ -11,6 +11,8 @@ import { dbConnection } from '@/dbconfig/dbConnection.js';
 // import { cookies } from 'next/headers';
 // import dotenv from 'dotenv';
 
+dbConnection()
+
 export async function GET(req) {
   try {
     const cookie = req.cookies;
