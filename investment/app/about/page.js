@@ -1,5 +1,6 @@
-import Image from "next/image";
-import { About, Footer, Header } from "@/components";
+import Image from 'next/image';
+import { Footer, Header } from '@/components';
+import About from '@/components/About';
 
 export default function about() {
   return (
