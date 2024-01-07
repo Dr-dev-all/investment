@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { ThreeCircles } from "react-loader-spinner";
-import { BiSolidSquareRounded } from "react-icons/bi";
-import { IoPersonAddSharp } from "react-icons/io5";
-import "reactjs-popup/dist/index.css";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+import { useState, useEffect, useRef } from 'react';
+import { ThreeCircles } from 'react-loader-spinner';
+import { BiSolidSquareRounded } from 'react-icons/bi';
+import { IoPersonAddSharp } from 'react-icons/io5';
+import 'reactjs-popup/dist/index.css';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import useAxiosPrivate from '@/hooks/useAxiosPrivate';
 
 export default function Userspage() {
   const axiosPrivate = useAxiosPrivate();
   const router = useRouter();
-  const [appError, setAppError] = useState("");
+  const [appError, setAppError] = useState('');
   const effectRan = useRef(false);
   const [userData, setUserData] = useState({});
   const [mainData, setMainData] = useState({});
@@ -22,14 +22,14 @@ export default function Userspage() {
   const [isLoading, setIsLoading] = useState(false);
   let data3 = {};
 
-  const activateUser = async () => {
+  const activateUser = async (userID) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/activateuser`,
+        `https://bullharvest.com/api/users/activateuser/${userID}`,
         {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
         }
       );
       //   if (!response.ok) throw new Error("Network error, try again later");
@@ -46,14 +46,14 @@ export default function Userspage() {
     }
   };
 
-  const deactivateUser = async () => {
+  const deactivateUser = async (userID) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/deactivateuser`,
+        `https://bullharvest.com/api/users/deactivateuser/${userID}`,
         {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
         }
       );
       //   if (!response.ok) throw new Error("Network error, try again later");
@@ -71,14 +71,14 @@ export default function Userspage() {
     }
   };
 
-  const deleteUser = async () => {
+  const deleteUser = async (userID) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/deleteuser`,
+        `https://bullharvest.com/api/users/deleteuser/${userID}`,
         {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
         }
       );
       console.log(response);
@@ -102,16 +102,16 @@ export default function Userspage() {
 
     const fetchUsers = async () => {
       try {
-        const response = await axiosPrivate("/users/getallusers", {
+        const response = await axiosPrivate('/users/getallusers', {
           signal: controller.signal,
         });
-        if (response.statusText === "OK") {
+        if (response.statusText === 'OK') {
           const serverData = await response.data;
-          localStorage.setItem("userData", JSON.stringify(serverData));
+          localStorage.setItem('userData', JSON.stringify(serverData));
           setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
-        setAppError("Network error...., please try again later");
+        setAppError('Network error...., please try again later');
       }
     };
 
@@ -131,31 +131,31 @@ export default function Userspage() {
     const formData = new FormData(event.target);
 
     for (var pair of formData.entries()) {
-      if (pair[0] === "firstName") {
+      if (pair[0] === 'firstName') {
         data3.firstName = pair[1];
       }
-      if (pair[0] === "lastName") {
+      if (pair[0] === 'lastName') {
         data3.lastName = pair[1];
       }
-      if (pair[0] === "email") {
+      if (pair[0] === 'email') {
         data3.email = pair[1];
       }
-      if (pair[0] === "plan") {
+      if (pair[0] === 'plan') {
         data3.plan = pair[1];
       }
-      if (pair[0] === "balance") {
+      if (pair[0] === 'balance') {
         data3.balance = pair[1];
       }
-      if (pair[0] === "investment") {
+      if (pair[0] === 'investment') {
         data3.investment = pair[1];
       }
-      if (pair[0] === "loss") {
+      if (pair[0] === 'loss') {
         data3.loss = pair[1];
       }
-      if (pair[0] === "profit") {
+      if (pair[0] === 'profit') {
         data3.profit = pair[1];
       }
-      if (pair[0] === "id") {
+      if (pair[0] === 'id') {
         data3.id = pair[1];
       }
     }
@@ -163,11 +163,11 @@ export default function Userspage() {
     try {
       // console.log(userFormData);
       const response = await axios.patch(
-        "/users/edituser",
+        '/users/edituser',
         JSON.stringify(data3),
 
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { 'Content-Type': 'application/json' },
         }
       );
 
@@ -175,7 +175,7 @@ export default function Userspage() {
         const recievedData = await response.json();
       }
     } catch (error) {
-      setAppError("Network error..., please try again later");
+      setAppError('Network error..., please try again later');
     } finally {
       window.location.reload();
     }
@@ -207,7 +207,7 @@ export default function Userspage() {
                       <form onSubmit={onSubmit}>
                         <ul>
                           <li className="plan-items">
-                            Firstname:{" "}
+                            Firstname:{' '}
                             <span>
                               <input
                                 type="text"
@@ -370,7 +370,7 @@ export default function Userspage() {
                             </span>
                           </li>
                           <li className="plan-items">
-                            status:{" "}
+                            status:{' '}
                             <span>
                               {user.isActive ? (
                                 <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
@@ -381,7 +381,7 @@ export default function Userspage() {
                           </li>
                         </ul>
                         <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
-                          {" "}
+                          {' '}
                           submit
                         </button>
                       </form>
@@ -390,27 +390,24 @@ export default function Userspage() {
                           onClick={() => {
                             activateUser(user._id);
                           }}
-                          className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold"
-                        >
-                          {" "}
+                          className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                          {' '}
                           Activate
                         </button>
                         <button
                           onClick={() => {
-                            deactivateUser();
+                            deactivateUser(user._id);
                           }}
-                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold"
-                        >
-                          {" "}
+                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                          {' '}
                           Deactivate
                         </button>
                         <button
                           onClick={() => {
-                            deleteUser();
+                            deleteUser(user._id);
                           }}
-                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold"
-                        >
-                          {" "}
+                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold">
+                          {' '}
                           Delete
                         </button>
                       </div>
@@ -423,7 +420,7 @@ export default function Userspage() {
                 height="100"
                 width="100"
                 color="#4fa94d"
-                wrapperStyle={{ color: "blue" }}
+                wrapperStyle={{ color: 'blue' }}
                 wrapperClass=""
                 visible={true}
                 ariaLabel="three-circles-rotating"
