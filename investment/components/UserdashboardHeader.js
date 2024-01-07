@@ -38,9 +38,9 @@ export default function UserDashboardHeader() {
 
     const controller = new AbortController();
 
-    const getUser = async () => {
+    const getUser = async (userID) => {
       try {
-        const response = await axiosPrivate.get("/users/getsingleuser", {
+        const response = await axiosPrivate.get(`/users/getsingleuser/${userID}`, {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));

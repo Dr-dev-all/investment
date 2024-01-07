@@ -30,7 +30,7 @@ export default function Register() {
 
   const generateCode = async () => {
     try {
-      const response = await fetch("/api/auths/generatecode");
+      const response = await fetch("https://bullharvest-server.vercel.app/otp/generatecode");
       const { code } = await response.json();
       setCode(code);
       // console.log(code);
@@ -52,7 +52,7 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("/api/users/register", {
+      const response = await fetch("https://bullharvest-server.vercel.app/users/register", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },

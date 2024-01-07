@@ -49,7 +49,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await fetch('https://bullharvest.com/auths/api/login', {
+      const response = await fetch('https://bullharvest-server.vercel.app/auths/login', {
         method: 'POST',
 
         headers: {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:5000";
+const BASE_URL = "https://bullharvest-server.vercel.app";
 
 export default axios.create({
   baseURL: BASE_URL,
@@ -13,3 +13,8 @@ export const axiosPrivate = axios.create({
   },
   withCredentials: true,
 });
+
+
+
+
+// https://bullharvest-server.vercel.app/users/getallusers

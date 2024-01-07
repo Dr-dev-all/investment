@@ -20,13 +20,61 @@ export default function Userspage() {
   const [userFormData, setUserFormData] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [userId, setUserId] = useState('');
+
   let data3 = {};
 
-  const activateUser = async (userID) => {
+  useEffect(() => {
+    const fetchId = async () => {
+      try {
+        const { token } = await fetch(
+          'https://bullharvest-server.vercel.app/auths/getusertoken',
+          {
+            method: 'GET',
+            'Content-Type': 'application/json',
+          }
+        );
+        if (token === 'no-token-found') {
+          return router.push('/login');
+        }
+
+        // 
+        const userInfo = jwtDecode(token);
+        setUserId(userInfo._id);
+
+
+        // 
+
+
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    fetchId();
+
+    return () => {};
+  }, []);
+
+  const activateUser = async (userId) => {
     setIsLoading(true);
+    // checking for users access token
+
+    setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
+    const token = localStorage.getItem('accessToken');
+    if (!token || token !== 'undefined') {
+      return router.push('/login');
+    }
+
+    const userInfo = jwtDecode(token);
+
+    setDecodedItem(userInfo._id);
+
+    //
+
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/activateuser/${userID}`,
+        `https://bullharvest.com/api/users/activateuser/${userId}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -50,7 +98,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/deactivateuser/${userID}`,
+        `https://bullharvest-server.vercel.app/users/deactivateuser/${userId}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -75,7 +123,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/deleteuser/${userID}`,
+        `https://bullharvest-server.vercel.app/users/deleteuser/${userID}`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
@@ -163,7 +211,7 @@ export default function Userspage() {
     try {
       // console.log(userFormData);
       const response = await axios.patch(
-        '/users/edituser',
+        'https://bullharvest-server.vercel.app/users/edituser',
         JSON.stringify(data3),
 
         {
