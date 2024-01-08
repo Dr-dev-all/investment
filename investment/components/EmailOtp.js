@@ -30,7 +30,7 @@ export default function EmailOtp() {
   const onSubmit = async (data) => {
     // console.log(data);
     try {
-      const response = await fetch("https://bullharvest.com/otp/changepassword", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/otp/changepassword`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

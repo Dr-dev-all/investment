@@ -50,7 +50,7 @@ export default function Login() {
     try {
       setLoading(true);
       const response = await fetch(
-        `${NEXT_PUBLIC_BASE_URL}/auths/login`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auths/login`,
         {
           method: 'POST',
 

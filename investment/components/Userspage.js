@@ -24,57 +24,57 @@ export default function Userspage() {
 
   let data3 = {};
 
-  useEffect(() => {
-    const fetchId = async () => {
-      try {
-        const { token } = await fetch(
-          `${NEXT_PUBLIC_BASE_URL}/auths/getusertoken`,
-          {
-            method: 'GET',
-            'Content-Type': 'application/json',
-          }
-        );
-        if (token === 'no-token-found') {
-          return router.push('/login');
-        }
+  // useEffect(() => {
+  //   const fetchId = async () => {
+  //     try {
+  //       const { token } = await fetch(
+  //         `${process.env.NEXT_PUBLIC_BASE_URL}/auths/getusertoken`,
+  //         {
+  //           method: 'GET',
+  //           'Content-Type': 'application/json',
+  //         }
+  //       );
+  //       if (token === 'no-token-found') {
+  //         return router.push('/login');
+  //       }
 
-        // 
-        const userInfo = jwtDecode(token);
-        setUserId(userInfo._id);
-
-
-        // 
+  //       // 
+  //       const userInfo = jwtDecode(token);
+  //       setUserId(userInfo._id);
 
 
-      } catch (error) {
-        throw new Error(error);
-      }
-    };
+  //       // 
 
-    fetchId();
 
-    return () => {};
-  }, []);
+  //     } catch (error) {
+  //       throw new Error(error);
+  //     }
+  //   };
 
-  const activateUser = async (userId) => {
+  //   fetchId();
+
+  //   return () => {};
+  // }, []);
+
+  const activateUser = async (userID) => {
     setIsLoading(true);
     // checking for users access token
 
     setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
-    const token = localStorage.getItem('accessToken');
-    if (!token || token !== 'undefined') {
-      return router.push('/login');
-    }
+    // const token = localStorage.getItem('accessToken');
+    // if (!token || token !== 'undefined') {
+    //   return router.push('/login');
+    // }
 
-    const userInfo = jwtDecode(token);
+    // const userInfo = jwtDecode(token);
 
-    setDecodedItem(userInfo._id);
+    // setDecodedItem(userInfo._id);
 
     //
 
     try {
       const response = await fetch(
-        `${NEXT_PUBLIC_BASE_URL}/users/activateuser}/${userId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/activateuser}/${userID}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -87,7 +87,8 @@ export default function Userspage() {
         // console.log("user deacivated");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setAppError(error)
     } finally {
       setIsLoading(false);
       window.location.reload();
@@ -98,7 +99,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${NEXT_PUBLIC_BASE_URL}/users/deactivateuser/${userId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/deactivateuser/${userID}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -123,7 +124,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${NEXT_PUBLIC_BASE_URL}/users/deleteuser/${userId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/deleteuser/${userID}`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
@@ -211,7 +212,7 @@ export default function Userspage() {
     try {
       // console.log(userFormData);
       const response = await axios.patch(
-        'https://bullharvest-server.vercel.app/users/edituser',
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/edituser`,
         JSON.stringify(data3),
 
         {
