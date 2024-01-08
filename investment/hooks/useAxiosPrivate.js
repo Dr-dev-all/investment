@@ -1,16 +1,15 @@
-import { axiosPrivate } from "@/lib/axios";
-import { useEffect, useContext, useState, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import useRefreshToken from "./useRefreshToken";
-import { AuthProvider } from "@/app/Authprovider";
-import { jwtDecode } from "jwt-decode";
-import axios from "@/lib/axios";
-import { Error } from "mongoose";
+import { axiosPrivate } from '@/lib/axios';
+import { useEffect, useContext, useState, useRef } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import useRefreshToken from './useRefreshToken';
+import { AuthProvider } from '@/app/Authprovider';
+import { jwtDecode } from 'jwt-decode';
+import axios from '@/lib/axios';
 
 const useAxiosPrivate = () => {
   // data changes
 
-  const [appError, setAppError] = useState('')
+  const [appError, setAppError] = useState('');
 
   let effectRan = useRef(false);
 
@@ -26,27 +25,27 @@ const useAxiosPrivate = () => {
 
       const fetchRefresh = async () => {
         try {
-          const response = await axios.get("/api/auths/refresh", {
+          const response = await axios.get('/api/auths/refresh', {
             withCredentials: true,
           });
 
-          if (response.status === 200 || response.statusText === "OK") {
+          if (response.status === 200 || response.statusText === 'OK') {
             return response.data.accessToken;
           }
         } catch (error) {
           if (error) {
-           setAppError(Error)
+            setAppError(Error);
           }
         }
       };
 
       // end of modification
-      const accessToken = localStorage.getItem("accessToken");
+      const accessToken = localStorage.getItem('accessToken');
 
       const requestIntercept = axiosPrivate.interceptors.request.use(
         (config) => {
-          if (!config.headers["Authorization"]) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
+          if (!config.headers['Authorization']) {
+            config.headers['Authorization'] = `Bearer ${accessToken}`;
           }
           return config;
         },
@@ -63,7 +62,7 @@ const useAxiosPrivate = () => {
           if (error?.response?.status === 403 && !prevRequest?.sent) {
             prevRequest.sent = true;
             const newAccessToken = await fetchRefresh();
-            prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+            prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
             return axiosPrivate(prevRequest);
           }
           return Promise.reject(error);
