@@ -36,7 +36,7 @@ export default function Register() {
     try {
       setIsLoading(true);
       const response = await fetch(
-        'https://bullharvest-server.vercel.app/otp/generatecode'
+        `${NEXT_PUBLIC_BASE_URL}/otp/generatecode`
       );
       const { code } = await response.json();
       setCode(code);
@@ -63,7 +63,7 @@ export default function Register() {
     try {
       setRegLoading(true);
       const response = await fetch(
-        'https://bullharvest-server.vercel.app/users/register',
+        `${NEXT_PUBLIC_BASE_URL}/users/register`,
         {
           method: 'POST',
           body: JSON.stringify(data),

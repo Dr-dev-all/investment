@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://bullharvest.com/api/";
+const BASE_URL = NEXT_PUBLIC_BASE_URL;
 
 export default axios.create({
   baseURL: BASE_URL,

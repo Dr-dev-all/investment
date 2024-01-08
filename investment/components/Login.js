@@ -50,7 +50,7 @@ export default function Login() {
     try {
       setLoading(true);
       const response = await fetch(
-        'https://bullharvest-server.vercel.app/auths/login',
+        `${NEXT_PUBLIC_BASE_URL}/auths/login`,
         {
           method: 'POST',
 

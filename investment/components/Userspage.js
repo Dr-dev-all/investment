@@ -28,7 +28,7 @@ export default function Userspage() {
     const fetchId = async () => {
       try {
         const { token } = await fetch(
-          'https://bullharvest-server.vercel.app/auths/getusertoken',
+          `${NEXT_PUBLIC_BASE_URL}/auths/getusertoken`,
           {
             method: 'GET',
             'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export default function Userspage() {
 
     try {
       const response = await fetch(
-        `https://bullharvest.com/api/users/activateuser/${userId}`,
+        `${NEXT_PUBLIC_BASE_URL}/users/activateuser}/${userId}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest-server.vercel.app/users/deactivateuser/${userId}`,
+        `${NEXT_PUBLIC_BASE_URL}/users/deactivateuser/${userId}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -123,7 +123,7 @@ export default function Userspage() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://bullharvest-server.vercel.app/users/deleteuser/${userID}`,
+        `${NEXT_PUBLIC_BASE_URL}/users/deleteuser/${userId}`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },

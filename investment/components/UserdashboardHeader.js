@@ -40,7 +40,7 @@ export default function UserDashboardHeader() {
 
     const getUser = async (userID) => {
       try {
-        const response = await axiosPrivate.get(`/users/getsingleuser/${userID}`, {
+        const response = await axiosPrivate.get(`/users/getsingleuser`, {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));

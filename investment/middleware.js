@@ -46,7 +46,7 @@ import jwt from 'jsonwebtoken';
 export async function middleware(req) {
   const protectedRotes = ['/login/userdash', '/login/adminDash/'];
   try {
-    const response = await fetch('http://127.0.0.1:5000/auths/getusertoken', {
+    const response = await fetch(`${NEXT_PUBLIC_BASE_URL}/auths/getusertoken`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });

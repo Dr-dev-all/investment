@@ -10,7 +10,7 @@ const [appError, setAppError] = useState('')
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/users/getallusers",
+        const response = await fetch("/users/getallusers",
         
         );
         if (response.ok) {

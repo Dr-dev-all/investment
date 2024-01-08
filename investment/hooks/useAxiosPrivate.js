@@ -25,7 +25,7 @@ const useAxiosPrivate = () => {
 
       const fetchRefresh = async () => {
         try {
-          const response = await axios.get('/api/auths/refresh', {
+          const response = await axios.get('/auths/refresh', {
             withCredentials: true,
           });
 
