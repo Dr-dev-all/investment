@@ -1,8 +1,9 @@
 'use client';
 import { IoNotificationsSharp } from 'react-icons/io5';
-import { IoSearchSharp } from 'react-icons/ioS';
+import { IoSearchSharp } from 'react-icons/io5';
 import { useState } from 'react';
 import useAxiosPrivate from '@/hooks/useAxiosPrivate';
+import { useEffect } from 'react';
 
 export default function AdminHeader() {
   const axiosPrivate = useAxiosPrivate();
