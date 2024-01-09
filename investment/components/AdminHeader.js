@@ -2,8 +2,11 @@
 import { IoNotificationsSharp } from 'react-icons/io5';
 import { IoSearchSharp } from 'react-icons/io5';
 import { useState } from 'react';
+import useAxiosPrivate from '@/hooks/useAxiosPrivate';
 
 export default function AdminHeader() {
+  const axiosPrivate = useAxiosPrivate();
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
