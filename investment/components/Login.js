@@ -54,11 +54,11 @@ export default function Login() {
         `${process.env.NEXT_PUBLIC_BASE_URL}/auths/login`,
         {
           method: 'POST',
+          body: JSON.stringify(data),
 
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
         }
       );
 
@@ -68,7 +68,7 @@ export default function Login() {
         if (response.status === 401 || response.statusText === 'Unauthorized') {
           errorResponseData = await response.json();
           setErrorInResponse(true);
-          console.log(errorResponseData);
+          // console.log(errorResponseData);
           setServerData(errorResponseData.message);
           if (
             errorResponseData.field === 'email' &&
@@ -85,7 +85,7 @@ export default function Login() {
               dataSuccessStatus: errorResponseData.successStatus,
               allDataField: errorResponseData.allFields,
             }));
-            console.log(serverData);
+            // console.log(serverData);
           }
 
           if (
@@ -103,7 +103,7 @@ export default function Login() {
             }));
           }
         }
-      } else if (response.ok && response.status === 200) {
+      } else if (response.ok) {
         errorResponseData = await response.json();
         // console.log(errorResponseData);
 
@@ -124,17 +124,13 @@ export default function Login() {
 
           // console.log(userInfo);
           // console.log({ info: userInfo, tk: token });
-          if (!token) {
-            // console.log('moved backed to login');
-
-            return router.push('/login');
+          if (token) {
+            setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
+            localStorage.setItem('accessToken', token);
+            setDecodedItem(userInfo._id);
           }
 
           const userInfo = jwtDecode(token);
-
-          setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
-          localStorage.setItem('accessToken', token);
-          setDecodedItem(userInfo._id);
 
           // if (token) {
           if (token && userInfo.Admin === true) {

@@ -88,7 +88,7 @@ export default function Register() {
           headers: { 'Content-Type': 'application/json' },
         }
       );
-      console.log(response);
+      // console.log(response);
 
       if (!response.ok) {
         // HANDLING 409
@@ -221,7 +221,7 @@ export default function Register() {
               <button
                 className={`${
                   isCopied ? 'bg-green-500' : 'bg-red-500'
-                } rounded-[2rem] ml-2 text-white px-2`}
+                } rounded-[2rem] ml-2 text-white px-1`}
                 onClick={() => {
                   copyKey(code);
                 }}>

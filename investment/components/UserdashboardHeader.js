@@ -47,11 +47,7 @@ export default function UserDashboardHeader() {
         // console.log({ serverdata: user });
         //
       } catch (error) {
-        if (error) {
-          // throw new Error("Network error, try again later");
-          // console.log(error);
-          setAppError('Network error..., please try again later');
-        }
+        setAppError('Network error..., please try again later');
       }
     };
 
