@@ -67,7 +67,7 @@ export default function Userspage() {
     try {
       setActivateLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/users/activateuser}/${userID}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/activateuser/${userID}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -106,7 +106,8 @@ export default function Userspage() {
         // console.log("user deacivated");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setAppError(error);
     } finally {
       setDeactivateLoading(false);
       window.location.reload();
