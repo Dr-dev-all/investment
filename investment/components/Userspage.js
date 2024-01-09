@@ -145,11 +145,18 @@ export default function Userspage() {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axiosPrivate('/users/getallusers', {
-          signal: controller.signal,
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/users/getallusers`,
+          {
+            // signal: controller.signal,
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
         if (response.ok) {
-          const serverData = await response.data;
+          const serverData = await response.json();
           localStorage.setItem('userData', JSON.stringify(serverData));
           isMounted && setUserData((prev) => ({ ...prev, data: serverData }));
         }
