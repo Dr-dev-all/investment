@@ -45,7 +45,7 @@ export default function Userdash() {
   let effectRan = useRef(false);
   let compMount = useRef(false);
   const axiosPrivate = useAxiosPrivate();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const [show, setShow] = useState(true);
@@ -63,6 +63,7 @@ export default function Userdash() {
 
     const getUser = async () => {
       try {
+        setIsLoading(true);
         const response = await axiosPrivate.get('/users/getsingleuser', {
           signal: controller.signal,
         });
@@ -73,6 +74,8 @@ export default function Userdash() {
         if (error) {
           setAppError('Network error... try again later');
         }
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -83,17 +86,6 @@ export default function Userdash() {
       controller.abort();
     };
   }, [axiosPrivate]);
-
-  // if (!token_ && pathname === "/login/userdash") {
-  //   // return <RotateLoader />;
-  //   return router.push("/login");
-  // }
-
-  // console.log({ tk_: token_ });
-
-  // console.log({ newdata: newData });
-
-  // console.log(user);
 
   const content = (
     <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow   scroll-smooth focus:scroll-auto ">
