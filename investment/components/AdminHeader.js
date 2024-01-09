@@ -1,6 +1,6 @@
 'use client';
 import { IoNotificationsSharp } from 'react-icons/io5';
-import { IoSearchSharp } from 'react-icons/io5';
+import { IoSearchSharp } from 'react-icons/ioS';
 import { useState } from 'react';
 import useAxiosPrivate from '@/hooks/useAxiosPrivate';
 
@@ -45,9 +45,7 @@ export default function AdminHeader() {
         <div>
           <IoSearchSharp />
         </div>
-        <div>
-          {user?.data?.firstName ? user?.data?.firstName : 'Bullharvest Admin'}
-        </div>
+        <div>Hello mike</div>
         <div className="center-with-flex rounded-full p-2 ">
           <IoNotificationsSharp />
         </div>
