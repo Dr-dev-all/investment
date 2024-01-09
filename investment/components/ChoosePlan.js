@@ -76,7 +76,7 @@ export default function ChoosePlan() {
         </h2>
         <div className="2xl:mx-18 md:px-8 lg:px-8 center-with-grid md:grid-cols-3 w-screen">
           {/* $$$$$$$$$$$$$ */}
-          {/*  STARTER PLAN  */}
+          {/*  Standard PLAN  */}
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
             <h1 className="text-[1.2rem] font-bold text-center ">
@@ -84,7 +84,7 @@ export default function ChoosePlan() {
             </h1>
             <div className="plan">
               <h3>
-                Minimum Amount <span className="float-right">$1000</span>
+                Minimum Amount <span className="float-right">$50</span>
               </h3>
               <h3>
                 Maximum Amount <span className="float-right">$4,900</span>
@@ -93,7 +93,7 @@ export default function ChoosePlan() {
                 ROI <span className="float-right">6% Daily</span>
               </h3>
               <h3>
-                Referral Commision <span className="float-right">4% </span>
+                Referral Commision <span className="float-right">2% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>
@@ -136,7 +136,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address bellow and make
                     deposit of your investment value in bitcoin through your
-                    crypto wallet. (starter plan range ($50 - $500))
+                    crypto wallet. (starter plan range ($50 - $4,900))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -210,8 +210,8 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
-                    through your crypto wallet. (starter plan range ($50 -
-                    $500))
+                    through your crypto wallet. (standard plan range ($50 -
+                    $4,900))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
@@ -223,13 +223,15 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2  text-black ">
-                        19S3BzZG3bf5EkL4iWF
+                        0x3096cD7ae641E6dc4aABc3388745
                         <br />
-                        4HxdwanKkXp14tM
+                        4C233cbEA102
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet(
+                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                          );
                         }}
                         className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -280,7 +282,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
-                    crypto wallet. (starter plan range ($50 - $500))
+                    crypto wallet. (standard plan range ($50 - $4,900))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
@@ -292,13 +294,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd
                         <br />
-                        4HxdwanKkXp14tM
+                        7bfR3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -348,7 +350,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style">
                     Please copy the TRX (TRX) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
-                    crypto wallet. (starter plan range ($50 - $500))
+                    crypto wallet. (standard plan range ($50 - $4,900))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -360,13 +362,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd7
                         <br />
-                        4HxdwanKkXp14tM
+                        bfR3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -380,9 +382,9 @@ export default function ChoosePlan() {
             </div>
           </div>
           {/* $$$$$$$$$$$$$ */}
-          {/* END OF STARTER PLAN  */}
+          {/* END OF Standard PLAN  */}
           {/* $$$$$$$$$$$$$ */}
-          {/*  GOLD PLAN  */}
+          {/*  MEGA PLAN  */}
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
             <h1 className="text-[1.2rem] font-bold text-center ">Mega Plan</h1>
@@ -397,7 +399,7 @@ export default function ChoosePlan() {
                 ROI <span className="float-right">8% Daily</span>
               </h3>
               <h3>
-                Referral Commision <span className="float-right">8% </span>
+                Referral Commision <span className="float-right">4% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>
@@ -419,7 +421,7 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setGoldBtc(!goldBtc);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-cen'TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ'ter      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
                       <span className="w-[99%]  mx-auto">
                         Click to choose bitcoin wallet
                       </span>
@@ -440,7 +442,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address bellow and make
                     deposit of your investment value in bitcoin through your
-                    crypto wallet. (starter plan range ($5000 - $10000))
+                    crypto wallet. (Mega plan range ($5000 - $19,900))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -508,8 +510,8 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
-                    through your crypto wallet. (starter plan range ($5000 -
-                    $10000))
+                    through your crypto wallet. (Mega plan range ($5000 -
+                    $19,900))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
@@ -521,13 +523,15 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        0x3096cD7ae641E6dc4aABc338874
                         <br />
-                        4HxdwanKkXp14tM
+                        54C233cbEA102
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet(
+                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                          );
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -576,7 +580,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
-                    crypto wallet. (starter plan range ($5000 - $10000))
+                    crypto wallet. (Mega plan range ($5000 - $19,900))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <br />
@@ -588,13 +592,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd7
                         <br />
-                        4HxdwanKkXp14tM
+                        bfR3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -656,13 +660,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd7b
                         <br />
-                        4HxdwanKkXp14tM
+                        fR3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -671,6 +675,7 @@ export default function ChoosePlan() {
                     </div>
                   </div>
                   {/* end */}
+                  <br />
                 </div>
               </div>
             </div>
@@ -678,14 +683,12 @@ export default function ChoosePlan() {
           {/* $$$$$$$$$$$$$ */}
           {/* END OF GOLD PLAN  */}
           {/* $$$$$$$$$$$$$ */}
-          {/*  PREMIUM PLAN  */}
+          {/*  VIP PLAN  */}
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
-            <h1 className="text-[1.2rem] font-bold text-center ">
-              VIP Plan
-            </h1>
+            <h1 className="text-[1.2rem] font-bold text-center ">VIP Plan</h1>
             <div className="plan">
-            <h3>
+              <h3>
                 Minimum Amount <span className="float-right">$20,000</span>
               </h3>
               <h3>
@@ -695,7 +698,7 @@ export default function ChoosePlan() {
                 ROI <span className="float-right">10% Daily</span>
               </h3>
               <h3>
-                Referral Commision <span className="float-right">4% </span>
+                Referral Commision <span className="float-right">6% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>
@@ -738,7 +741,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address bellow and make
                     deposit of your investment value in bitcoin through your
-                    crypto wallet. (starter plan range ($10000 - $50000))
+                    crypto wallet. (VIP plan range ($20000 - unlimited))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -808,8 +811,8 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
-                    through your crypto wallet. (starter plan range ($10000 -
-                    $50000))
+                    through your crypto wallet. (VIP plan range ($20000 -
+                    Unlimited))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
@@ -821,13 +824,15 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        '0x3096cD7ae641E6dc4aABc3388745
                         <br />
-                        4HxdwanKkXp14tM
+                        4C233cbEA102'
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet(
+                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                          );
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -878,7 +883,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
-                    crypto wallet. (starter plan range ($10000 - $50000))
+                    crypto wallet. (VIP plan range ($20000 - Unlimited))
                   </p>
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <br />
@@ -890,13 +895,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd7b
                         <br />
-                        4HxdwanKkXp14tM
+                        fR3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet
@@ -946,7 +951,7 @@ export default function ChoosePlan() {
                   <p className="wallet-text-style">
                     Please copy the TRX (TRX) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
-                    crypto wallet. (starter plan range ($10000 - $50000))
+                    crypto wallet. (VIP plan range ($20000 - Unlimited))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -958,13 +963,13 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        TVZaNnUTc9Tr6JxwimLtd7bf
                         <br />
-                        4HxdwanKkXp14tM
+                        R3UT6ds5sJ
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
                         Copy wallet

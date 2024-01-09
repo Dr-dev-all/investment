@@ -154,10 +154,10 @@ export default function Userspage() {
         const response = await axiosPrivate('/users/getallusers', {
           signal: controller.signal,
         });
-        if (response.statusText === 'OK') {
+        if (response.ok) {
           const serverData = await response.data;
           localStorage.setItem('userData', JSON.stringify(serverData));
-          setUserData((prev) => ({ ...prev, data: serverData }));
+         isMounted && setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
         setAppError('Network error...., please try again later');

@@ -50,10 +50,10 @@ import internal from 'stream';
 export default function Landing() {
   const standard = [
     { name: 'Interest', value: '6%', id: 1 },
-    { name: 'Minimum Amount', value: '$1,000', id: 2 },
+    { name: 'Minimum Amount', value: '$50', id: 2 },
     { name: 'Maximum Amount', value: '$4,900', id: 3 },
     { name: 'ROI', value: '6% Daily', id: 4 },
-    { name: 'Referral Commision', value: '4%', id: 5 },
+    { name: 'Referral Commision', value: '2%', id: 5 },
   ];
 
   const mega = [
@@ -61,7 +61,7 @@ export default function Landing() {
     { name: 'Minimum Amount', value: '$5,000', id: 2 },
     { name: 'Maximum Amount', value: '$19,000', id: 3 },
     { name: 'ROI', value: '8% Daily', id: 4 },
-    { name: 'Referral Commision', value: '8%', id: 5 },
+    { name: 'Referral Commision', value: '4%', id: 5 },
   ];
 
   const vip = [
@@ -69,7 +69,7 @@ export default function Landing() {
     { name: 'Minimum Amount', value: '$20,000', id: 2 },
     { name: 'Maximum Amount', value: 'Unlimited', id: 3 },
     { name: 'ROI', value: '10% Daily', id: 4 },
-    { name: 'Referral Commision', value: '4%', id: 5 },
+    { name: 'Referral Commision', value: '6%', id: 5 },
   ];
 
   const consumedData = {

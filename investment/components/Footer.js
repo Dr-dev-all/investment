@@ -1,28 +1,28 @@
-import Link from "next/link";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { SiFacebook } from "react-icons/si";
-import { PiInstagramLogoFill } from "react-icons/pi";
-import footerData from "./userdata.js";
-import { IoLogoLinkedin } from "react-icons/io5";
-import Image from "next/image";
+import Link from 'next/link';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { SiFacebook } from 'react-icons/si';
+import { PiInstagramLogoFill } from 'react-icons/pi';
+import footerData from './userdata.js';
+import { IoLogoLinkedin } from 'react-icons/io5';
+import Image from 'next/image';
 
 export default function Footer() {
   const service = [
-    { name: "Asset Management", url: "#", id: 1 },
-    { name: "Private Equity & IB", url: "#", id: 2 },
-    { name: "Real Estate Investment", url: "#", id: 3 },
+    { name: 'Asset Management', url: '#', id: 1 },
+    { name: 'Private Equity & IB', url: '#', id: 2 },
+    { name: 'Real Estate Investment', url: '#', id: 3 },
   ];
 
   const contactUs = [
-    { name: "Phone: +44667367367267", url: "#", id: 1 },
-    { name: "Email: support@bullyharvest.com", url: "#", id: 2 },
+    { name: 'Phone: (872) 529-6314 ', url: '#', id: 1 },
+    { name: 'Email: support@bullyharvest.com', url: '#', id: 2 },
   ];
 
   const mediaCenter = [
-    { name: "BH News", url: "#", id: 1 },
-    { name: "Annual Reports", url: "#", id: 2 },
-    { name: "Investment Research", url: "#", id: 3 },
-    { name: "Guidlines", url: "#", id: 4 },
+    { name: 'BH News', url: '#', id: 1 },
+    { name: 'Annual Reports', url: '#', id: 2 },
+    { name: 'Investment Research', url: '#', id: 3 },
+    { name: 'Guidlines', url: '#', id: 4 },
   ];
 
   const content = (
@@ -33,9 +33,8 @@ export default function Footer() {
             <h1 className=" mt-4">Need Help?</h1>
             <Link
               className=" border mt-[1rem] mx-auto  border-white p-1 mb-[2rem]  border-2"
-              href="/contact"
-            >
-              CONTACT US{" "}
+              href="/contact">
+              CONTACT US{' '}
             </Link>
           </div>
         </section>
@@ -102,8 +101,7 @@ export default function Footer() {
         <section
           className="flex flex-col flex-grow justify-center w-full min-h-[10rem]  text-center
         
-        "
-        >
+        ">
           <div className="grid   h-[5rem] w-screen  px-3 my-6  ">
             <Link href="#">Legal notice</Link>
             <Link href="#">Whistleblowers</Link>

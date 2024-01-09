@@ -1,32 +1,29 @@
-import { GoArrowUpRight } from "react-icons/go";
-import Link from "next/link";
+import { GoArrowUpRight } from 'react-icons/go';
+import Link from 'next/link';
 
 export default function Prices() {
-  const starterPlan = [
-    { name: "Interest", value: "20%", id: 1 },
-    { name: "Investment", value: "$500-$5000", id: 2 },
-    { name: "Capital Back", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "5 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const standard = [
+    { name: 'Interest', value: '6%', id: 1 },
+    { name: 'Minimum Amount', value: '$50', id: 2 },
+    { name: 'Maximum Amount', value: '$4,900', id: 3 },
+    { name: 'ROI', value: '6% Daily', id: 4 },
+    { name: 'Referral Commision', value: '2%', id: 5 },
   ];
 
-  const premium = [
-    { name: "Interest", value: "130.1%", id: 1 },
-    { name: "Investment", value: "$5000-$10000", id: 2 },
-    { name: "Capital Back", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "7 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const mega = [
+    { name: 'Interest', value: '8%', id: 1 },
+    { name: 'Minimum Amount', value: '$5,000', id: 2 },
+    { name: 'Maximum Amount', value: '$19,000', id: 3 },
+    { name: 'ROI', value: '8% Daily', id: 4 },
+    { name: 'Referral Commision', value: '4%', id: 5 },
   ];
 
-  const gold = [
-    { name: "Interest", value: "180%", id: 1 },
-    { name: "Investment", value: "$10000-$50000", id: 2 },
-    { name: "Capital Bank", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "7 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const vip = [
+    { name: 'Interest', value: '10%', id: 1 },
+    { name: 'Minimum Amount', value: '$20,000', id: 2 },
+    { name: 'Maximum Amount', value: 'Unlimited', id: 3 },
+    { name: 'ROI', value: '10% Daily', id: 4 },
+    { name: 'Referral Commision', value: '6%', id: 5 },
   ];
 
   const content = (
@@ -65,7 +62,7 @@ export default function Prices() {
               Starter plan
             </h1>
             <ul className="w-[92%] h-[98%]  mx-auto block">
-              {starterPlan.map((data) => (
+              {standard.map((data) => (
                 <li key={data.id} className="plan-items">
                   {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
@@ -80,7 +77,7 @@ export default function Prices() {
               Premium
             </h1>
             <ul className="w-[92%] h-[98%]  mx-auto block">
-              {premium.map((data) => (
+              {mega.map((data) => (
                 <li key={data.id} className="plan-items">
                   {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
@@ -95,7 +92,7 @@ export default function Prices() {
               Gold
             </h1>
             <ul className="w-[92%] h-[98%]  mx-auto block">
-              {gold.map((data) => (
+              {vip.map((data) => (
                 <li key={data.id} className="plan-items">
                   {data.name}: <span className="inline  ">{data.value}</span>
                 </li>
