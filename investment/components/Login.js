@@ -120,7 +120,6 @@ export default function Login() {
 
           const token = errorResponseData.accessToken;
 
-         
           // second logic
 
           // console.log(userInfo);
@@ -136,7 +135,6 @@ export default function Login() {
           setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
           localStorage.setItem('accessToken', token);
           setDecodedItem(userInfo._id);
-
 
           // if (token) {
           if (token && userInfo.Admin === true) {

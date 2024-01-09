@@ -34,7 +34,7 @@ export default function Register() {
   const [isCopied, setIscopied] = useState(false);
 
   // triggers clipboard copy
-  const copyWallet = async (sec_key) => {
+  const copyKey = async (sec_key) => {
     try {
       setIscopied(true);
       await copy(sec_key);
@@ -221,11 +221,11 @@ export default function Register() {
               <button
                 className={`${
                   isCopied ? 'bg-green-500' : 'bg-red-500'
-                } rounded-[2rem] ml-2`}
+                } rounded-[2rem] ml-2 text-white px-2`}
                 onClick={() => {
                   copyKey(code);
                 }}>
-                {isCopied && isCopied !== '' ? `Copied ` : 'Copy'}
+                - {isCopied && isCopied !== '' ? `Copied ` : 'Copy'}
               </button>
             </div>
 
