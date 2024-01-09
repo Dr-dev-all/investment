@@ -60,10 +60,6 @@ export default function Userspage() {
   // }, []);
 
   const activateUser = async (userID) => {
-    // checking for users access token
-
-    setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
-
     try {
       setActivateLoading(true);
       const response = await fetch(
@@ -74,8 +70,9 @@ export default function Userspage() {
         }
       );
       //   if (!response.ok) throw new Error("Network error, try again later");
-      if (response.ok) {
+      if (response) {
         const serverMessage = await response.json();
+        // console.log(serverMessage);
         setServerMsg((prev) => ({ ...prev, serverRes: serverMessage }));
         // console.log("user deacivated");
       }
@@ -124,7 +121,7 @@ export default function Userspage() {
           headers: { 'Content-Type': 'application/json' },
         }
       );
-      console.log(response);
+      // console.log(response);
       //   if (!response.ok) throw new Error("Network error, try again later");
       if (response) {
         const serverMessage = await response.json();

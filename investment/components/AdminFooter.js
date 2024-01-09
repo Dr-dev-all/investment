@@ -1,11 +1,11 @@
-"use client";
-import { MdSpaceDashboard } from "react-icons/md";
-import { FaUsers } from "react-icons/fa6";
-import { FaUsersCog } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
-import { IoChatbubblesSharp } from "react-icons/io5";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+'use client';
+import { MdSpaceDashboard } from 'react-icons/md';
+import { FaUsers } from 'react-icons/fa6';
+import { FaUsersCog } from 'react-icons/fa';
+import { IoSettings } from 'react-icons/io5';
+import { IoChatbubblesSharp } from 'react-icons/io5';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function AdminFooter() {
   const content = (
@@ -28,10 +28,6 @@ export default function AdminFooter() {
             <IoSettings className="text-[1.7rem]" />
             <h1>Setting</h1>
           </Link>
-        </div>
-        <div className="center-with-flex">
-          <IoChatbubblesSharp className="text-[1.7rem]" />
-          <h1>Chat</h1>
         </div>
       </section>
     </main>
