@@ -219,13 +219,13 @@ export default function Register() {
                 placeholder=""
               />
               <button
-                className={`${isCopied ? 'bg-green-500' : 'bg-red-500'}`}
+                className={`${
+                  isCopied ? 'bg-green-500' : 'bg-red-500'
+                } rounded-[2rem] ml-2`}
                 onClick={() => {
-                  copyWallet(code);
+                  copyKey(code);
                 }}>
-                {isCopied && isCopied !== ''
-                  ? `Copied ${(<GrStatusGood className="inline text-white" />)}`
-                  : 'Copy Secret key'}
+                {isCopied && isCopied !== '' ? `Copied ` : 'Copy'}
               </button>
             </div>
 

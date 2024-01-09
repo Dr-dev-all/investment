@@ -33,9 +33,7 @@ const useAxiosPrivate = () => {
             return response.data.accessToken;
           }
         } catch (error) {
-          if (error) {
-            setAppError(Error);
-          }
+          router.push('/login');
         }
       };
 

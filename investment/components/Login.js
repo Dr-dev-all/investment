@@ -120,10 +120,7 @@ export default function Login() {
 
           const token = errorResponseData.accessToken;
 
-          const userInfo = jwtDecode(token);
-          setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
-          localStorage.setItem('accessToken', token);
-          setDecodedItem(userInfo._id);
+         
           // second logic
 
           // console.log(userInfo);
@@ -133,6 +130,13 @@ export default function Login() {
 
             return router.push('/login');
           }
+
+          const userInfo = jwtDecode(token);
+
+          setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
+          localStorage.setItem('accessToken', token);
+          setDecodedItem(userInfo._id);
+
 
           // if (token) {
           if (token && userInfo.Admin === true) {
