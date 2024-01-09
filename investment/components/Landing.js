@@ -1,39 +1,39 @@
-"use client";
-import Link from "next/link";
-import { GoArrowUpRight } from "react-icons/go";
-import { PiArrowFatLinesDownFill } from "react-icons/pi";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
+import { GoArrowUpRight } from 'react-icons/go';
+import { PiArrowFatLinesDownFill } from 'react-icons/pi';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import { IoCheckmarkCircle } from "react-icons/io5";
-import { MdVerifiedUser } from "react-icons/md";
-import { FaUserCheck } from "react-icons/fa6";
-import { PiPottedPlantFill } from "react-icons/pi";
-import { FaMoneyBillTrendUp } from "react-icons/fa6";
-import { PiChartLineUpBold } from "react-icons/pi";
-import { BsCashCoin } from "react-icons/bs";
-import { MdOutlinePayment } from "react-icons/md";
-import { GrStatusGood } from "react-icons/gr";
-import { IoBusinessOutline } from "react-icons/io5";
-import { MdOutlineSyncProblem } from "react-icons/md";
-import { RiEmotionHappyLine } from "react-icons/ri";
+import { IoCheckmarkCircle } from 'react-icons/io5';
+import { MdVerifiedUser } from 'react-icons/md';
+import { FaUserCheck } from 'react-icons/fa6';
+import { PiPottedPlantFill } from 'react-icons/pi';
+import { FaMoneyBillTrendUp } from 'react-icons/fa6';
+import { PiChartLineUpBold } from 'react-icons/pi';
+import { BsCashCoin } from 'react-icons/bs';
+import { MdOutlinePayment } from 'react-icons/md';
+import { GrStatusGood } from 'react-icons/gr';
+import { IoBusinessOutline } from 'react-icons/io5';
+import { MdOutlineSyncProblem } from 'react-icons/md';
+import { RiEmotionHappyLine } from 'react-icons/ri';
 // number icon imports
-import { TbSquareRoundedNumber1Filled } from "react-icons/tb";
-import { TbSquareRoundedNumber2Filled } from "react-icons/tb";
-import { TbSquareRoundedNumber3Filled } from "react-icons/tb";
-import { TbSquareRoundedNumber4Filled } from "react-icons/tb";
-import { TbSquareRoundedNumber5Filled } from "react-icons/tb";
-import { TbSquareRoundedNumber6Filled } from "react-icons/tb";
-import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { IoMdStar } from "react-icons/io";
-import { IoMdStarHalf } from "react-icons/io";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import { MdArrowOutward } from "react-icons/md";
-import { GiPayMoney } from "react-icons/gi";
-import { GiReceiveMoney } from "react-icons/gi";
-import { GiTakeMyMoney } from "react-icons/gi";
-import { SiBitcoinsv } from "react-icons/si";
+import { TbSquareRoundedNumber1Filled } from 'react-icons/tb';
+import { TbSquareRoundedNumber2Filled } from 'react-icons/tb';
+import { TbSquareRoundedNumber3Filled } from 'react-icons/tb';
+import { TbSquareRoundedNumber4Filled } from 'react-icons/tb';
+import { TbSquareRoundedNumber5Filled } from 'react-icons/tb';
+import { TbSquareRoundedNumber6Filled } from 'react-icons/tb';
+import { IoShieldCheckmarkSharp } from 'react-icons/io5';
+import { IoMdStar } from 'react-icons/io';
+import { IoMdStarHalf } from 'react-icons/io';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import { MdArrowOutward } from 'react-icons/md';
+import { GiPayMoney } from 'react-icons/gi';
+import { GiReceiveMoney } from 'react-icons/gi';
+import { GiTakeMyMoney } from 'react-icons/gi';
+import { SiBitcoinsv } from 'react-icons/si';
 
 import {
   AdvancedChart,
@@ -42,47 +42,44 @@ import {
   MarketOverview,
   Timeline,
   StockMarket,
-} from "react-tradingview-embed";
-import { MdOutlineMoreTime } from "react-icons/md";
-import { ImQuotesLeft } from "react-icons/im";
-import internal from "stream";
+} from 'react-tradingview-embed';
+import { MdOutlineMoreTime } from 'react-icons/md';
+import { ImQuotesLeft } from 'react-icons/im';
+import internal from 'stream';
 
 export default function Landing() {
-  const starterPlan = [
-    { name: "Interest", value: "20%", id: 1 },
-    { name: "Investment", value: "$500-$5000", id: 2 },
-    { name: "Capital Back", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "5 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const standard = [
+    { name: 'Interest', value: '6%', id: 1 },
+    { name: 'Minimum Amount', value: '$1,000', id: 2 },
+    { name: 'Maximum Amount', value: '$4,900', id: 3 },
+    { name: 'ROI', value: '6% Daily', id: 4 },
+    { name: 'Referral Commision', value: '4%', id: 5 },
   ];
 
-  const premium = [
-    { name: "Interest", value: "130.1%", id: 1 },
-    { name: "Investment", value: "$5000-$10000", id: 2 },
-    { name: "Capital Back", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "7 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const mega = [
+    { name: 'Interest', value: '8%', id: 1 },
+    { name: 'Minimum Amount', value: '$5,000', id: 2 },
+    { name: 'Maximum Amount', value: '$19,000', id: 3 },
+    { name: 'ROI', value: '8% Daily', id: 4 },
+    { name: 'Referral Commision', value: '8%', id: 5 },
   ];
 
-  const gold = [
-    { name: "Interest", value: "180%", id: 1 },
-    { name: "Investment", value: "$10000-$50000", id: 2 },
-    { name: "Capital Bank", value: "Yes", id: 3 },
-    { name: "Return Type", value: "Period", id: 4 },
-    { name: "Number of Period", value: "7 Times", id: 5 },
-    { name: "Profit Withdraw", value: "Anytime", id: 6 },
+  const vip = [
+    { name: 'Interest', value: '10%', id: 1 },
+    { name: 'Minimum Amount', value: '$20,000', id: 2 },
+    { name: 'Maximum Amount', value: 'Unlimited', id: 3 },
+    { name: 'ROI', value: '10% Daily', id: 4 },
+    { name: 'Referral Commision', value: '4%', id: 5 },
   ];
 
   const consumedData = {
-    feedMode: "all_symbols",
+    feedMode: 'all_symbols',
     isTransparent: false,
-    displayMode: "regular",
-    width: "480",
-    height: "830",
-    colorTheme: "light",
-    locale: "en",
+    displayMode: 'regular',
+    width: '480',
+    height: '830',
+    colorTheme: 'light',
+    locale: 'en',
   };
 
   // const [sow, setShow] = useState(true);
@@ -93,23 +90,20 @@ export default function Landing() {
   const [showDataD, setShowDataD] = useState(false);
   const [showDataE, setShowDataE] = useState(false);
 
- 
-
   const content = (
     <section className="section-style bg-[#eae0c9]">
       <div
         className="div-style"
-        style={{ backgroundImage: "url(../risebtc.jpg)" }}
-      >
+        style={{ backgroundImage: 'url(../risebtc.jpg)' }}>
         <div className="w-full h-full bg-black  opacity-70">
           <article className=" mb-6 flex justify-center items-center z-0 h-[10rem] w-screen pl-[rem]  text-white ">
             <h2 className=" font-bold text-[1.9rem] w-[80%] leading-relaxed  mt-[7em] 2xl:mt[6em] text-center lg:text-center 2xl:font-black 2xl:text-[2.3rem]">
-              {" "}
+              {' '}
               Empowering Your Wealth
               <br /> Journey Today with
               <span className="mx-2 text-blue-500  p-1 font-bold  ">
                 BullHarvest
-              </span>{" "}
+              </span>{' '}
             </h2>
           </article>
           <div className=" mb-3 md:mt-2 lg:mt-2 mt-[8em]  flex justify-center items-center z-0 h-[10rem]  pl-[rem]  text-white ">
@@ -170,14 +164,14 @@ export default function Landing() {
               About BullHarvest Investment Company
             </h3>
             <p className="block w-[98%] my-auto text-center mx-auto p-3">
-              {" "}
+              {' '}
               Founded on the principles of financial excellence and strategic
               investing, BullHarvest Investment Company stands as a beacon of
               trust and proficiency in the realm of wealth management. Our
               commitment is to elevate your financial aspirations through
               meticulous planning, seasoned expertise, and unwavering
               dedication.
-            </p>{" "}
+            </p>{' '}
           </div>
           <div className="mt-5 text-center">
             <h3 className="underline mb-3 underline-offset-8 text-lg font-semibold leading-6 text-gray-900">
@@ -304,7 +298,7 @@ export default function Landing() {
 
       <article className="article-style center-with-flex my-3 ">
         <h1 className="flex flex-row justify-center px-3 items-center bg-[#03045e] text-center text-bold text-[1.3rem] h-[3rem] w-screen">
-          <hr className="bg-white p-[0.2px] w-[3rem] sm:hidden" /> HOW IT WORKS{" "}
+          <hr className="bg-white p-[0.2px] w-[3rem] sm:hidden" /> HOW IT WORKS{' '}
           <hr className="bg-white p-[0.2px] w-[3rem] sm:hidden" />
         </h1>
         <section className="2xl:mx-13 md:px-8 lg:px-10 grid grid-cols-2  gap-2 sm:grid-cols-2 md:grid-cols-3 h-full w-full p-5 ">
@@ -357,7 +351,7 @@ export default function Landing() {
         </div> */}
         <div className="flex justify-between items-center border-y-2 border-[#03045e] ">
           <h2 className=" text-[1.2rem]  uppercase  text-[#03045e] font-bold text-center p-2 ">
-            enjoy our best plans{" "}
+            enjoy our best plans{' '}
           </h2>
           {/* <div>
             <Image
@@ -387,12 +381,12 @@ export default function Landing() {
         <div className="center-with-grid   sm:grid-cols-2  md:grid-cols-3  w-[90%]  mx-auto">
           <div className="center-with-flex     plan-style    ">
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
-              Starter plan
+              Standard plan
             </h1>
             <ul className="min-w-[92%] h-[98%]         mx-auto block">
-              {starterPlan.map((data) => (
+              {standard.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}:{" "}
+                  {data.name}:{' '}
                   <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
@@ -403,12 +397,12 @@ export default function Landing() {
           </div>
           <div className=" center-with-flex plan-style">
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
-              Premium
+              Mega Plan
             </h1>
             <ul className="min-w-[92%] h-[98%]  mx-auto block">
-              {premium.map((data) => (
+              {mega.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}:{" "}
+                  {data.name}:{' '}
                   <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
@@ -419,12 +413,12 @@ export default function Landing() {
           </div>
           <div className="center-with-flex plan-style">
             <h1 className=" underline font-black tracking-wider decoration-2 underline-offset-2">
-              Gold
+              VIP Plan
             </h1>
             <ul className="min-w-[92%] h-[98%]  mx-auto block">
-              {gold.map((data) => (
+              {vip.map((data) => (
                 <li key={data.id} className="plan-items">
-                  {data.name}:{" "}
+                  {data.name}:{' '}
                   <span className="inline min-w-[10%] ">{data.value}</span>
                 </li>
               ))}
@@ -458,17 +452,15 @@ export default function Landing() {
             <button
               onClick={() => setShowDataA(!showDataA)}
               href=""
-              className=" bitcoin-button-style   "
-            >
+              className=" bitcoin-button-style   ">
               <span className="bitcoin-text-style "> What is bitcoin </span>
             </button>
             <div
               className={`${
                 showDataA
-                  ? "block w-full w-[90%] px-5  py-3 z-10 tracking-tight bg-white"
-                  : "hidden"
-              }`}
-            >
+                  ? 'block w-full w-[90%] px-5  py-3 z-10 tracking-tight bg-white'
+                  : 'hidden'
+              }`}>
               <p className="2xl:px-13 md:px-8 lg:px-[12em]">
                 Bitcoin is one of the most popular types of cryptocurrencies,
                 which are digital mediums of exchange that exist solely online.
@@ -488,8 +480,7 @@ export default function Landing() {
 
               <button
                 onClick={() => setShowDataA(!showDataA)}
-                className=" button-style-close"
-              >
+                className=" button-style-close">
                 close
               </button>
             </div>
@@ -498,20 +489,18 @@ export default function Landing() {
             <button
               onClick={() => setShowDataB(!showDataB)}
               href=""
-              className="  bitcoin-button-style"
-            >
+              className="  bitcoin-button-style">
               <span className=" bitcoin-text-style">
-                {" "}
-                How bitcoin mining works{" "}
+                {' '}
+                How bitcoin mining works{' '}
               </span>
             </button>
             <div
               className={`${
                 showDataB
-                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
-                  : "hidden"
-              }`}
-            >
+                  ? 'block w-full w-[90%] px-5  py-3  tracking-tight bg-white'
+                  : 'hidden'
+              }`}>
               <p className="2xl:px-13 md:px-8 lg:px-[12em]">
                 In order to successfully add a block, Bitcoin miners compete to
                 solve extremely complex math problems that require the use of
@@ -535,8 +524,7 @@ export default function Landing() {
               <button
                 onClick={() => setShowDataB(!showDataB)}
                 href=""
-                className="  button-style-close"
-              >
+                className="  button-style-close">
                 close
               </button>
             </div>
@@ -545,20 +533,18 @@ export default function Landing() {
             <button
               onClick={() => setShowDataC(!showDataC)}
               href=""
-              className="  bitcoin-button-style"
-            >
+              className="  bitcoin-button-style">
               <span className="bitcoin-text-style">
-                {" "}
+                {' '}
                 Bitcoin mining rewards over time
               </span>
             </button>
             <div
               className={`${
                 showDataC
-                  ? "block w-full w-[90%] px-5  py-3  tracking-tight bg-white"
-                  : "hidden"
-              }`}
-            >
+                  ? 'block w-full w-[90%] px-5  py-3  tracking-tight bg-white'
+                  : 'hidden'
+              }`}>
               <p className="2xl:px-13 md:px-8 lg:px-[12em]">
                 The reward for mining 1 block is halved every 210,000 blocks, or
                 about every 4 years. It depends. Even if Bitcoin miners are
@@ -583,9 +569,8 @@ export default function Landing() {
               <button
                 onClick={() => setShowDataC(!showDataC)}
                 href=""
-                className="  button-style-close"
-              >
-                {" "}
+                className="  button-style-close">
+                {' '}
                 close
               </button>
             </div>
@@ -596,8 +581,8 @@ export default function Landing() {
 
       <button className=" flex justify-between items-center  gap-3  px-4   h-[78%] w-[99%]  border-2  shadow-2xl shadow-black">
         <h2 className=" font-bold">
-          See the top five <span className="text-green-500">gaining</span>,{" "}
-          <span className="text-red-500">losing</span>, and most{" "}
+          See the top five <span className="text-green-500">gaining</span>,{' '}
+          <span className="text-red-500">losing</span>, and most{' '}
           <span className="text-blue-700">active</span> stocks for the day.
         </h2>
         <Image
@@ -614,9 +599,9 @@ export default function Landing() {
         <article className="   min-w-[5rem] min-h-[4rem]        ">
           <StockMarket
             widgetProps={{
-              theme: "light",
-              width: "100%",
-              minHeight: "100%",
+              theme: 'light',
+              width: '100%',
+              minHeight: '100%',
             }}
           />
         </article>
@@ -630,9 +615,9 @@ export default function Landing() {
         <article className="   min-w-[5rem] min-h-[4rem]        ">
           <Timeline
             widgetProps={{
-              theme: "light",
-              width: "100%",
-              minHeight: "100%",
+              theme: 'light',
+              width: '100%',
+              minHeight: '100%',
             }}
           />
         </article>
@@ -687,8 +672,7 @@ export default function Landing() {
               infiniteLoop
               // showStatus
               interval={5000}
-              className="min-h-[74%]  w-[50%] w-full   pt-7  "
-            >
+              className="min-h-[74%]  w-[50%] w-full   pt-7  ">
               <div className=" center-with-flex  bg-white text-[#03045e]  mx-auto my-auto border-none my-auto   min-h-[90%] shadow-gray-500 shadow-2xl rounded-[2rem] text-center  w-[85%] sm:w-[70%] lg:w-[80%] xl:w-90% p-3">
                 <p className="  text-gray-700 h-full w-full p-2">
                   <ImQuotesLeft className="text-[1.2rem] ml-4 " />
@@ -762,7 +746,7 @@ export default function Landing() {
         <div className="bg-[#03045e]">
           <article className="  flex justify-center items-center  h-[10rem] w-screen  text-white ">
             <h2 className=" font-light text-[1.5rem] w-[80%] leading-10 underline  text-center">
-              {" "}
+              {' '}
               The numbers that make up BullHarvest
             </h2>
           </article>
@@ -805,7 +789,7 @@ export default function Landing() {
       <article className="article-style center-with-flex gap-4">
         <div className=" center-with-flex    text-center  text-neutral-600 w-[95%]">
           <h2 className=" font-bold text-[1.8rem] w-[95%] mx-auto text-[#03045e] underline  text-center">
-            {" "}
+            {' '}
             Ready to get started?
           </h2>
           <p className="px-4  text-[#03045e]  text-[1.2rem] ">
@@ -814,8 +798,7 @@ export default function Landing() {
           </p>
           <Link
             href="register"
-            className=" border mt-[1rem] mx-auto bg-[#03045e] px-4 py-6 text-white border-white p-1 mb-[2rem]  border-2"
-          >
+            className=" border mt-[1rem] mx-auto bg-[#03045e] px-4 py-6 text-white border-white p-1 mb-[2rem]  border-2">
             REGISTER NOW <MdArrowOutward className="inline text-[1.5rem]" />
           </Link>
         </div>

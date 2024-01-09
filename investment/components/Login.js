@@ -62,10 +62,10 @@ export default function Login() {
         }
       );
 
-      if (response.statusText !== 'OK') {
+      if (!response.ok) {
         setErrorInResponse(true);
 
-        if (response.status === 401 || response.statusText === 'Unauthorized') {
+        if (response.status === 401) {
           errorResponseData = await response.json();
           setErrorInResponse(true);
           // console.log(errorResponseData);
@@ -118,32 +118,33 @@ export default function Login() {
             dataErrorStatus: errorResponseData.errorStatus,
           }));
 
+          let userInfo;
+
           const token = errorResponseData.accessToken;
 
           // second logic
 
           // console.log(userInfo);
           // console.log({ info: userInfo, tk: token });
+
+          if (!token) {
+            router.push('/login');
+          }
+
           if (token) {
             setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
             localStorage.setItem('accessToken', token);
+            userInfo = jwtDecode(token);
             setDecodedItem(userInfo._id);
           }
 
-          const userInfo = jwtDecode(token);
-
-          // if (token) {
           if (token && userInfo.Admin === true) {
-            // console.log("pushed to userdash via admin");
-
             return router.push('/login/adminDash');
           }
 
           if (token && userInfo.Admin === false) {
-            // console.log("pushed to userdash via user");
             return router.push('/login/userdash');
           }
-          // }
         }
       } else {
         setUserErrorData('Invalid user data recieved');

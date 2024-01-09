@@ -14,6 +14,13 @@ import { GrStatusGood } from 'react-icons/gr';
 
 export default function ChoosePlan() {
   // starter plan
+  const standard = [
+    { name: 'Interest', value: '6%', id: 1 },
+    { name: 'Minimum Amount', value: '$1,000', id: 2 },
+    { name: 'Maximum Amount', value: '$4,900', id: 3 },
+    { name: 'ROI', value: '6% Daily', id: 4 },
+    { name: 'Referral Commision', value: '4%', id: 5 },
+  ];
 
   const [starterBtc, setStarterBtc] = useState(true);
   const [starterEth, setStarterEth] = useState(true);
@@ -73,14 +80,20 @@ export default function ChoosePlan() {
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
             <h1 className="text-[1.2rem] font-bold text-center ">
-              Starter Plan
+              Standard Plan
             </h1>
             <div className="plan">
               <h3>
-                Interest <span className="float-right">20%</span>
+                Minimum Amount <span className="float-right">$1000</span>
               </h3>
               <h3>
-                Investment <span className="float-right">$50 - $500</span>
+                Maximum Amount <span className="float-right">$4,900</span>
+              </h3>
+              <h3>
+                ROI <span className="float-right">6% Daily</span>
+              </h3>
+              <h3>
+                Referral Commision <span className="float-right">4% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>
@@ -372,13 +385,19 @@ export default function ChoosePlan() {
           {/*  GOLD PLAN  */}
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
-            <h1 className="text-[1.2rem] font-bold text-center ">Gold Plan</h1>
+            <h1 className="text-[1.2rem] font-bold text-center ">Mega Plan</h1>
             <div className="plan">
               <h3>
-                Interest <span className="float-right">130.1%</span>
+                Minimum Amount <span className="float-right">$5,000</span>
               </h3>
               <h3>
-                Investment <span className="float-right">$5000 - $10000</span>
+                Maximum Amount <span className="float-right">$19,900</span>
+              </h3>
+              <h3>
+                ROI <span className="float-right">8% Daily</span>
+              </h3>
+              <h3>
+                Referral Commision <span className="float-right">8% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>
@@ -663,14 +682,20 @@ export default function ChoosePlan() {
           {/* $$$$$$$$$$$$$ */}
           <div className="mb-5 text-white bg-[#03045e] text-[1rem] font-bold mx-auto  border-white gap-5 min-h-[17rem] shadow-gray-500 shadow-2xl rounded-[1rem] text-left p-2  w-[94%]    ">
             <h1 className="text-[1.2rem] font-bold text-center ">
-              Premium Plan
+              VIP Plan
             </h1>
             <div className="plan">
-              <h3>
-                Interest <span className="float-right">180%</span>
+            <h3>
+                Minimum Amount <span className="float-right">$20,000</span>
               </h3>
               <h3>
-                Investment <span className="float-right">$10000 - $50000</span>
+                Maximum Amount <span className="float-right">Unlimited</span>
+              </h3>
+              <h3>
+                ROI <span className="float-right">10% Daily</span>
+              </h3>
+              <h3>
+                Referral Commision <span className="float-right">4% </span>
               </h3>
               <h3>
                 Withdraw <span className="float-right">Anytime</span>

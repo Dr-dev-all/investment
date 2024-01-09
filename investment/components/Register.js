@@ -220,12 +220,12 @@ export default function Register() {
               />
               <button
                 className={`${
-                  isCopied ? 'bg-green-500' : 'bg-red-500'
-                } rounded-[2rem] ml-2 text-white px-1`}
+                  isCopied ? 'bg-green-500' : 'bg-[#121113]'
+                } rounded-[2rem] ml-1 text-white p-1 `}
                 onClick={() => {
                   copyKey(code);
                 }}>
-                - {isCopied && isCopied !== '' ? `Copied ` : 'Copy'}
+                - {isCopied && isCopied !== '' ? `Copied &#10003; ` : 'Copy'}
               </button>
             </div>
 

@@ -58,15 +58,15 @@ export async function middleware(req) {
     const { token } = await response.json();
 
     if (
-      token === 'no-token-found' &&
-      req.nextUrl.pathname.includes('/login/userdash')
+      req.nextUrl.pathname.includes('/login/userdash') &&
+      token === 'no-token-found'
     ) {
       return NextResponse.redirect(new URL('/login', req.url));
     }
 
     if (
-      token === 'no-token-found' &&
-      req.nextUrl.pathname.includes('/login/adminDash')
+      req.nextUrl.pathname.includes('/login/adminDash') &&
+      token === 'no-token-found'
     ) {
       return NextResponse.redirect(new URL('/login', req.url));
     }
