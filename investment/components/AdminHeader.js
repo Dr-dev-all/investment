@@ -8,6 +8,7 @@ export default function AdminHeader() {
   const axiosPrivate = useAxiosPrivate();
 
   const [user, setUser] = useState({});
+  const [appError, setAppError] = useState('');
 
   useEffect(() => {
     let isMounted = true;
