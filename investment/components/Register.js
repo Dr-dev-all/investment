@@ -15,6 +15,8 @@ import { useRouter, usePathname } from 'next/navigation';
 import { BiSolidDownArrow } from 'react-icons/bi';
 import BeatLoader from 'react-spinners/BeatLoader';
 import PuffLoader from 'react-spinners/PacmanLoader';
+import copy from 'clipboard-copy';
+import { GrStatusGood } from 'react-icons/gr';
 
 export default function Register() {
   const [userData, setUserData] = useState({});
@@ -29,6 +31,22 @@ export default function Register() {
   const [regLoading, setRegLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const [isCopied, setIscopied] = useState(false);
+
+  // triggers clipboard copy
+  const copyWallet = async (sec_key) => {
+    try {
+      setIscopied(true);
+      await copy(sec_key);
+      // alert('Wallet address copied');
+    } catch (error) {
+      if (error) {
+        alert('Unable to copy wallet address, please try again later');
+      }
+    } finally {
+      setIscopied(false);
+    }
+  };
 
   let errorResponseData;
 
@@ -182,39 +200,51 @@ export default function Register() {
   };
 
   const content = (
-    <section className='flex flex-col justify-between items-center min-h-screen    w-screen'>
-      <div className='div-style min-h-full'>
-        <article className='center-with-flex w-[90%] mx-auto my-auto min-h-full '>
-          <div className=' w-ful  mt-[2rem]'>
-            <label htmlFor='code1' className='form-text-style   text-white'>
+    <section className="flex flex-col justify-between items-center min-h-screen    w-screen">
+      <div className="div-style min-h-full">
+        <article className="center-with-flex w-[90%] mx-auto my-auto min-h-full ">
+          <div className=" w-ful  mt-[2rem]">
+            <label htmlFor="code1" className="form-text-style   text-white">
               Generate Secret key
             </label>
 
-            <input
-              {...register('code1')}
-              className='form-input-style'
-              type='text'
-              name='code1'
-              id='code1'
-              defaultValue={code}
-              placeholder=''
-            />
+            <div className="flex justify-between items-center">
+              <input
+                {...register('code1')}
+                className="form-input-style"
+                type="text"
+                name="code1"
+                id="code1"
+                defaultValue={code}
+                placeholder=""
+              />
+              <button
+                className={`${isCopied ? 'bg-green-500' : 'bg-red-500'}`}
+                onClick={() => {
+                  copyWallet(code);
+                }}>
+                {isCopied && isCopied !== ''
+                  ? `Copied ${(<GrStatusGood className="inline text-white" />)}`
+                  : 'Copy Secret key'}
+              </button>
+            </div>
+
             <button
               onClick={() => {
                 generateCode();
               }}
-              className='bg-green-700  text-[1.1rem]   py-1  font-bold text-white my-1 mx-auto    w-[90%] md:w-[20rem]  md:mx-auto mx-auto    px-2 shadow-2xl shadow-gray-500  rounded-[2rem]'>
+              className="bg-green-700  text-[1.1rem]   py-1  font-bold text-white my-1 mx-auto    w-[90%] md:w-[20rem]  md:mx-auto mx-auto    px-2 shadow-2xl shadow-gray-500  rounded-[2rem]">
               {isLoading ? (
                 <BeatLoader
                   color={'blue'}
                   // loading={isloading}
                   // cssOverride={override}
                   size={10}
-                  aria-label='Loading Spinner'
-                  data-testid='loader'
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
                 />
               ) : (
-                'Generate Secret Keyss'
+                'Generate Secret Keys'
               )}
             </button>
           </div>
@@ -224,9 +254,9 @@ export default function Register() {
               onClick={() => {
                 setWarn(!warn);
               }}
-              className='bg-yellow-500 font-bold  px-2 shadow-2xl  w-full  h-[2rem] mx-auto   shadow-gray-500'>
+              className="bg-yellow-500 font-bold  px-2 shadow-2xl  w-full  h-[2rem] mx-auto   shadow-gray-500">
               security alert
-              <BiSolidDownArrow className='inline ml-3' />
+              <BiSolidDownArrow className="inline ml-3" />
             </button>
             <p
               className={`${
@@ -250,35 +280,35 @@ export default function Register() {
               // loading={isloading}
               // cssOverride={override}
               size={50}
-              aria-label='Loading Spinner'
-              data-testid='loader'
+              aria-label="Loading Spinner"
+              data-testid="loader"
             />
           ) : (
-            <form className='' onSubmit={handleSubmit(onSubmit)}>
-              <div className='grid grid-cols-1 sm:gap-3 sm:grid-cols-2'>
+            <form className="" onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid grid-cols-1 sm:gap-3 sm:grid-cols-2">
                 <div>
-                  <label htmlFor='firstName' className='form-text-style'>
+                  <label htmlFor="firstName" className="form-text-style">
                     Firstname:{' '}
                   </label>
                   <input
-                    type='text'
+                    type="text"
                     {...register('firstName', {
                       required: 'Please enter your firstname',
                       maxLength: 30,
                     })}
-                    name='firstName'
-                    id='firstName'
-                    className='form-input-style'
-                    placeholder='Eg: james'
+                    name="firstName"
+                    id="firstName"
+                    className="form-input-style"
+                    placeholder="Eg: james"
                   />
                   {errors.firstName && errors.firstName.type === 'required' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       {errors.firstName.message}
                     </p>
                   ) : (
                     errors.firstName &&
                     errors.firstName.type === 'maxLength' && (
-                      <p className='form-error-style'>
+                      <p className="form-error-style">
                         Please choose a shorter name
                       </p>
                     )
@@ -299,7 +329,7 @@ export default function Register() {
 
                 <div>
                   {' '}
-                  <label htmlFor='lastName' className='form-text-style'>
+                  <label htmlFor="lastName" className="form-text-style">
                     Lastname:{' '}
                   </label>
                   <input
@@ -307,19 +337,19 @@ export default function Register() {
                       required: 'Please enter your lastname',
                       maxLength: 30,
                     })}
-                    type='text'
-                    name='lastName'
-                    id='lastName'
-                    className='form-input-style'
-                    placeholder='Eg: Morgan'
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    className="form-input-style"
+                    placeholder="Eg: Morgan"
                   />
                   {errors.firstName && errors.firstName.type === 'required' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       {errors.lastName.message}
                     </p>
                   ) : errors.lastName &&
                     errors.lastName.type === 'maxLength' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       Please choose a shorter name
                     </p>
                   ) : (
@@ -339,7 +369,7 @@ export default function Register() {
                 </div>
 
                 <div>
-                  <label htmlFor='email' className=' form-text-style '>
+                  <label htmlFor="email" className=" form-text-style ">
                     Email:{' '}
                   </label>
                   <input
@@ -350,18 +380,18 @@ export default function Register() {
                         message: 'invalid email address',
                       },
                     })}
-                    type='text'
-                    name='email'
-                    id='email'
-                    className='form-input-style'
-                    placeholder='Eg: jamesmorgan@gmail.com'
+                    type="text"
+                    name="email"
+                    id="email"
+                    className="form-input-style"
+                    placeholder="Eg: jamesmorgan@gmail.com"
                   />
                   {errors.email && errors.email.type === 'required' ? (
-                    <p className='form-error-style'>{errors.email.message}</p>
+                    <p className="form-error-style">{errors.email.message}</p>
                   ) : (
                     errors.email &&
                     errors.email.type === 'pattern' && (
-                      <p className='form-error-style'>
+                      <p className="form-error-style">
                         {errors.email?.message}
                       </p>
                     )
@@ -386,7 +416,7 @@ export default function Register() {
                 </div>
 
                 <div>
-                  <label htmlFor='password' className='form-text-style'>
+                  <label htmlFor="password" className="form-text-style">
                     Password:{' '}
                   </label>
                   <input
@@ -397,20 +427,20 @@ export default function Register() {
                         message: 'Password must be above six characters',
                       },
                     })}
-                    type='text'
-                    name='password'
-                    id='password'
-                    className='form-input-style'
-                    placeholder='Eg: Password123*@'
+                    type="text"
+                    name="password"
+                    id="password"
+                    className="form-input-style"
+                    placeholder="Eg: Password123*@"
                   />
                   {errors.password && errors.password.type === 'required' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       {errors.password.message}
                     </p>
                   ) : (
                     errors.password &&
                     errors.password.type === 'minLength' && (
-                      <p className='form-error-style'>
+                      <p className="form-error-style">
                         {errors.password.message}
                       </p>
                     )
@@ -430,7 +460,7 @@ export default function Register() {
                 </div>
 
                 <div>
-                  <label htmlFor='confirmPassword' className='form-text-style'>
+                  <label htmlFor="confirmPassword" className="form-text-style">
                     Confirm Password:{' '}
                   </label>
                   <input
@@ -442,26 +472,26 @@ export default function Register() {
                       },
                       validate: (value) => value === getValues('password'),
                     })}
-                    type='text'
-                    name='confirmPassword'
-                    id='confirmPassword'
-                    className='form-input-style'
-                    placeholder='Eg: Password123*@'
+                    type="text"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    className="form-input-style"
+                    placeholder="Eg: Password123*@"
                   />
                   {errors.confirmPassword &&
                   errors.confirmPassword.type === 'required' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       {errors.confirmPassword.message}
                     </p>
                   ) : errors.confirmPassword &&
                     errors.confirmPassword.type === 'minLength' ? (
-                    <p className='form-error-style'>
+                    <p className="form-error-style">
                       {errors?.confirmPassword?.message}
                     </p>
                   ) : (
                     errors.confirmPassword &&
                     errors.confirmPassword.type === 'validate' && (
-                      <p className='form-error-style'>
+                      <p className="form-error-style">
                         Password does not match
                       </p>
                     )
@@ -480,8 +510,8 @@ export default function Register() {
                   )}
                 </div>
 
-                <div className=''>
-                  <label htmlFor='code' className='form-text-style'>
+                <div className="">
+                  <label htmlFor="code" className="form-text-style">
                     Paste your generated key here/ use your own key:
                   </label>
                   <input
@@ -491,37 +521,37 @@ export default function Register() {
                         value.length === 15 || ~value.toUpperCase;
                       },
                     })}
-                    type='text'
-                    name='code'
-                    id='code'
-                    className='form-input-style'
-                    placeholder='Generated code'
+                    type="text"
+                    name="code"
+                    id="code"
+                    className="form-input-style"
+                    placeholder="Generated code"
                   />
                 </div>
                 {errors.code && errors.code.type === 'required' && (
-                  <p className='form-error-style'>
+                  <p className="form-error-style">
                     {errors.confirmPassword.message}
                   </p>
                 )}
 
-                <div className=' w-full flex gap-2 flex-row px-3 justify-center items-center '>
-                  <hr className='w-[5rem] bg-[#03045e] p-[0.6px]' />{' '}
-                  <MdOutlineSecurity className='text-[#03045e] sm:text-[2rem]' />{' '}
-                  <hr className='w-[5rem] p-[0.6px] bg-[#03045e]' />
+                <div className=" w-full flex gap-2 flex-row px-3 justify-center items-center ">
+                  <hr className="w-[5rem] bg-[#03045e] p-[0.6px]" />{' '}
+                  <MdOutlineSecurity className="text-[#03045e] sm:text-[2rem]" />{' '}
+                  <hr className="w-[5rem] p-[0.6px] bg-[#03045e]" />
                 </div>
               </div>
 
-              <div className=' center-with-flex flex-cols   w-full '>
+              <div className=" center-with-flex flex-cols   w-full ">
                 <button
                   onClick={() => {}}
-                  className=' bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2  block font-bold rounded-lg'>
+                  className=" bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2  block font-bold rounded-lg">
                   Register
                 </button>
-                <p className='font-bold mx-auto w-[8rems]'>
+                <p className="font-bold mx-auto w-[8rems]">
                   Already have an account?{' '}
                   <Link
-                    href='/login'
-                    className='underline text-[1.2rem] font-bold  text-[#03045e]'>
+                    href="/login"
+                    className="underline text-[1.2rem] font-bold  text-[#03045e]">
                     Login.
                   </Link>
                 </p>

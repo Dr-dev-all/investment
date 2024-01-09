@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from 'jwt-decode';
 import { config } from 'dotenv';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 dotenv.config();
 
@@ -75,7 +76,7 @@ export default function Login() {
             errorResponseData.errorStatus === true &&
             errorResponseData.successStatus === false
           ) {
-            console.log(errorResponseData);
+            // console.log(errorResponseData);
             // console.log(serverData);
             setUserOptions(() => ({
               ...userOptions,
@@ -125,10 +126,10 @@ export default function Login() {
           setDecodedItem(userInfo._id);
           // second logic
 
-          console.log(userInfo);
+          // console.log(userInfo);
           // console.log({ info: userInfo, tk: token });
           if (!token) {
-            console.log('moved backed to login');
+            // console.log('moved backed to login');
 
             return router.push('/login');
           }
@@ -152,7 +153,7 @@ export default function Login() {
     } catch (error) {
       setUserErrorData('Network error...');
     } finally {
-      setLoading(true);
+      setLoading(false);
       reset();
     }
   };
@@ -163,140 +164,144 @@ export default function Login() {
   // END OF OTP GENERATOR
 
   const content = (
-    <section className='center-with-flex min-h-[50rem] overflow-hidden w-screen'>
-      <div className='div-style'>
-        <div className='animate-pulse   w-full test-center bg-white text-[#03045e]'>
+    <section className="center-with-flex min-h-[50rem] overflow-hidden w-screen">
+      <div className="div-style">
+        <div className="animate-pulse   w-full test-center bg-white text-[#03045e]">
           {' '}
         </div>
-        <article className='center-with-flex w-[90%] mx-auto my-auto h-full '>
-          <form
-            className='flex flex-col justify-center items-center  w-full h-full  mx-auto'
-            onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              {/* SERVER VALIDATION ERROR DISPLAY */}
-              {errorInResponse === true && (
-                <h1
-                  className={`bg-red-500   h-[2rem] ${
-                    serverData ? 'block' : 'hidden'
-                  }   text-white`}>
-                  <BiSolidError className='warning-icon-style' />
-                  {serverData}
-                  <ToastContainer />
-                </h1>
-              )}
-
+        <article className="center-with-flex w-[90%] mx-auto my-auto h-full ">
+          {loading ? (
+            <PuffLoader />
+          ) : (
+            <form
+              className="flex flex-col justify-center items-center  w-full h-full  mx-auto"
+              onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label htmlFor='email' className=' form-text-style '>
-                  Email:{' '}
-                </label>
-                <input
-                  {...register('email', {
-                    required: 'Please enter your email address',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'invalid email address',
-                    },
-                  })}
-                  type='text'
-                  name='email'
-                  id='email'
-                  className='form-input-style'
-                  placeholder='Eg: jamesmorgan@gmail.com'
-                />
-                {errors.email && errors.email.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.email.message}
-                  </p>
-                ) : (
-                  errors.email &&
-                  errors.email.type === 'pattern' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
-                      {errors.email?.message}
-                    </p>
-                  )
+                {/* SERVER VALIDATION ERROR DISPLAY */}
+                {errorInResponse === true && (
+                  <h1
+                    className={`bg-red-500   h-[2rem] ${
+                      serverData ? 'block' : 'hidden'
+                    }   text-white`}>
+                    <BiSolidError className="warning-icon-style" />
+                    {serverData}
+                    <ToastContainer />
+                  </h1>
                 )}
-              </div>
 
-              <div>
-                <label htmlFor='password' className='form-text-style'>
-                  Password:{' '}
-                </label>
-                <input
-                  {...register('password', {
-                    required: 'Please enter your password',
-                    minLength: {
-                      value: 6,
-                      message: 'Password must be above six characters',
-                    },
-                  })}
-                  type='text'
-                  name='password'
-                  id='password'
-                  className='form-input-style'
-                  placeholder='Eg: Password123*@'
-                />
-                {errors.password && errors.password.type === 'required' ? (
-                  <p className='form-error-style'>
-                    <BiSolidError className='warning-icon-style' />
-                    {errors.password.message}
-                  </p>
-                ) : (
-                  errors.password &&
-                  errors.password.type === 'minLength' && (
-                    <p className='form-error-style'>
-                      <BiSolidError className='warning-icon-style' />
+                <div>
+                  <label htmlFor="email" className=" form-text-style ">
+                    Email:{' '}
+                  </label>
+                  <input
+                    {...register('email', {
+                      required: 'Please enter your email address',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'invalid email address',
+                      },
+                    })}
+                    type="text"
+                    name="email"
+                    id="email"
+                    className="form-input-style"
+                    placeholder="Eg: jamesmorgan@gmail.com"
+                  />
+                  {errors.email && errors.email.type === 'required' ? (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
+                      {errors.email.message}
+                    </p>
+                  ) : (
+                    errors.email &&
+                    errors.email.type === 'pattern' && (
+                      <p className="form-error-style">
+                        <BiSolidError className="warning-icon-style" />
+                        {errors.email?.message}
+                      </p>
+                    )
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="password" className="form-text-style">
+                    Password:{' '}
+                  </label>
+                  <input
+                    {...register('password', {
+                      required: 'Please enter your password',
+                      minLength: {
+                        value: 6,
+                        message: 'Password must be above six characters',
+                      },
+                    })}
+                    type="text"
+                    name="password"
+                    id="password"
+                    className="form-input-style"
+                    placeholder="Eg: Password123*@"
+                  />
+                  {errors.password && errors.password.type === 'required' ? (
+                    <p className="form-error-style">
+                      <BiSolidError className="warning-icon-style" />
                       {errors.password.message}
                     </p>
-                  )
-                )}
+                  ) : (
+                    errors.password &&
+                    errors.password.type === 'minLength' && (
+                      <p className="form-error-style">
+                        <BiSolidError className="warning-icon-style" />
+                        {errors.password.message}
+                      </p>
+                    )
+                  )}
 
-                {/* SERVER VALIDATION ERROR DISPLAY */}
-                {errorInResponse &&
-                userOptions.dataField === 'password' &&
-                userOptions.dataErrorStatus === true ? (
-                  <p>{serverData}</p>
-                ) : (
-                  errorInResponse &&
-                  userOptions.allDataField === true &&
-                  userOptions.dataSuccessStatus === false &&
-                  userOptions.dataErrorStatus === true && <p>{serverData}</p>
-                )}
-              </div>
-
-              <div className=' w-full flex gap-2 flex-row px-3 justify-center items-center '>
-                <hr className='w-[5rem] bg-[#03045e] p-[0.6px]' />{' '}
-                <MdOutlineSecurity className='text-[#03045e] sm:text-[2rem]' />{' '}
-                <hr className='w-[5rem] p-[0.6px] bg-[#03045e]' />
-              </div>
-
-              <div className=' center-with-flex flex-cols   w-full '>
-                <button
-                  onClick={() => {
-                    notify;
-                  }}
-                  className=' bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg'>
-                  Login
-                </button>
-                <div className='center-with-flex my-2'>
-                  <Link
-                    href='/login/emailotp'
-                    className='font-bold text-[#03045e] underline'>
-                    Forgot Password
-                  </Link>
+                  {/* SERVER VALIDATION ERROR DISPLAY */}
+                  {errorInResponse &&
+                  userOptions.dataField === 'password' &&
+                  userOptions.dataErrorStatus === true ? (
+                    <p>{serverData}</p>
+                  ) : (
+                    errorInResponse &&
+                    userOptions.allDataField === true &&
+                    userOptions.dataSuccessStatus === false &&
+                    userOptions.dataErrorStatus === true && <p>{serverData}</p>
+                  )}
                 </div>
-                <p className='font-bold mx-auto w-[8rems]'>
-                  Don't have an account?{' '}
-                  <Link
-                    href='/register'
-                    className='underline text-[1.2rem] font-bold  text-[#03045e]'>
-                    signup.
-                  </Link>
-                </p>
+
+                <div className=" w-full flex gap-2 flex-row px-3 justify-center items-center ">
+                  <hr className="w-[5rem] bg-[#03045e] p-[0.6px]" />{' '}
+                  <MdOutlineSecurity className="text-[#03045e] sm:text-[2rem]" />{' '}
+                  <hr className="w-[5rem] p-[0.6px] bg-[#03045e]" />
+                </div>
+
+                <div className=" center-with-flex flex-cols   w-full ">
+                  <button
+                    onClick={() => {
+                      notify;
+                    }}
+                    className=" bg-[#03045e] mx-auto w-[5rem] mt-3 shadow-xl text-white p-2 block font-bold rounded-lg">
+                    Login
+                  </button>
+                  <div className="center-with-flex my-2">
+                    <Link
+                      href="/login/emailotp"
+                      className="font-bold text-[#03045e] underline">
+                      Forgot Password
+                    </Link>
+                  </div>
+                  <p className="font-bold mx-auto w-[8rems]">
+                    Don't have an account?{' '}
+                    <Link
+                      href="/register"
+                      className="underline text-[1.2rem] font-bold  text-[#03045e]">
+                      signup.
+                    </Link>
+                  </p>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          )}
         </article>
       </div>
     </section>

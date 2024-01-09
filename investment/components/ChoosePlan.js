@@ -10,6 +10,7 @@ import { FaEthereum } from 'react-icons/fa';
 import { HiCurrencyDollar } from 'react-icons/hi2';
 import copy from 'clipboard-copy';
 import { FaCopy } from 'react-icons/fa';
+import { GrStatusGood } from 'react-icons/gr';
 
 export default function ChoosePlan() {
   // starter plan
@@ -18,6 +19,7 @@ export default function ChoosePlan() {
   const [starterEth, setStarterEth] = useState(true);
   const [starterUsdt, setStarterUsdt] = useState(true);
   const [starterTrx, setStarterTrx] = useState(true);
+  const [isCopied, setIscopied] = useState(false);
 
   // Gold plan
 
@@ -35,12 +37,15 @@ export default function ChoosePlan() {
 
   const copyWallet = async (wall_addr) => {
     try {
+      setIscopied(true);
       await copy(wall_addr);
-      alert('Wallet address copied');
+      // alert('Wallet address copied');
     } catch (error) {
       if (error) {
-        alert('Unable to copy waallet address, please try again later');
+        alert('Unable to copy wallet address, please try again later');
       }
+    } finally {
+      setIscopied(false);
     }
   };
 
@@ -137,8 +142,14 @@ export default function ChoosePlan() {
                         onClick={() => {
                           copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
-                        Copy wallet
+                        className={`flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   ${
+                          isCopied ? 'bg-green-500' : 'bg-red-500'
+                        }`}>
+                        {isCopied
+                          ? `  Wallet copied ${(
+                              <GrStatusGood className="inline text-white" />
+                            )}`
+                          : 'Copy Wallet'}
                         <FaCopy />
                       </button>
                     </div>
