@@ -31,8 +31,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { MdArrowOutward } from 'react-icons/md';
 import { GiPayMoney } from 'react-icons/gi';
-import { GiReceiveMoney } from 'react-icons/gi';
-import { GiTakeMyMoney } from 'react-icons/gi';
 import { SiBitcoinsv } from 'react-icons/si';
 
 import {
@@ -43,9 +41,7 @@ import {
   Timeline,
   StockMarket,
 } from 'react-tradingview-embed';
-import { MdOutlineMoreTime } from 'react-icons/md';
 import { ImQuotesLeft } from 'react-icons/im';
-import internal from 'stream';
 
 export default function Landing() {
   const standard = [
