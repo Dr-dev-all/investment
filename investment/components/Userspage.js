@@ -8,6 +8,8 @@ import 'reactjs-popup/dist/index.css';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import useAxiosPrivate from '@/hooks/useAxiosPrivate';
+import BeatLoader from 'react-spinners/BeatLoader';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 export default function Userspage() {
   const axiosPrivate = useAxiosPrivate();
@@ -19,8 +21,11 @@ export default function Userspage() {
   const dataRender = useRef(true);
   const [userFormData, setUserFormData] = useState({});
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [userId, setUserId] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [activateLoading, setActivateLoading] = useState(false);
+  const [deactivateLoading, setDeactivateLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   let data3 = {};
 
@@ -38,13 +43,11 @@ export default function Userspage() {
   //         return router.push('/login');
   //       }
 
-  //       // 
+  //       //
   //       const userInfo = jwtDecode(token);
   //       setUserId(userInfo._id);
 
-
-  //       // 
-
+  //       //
 
   //     } catch (error) {
   //       throw new Error(error);
@@ -57,22 +60,12 @@ export default function Userspage() {
   // }, []);
 
   const activateUser = async (userID) => {
-    setIsLoading(true);
     // checking for users access token
 
     setAuth((prev) => ({ ...prev, accessToken: token, userInfo }));
-    // const token = localStorage.getItem('accessToken');
-    // if (!token || token !== 'undefined') {
-    //   return router.push('/login');
-    // }
-
-    // const userInfo = jwtDecode(token);
-
-    // setDecodedItem(userInfo._id);
-
-    //
 
     try {
+      setActivateLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/activateuser}/${userID}`,
         {
@@ -88,16 +81,16 @@ export default function Userspage() {
       }
     } catch (error) {
       // console.log(error);
-      setAppError(error)
+      setAppError(error);
     } finally {
-      setIsLoading(false);
+      setActivateLoading(false);
       window.location.reload();
     }
   };
 
   const deactivateUser = async (userID) => {
-    setIsLoading(true);
     try {
+      setDeactivateLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/deactivateuser/${userID}`,
         {
@@ -115,14 +108,14 @@ export default function Userspage() {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      setDeactivateLoading(false);
       window.location.reload();
     }
   };
 
   const deleteUser = async (userID) => {
-    setIsLoading(true);
     try {
+      setDeleteLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/deleteuser/${userID}`,
         {
@@ -140,7 +133,7 @@ export default function Userspage() {
     } catch (error) {
       console.log();
     } finally {
-      setIsLoading(false);
+      setDeleteLoading(false);
       window.location.reload();
     }
   };
@@ -151,16 +144,19 @@ export default function Userspage() {
 
     const fetchUsers = async () => {
       try {
+        setIsLoading(true);
         const response = await axiosPrivate('/users/getallusers', {
           signal: controller.signal,
         });
         if (response.ok) {
           const serverData = await response.data;
           localStorage.setItem('userData', JSON.stringify(serverData));
-         isMounted && setUserData((prev) => ({ ...prev, data: serverData }));
+          isMounted && setUserData((prev) => ({ ...prev, data: serverData }));
         }
       } catch (error) {
         setAppError('Network error...., please try again later');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -210,6 +206,7 @@ export default function Userspage() {
     }
 
     try {
+      setIsLoading(true);
       // console.log(userFormData);
       const response = await axios.patch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/edituser`,
@@ -226,6 +223,7 @@ export default function Userspage() {
     } catch (error) {
       setAppError('Network error..., please try again later');
     } finally {
+      setIsLoading(false);
       window.location.reload();
     }
   };
@@ -253,211 +251,245 @@ export default function Userspage() {
                 <li key={i}>
                   <div>
                     <div className=" bg-black text-white rounded-[2rem] p-2 shadow-gray-500 shadow-xl">
-                      <form onSubmit={onSubmit}>
-                        <ul>
-                          <li className="plan-items">
-                            Firstname:{' '}
-                            <span>
-                              <input
-                                type="text"
-                                name="firstName"
-                                defaultValue={user.firstName}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     firstName: e.target.value
-                                //       ? e.target.value
-                                //       : user.firstName,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Lastname:
-                            <span>
-                              <input
-                                type="text"
-                                name="lastName"
-                                //   value={user.lastName}
-                                defaultValue={user.lastName}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     lastName: e.target.value || user.lastName,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Email:
-                            <span>
-                              <input
-                                type="text"
-                                name="email"
-                                // value={user.email}
-                                defaultValue={user.email}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     email: user.email || e.target.value,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Plan:
-                            <span>
-                              <input
-                                type="text"
-                                name="plan"
-                                defaultValue={user.plan}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     plan: e.target.value || user.plan,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Investment:
-                            <span>
-                              <input
-                                type="text"
-                                name="investment"
-                                defaultValue={user.investment}
-                                // defaultValue={user.balance}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     balance: e.target.value || user.balance,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Profit:
-                            <span>
-                              <input
-                                type="text"
-                                name="profit"
-                                defaultValue={user.profit}
-                                // defaultValue={user.balance}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     balance: e.target.value || user.balance,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Loss:
-                            <span>
-                              <input
-                                type="text"
-                                name="loss"
-                                defaultValue={user.loss}
-                                // defaultValue={user.balance}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     balance: e.target.value || user.balance,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            Balance:
-                            <span>
-                              <input
-                                type="text"
-                                name="balance"
-                                defaultValue={user.balance}
-                                // defaultValue={user.balance}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     balance: e.target.value || user.balance,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            UserID:
-                            <span>
-                              <input
-                                type="text"
-                                name="id"
-                                defaultValue={user._id}
-                                readOnly
-                                // value={user._id}
-                                // onChange={(e) =>
-                                //   setUserFormData((prev) => ({
-                                //     ...prev,
-                                //     id: e.target.value || user.balance,
-                                //   }))
-                                // }
-                                className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                              />
-                            </span>
-                          </li>
-                          <li className="plan-items">
-                            status:{' '}
-                            <span>
-                              {user.isActive ? (
-                                <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
-                              ) : (
-                                <BiSolidSquareRounded className="text-red-500  text-[1.2rem]" />
-                              )}
-                            </span>
-                          </li>
-                        </ul>
-                        <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
-                          {' '}
-                          submit
-                        </button>
-                      </form>
+                      {isLoading ? (
+                        <PuffLoader />
+                      ) : (
+                        <form onSubmit={onSubmit}>
+                          <ul>
+                            <li className="plan-items">
+                              Firstname:{' '}
+                              <span>
+                                <input
+                                  type="text"
+                                  name="firstName"
+                                  defaultValue={user.firstName}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     firstName: e.target.value
+                                  //       ? e.target.value
+                                  //       : user.firstName,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Lastname:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="lastName"
+                                  //   value={user.lastName}
+                                  defaultValue={user.lastName}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     lastName: e.target.value || user.lastName,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Email:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="email"
+                                  // value={user.email}
+                                  defaultValue={user.email}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     email: user.email || e.target.value,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Plan:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="plan"
+                                  defaultValue={user.plan}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     plan: e.target.value || user.plan,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Investment:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="investment"
+                                  defaultValue={user.investment}
+                                  // defaultValue={user.balance}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     balance: e.target.value || user.balance,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Profit:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="profit"
+                                  defaultValue={user.profit}
+                                  // defaultValue={user.balance}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     balance: e.target.value || user.balance,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Loss:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="loss"
+                                  defaultValue={user.loss}
+                                  // defaultValue={user.balance}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     balance: e.target.value || user.balance,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              Balance:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="balance"
+                                  defaultValue={user.balance}
+                                  // defaultValue={user.balance}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     balance: e.target.value || user.balance,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              UserID:
+                              <span>
+                                <input
+                                  type="text"
+                                  name="id"
+                                  defaultValue={user._id}
+                                  readOnly
+                                  // value={user._id}
+                                  // onChange={(e) =>
+                                  //   setUserFormData((prev) => ({
+                                  //     ...prev,
+                                  //     id: e.target.value || user.balance,
+                                  //   }))
+                                  // }
+                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                />
+                              </span>
+                            </li>
+                            <li className="plan-items">
+                              status:{' '}
+                              <span>
+                                {user.isActive ? (
+                                  <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
+                                ) : (
+                                  <BiSolidSquareRounded className="text-red-500  text-[1.2rem]" />
+                                )}
+                              </span>
+                            </li>
+                          </ul>
+                          <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
+                            {' '}
+                            submit
+                          </button>
+                        </form>
+                      )}
                       <div className="grid grid-cols-2 gap-2 ">
                         <button
                           onClick={() => {
                             activateUser(user._id);
                           }}
                           className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
-                          {' '}
-                          Activate
+                          {activateLoading ? (
+                            <BeatLoader
+                              color={'blue'}
+                              // loading={isloading}
+                              // cssOverride={override}
+                              size={10}
+                              aria-label="Loading Spinner"
+                              data-testid="loader"
+                            />
+                          ) : (
+                            'Activate'
+                          )}{' '}
                         </button>
                         <button
                           onClick={() => {
                             deactivateUser(user._id);
                           }}
                           className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
-                          {' '}
-                          Deactivate
+                          {deactivateLoading ? (
+                            <BeatLoader
+                              color={'blue'}
+                              // loading={isloading}
+                              // cssOverride={override}
+                              size={10}
+                              aria-label="Loading Spinner"
+                              data-testid="loader"
+                            />
+                          ) : (
+                            'Deactivate'
+                          )}
                         </button>
                         <button
                           onClick={() => {
                             deleteUser(user._id);
                           }}
                           className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold">
-                          {' '}
-                          Delete
+                          {deleteLoading ? (
+                            <BeatLoader
+                              color={'blue'}
+                              // loading={isloading}
+                              // cssOverride={override}
+                              size={10}
+                              aria-label="Loading Spinner"
+                              data-testid="loader"
+                            />
+                          ) : (
+                            'Delete'
+                          )}
                         </button>
                       </div>
                     </div>
