@@ -220,8 +220,8 @@ export default function Register() {
                 defaultValue={code}
                 placeholder=""
               />
-              <button className="p-1 font-bold shadow-md shadow-gray-500 mx-auto">
-                Copy generated key <FaCopy className="text-[#121113]" />
+              <button className="p-1 font-bold shadow-md shadow-gray-500 mx-auto my-1">
+                Copy generated key <FaCopy className="text-[#121113] inline" />
               </button>
             </div>
 
@@ -240,7 +240,7 @@ export default function Register() {
                   data-testid="loader"
                 />
               ) : (
-                'Generate Secret Keys'
+                'Generate Secret Key'
               )}
             </button>
           </div>
