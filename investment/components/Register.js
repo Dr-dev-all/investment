@@ -14,7 +14,7 @@ import { sendStatusCode } from 'next/dist/server/api-utils';
 import { useRouter, usePathname } from 'next/navigation';
 import { BiSolidDownArrow } from 'react-icons/bi';
 import BeatLoader from 'react-spinners/BeatLoader';
-import PuffLoader from 'react-spinners/PacmanLoader';
+import PuffLoader from 'react-spinners/PuffLoader';
 import copy from 'clipboard-copy';
 import { GrStatusGood } from 'react-icons/gr';
 
@@ -221,7 +221,7 @@ export default function Register() {
               <button
                 className={`${
                   isCopied ? 'bg-green-500' : 'bg-[#121113]'
-                } rounded-[2rem]  text-white  min-w-full`}
+                } rounded-[2rem]  text-white  w-[10%]`}
                 onClick={() => {
                   copyKey(code);
                 }}>
@@ -275,14 +275,7 @@ export default function Register() {
           </div>
 
           {regLoading ? (
-            <PuffLoader
-              color={'blue'}
-              // loading={isloading}
-              // cssOverride={override}
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
+            <PuffLoader />
           ) : (
             <form className="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 sm:gap-3 sm:grid-cols-2">
