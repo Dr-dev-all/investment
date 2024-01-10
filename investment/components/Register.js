@@ -17,6 +17,8 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import PuffLoader from 'react-spinners/PuffLoader';
 import copy from 'clipboard-copy';
 import { GrStatusGood } from 'react-icons/gr';
+import { FaCopy } from 'react-icons/fa';
+import { GiCheckMark } from 'react-icons/gi';
 
 export default function Register() {
   const [userData, setUserData] = useState({});
@@ -208,7 +210,7 @@ export default function Register() {
               Generate Secret key
             </label>
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col justify-between items-center">
               <input
                 {...register('code1')}
                 className="form-input-style"
@@ -220,12 +222,17 @@ export default function Register() {
               />
               <button
                 className={`${
-                  isCopied ? 'bg-green-500' : 'bg-[#121113]'
-                } rounded-[2rem]  text-white  w-[10%]`}
+                  isCopied ? 'bg-green-500' : ''
+                } rounded-[2rem]  bg-white text-black  w-[50%] shadow-md shadow-gray-500 p-1`}
                 onClick={() => {
                   copyKey(code);
                 }}>
-                - {isCopied && isCopied !== '' ? `Copied &#10003; ` : 'Copy'}
+                -{' '}
+                {isCopied && isCopied !== ''
+                  ? `Copied ${(<GiCheckMark className="text-green-500" />)} `
+                  : `Copy generated key ${(
+                      <FaCopy className="text-[#121113]" />
+                    )}`}
               </button>
             </div>
 
