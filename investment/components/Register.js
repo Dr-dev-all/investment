@@ -220,19 +220,8 @@ export default function Register() {
                 defaultValue={code}
                 placeholder=""
               />
-              <button
-                className={`${
-                  isCopied ? 'bg-green-500' : ''
-                } rounded-[2rem]  bg-white text-black  w-[50%] shadow-md shadow-gray-500 p-1`}
-                onClick={() => {
-                  copyKey(code);
-                }}>
-                -{' '}
-                {isCopied && isCopied !== ''
-                  ? `Copied ${(<GiCheckMark className="text-green-500" />)} `
-                  : `Copy generated key ${(
-                      <FaCopy className="text-[#121113]" />
-                    )}`}
+              <button className="p-1 font-bold shadow-md shadow-gray-500 mx-auto">
+                Copy generated key <FaCopy className="text-[#121113]" />
               </button>
             </div>
 
