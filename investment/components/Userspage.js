@@ -26,38 +26,9 @@ export default function Userspage() {
   const [activateLoading, setActivateLoading] = useState(false);
   const [deactivateLoading, setDeactivateLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   let data3 = {};
-
-  // useEffect(() => {
-  //   const fetchId = async () => {
-  //     try {
-  //       const { token } = await fetch(
-  //         `${process.env.NEXT_PUBLIC_BASE_URL}/auths/getusertoken`,
-  //         {
-  //           method: 'GET',
-  //           'Content-Type': 'application/json',
-  //         }
-  //       );
-  //       if (token === 'no-token-found') {
-  //         return router.push('/login');
-  //       }
-
-  //       //
-  //       const userInfo = jwtDecode(token);
-  //       setUserId(userInfo._id);
-
-  //       //
-
-  //     } catch (error) {
-  //       throw new Error(error);
-  //     }
-  //   };
-
-  //   fetchId();
-
-  //   return () => {};
-  // }, []);
 
   const activateUser = async (userID) => {
     try {
@@ -241,6 +212,9 @@ export default function Userspage() {
             <input
               placeholder="Search user"
               className="rounded-full text-black mx-auto w-full px-2 py-1"
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
             />
           </div>
           <div className="center-with-flex">
@@ -252,255 +226,261 @@ export default function Userspage() {
         <section>
           <ul className="grid grid-cols-1 gap-3 justify-center items-center w-full h-full mt-3">
             {userData?.data?.users?.length && !isLoading ? (
-              userData?.data?.users.map((user, i) => (
-                <li key={i}>
-                  <div>
-                    <div className=" bg-black text-white rounded-[2rem] p-2 shadow-gray-500 shadow-xl">
-                      {isLoading ? (
-                        <PuffLoader />
-                      ) : (
-                        <form onSubmit={onSubmit}>
-                          <ul>
-                            <li className="plan-items">
-                              Firstname:{' '}
-                              <span>
-                                <input
-                                  type="text"
-                                  name="firstName"
-                                  defaultValue={user.firstName}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     firstName: e.target.value
-                                  //       ? e.target.value
-                                  //       : user.firstName,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Lastname:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="lastName"
-                                  //   value={user.lastName}
-                                  defaultValue={user.lastName}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     lastName: e.target.value || user.lastName,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Email:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="email"
-                                  // value={user.email}
-                                  defaultValue={user.email}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     email: user.email || e.target.value,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Plan:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="plan"
-                                  defaultValue={user.plan}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     plan: e.target.value || user.plan,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Investment:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="investment"
-                                  defaultValue={user.investment}
-                                  // defaultValue={user.balance}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     balance: e.target.value || user.balance,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Profit:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="profit"
-                                  defaultValue={user.profit}
-                                  // defaultValue={user.balance}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     balance: e.target.value || user.balance,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Loss:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="loss"
-                                  defaultValue={user.loss}
-                                  // defaultValue={user.balance}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     balance: e.target.value || user.balance,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              Balance:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="balance"
-                                  defaultValue={user.balance}
-                                  // defaultValue={user.balance}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     balance: e.target.value || user.balance,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              UserID:
-                              <span>
-                                <input
-                                  type="text"
-                                  name="id"
-                                  defaultValue={user._id}
-                                  readOnly
-                                  // value={user._id}
-                                  // onChange={(e) =>
-                                  //   setUserFormData((prev) => ({
-                                  //     ...prev,
-                                  //     id: e.target.value || user.balance,
-                                  //   }))
-                                  // }
-                                  className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
-                                />
-                              </span>
-                            </li>
-                            <li className="plan-items">
-                              status:{' '}
-                              <span>
-                                {user.isActive ? (
-                                  <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
-                                ) : (
-                                  <BiSolidSquareRounded className="text-red-500  text-[1.2rem]" />
-                                )}
-                              </span>
-                            </li>
-                          </ul>
-                          <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
-                            {' '}
-                            submit
+              userData?.data?.users
+                .filter((d) =>
+                  d.firstName.includes(searchText)
+                    ? d.firstName.startsWith(searchText)
+                    : d.firstName.includes(searchText)
+                )
+                .map((user, i) => (
+                  <li key={i}>
+                    <div>
+                      <div className=" bg-black text-white rounded-[2rem] p-2 shadow-gray-500 shadow-xl">
+                        {isLoading ? (
+                          <PuffLoader />
+                        ) : (
+                          <form onSubmit={onSubmit}>
+                            <ul>
+                              <li className="plan-items">
+                                Firstname:{' '}
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="firstName"
+                                    defaultValue={user.firstName}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     firstName: e.target.value
+                                    //       ? e.target.value
+                                    //       : user.firstName,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Lastname:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="lastName"
+                                    //   value={user.lastName}
+                                    defaultValue={user.lastName}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     lastName: e.target.value || user.lastName,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Email:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="email"
+                                    // value={user.email}
+                                    defaultValue={user.email}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     email: user.email || e.target.value,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Plan:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="plan"
+                                    defaultValue={user.plan}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     plan: e.target.value || user.plan,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Investment:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="investment"
+                                    defaultValue={user.investment}
+                                    // defaultValue={user.balance}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     balance: e.target.value || user.balance,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Profit:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="profit"
+                                    defaultValue={user.profit}
+                                    // defaultValue={user.balance}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     balance: e.target.value || user.balance,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Loss:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="loss"
+                                    defaultValue={user.loss}
+                                    // defaultValue={user.balance}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     balance: e.target.value || user.balance,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                Balance:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="balance"
+                                    defaultValue={user.balance}
+                                    // defaultValue={user.balance}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     balance: e.target.value || user.balance,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                UserID:
+                                <span>
+                                  <input
+                                    type="text"
+                                    name="id"
+                                    defaultValue={user._id}
+                                    readOnly
+                                    // value={user._id}
+                                    // onChange={(e) =>
+                                    //   setUserFormData((prev) => ({
+                                    //     ...prev,
+                                    //     id: e.target.value || user.balance,
+                                    //   }))
+                                    // }
+                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                  />
+                                </span>
+                              </li>
+                              <li className="plan-items">
+                                status:{' '}
+                                <span>
+                                  {user.isActive ? (
+                                    <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
+                                  ) : (
+                                    <BiSolidSquareRounded className="text-red-500  text-[1.2rem]" />
+                                  )}
+                                </span>
+                              </li>
+                            </ul>
+                            <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
+                              {' '}
+                              submit
+                            </button>
+                          </form>
+                        )}
+                        <div className="grid grid-cols-2 gap-2 ">
+                          <button
+                            onClick={() => {
+                              activateUser(user._id);
+                            }}
+                            className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                            {activateLoading ? (
+                              <BeatLoader
+                                color={'blue'}
+                                // loading={isloading}
+                                // cssOverride={override}
+                                size={10}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                              />
+                            ) : (
+                              'Activate'
+                            )}{' '}
                           </button>
-                        </form>
-                      )}
-                      <div className="grid grid-cols-2 gap-2 ">
-                        <button
-                          onClick={() => {
-                            activateUser(user._id);
-                          }}
-                          className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
-                          {activateLoading ? (
-                            <BeatLoader
-                              color={'blue'}
-                              // loading={isloading}
-                              // cssOverride={override}
-                              size={10}
-                              aria-label="Loading Spinner"
-                              data-testid="loader"
-                            />
-                          ) : (
-                            'Activate'
-                          )}{' '}
-                        </button>
-                        <button
-                          onClick={() => {
-                            deactivateUser(user._id);
-                          }}
-                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
-                          {deactivateLoading ? (
-                            <BeatLoader
-                              color={'blue'}
-                              // loading={isloading}
-                              // cssOverride={override}
-                              size={10}
-                              aria-label="Loading Spinner"
-                              data-testid="loader"
-                            />
-                          ) : (
-                            'Deactivate'
-                          )}
-                        </button>
-                        <button
-                          onClick={() => {
-                            deleteUser(user._id);
-                          }}
-                          className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold">
-                          {deleteLoading ? (
-                            <BeatLoader
-                              color={'blue'}
-                              // loading={isloading}
-                              // cssOverride={override}
-                              size={10}
-                              aria-label="Loading Spinner"
-                              data-testid="loader"
-                            />
-                          ) : (
-                            'Delete'
-                          )}
-                        </button>
+                          <button
+                            onClick={() => {
+                              deactivateUser(user._id);
+                            }}
+                            className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                            {deactivateLoading ? (
+                              <BeatLoader
+                                color={'blue'}
+                                // loading={isloading}
+                                // cssOverride={override}
+                                size={10}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                              />
+                            ) : (
+                              'Deactivate'
+                            )}
+                          </button>
+                          <button
+                            onClick={() => {
+                              deleteUser(user._id);
+                            }}
+                            className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold">
+                            {deleteLoading ? (
+                              <BeatLoader
+                                color={'blue'}
+                                // loading={isloading}
+                                // cssOverride={override}
+                                size={10}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                              />
+                            ) : (
+                              'Delete'
+                            )}
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))
+                  </li>
+                ))
             ) : isLoading ? (
               <ThreeCircles
                 height="100"

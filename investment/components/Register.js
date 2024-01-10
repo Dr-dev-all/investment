@@ -221,7 +221,7 @@ export default function Register() {
               <button
                 className={`${
                   isCopied ? 'bg-green-500' : 'bg-[#121113]'
-                } rounded-[2rem]  text-white  `}
+                } rounded-[2rem]  text-white  min-w-full`}
                 onClick={() => {
                   copyKey(code);
                 }}>
