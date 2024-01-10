@@ -44,7 +44,7 @@ export default function AdminHeader() {
           <h1 className="">ADMIN</h1>
         </div>
 
-        <div>Hello {user?.data?.firstName} </div>
+        <div>Bullharvest.com </div>
         <div className="center-with-flex rounded-full p-2 ">
           <IoNotificationsSharp />
         </div>
