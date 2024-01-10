@@ -43,10 +43,8 @@ export default function AdminHeader() {
         <div className=" center-with-flex font-bold">
           <h1 className="">ADMIN</h1>
         </div>
-        <div>
-          <IoSearchSharp />
-        </div>
-        <div>Hello mike</div>
+
+        <div>Hello {user?.data?.firstName} </div>
         <div className="center-with-flex rounded-full p-2 ">
           <IoNotificationsSharp />
         </div>

@@ -24,31 +24,17 @@ export default function AdminDashBoard() {
       </section>
       <section className="bg-white text-black w-[95%] min-h-full rounded-[2rem] grid grid-cols-2  mx-auto gap-3 p-3  mt-[1rem] ">
         <article className="center-with-flex  flex-col justify-center bg-black text-white shadow-gray-500 shadow-lg rounded-lg min-w-full min-h-[3rem]">
-          <p>Order Status</p>
+          <p>Inactive clients</p>
           <p> 567 </p>
           <p className=" plan-items">
-            Order Status <span className="">10%</span>{' '}
+            T-volume <span className="">3455%</span>{' '}
           </p>
         </article>
         <article className="center-with-flex  flex-col justify-center bg-black text-white shadow-gray-500 shadow-lg rounded-lg min-w-full min-h-[3rem]">
-          <p>Order Status</p>
+          <p>Active clients</p>
           <p> 567 </p>
           <p className=" plan-items">
-            Order Status <span className="">10%</span>{' '}
-          </p>
-        </article>
-        <article className="center-with-flex  flex-col justify-center bg-black text-white shadow-gray-500 shadow-lg rounded-lg min-w-full min-h-[3rem]">
-          <p>Order Status</p>
-          <p> 567 </p>
-          <p className=" plan-items">
-            Order Status <span className="">10%</span>{' '}
-          </p>
-        </article>
-        <article className="center-with-flex  flex-col justify-center bg-black text-white shadow-gray-500 shadow-lg rounded-lg min-w-full min-h-[3rem]">
-          <p>Order Status</p>
-          <p> 567 </p>
-          <p className=" plan-items">
-            Order Status <span className="">10%</span>{' '}
+            T-volume <span className="">145%</span>{' '}
           </p>
         </article>
       </section>
