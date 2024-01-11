@@ -64,7 +64,7 @@ export default function ChoosePlan() {
           Please ensure that your investment value is in accordance or conforms
           with your chosen plan, if your investment value is above your chosen
           plan you will be automatically switched to the higher plan with their
-          potential benefits, if you invest bellow your chosen plan will
+          potential benefits, if you invest below your chosen plan will
           automatically attract your the lower plan that suites your investment
           else if your investment doesn’t match any plan, you will have to
           upgrade your investment to your choice of plan.{' '}
@@ -134,9 +134,9 @@ export default function ChoosePlan() {
                     starterBtc ? 'hidden' : 'block   bg-white    text-[#03045e]'
                   }    `}>
                   <p className="wallet-text-style ">
-                    Please copy the bitcoin (btc) wallet address bellow and make
+                    Please copy the bitcoin (btc) wallet address below and make
                     deposit of your investment value in bitcoin through your
-                    crypto wallet. (starter plan range ($50 - $4,900))
+                    crypto wallet. (standard plan range ($50 - $4,900))
                   </p>
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
@@ -155,14 +155,10 @@ export default function ChoosePlan() {
                         onClick={() => {
                           copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
                         }}
-                        className={`flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   ${
-                          isCopied ? 'bg-green-500' : 'bg-red-500'
-                        }`}>
-                        {isCopied
-                          ? `  Wallet copied ${(
-                              <GrStatusGood className="inline text-white" />
-                            )}`
-                          : 'Copy Wallet'}
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   
+                           bg-green-500 ">
+                        Copy Wallet
+                        <GrStatusGood className="inline text-white" />
                         <FaCopy />
                       </button>
                     </div>

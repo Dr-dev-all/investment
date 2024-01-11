@@ -1,5 +1,5 @@
-import { IoLogoBitcoin } from "react-icons/io";
-import { FaBitcoin } from "react-icons/fa";
+import { IoLogoBitcoin } from 'react-icons/io';
+import { FaBitcoin } from 'react-icons/fa';
 
 export default function About() {
   const content = (
@@ -22,13 +22,6 @@ export default function About() {
               </p>
             </div>
             <div className="mt-10 max-w-2xl space-y-6 text-base">
-              <p>
-                Welcome to BullHarvest, where investment meets innovation.
-                Established with a vision to redefine wealth management, we have
-                emerged as a trusted partner in your financial journey. At
-                BullHarvest, we believe in empowering individuals with the tools
-                and knowledge needed to make informed investment decisions.
-              </p>
               <p>
                 We help our clients earn money on the volatility of the
                 cryptocurrency market. Due to the use of high frequency,
@@ -71,7 +64,7 @@ export default function About() {
           <div className="opacity: 1; transform: none;">
             <h1>
               <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
-                {" What Sets Us Apart"}
+                {' What Sets Us Apart'}
               </span>
               <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
                 Innovation at the Core
