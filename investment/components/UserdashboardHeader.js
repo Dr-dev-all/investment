@@ -32,6 +32,7 @@ export default function UserDashboardHeader() {
   const { auth } = useContext(AuthProvider);
   const [user, setUser] = useState({});
   const [appError, setAppError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -40,6 +41,7 @@ export default function UserDashboardHeader() {
 
     const getUser = async () => {
       try {
+        setLoading(true);
         const response = await axiosPrivate.get(`/users/getsingleuser`, {
           signal: controller.signal,
         });
@@ -48,6 +50,8 @@ export default function UserDashboardHeader() {
         //
       } catch (error) {
         setAppError('Network error..., please try again later');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -89,7 +93,11 @@ export default function UserDashboardHeader() {
           <div className="flex flex-col">
             <FaCircle
               className={`    mx-auto  text-[0.9rem] ${
-                user?.data?.active === true ? 'text-green-500' : 'text-red-500'
+                user?.data?.active === true
+                  ? 'text-green-500'
+                  : user?.data?.active === false
+                    ? 'text-red-500'
+                    : loading && 'animate-all pulse bg-[#03045e]'
               } `}
             />
             <p className="text-white text-[10px]   text-center">
