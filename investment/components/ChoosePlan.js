@@ -158,7 +158,6 @@ export default function ChoosePlan() {
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   
                            bg-green-500 ">
                         Copy Wallet
-                        <GrStatusGood className="inline text-white" />
                         <FaCopy />
                       </button>
                     </div>
