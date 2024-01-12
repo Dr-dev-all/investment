@@ -93,15 +93,26 @@ export default function UserDashboardHeader() {
           <div className="flex flex-col">
             <FaCircle
               className={`    mx-auto  text-[0.9rem] ${
-                user?.data?.active === true
-                  ? 'text-green-500'
-                  : user?.data?.active === false
-                    ? 'text-red-500'
-                    : loading && 'animate-all pulse bg-[#03045e]'
+                loading === true
+                  ? 'animate-pulse bg-transparent'
+                  : user?.data?.active && loading === false
+                    ? 'text-green-500'
+                    : user?.data?.active === false &&
+                      loading === false &&
+                      'text-red-500'
               } `}
             />
-            <p className="text-white text-[10px]   text-center">
-              {user?.data?.active ? 'Active' : 'Disabled'}
+            <p
+              className={`text-white text-[10px]   text-center ${
+                loading && 'animate-pulse'
+              }`}>
+              {user?.data?.active === true && loading === false
+                ? 'Active'
+                : loading === true
+                  ? '...'
+                  : user?.data?.active === false &&
+                    loading === false &&
+                    'Inactive'}
             </p>
           </div>
         </div>

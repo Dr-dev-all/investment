@@ -75,7 +75,7 @@ export default function Withdraw() {
   };
 
   const content = (
-    <section className="mt-[7rem] px-5  ">
+    <section className="mt-[8.5rem] px-5  ">
       <h1 className="text-3xl text-center font-semibold dark:text-white mx-5 my-3">
         ASK FOR WITHDRAWAL
       </h1>
@@ -91,11 +91,11 @@ export default function Withdraw() {
           <br />
           <input
             type="text"
-            name="amount"
             id="amount"
+            name="amount"
             {...register('amount', {
               required:
-                'Please enter amount of coin you would like to withdraw in dollars (USD)',
+                'Please enter amount of coin you would like to withdraw',
               minLength: 60,
               validate: (value) =>
                 !Number(value) || value < user?.data?.balance,
