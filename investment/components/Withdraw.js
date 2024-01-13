@@ -14,13 +14,6 @@ export default function Withdraw() {
   const [walletError, setWalletError] = useState(false);
   const [amountError, setAmountError] = useState(false);
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   useEffect(() => {
     let isMounted = true;
 
@@ -59,13 +52,17 @@ export default function Withdraw() {
     if (mainData.amount === '') {
       setAmountError(true);
       return setAppError('Please enter an amount to withdraw');
+    } else {
+      setAmountError(false);
     }
+
     if (mainData.wallet === '') {
       setWalletError(true);
       return setAppError('Please enter your wallet address');
+    } else {
+      setWalletError(false);
     }
 
-    // console.log(userData);
 
     try {
       setFormLoading(true);
@@ -75,11 +72,9 @@ export default function Withdraw() {
         headers: { 'Content-Type': 'application/json' },
       });
       const serverData = await response.data;
-      // console.log("passing to the database");
-      // console.log(serverData);
+     
     } catch (error) {
-      // console.log(error);
-      setAppError('Network error... Please try again later');
+      setAppError('');
     } finally {
       event.target.reset();
       setFormLoading(false);
