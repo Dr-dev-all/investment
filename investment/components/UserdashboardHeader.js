@@ -77,17 +77,13 @@ export default function UserDashboardHeader() {
         </div>
         <div className="w-[25%] m-auto h-[2rem]  text-[10px] ">
           <span className="italic text-[13px] font-bold "> Hi </span>{' '}
-          {user?.data?.firstName ? (
-            user?.data?.firstName
-          ) : (
-            <BeatLoader
-              color={{ color: 'white' }}
-              loading={true}
-              size={150}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          )}{' '}
+          {user?.data?.firstName
+            ? user?.data?.firstName
+            : loading && (
+                <p className={`text-white ${loading && 'animate-pulse'}`}>
+                  ...
+                </p>
+              )}{' '}
         </div>
         <div className=" center-with-flex  w-[25%]  m-auto ">
           <div className="flex flex-col">
