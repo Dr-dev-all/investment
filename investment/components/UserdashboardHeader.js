@@ -80,7 +80,7 @@ export default function UserDashboardHeader() {
           {user?.data?.firstName
             ? user?.data?.firstName
             : loading && (
-                <p className={`text-white ${loading && 'animate-pulse'}`}>
+                <p className={`text-white ${loading && 'animate-pulse inline'}`}>
                   ...
                 </p>
               )}{' '}

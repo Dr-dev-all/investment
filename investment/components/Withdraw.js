@@ -11,6 +11,8 @@ export default function Withdraw() {
   const [appError, setAppError] = useState('');
   const [user, setUser] = useState({});
   const [formLoading, setFormLoading] = useState(false);
+  const [walletError, setWalletError] = useState(false);
+  const [amountError, setAmountError] = useState(false);
 
   const {
     register,
@@ -48,10 +50,20 @@ export default function Withdraw() {
   }, [axiosPrivate]);
 
   // FORM SUBMISSION
-  const onSubmit = async (formdata) => {
-    // console.log(formData);
+  const onSubmit = async (event) => {
+    event.preventDefault();
 
-    // getting user data via form
+    const formData = new FormData(event.target);
+    mainData = Object.fromEntries(formData);
+
+    if (mainData.amount === '') {
+      setAmountError(true);
+      return setAppError('Please enter an amount to withdraw');
+    }
+    if (mainData.wallet === '') {
+      setWalletError(true);
+      return setAppError('Please enter your wallet address');
+    }
 
     // console.log(userData);
 
@@ -59,7 +71,7 @@ export default function Withdraw() {
       setFormLoading(true);
       const response = await axiosPrivate('/users/withdraw', {
         method: 'POST',
-        data: JSON.stringify(formdata),
+        data: JSON.stringify(mainData),
         headers: { 'Content-Type': 'application/json' },
       });
       const serverData = await response.data;
@@ -67,10 +79,10 @@ export default function Withdraw() {
       // console.log(serverData);
     } catch (error) {
       // console.log(error);
-      setAppError('Network error...., try again later');
+      setAppError('Network error... Please try again later');
     } finally {
+      event.target.reset();
       setFormLoading(false);
-      reset();
     }
   };
 
@@ -82,9 +94,7 @@ export default function Withdraw() {
       {formLoading ? (
         <PuffLoader />
       ) : (
-        <form
-          className="mt-9 max-w-md mx-auto"
-          onSubmit={handleSubmit(onSubmit)}>
+        <form className="mt-9 max-w-md mx-auto" onSubmit={onSubmit}>
           <label className="text-base " htmlFor="amount">
             Amount:
           </label>{' '}
@@ -93,24 +103,10 @@ export default function Withdraw() {
             type="text"
             id="amount"
             name="amount"
-            {...register('amount', {
-              required:
-                'Please enter amount of coin you would like to withdraw',
-              minLength: 60,
-              validate: (value) =>
-                !Number(value) || value < user?.data?.balance,
-            })}
             className="block text-black  py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder="$50.00"></input>
-          {errors.amount && errors.amount.type === 'required' ? (
-            <p className="form-error-style">{errors.amount.message}</p>
-          ) : (
-            errors.amount &&
-            errors.amount.type === 'validate' && (
-              <p className="form-error-style">
-                Please enter the amount in your balance range.
-              </p>
-            )
+          {amountError && appError && (
+            <p className="form-error-style">{appError}</p>
           )}
           <br />
           <div>
@@ -118,7 +114,6 @@ export default function Withdraw() {
               type="text"
               name="walletType"
               id="walletType"
-              {...register('walletType')}
               className="mb-2 w-full  border p-2 border-gray-300 rounded-md focus:outline-none focus-border-blue-500">
               <option value="bitcoin">BTC</option>
               <option value="ethereum">ETH</option>
@@ -131,8 +126,10 @@ export default function Withdraw() {
             type="text"
             id="wallet"
             name="wallet"
-            {...register('wallet')}
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"></input>
+          {walletError && appError && (
+            <p className="form-error-style">{appError}</p>
+          )}
           <br />
           <button
             type="submit"
