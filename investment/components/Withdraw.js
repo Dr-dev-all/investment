@@ -63,7 +63,6 @@ export default function Withdraw() {
       setWalletError(false);
     }
 
-
     try {
       setFormLoading(true);
       const response = await axiosPrivate('/users/withdraw', {
@@ -72,7 +71,6 @@ export default function Withdraw() {
         headers: { 'Content-Type': 'application/json' },
       });
       const serverData = await response.data;
-     
     } catch (error) {
       setAppError('');
     } finally {
