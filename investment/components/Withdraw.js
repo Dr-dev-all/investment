@@ -9,47 +9,41 @@ export default function Withdraw() {
 
   const [appError, setAppError] = useState('');
   const [formLoading, setFormLoading] = useState(false);
-  const [dataReset, setDataReset] = useState('');
-  const [walletError, setWalletError] = useState(false);
-  const [amountError, setAmountError] = useState(false);
-  const [serverError, setServerError] = useState(false);
+  const [walletError, setWalletError] = useState('');
+  const [amountError, setAmountError] = useState('');
+  const [serverError, setServerError] = useState('');
   const [successMessage, setSuccessMessage] = useState(false);
+  const [serverData, setServerData] = useState('');
   // const inputRef = useRef(null);
 
-  const checkSubmit = () => {
-    if (!formLoading || !walletError || !amountError || !serverError) {
-      setAppError('Success');
-      setSuccessMessage(true);
-    } else {
-      setSuccessMessage(false);
-    }
-  };
+  // const checkSubmit = () => {
+  //   if (!formLoading || !walletError || !amountError || !serverError) {
+  //     setAppError('Success');
+  //     setSuccessMessage(true);
+  //   } else {
+  //     setSuccessMessage(false);
+  //   }
+  // };
   // FORM SUBMISSION
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    // console.log(data);
 
     const formData = new FormData(event.target);
     const mainData = Object.fromEntries(formData);
 
-    console.log(mainData);
-
     if (mainData.amount === '') {
-      setAmountError(true);
-      return setAppError('Please enter an amount to withdraw.');
+      return setAmountError('Please enter an amount to withdraw.');
     } else if (!Number(mainData.amount)) {
-      setAmountError(true);
-
-      return setAppError('Please enter a valid amount digits.');
+      return setAmountError('Please enter a valid digits.');
     } else {
-      setAmountError(false);
+      setAmountError('');
     }
 
     if (mainData.wallet === '') {
-      setWalletError(true);
-      return setAppError('Please enter your wallet address');
+      return setWalletError('Please enter your wallet address');
     } else {
-      setWalletError(false);
+      setWalletError('');
     }
 
     try {
@@ -59,19 +53,24 @@ export default function Withdraw() {
         data: JSON.stringify(mainData),
         headers: { 'Content-Type': 'application/json' },
       });
-      const serverData = response.data;
-      console.log({ success: serverData });
-      // console.log("passing to the database");
+      const serverResponse = response.data;
+      setServerData(serverResponse);
     } catch (error) {
-      console.log(error);
+      // setServerData(error);
       if (
         error.response.status === 400 &&
         error.response.data === 'invalid-wallet-address'
       ) {
-        console.log('invalid address');
+        return setServerData(`Invalid ${mainData.walletType} address`);
+      } else {
+        setServerData('');
+      }
 
-        setServerError(true);
-        return setAppError(`Invalid ${mainData.walletType} address`);
+      if (
+        error.response.status === 400 &&
+        error.response.data === 'invalid-amount-data'
+      ) {
+        return setServerData(`invalid amount.`);
       } else {
         setServerError(false);
       }
@@ -80,16 +79,13 @@ export default function Withdraw() {
         error.response.status === 400 &&
         error.response.data === 'insufficient'
       ) {
-        console.log('insufficient');
-        setServerError(true);
-        return setAppError(`Insufficient balance.`);
+        return setServerData(`Insufficient balance.`);
       } else {
         setServerError(false);
       }
 
-      setAmountError('');
+      setAppError(error);
     } finally {
-      // reset();
       event.target.reset();
       setFormLoading(false);
     }
@@ -100,17 +96,25 @@ export default function Withdraw() {
       <h1 className='text-3xl text-center text-black  font-semibold mx-5 my-3'>
         WITHDRAWAL
       </h1>
-      {serverError && appError && (
-        <p className='form-error-style'>{appError}</p>
-      )}
-
-      {successMessage &&
-        !serverError &&
+      {amountError && amountError !== '' ? (
+        <p className='form-error-style'>{amountError}</p>
+      ) : walletError && walletError !== '' ? (
+        <p className='form-error-style'>{walletError}</p>
+      ) : serverData && serverData === 'success' && serverData !== '' ? (
+        <p className='text-green-500 text-[1.2rem] font-bold'>
+          Withdrawal request submitted successfuly, please check your exchange
+          wallet in few moments.
+        </p>
+      ) : serverData && serverData !== '' ? (
+        <p className='form-error-style'>{serverData}</p>
+      ) : (
         appError &&
-        !amountError &&
-        !walletError && (
-          <p className='text-green-500 text-[1.2rem]'>{appError}</p>
-        )}
+        appError !== '' && (
+          <p className='form-error-style'>
+            Network error... please try again later.
+          </p>
+        )
+      )}
 
       {formLoading ? (
         <PuffLoader />
@@ -129,9 +133,6 @@ export default function Withdraw() {
             id='amount'
             className='block text-black  py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
             placeholder='$50.00'></input>
-          {amountError && appError && (
-            <p className='form-error-style'>{appError}</p>
-          )}
           <br />
           <div>
             <select
@@ -153,14 +154,8 @@ export default function Withdraw() {
             id='wallet'
             name='wallet'
             className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'></input>
-          {walletError && appError && (
-            <p className='form-error-style'>{appError}</p>
-          )}
           <br />
           <button
-            onClick={() => {
-              checkSubmit();
-            }}
             type='submit'
             className='py-2.5  px-5 me-2 mb-2 text-sm font-semibold font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>
             Withdraw
