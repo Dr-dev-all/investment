@@ -119,14 +119,10 @@ export default function Login() {
           }));
 
           let userInfo;
-          // console.log(errorResponseData);
 
           const token = errorResponseData.accessToken;
 
           // second logic
-
-          // console.log(userInfo);
-          // console.log({ info: userInfo, tk: token });
 
           if (!token) {
             router.push('/login');
