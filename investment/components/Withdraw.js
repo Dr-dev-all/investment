@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosPrivate from '@/hooks/useAxiosPrivate';
 import { useState, useRef } from 'react';
 import PuffLoader from 'react-spinners/PuffLoader';
+import WAValidator from 'wallet-address-validator';
 
 export default function Withdraw() {
   const axiosPrivate = useAxiosPrivate();
@@ -33,6 +34,10 @@ export default function Withdraw() {
 
     if (mainData.wallet === '') {
       return setWalletError('Please enter your wallet address');
+    } else if (!WAValidator.validate(mainData.wallet, mainData.walletType)) {
+      return setWalletError(
+        `Please enter a valid ${mainData.walletType} wallet address`
+      );
     } else {
       setWalletError('');
     }
@@ -47,16 +52,6 @@ export default function Withdraw() {
       const serverResponse = response.data;
       setServerData(serverResponse);
     } catch (error) {
-      // setServerData(error);
-      if (
-        error.response.status === 400 &&
-        error.response.data === 'invalid-wallet-address'
-      ) {
-        return setServerData(`Invalid ${mainData.walletType} address`);
-      } else {
-        setServerData('');
-      }
-
       if (
         error.response.status === 400 &&
         error.response.data === 'invalid-amount-data'
@@ -92,7 +87,7 @@ export default function Withdraw() {
       ) : walletError && walletError !== '' ? (
         <p className='form-error-style'>{walletError}</p>
       ) : serverData && serverData === 'success' && serverData !== '' ? (
-        <p className='text-green-500 text-[1.2rem] font-bold'>
+        <p className='text-green-500 text-[1.1rem] font-bold tracking-wide'>
           Withdrawal request submitted successfuly, please check your exchange
           wallet in few moments.
         </p>

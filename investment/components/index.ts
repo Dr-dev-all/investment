@@ -7,6 +7,7 @@ import Login from './Login';
 import UserDashBoard from './Userdash';
 import About from './About';
 import Contact from './Contact';
+import Cashout from './Cashout';
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   Login,
   About,
   Contact,
+  Cashout,
 };

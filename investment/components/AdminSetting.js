@@ -19,8 +19,6 @@ export default function AdminSetting() {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      console.log(response);
-
       if (response.status === 200) {
         localStorage.clear();
         router.push('/login');
