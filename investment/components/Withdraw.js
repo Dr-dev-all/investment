@@ -34,22 +34,16 @@ export default function Withdraw() {
 
     if (mainData.wallet === '') {
       return setWalletError('Please enter your wallet address');
+    } else if (WAValidator.validate(mainData.wallet, mainData.walletType)) {
+      if (WAValidator.validate(mainData.wallet, mainData.walletType)) {
+        setWalletError('');
+      } else {
+        return setWalletError(
+          `Please enter a valid ${mainData.walletType} wallet address`
+        );
+      }
     } else {
       setWalletError('');
-    }
-
-    if (WAValidator.validate(mainData.wallet, mainData.walletType)) {
-      setWalletError('');
-    } else {
-      setWalletError(
-        `Please enter a valid ${
-          mainData.walletType === 'btc'
-            ? 'bitcoin'
-            : mainData.walletType === 'eth'
-            ? 'ethereum'
-            : mainData.walletType === 'usdt' && 'usdt'
-        } wallet address`
-      );
     }
 
     try {
@@ -136,9 +130,9 @@ export default function Withdraw() {
               name='walletType'
               id='walletType'
               className='mb-2 w-full  border p-2 border-gray-300 rounded-md focus:outline-none focus-border-blue-500'>
-              <option value='btc'>BTC</option>
-              <option value='eth'>ETH</option>
-              <option value='usdt'>USDT</option>
+              <option value='bitcoin'>BTC</option>
+              <option value='ethereum'>ETH</option>
+              <option value='litecoin'>LTC</option>
             </select>
           </div>
           <label htmlFor='wallet'>Wallet Address:</label>
