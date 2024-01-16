@@ -50,7 +50,7 @@ body {
 } */
 
 .plan-items {
-  @apply min-w-[99%]  flex justify-between items-center   mx-auto    py-1;
+  @apply min-w-[99%]  flex justify-between items-center   mx-auto  mb-[1rem]  py-1;
 }
 
 .plan-link-style {

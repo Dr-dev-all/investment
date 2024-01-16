@@ -14,16 +14,7 @@ export default function Withdraw() {
   const [serverError, setServerError] = useState('');
   const [successMessage, setSuccessMessage] = useState(false);
   const [serverData, setServerData] = useState('');
-  // const inputRef = useRef(null);
 
-  // const checkSubmit = () => {
-  //   if (!formLoading || !walletError || !amountError || !serverError) {
-  //     setAppError('Success');
-  //     setSuccessMessage(true);
-  //   } else {
-  //     setSuccessMessage(false);
-  //   }
-  // };
   // FORM SUBMISSION
 
   const onSubmit = async (event) => {
@@ -72,7 +63,7 @@ export default function Withdraw() {
       ) {
         return setServerData(`invalid amount.`);
       } else {
-        setServerError(false);
+        setServerData('');
       }
 
       if (
@@ -81,7 +72,7 @@ export default function Withdraw() {
       ) {
         return setServerData(`Insufficient balance.`);
       } else {
-        setServerError(false);
+        setServerData('');
       }
 
       setAppError(error);
@@ -139,7 +130,6 @@ export default function Withdraw() {
               type='text'
               name='walletType'
               id='walletType'
-              // {...register('walletType')}
               className='mb-2 w-full  border p-2 border-gray-300 rounded-md focus:outline-none focus-border-blue-500'>
               <option value='bitcoin'>BTC</option>
               <option value='ethereum'>ETH</option>
@@ -150,7 +140,6 @@ export default function Withdraw() {
           <br />
           <input
             type='text'
-            // ref={formRef}
             id='wallet'
             name='wallet'
             className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-dark dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'></input>

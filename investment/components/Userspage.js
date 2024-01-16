@@ -206,25 +206,25 @@ export default function Userspage() {
 
   const content = (
     <>
-      <main className="min-h-full px-4 w-screen bg-white mt-4 mb-[4rem]">
-        <section className="flex justify-between items-center p-2 bg-black rounded-full min-w-full h-[3rem]   ">
-          <div className="h-full w-[90%] bg-gray-500 text-black rounded-full  px-2   mx-auto">
+      <main className='min-h-full px-4 w-screen bg-white mt-4 mb-[4rem]'>
+        <section className='flex justify-between items-center p-2 bg-black rounded-full min-w-full h-[3rem]   '>
+          <div className='h-full w-[90%] bg-gray-500 text-black rounded-full  px-2   mx-auto'>
             <input
-              placeholder="Search user"
-              className="rounded-full text-black mx-auto w-full px-2 py-1"
+              placeholder='Search user'
+              className='rounded-full text-black mx-auto w-full px-2 py-1'
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
             />
           </div>
-          <div className="center-with-flex">
+          <div className='center-with-flex'>
             <button>
-              <IoPersonAddSharp className="text-green-500 text-[1.3rem]" />
+              <IoPersonAddSharp className='text-green-500 text-[1.3rem]' />
             </button>
           </div>
         </section>
         <section>
-          <ul className="grid grid-cols-1 gap-3 justify-center items-center w-full h-full mt-3">
+          <ul className='grid grid-cols-1 gap-3 justify-center items-center w-full h-full mt-3'>
             {userData?.data?.users?.length && !isLoading ? (
               userData?.data?.users
                 .filter((d) =>
@@ -235,18 +235,18 @@ export default function Userspage() {
                 .map((user, i) => (
                   <li key={i}>
                     <div>
-                      <div className=" bg-black text-white rounded-[2rem] p-2 shadow-gray-500 shadow-xl">
+                      <div className=' bg-black text-white rounded-[2rem]  mb-[1.2rem] p-2 shadow-gray-500 shadow-xl'>
                         {isLoading ? (
                           <PuffLoader />
                         ) : (
                           <form onSubmit={onSubmit}>
                             <ul>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Firstname:{' '}
                                 <span>
                                   <input
-                                    type="text"
-                                    name="firstName"
+                                    type='text'
+                                    name='firstName'
                                     defaultValue={user.firstName}
                                     // onChange={(e) =>
                                     //   setUserFormData((prev) => ({
@@ -256,16 +256,16 @@ export default function Userspage() {
                                     //       : user.firstName,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Lastname:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="lastName"
+                                    type='text'
+                                    name='lastName'
                                     //   value={user.lastName}
                                     defaultValue={user.lastName}
                                     // onChange={(e) =>
@@ -274,16 +274,16 @@ export default function Userspage() {
                                     //     lastName: e.target.value || user.lastName,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Email:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="email"
+                                    type='text'
+                                    name='email'
                                     // value={user.email}
                                     defaultValue={user.email}
                                     // onChange={(e) =>
@@ -292,16 +292,16 @@ export default function Userspage() {
                                     //     email: user.email || e.target.value,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Plan:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="plan"
+                                    type='text'
+                                    name='plan'
                                     defaultValue={user.plan}
                                     // onChange={(e) =>
                                     //   setUserFormData((prev) => ({
@@ -309,16 +309,16 @@ export default function Userspage() {
                                     //     plan: e.target.value || user.plan,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Investment:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="investment"
+                                    type='text'
+                                    name='investment'
                                     defaultValue={user.investment}
                                     // defaultValue={user.balance}
                                     // onChange={(e) =>
@@ -327,16 +327,16 @@ export default function Userspage() {
                                     //     balance: e.target.value || user.balance,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Profit:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="profit"
+                                    type='text'
+                                    name='profit'
                                     defaultValue={user.profit}
                                     // defaultValue={user.balance}
                                     // onChange={(e) =>
@@ -345,16 +345,16 @@ export default function Userspage() {
                                     //     balance: e.target.value || user.balance,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Loss:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="loss"
+                                    type='text'
+                                    name='loss'
                                     defaultValue={user.loss}
                                     // defaultValue={user.balance}
                                     // onChange={(e) =>
@@ -363,16 +363,16 @@ export default function Userspage() {
                                     //     balance: e.target.value || user.balance,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 Balance:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="balance"
+                                    type='text'
+                                    name='balance'
                                     defaultValue={user.balance}
                                     // defaultValue={user.balance}
                                     // onChange={(e) =>
@@ -381,16 +381,16 @@ export default function Userspage() {
                                     //     balance: e.target.value || user.balance,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 UserID:
                                 <span>
                                   <input
-                                    type="text"
-                                    name="id"
+                                    type='text'
+                                    name='id'
                                     defaultValue={user._id}
                                     readOnly
                                     // value={user._id}
@@ -400,41 +400,41 @@ export default function Userspage() {
                                     //     id: e.target.value || user.balance,
                                     //   }))
                                     // }
-                                    className="text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg "
+                                    className='text-black w-full rounded-[2rem] ml-2 px-2 shadow-inner shadow-black shadow-lg '
                                   />
                                 </span>
                               </li>
-                              <li className="plan-items">
+                              <li className='plan-items'>
                                 status:{' '}
                                 <span>
                                   {user.isActive ? (
-                                    <BiSolidSquareRounded className="text-green-500 text-[1.2rem]" />
+                                    <BiSolidSquareRounded className='text-green-500 text-[1.2rem]' />
                                   ) : (
-                                    <BiSolidSquareRounded className="text-red-500  text-[1.2rem]" />
+                                    <BiSolidSquareRounded className='text-red-500  text-[1.2rem]' />
                                   )}
                                 </span>
                               </li>
                             </ul>
-                            <button className="w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold">
+                            <button className='w-full h-full bg-blue-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 mb-3 font-bold'>
                               {' '}
                               submit
                             </button>
                           </form>
                         )}
-                        <div className="grid grid-cols-2 gap-2 ">
+                        <div className='grid grid-cols-2 gap-2 '>
                           <button
                             onClick={() => {
                               activateUser(user._id);
                             }}
-                            className="w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                            className='w-full h-full bg-green-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold'>
                             {activateLoading ? (
                               <BeatLoader
                                 color={'blue'}
                                 // loading={isloading}
                                 // cssOverride={override}
                                 size={10}
-                                aria-label="Loading Spinner"
-                                data-testid="loader"
+                                aria-label='Loading Spinner'
+                                data-testid='loader'
                               />
                             ) : (
                               'Activate'
@@ -444,15 +444,15 @@ export default function Userspage() {
                             onClick={() => {
                               deactivateUser(user._id);
                             }}
-                            className="w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold">
+                            className='w-full h-full bg-red-500 text-black rounded-full shadow-white shadow-2xl shadow-inner p-1 font-bold'>
                             {deactivateLoading ? (
                               <BeatLoader
                                 color={'blue'}
                                 // loading={isloading}
                                 // cssOverride={override}
                                 size={10}
-                                aria-label="Loading Spinner"
-                                data-testid="loader"
+                                aria-label='Loading Spinner'
+                                data-testid='loader'
                               />
                             ) : (
                               'Deactivate'
@@ -462,15 +462,15 @@ export default function Userspage() {
                             onClick={() => {
                               deleteUser(user._id);
                             }}
-                            className="w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold">
+                            className='w-full h-full bg-red-500 text-black rounded-full shadow-white col-span-2 shadow-2xl shadow-inner p-1 font-bold'>
                             {deleteLoading ? (
                               <BeatLoader
                                 color={'blue'}
                                 // loading={isloading}
                                 // cssOverride={override}
                                 size={10}
-                                aria-label="Loading Spinner"
-                                data-testid="loader"
+                                aria-label='Loading Spinner'
+                                data-testid='loader'
                               />
                             ) : (
                               'Delete'
@@ -483,16 +483,16 @@ export default function Userspage() {
                 ))
             ) : isLoading ? (
               <ThreeCircles
-                height="100"
-                width="100"
-                color="#4fa94d"
+                height='100'
+                width='100'
+                color='#4fa94d'
                 wrapperStyle={{ color: 'blue' }}
-                wrapperClass=""
+                wrapperClass=''
                 visible={true}
-                ariaLabel="three-circles-rotating"
-                outerCircleColor="blue"
-                innerCircleColor="blue"
-                middleCircleColor="blue"
+                ariaLabel='three-circles-rotating'
+                outerCircleColor='blue'
+                innerCircleColor='blue'
+                middleCircleColor='blue'
               />
             ) : (
               <p>No user data was found</p>
