@@ -88,33 +88,33 @@ export default function Userdash() {
   }, [axiosPrivate]);
 
   const content = (
-    <main className="min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow   scroll-smooth focus:scroll-auto ">
-      <section className="grid     md:grid-cols-2         bg-[#03045e]  items-center w-[99%]   mx-auto  rounded-b-[2rem]     min-h-[4rem]   p-1 ">
+    <main className='min-h-full w-full text-[#03045e]  mt-[7.9rem]  rounded-b-lg  flex flex-col  flex-grow   scroll-smooth focus:scroll-auto '>
+      <section className='grid     md:grid-cols-2    bg-[#03045e]  items-center w-[99%]   mx-auto  rounded-b-[2rem]     min-h-[4rem]   p-1 '>
         {/* investment and balance */}
-        <article className="grid grid-cols-2 w-[90%] mx-auto">
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col  font-black  h-[3.5rem]     ">
+        <article className='grid grid-cols-2 w-[90%] mx-auto'>
+          <div className=' center-with-flex text-[#03045e] w-[85%]  bg-[#cfe8ef]  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2  shadow-xl shadow-gray-900 '>
+            <h1 className='flex flex-col  font-black  h-[3.5rem]     '>
               Balance:{' '}
-              <span className="font-black">
+              <span className='font-black'>
                 {' '}
                 {user?.data?.balance && user?.data?.balance !== '00' ? (
                   ` $${user?.data?.balance}`
                 ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
+                  <p className='animate-pulse  '>Loading...</p>
                 ) : (
                   user?.data?.balance === '00' && '$00.00'
                 )}
               </span>
             </h1>
           </div>
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col  font-black  h-[3.5rem]    ">
+          <div className=' center-with-flex text-[#03045e] w-[85%]   bg-[#cfe8ef] h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2    shadow-xl shadow-gray-900'>
+            <h1 className='flex flex-col  font-black  h-[3.5rem]    '>
               Investment{' '}
-              <span className="font-black">
+              <span className='font-black'>
                 {user?.data?.investment && user?.data?.investment !== '00' ? (
                   ` $${user?.data?.investment}`
                 ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
+                  <p className='animate-pulse  '>Loading...</p>
                 ) : (
                   user?.data?.investment === '00' && '$00.00'
                 )}
@@ -126,30 +126,30 @@ export default function Userdash() {
         {/* end of investment and balance */}
 
         {/* LOSS AND PROFIT */}
-        <article className="grid grid-cols-2 w-[90%] mx-auto">
-          <div className="center-with-flex text-[#03045e] w-[85%]  bg-white  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2">
-            <h1 className="flex flex-col h-[4rem] font-black    ">
+        <article className='grid grid-cols-2 w-[90%] mx-auto'>
+          <div className='center-with-flex text-[#03045e] w-[85%]   bg-[#cfe8ef]  h-[5rem]  rounded-[1rem]  text-[1.1rem] my-2 mx-2   shadow-xl shadow-gray-900'>
+            <h1 className='flex flex-col h-[4rem] font-black    '>
               Loss{' '}
-              <span className="font-black">
+              <span className='font-black'>
                 {' '}
                 {user?.data?.loss && user?.data?.loss !== '00' ? (
                   ` $${user?.data?.loss}`
                 ) : isLoading ? (
-                  <p className="animate-pulse">Loading...</p>
+                  <p className='animate-pulse'>Loading...</p>
                 ) : (
                   user?.data?.loss === '00' && '$00.00'
                 )}
               </span>
             </h1>
           </div>
-          <div className="  center-with-flex text-[#03045e] w-[85%]  bg-white h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2">
-            <h1 className="flex flex-col h-[4rem] font-black ">
+          <div className='  center-with-flex text-[#03045e] w-[85%]   bg-[#cfe8ef] h-[5rem]   rounded-[1rem]  text-[1.1rem] my-2 mx-2     shadow-xl shadow-gray-900'>
+            <h1 className='flex flex-col h-[4rem] font-black '>
               Profits
-              <span className="font-black">
+              <span className='font-black'>
                 {user?.data?.profit && user?.data?.profit !== '00' ? (
                   `$${user?.data?.profit}`
                 ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
+                  <p className='animate-pulse  '>Loading...</p>
                 ) : (
                   user?.data?.profit === '00' && '$00.00'
                 )}
@@ -162,31 +162,31 @@ export default function Userdash() {
       </section>
 
       {/* choose plan */}
-      <section className=" center-with-flex w-full min-h-full gap-3    my-2 py-2 px-3">
-        <article className="flex justify-between   mb-4  bg-[#03045e] text-white  items-center w-full   hidden      min-h-[6rem]  shadow-lg shadow-gray-500   border-white border-2  p-1 rounded-[2rem]">
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white   shadow-2xl shadow-black    rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col  font-black  h-[3.5rem]    ">
+      <section className=' center-with-flex w-full min-h-full gap-3    my-2 py-2 px-3'>
+        <article className='flex justify-between   mb-4  bg-[#03045e] text-white  items-center w-full   hidden      min-h-[6rem]  shadow-lg shadow-gray-500   border-white border-2  p-1 rounded-[2rem]'>
+          <div className=' center-with-flex text-[#03045e] w-[85%]  bg-white   shadow-2xl shadow-black    rounded-[1rem]  text-[1.1rem] my-2 mx-2 '>
+            <h1 className='flex flex-col  font-black  h-[3.5rem]    '>
               Loss{' '}
-              <span className="font-black">
+              <span className='font-black'>
                 {' '}
                 {user?.data?.loss && user?.data?.loss !== '00' ? (
                   ` $${user?.data?.loss}`
                 ) : isLoading ? (
-                  <p className="animate-pulse">Loading...</p>
+                  <p className='animate-pulse'>Loading...</p>
                 ) : (
                   user?.data?.loss === '00' && '$00.00'
                 )}
               </span>
             </h1>
           </div>
-          <div className=" center-with-flex text-[#03045e] w-[85%]  bg-white   shadow-2xl shadow-black  rounded-[1rem]  text-[1.1rem] my-2 mx-2 ">
-            <h1 className="flex flex-col  font-black  h-[3.5rem]">
+          <div className=' center-with-flex text-[#03045e] w-[85%]  bg-white   shadow-2xl shadow-black  rounded-[1rem]  text-[1.1rem] my-2 mx-2   '>
+            <h1 className='flex flex-col  font-black  h-[3.5rem]'>
               Profits
-              <span className="font-black">
+              <span className='font-black'>
                 {user?.data?.profit && user?.data?.profit !== '00' ? (
                   `$${user?.data?.profit}`
                 ) : isLoading ? (
-                  <p className="animate-pulse  ">Loading...</p>
+                  <p className='animate-pulse  '>Loading...</p>
                 ) : (
                   user?.data?.profit === '00' && '$00.00'
                 )}
@@ -194,56 +194,56 @@ export default function Userdash() {
             </h1>
           </div>
         </article>
-        <article className="center-with-flex text-center w-[97%] border-2 py-1 shadow-lg shadow-gray-500  mb-2 bg-white   bg-[#a0ccda]  rounded-[1rem]">
-          <div className="  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]   md:px-[10rem]   ">
-            <GiPayMoney className="text-[1.5rem]" />
-            <TiArrowRight className="animate-ping" />
-            <FaMoneyBillTrendUp className="text-[1.5rem] " />
-            <TiArrowRight className="animate-ping" />
-            <GiMoneyStack className="text-[1.5rem]" />
-            <TiArrowRight className="animate-ping" />
-            <GiTakeMyMoney className="text-[1.5rem]" />
+        <article className='center-with-flex text-center w-[97%] border-2 py-1 shadow-lg shadow-gray-500  mb-2 bg-white   bg-[#a0ccda]  rounded-[1rem]'>
+          <div className='  flex justify-between items-center h-full w-[78%]  py-2   my-2   bg-white    mx-auto    border-y-2 border-y-[#030453]   md:px-[10rem]   '>
+            <GiPayMoney className='text-[1.5rem]' />
+            <TiArrowRight className='animate-ping' />
+            <FaMoneyBillTrendUp className='text-[1.5rem] ' />
+            <TiArrowRight className='animate-ping' />
+            <GiMoneyStack className='text-[1.5rem]' />
+            <TiArrowRight className='animate-ping' />
+            <GiTakeMyMoney className='text-[1.5rem]' />
           </div>
           <div>
-            <p className="text-[1.1rem] text-center font-bold ">
+            <p className='text-[1.1rem] text-center font-bold '>
               Choose a plan to start your earning journey.
             </p>
           </div>
           <Link
-            href="/login/userdash/chooseplan"
-            className=" bg-[#03045e] rounded-[1rem]  from-85% text-[1.4rem] font-bold  text-white shadow-2xl   shadow-gray-500 p-2   ">
+            href='/login/userdash/chooseplan'
+            className=' bg-[#03045e] rounded-[1rem]  from-85% text-[1.4rem] font-bold  text-white shadow-2xl   shadow-gray-500 p-2   '>
             choose plan now{' '}
-            <MdArrowOutward className="inline text-[1.3rem] text-white" />
+            <MdArrowOutward className='inline text-[1.3rem] text-white' />
           </Link>
         </article>
       </section>
 
       {/* crypto section */}
 
-      <section className="mt-4  mb-[1rem] center-with-flex w-full min-h-full  gap-3   px-3 py-3  bg-white text-white">
-        <article className="center-with-flex  min-w-full   bg-[#a0ccda] rounded-[1rem]  border-2 border-white">
-          <div className="w-full">
-            <h4 className=" text-[#03045e]  tracking-wide  text-center  uppercase    font-bold w-[98%] mx-auto">
+      <section className='mt-4  mb-[1rem] center-with-flex w-full min-h-full  gap-3   px-3 py-3  bg-white text-white'>
+        <article className='center-with-flex  min-w-full   bg-[#a0ccda] rounded-[1rem]  border-2 border-white'>
+          <div className='w-full'>
+            <h4 className=' text-[#03045e]  tracking-wide  text-center  uppercase    font-bold w-[98%] mx-auto'>
               {' '}
               Our trading assets
             </h4>
             <div></div>
           </div>
           <div
-            className="flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[15rem] 
-               ">
-            <FaBitcoin className="text-[2rem]" />
-            <SiLitecoin className="text-[2rem]" />
-            <SiDogecoin className="text-[2rem]  " />
-            <FaViacoin className="text-[2rem]" />
-            <TbCoinMoneroFilled className="text-[2rem]" />
+            className='flex justify-between items-center   bg-[#03045e] text-white  items-center w-full min-h-[6rem]   px-5 rounded-lg   md:px-[15rem] 
+               '>
+            <FaBitcoin className='text-[2rem]' />
+            <SiLitecoin className='text-[2rem]' />
+            <SiDogecoin className='text-[2rem]  ' />
+            <FaViacoin className='text-[2rem]' />
+            <TbCoinMoneroFilled className='text-[2rem]' />
           </div>
-          <div className="center-with-flex">
+          <div className='center-with-flex'>
             <button
               onClick={() => {
                 setShow(!show);
               }}>
-              <h2 className="flex justify-between  font-bold my-2   px-4  text-[#03045e] text-[1.2rem] border-y-2 border-y-[#03045e]  items-center w-full">
+              <h2 className='flex justify-between  font-bold my-2   px-4  text-[#03045e] text-[1.2rem] border-y-2 border-y-[#03045e]  items-center w-full'>
                 Why we choose them{' '}
                 {show ? (
                   <BiSolidDownArrow
@@ -273,9 +273,9 @@ export default function Userdash() {
 
       {/* FOREX CROSS RATES */}
 
-      <section className="bg-[#0f110c]  grid md:grid-cols-2 md:bg-yellow-500">
-        <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
-          <article className="   min-w-[5rem] min-h-[4rem]         ">
+      <section className='bg-[#0f110c]  grid md:grid-cols-2 md:bg-yellow-500'>
+        <section className='  min-h-[3] min-w-[97%]  mx-auto p-5      '>
+          <article className='   min-w-[5rem] min-h-[4rem]         '>
             <TechnicalAnalysis
               widgetProps={{
                 theme: 'dark',
@@ -290,8 +290,8 @@ export default function Userdash() {
 
         {/* FOREX CROSS RATES */}
 
-        <section className="  min-h-[3] min-w-[97%]  mx-auto p-5      ">
-          <article className="   min-w-[5rem] min-h-[4rem]        ">
+        <section className='  min-h-[3] min-w-[97%]  mx-auto p-5      '>
+          <article className='   min-w-[5rem] min-h-[4rem]        '>
             <ForexCrossRates
               widgetProps={{
                 theme: 'dark',
@@ -306,8 +306,8 @@ export default function Userdash() {
 
         {/* CRYPTO ADVANCED CHAT */}
 
-        <section className="  min-h-[3] min-w-[97%]  mx-auto p-5         md:min-w-[90%]  md:col-span-2     ">
-          <article className="   min-w-[5rem] min-h-[4rem]     ">
+        <section className='  min-h-[3] min-w-[97%]  mx-auto p-5         md:min-w-[90%]  md:col-span-2     '>
+          <article className='   min-w-[5rem] min-h-[4rem]     '>
             <AdvancedChart
               widgetProps={{
                 theme: 'dark',
@@ -321,19 +321,19 @@ export default function Userdash() {
         {/* END OF CRYPTO ADVANCED CHAT */}
       </section>
 
-      <section className="  mb-[5rem] center-with-flex w-full    min-h-full  gap-3   px-3 py-3    text-white">
-        <section className="h-[90%] w-[98%]  bg-[#16425b]">
-          <section className="w-full ">
-            <h3 className="uppercase w-[98%] mx-auto bg-yellow-500 text-center my-3    text-[#03045e]   text-[1.1rem] font-bold">
+      <section className='  mb-[5rem] center-with-flex w-full    min-h-full  gap-3   px-3 py-3    text-white'>
+        <section className='h-[90%] w-[98%]  bg-[#16425b]'>
+          <section className='w-full '>
+            <h3 className='uppercase w-[98%] mx-auto bg-yellow-500 text-center my-3    text-[#03045e]   text-[1.1rem] font-bold'>
               Check out security updates
             </h3>
-            <div className="center-with-flex   mx-[1.2rem]  rounded-full  p-2   mx-auto   w-[80%] bg-[#03045e]  ">
-              <MdVerifiedUser className="text-[4rem]    w-[80%] mx-auto  text-white bg-   ]" />
+            <div className='center-with-flex   mx-[1.2rem]  rounded-full  p-2   mx-auto   w-[80%] bg-[#03045e]  '>
+              <MdVerifiedUser className='text-[4rem]    w-[80%] mx-auto  text-white bg-   ]' />
             </div>
           </section>
-          <section className="min-h-[5rem]   min-w-full  px-2 text-center">
-            <article className="text-left   w-full  p-2   w-full  m-auto">
-              <h1 className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto">
+          <section className='min-h-[5rem]   min-w-full  px-2 text-center'>
+            <article className='text-left   w-full  p-2   w-full  m-auto'>
+              <h1 className='text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto'>
                 Crypto security starts with internet security
               </h1>
               <p className={`text-center  tracking-wide px-1 w-full  py-2 `}>
@@ -341,9 +341,9 @@ export default function Userdash() {
                 cryptocurrency is having overall good online security.
               </p>
             </article>
-            <hr className="w-[80%] mx-auto  my-4"></hr>
-            <article className="text-left     w-full  p-2    m-auto">
-              <h1 className="text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto">
+            <hr className='w-[80%] mx-auto  my-4'></hr>
+            <article className='text-left     w-full  p-2    m-auto'>
+              <h1 className='text-center   flex justify-between items-center  text-[1rem] font-bold   w-[89%]  mx-auto'>
                 Securing your seed phrase
               </h1>
               <p

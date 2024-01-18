@@ -65,28 +65,46 @@ export default function UserDashboardHeader() {
 
   // console.log({ api_user: user });
   const content = (
-    <header className=" bg-[#03045e]  w-full min-h-[3rem] text-white fixed top-0    z-30    mb-[2rem] border-b-2 border-b-white ">
-      <section className="w-full h-[4rem] flex flex-row justify-between items-center  min-w-screen        py-2 px-2">
-        <div className="  flex flex-col justify-center items-center gap-1 h-[98%]  m-auto   w-[50%]     mr-3  border-2            rounded-[2rem]   border-white  px-2  py-1    my-auto">
-          <span className="text-white    text-center   text-[10px] ">
-            Active plan:
+    <header className='  bg-[#03045e]  w-full min-h-[3rem] text-white fixed top-0    z-30    mb-[2rem] border-b-2 border-b-white '>
+      <section className='w-full h-[4rem]   bg-gradient-to-l from-black to-blue-900 to-80%  flex flex-row justify-between items-center  min-w-screen        py-2 px-2'>
+        <div className='  flex flex-col justify-center items-center gap-1 h-[99%]  m-auto   w-[40%] relative mr-3    bg-[#03045e]  rounded-full     px-2  py-2    my-auto  shadow-md shadow-gray-900'>
+          <span className='text-white    text-center font-bold  text-[11px] '>
+            Active plan
           </span>
-          <h2 className="text-[#03045e] px-1  font-bold  text-[12px]  text-center  rounded-full  bg-white w-[86%] mx-auto">
-            {user?.data?.plan ? user?.data?.plan : 'None'}
+          <h2
+            className={`text-black p-[0.2rem] font-bold  text-[12px]  text-center   rounded-t-[2rem] ${
+              user?.data?.plan === 'none'
+                ? 'bg-gray-500 text-white '
+                : ' bg-yellow-500  text-black '
+            } w-[86%] mx-auto    `}>
+            {user?.data?.plan && user?.data?.plan !== 'none'
+              ? user?.data?.plan
+              : user?.data?.plan === 'none'
+                ? 'None'
+                : loading && '...'}
           </h2>
         </div>
-        <div className="w-[25%] m-auto h-[2rem]  text-[10px] ">
-          <span className="italic text-[13px] font-bold "> Hi </span>{' '}
+        <div className=' flex justify-center items-center  min-w-[30%] m-auto h-[2rem]  text-[0.8rem] font-bold tracking-wide shadow-md shadow-gray-900'>
+          <span className='italic text-[13px] font-bold mr-2 inline '>
+            {' '}
+            <Image
+              src='/waving.svg'
+              alt='Hello User'
+              height={30}
+              width={30}
+            />{' '}
+          </span>{' '}
           {user?.data?.firstName
             ? user?.data?.firstName
             : loading && (
-                <p className={`text-white ${loading && 'animate-pulse inline'}`}>
+                <p
+                  className={`text-white ${loading && 'animate-pulse inline'}`}>
                   ...
                 </p>
               )}{' '}
         </div>
-        <div className=" center-with-flex  w-[25%]  m-auto ">
-          <div className="flex flex-col">
+        <div className=' center-with-flex  w-[25%]  m-auto '>
+          <div className='flex flex-col'>
             <FaCircle
               className={`    mx-auto  text-[0.9rem] ${
                 loading === true
@@ -112,26 +130,30 @@ export default function UserDashboardHeader() {
             </p>
           </div>
         </div>
-        <div className=" center-with-flex    w-[25%]  m-auto">
-          {' '}
-          <IoNotificationsOffSharp />{' '}
+        <div className=' center-with-flex     w-[25%]  m-auto'>
+          <div>
+            <h1 className='z-10 bg-red-500 text-white rounded-full p-2 center-with-flex h-[0.4rem]'>
+              1
+            </h1>{' '}
+            <IoNotificationsOffSharp className='z-0 text-[1.2rem]' />{' '}
+          </div>
         </div>
       </section>
       <section>
-        <hr className="w-full mb-1 mx-auto " />
-        <article className="flex justify-between items-center  py-1 px-[2rem]">
-          <div className="flex flex-col justify-center items-center ">
-            <Link href="/login/userdash/withdraw" className="center-with-flex">
-              <FaMinusCircle className="text-[1.7rem]" />
-              <h1 className="  text-white mx-auto ">Withdraw</h1>
+        <hr className='w-full mb-1 mx-auto ' />
+        <article className='flex justify-between items-center  py-1 px-[2rem]'>
+          <div className='flex flex-col justify-center items-center '>
+            <Link href='/login/userdash/withdraw' className='center-with-flex'>
+              <FaMinusCircle className='text-[1.7rem]' />
+              <h1 className='  text-white mx-auto '>Withdraw</h1>
             </Link>
           </div>
-          <div className="flex flex-col justify-center items-center ">
+          <div className='flex flex-col justify-center items-center '>
             <Link
-              href="/login/userdash/chooseplan"
-              className="center-with-flex">
-              <IoAddCircleSharp className="text-[1.7rem]" />
-              <h1 className=" text-white mx-auto ">Choose Plan</h1>
+              href='/login/userdash/chooseplan'
+              className='center-with-flex'>
+              <IoAddCircleSharp className='text-[1.7rem]' />
+              <h1 className=' text-white mx-auto '>Choose Plan</h1>
             </Link>
           </div>
         </article>
