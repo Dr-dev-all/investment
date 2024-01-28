@@ -1,31 +1,40 @@
-'use client';
-import { IoNotificationsSharp } from 'react-icons/io5';
-import { IoSearchSharp } from 'react-icons/io5';
-import { useState } from 'react';
-import useAxiosPrivate from '@/hooks/useAxiosPrivate';
-import { useEffect } from 'react';
+"use client";
+import { IoNotificationsSharp } from "react-icons/io5";
+import { IoSearchSharp } from "react-icons/io5";
+import { useState } from "react";
+import useAxiosPrivate from "@/hooks/useAxiosPrivate";
+import { useEffect } from "react";
 
 export default function AdminHeader() {
   const axiosPrivate = useAxiosPrivate();
 
   const [user, setUser] = useState({});
-  const [appError, setAppError] = useState('');
+  const [appError, setAppError] = useState("");
 
   useEffect(() => {
     let isMounted = true;
 
-    const controller = new AbortController();
+    // const controller = new AbortController();
 
     const getUser = async () => {
       try {
-        const response = await axiosPrivate.get(`/users/getsingleuser`, {
-          signal: controller.signal,
-        });
-        isMounted && setUser((prev) => ({ ...prev, data: response.data }));
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/users/getallusers`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const serverData = await response.json();
+        isMounted && setUser((prev) => ({ ...prev, data: serverData }));
         // console.log({ serverdata: user });
         //
       } catch (error) {
-        setAppError('Network error..., please try again later');
+        // console.log(error);
+        setAppError("Network error..., please try again later");
       }
     };
 
@@ -33,9 +42,12 @@ export default function AdminHeader() {
 
     return () => {
       isMounted = false;
-      controller.abort();
     };
-  }, [axiosPrivate]);
+  }, []);
+
+  // serverData.data && serverData.data.length
+  //   ? serverData.data.filter((dt) => dt.notification === true).length
+  //   : "None";
 
   const content = (
     <main className=" mx-auto min-h-[3rem] w-full text-black sticky top-0 text-white bg-black  w-screen">
@@ -46,7 +58,18 @@ export default function AdminHeader() {
 
         <div>Bullharvest.com </div>
         <div className="center-with-flex rounded-full p-2 ">
-          <IoNotificationsSharp />
+          <h3
+            className={`      ${
+              user?.data && user?.data?.users.length ? "block" : "hidden"
+            }      center-with-flex     bg-red-600 text-white text-[1rem]  p-[0.1rem] text-white rounded-full h-[20%]`}
+          >
+            {" "}
+            {user?.data && user?.data?.users.length
+              ? user?.data?.users.filter((dt) => dt.notification === true)
+                  .length
+              : ""}
+          </h3>
+          <IoNotificationsSharp className="w-[70%] text-[1.9rem]" />
         </div>
       </section>
     </main>

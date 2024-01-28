@@ -68,7 +68,7 @@ export default function Userdash() {
           signal: controller.signal,
         });
         isMounted && setUser((prev) => ({ ...prev, data: response.data }));
-        // console.log({ serverdata: data });
+        console.log({ serverdata: data });
       } catch (error) {
         // console.log(error);
         if (error) {

@@ -4,11 +4,11 @@ import History from "@/components/History";
 
 export default function page() {
   const content = (
-    <main>
+    <>
       <UserdashboardHeader />
       <History />
       <UserdashboardFooter />
-    </main>
+    </>
   );
 
   return content;
