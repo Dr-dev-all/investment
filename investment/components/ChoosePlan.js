@@ -1,25 +1,25 @@
-'use client';
-import { useState } from 'react';
-import { IoMdArrowDropdownCircle } from 'react-icons/io';
-import { IoMdArrowDropupCircle } from 'react-icons/io';
-import { GrBitcoin } from 'react-icons/gr';
-import { RiSecurePaymentFill } from 'react-icons/ri';
-import { TiArrowRight } from 'react-icons/ti';
-import { GiPayMoney } from 'react-icons/gi';
-import { FaEthereum } from 'react-icons/fa';
-import { HiCurrencyDollar } from 'react-icons/hi2';
-import copy from 'clipboard-copy';
-import { FaCopy } from 'react-icons/fa';
-import { GrStatusGood } from 'react-icons/gr';
+"use client";
+import { useState } from "react";
+import { IoMdArrowDropdownCircle } from "react-icons/io";
+import { IoMdArrowDropupCircle } from "react-icons/io";
+import { GrBitcoin } from "react-icons/gr";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { TiArrowRight } from "react-icons/ti";
+import { GiPayMoney } from "react-icons/gi";
+import { FaEthereum } from "react-icons/fa";
+import { HiCurrencyDollar } from "react-icons/hi2";
+import copy from "clipboard-copy";
+import { FaCopy } from "react-icons/fa";
+import { GrStatusGood } from "react-icons/gr";
 
 export default function ChoosePlan() {
   // starter plan
   const standard = [
-    { name: 'Interest', value: '6%', id: 1 },
-    { name: 'Minimum Amount', value: '$1,000', id: 2 },
-    { name: 'Maximum Amount', value: '$4,900', id: 3 },
-    { name: 'ROI', value: '6% Daily', id: 4 },
-    { name: 'Referral Commision', value: '4%', id: 5 },
+    { name: "Interest", value: "6%", id: 1 },
+    { name: "Minimum Amount", value: "$1,000", id: 2 },
+    { name: "Maximum Amount", value: "$4,900", id: 3 },
+    { name: "ROI", value: "6% Daily", id: 4 },
+    { name: "Referral Commision", value: "4%", id: 5 },
   ];
 
   const [starterBtc, setStarterBtc] = useState(true);
@@ -49,7 +49,7 @@ export default function ChoosePlan() {
       // alert('Wallet address copied');
     } catch (error) {
       if (error) {
-        alert('Unable to copy wallet address, please try again later');
+        alert("Unable to copy wallet address, please try again later");
       }
     } finally {
       setIscopied(false);
@@ -67,7 +67,7 @@ export default function ChoosePlan() {
           potential benefits, if you invest below your chosen plan will
           automatically attract your the lower plan that suites your investment
           else if your investment doesn’t match any plan, you will have to
-          upgrade your investment to your choice of plan.{' '}
+          upgrade your investment to your choice of plan.{" "}
         </p>
       </div>
       <div>
@@ -108,14 +108,15 @@ export default function ChoosePlan() {
                     <TiArrowRight className="animate-ping   text-white  " />
                     <RiSecurePaymentFill className="text-white" />
                     <TiArrowRight className="animate-ping   text-white" />
-                    <GrBitcoin className="text-white" />{' '}
+                    <GrBitcoin className="text-white" />{" "}
                   </div>
                   <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
                         setStarterBtc(!starterBtc);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose bitcoin wallet
                       </span>
@@ -131,8 +132,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    starterBtc ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    starterBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address below and make
                     deposit of your investment value in bitcoin through your
@@ -141,22 +143,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       Bitcoin address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 ">
-                        19S3BzZG3bf5EkL4iWF
+                        13P8YmLRsAhiTDqMVo2R
                         <br />
-                        4HxdwanKkXp14tM
+                        j3TGLfwX7bZmew
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet(" 13P8YmLRsAhiTDqMVo2Rj3TGLfwX7bZmew");
                         }}
                         className="flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   
-                           bg-green-500 ">
+                           bg-green-500 "
+                      >
                         Copy Wallet
                         <FaCopy />
                       </button>
@@ -181,7 +184,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setStarterEth(!starterEth);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
+                    >
                       {/* <FaEthereum className="text-white inline mr-2" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose Etheruem wallet
@@ -199,9 +203,10 @@ export default function ChoosePlan() {
                 <div
                   className={`${
                     starterEth
-                      ? 'hidden'
-                      : 'block    bg-white    text-[#03045e]'
-                  }    `}>
+                      ? "hidden"
+                      : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
@@ -218,17 +223,18 @@ export default function ChoosePlan() {
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2  text-black ">
-                        0x3096cD7ae641E6dc4aABc3388745
+                        0x4fdf276b5e35e0c9759fc7
                         <br />
-                        4C233cbEA102
+                        5941dd0d555a2826a7
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                            "0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7"
                           );
                         }}
-                        className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -255,7 +261,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setStarterUsdt(!starterUsdt);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
+                    >
                       {/* <HiCurrencyDollar className="text-white   inline" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose USDT wallet
@@ -272,8 +279,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    starterUsdt ? 'hidden' : 'block bg-white '
-                  }    `}>
+                    starterUsdt ? "hidden" : "block bg-white "
+                  }    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -282,22 +290,23 @@ export default function ChoosePlan() {
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
                       USDT address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd
+                        TSz8H9wHZUyshtCiwWd
                         <br />
-                        7bfR3UT6ds5sJ
+                        iK7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -324,7 +333,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setStarterTrx(!starterTrx);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose TRX wallet
                       </span>
@@ -340,8 +350,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    starterTrx ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    starterTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the TRX (TRX) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -350,22 +361,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       TRX address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd7
+                        TSz8H9wHZUyshtCiwWdi
                         <br />
-                        bfR3UT6ds5sJ
+                        K7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -409,14 +421,15 @@ export default function ChoosePlan() {
                     <TiArrowRight className="animate-ping   text-white  " />
                     <RiSecurePaymentFill className="text-white" />
                     <TiArrowRight className="animate-ping   text-white" />
-                    <GrBitcoin className="text-white" />{' '}
+                    <GrBitcoin className="text-white" />{" "}
                   </div>
                   <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
                         setGoldBtc(!goldBtc);
                       }}
-                      className="  flex flex-col justify-between item-cen'TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ'ter      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-cen'TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ'ter      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose bitcoin wallet
                       </span>
@@ -432,8 +445,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    goldBtc ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    goldBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address bellow and make
                     deposit of your investment value in bitcoin through your
@@ -442,22 +456,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       Bitcoin address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        13P8YmLRsAhiTDqMVo2Rj
                         <br />
-                        4HxdwanKkXp14tM
+                        3TGLfwX7bZmew
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet("13P8YmLRsAhiTDqMVo2Rj3TGLfwX7bZmew");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -483,7 +498,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setGoldEth(!goldEth);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
+                    >
                       {/* <FaEthereum className="text-white inline mr-2" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose Etheruem wallet
@@ -500,8 +516,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    goldEth ? 'hidden' : 'block    bg-white    text-[#03045e]'
-                  }    `}>
+                    goldEth ? "hidden" : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
@@ -511,24 +528,25 @@ export default function ChoosePlan() {
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
                       Etheruem address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        0x3096cD7ae641E6dc4aABc338874
+                        0x4fdf276b5e35e0c9759fc7
                         <br />
-                        54C233cbEA102
+                        5941dd0d555a2826a7
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                            "0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7"
                           );
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -555,7 +573,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setGoldUsdt(!goldUsdt);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
+                    >
                       {/* <HiCurrencyDollar className="text-white   inline" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose USDT wallet
@@ -571,7 +590,8 @@ export default function ChoosePlan() {
                   </div>
                 </div>
                 <div
-                  className={`${goldUsdt ? 'hidden' : 'block bg-white '}    `}>
+                  className={`${goldUsdt ? "hidden" : "block bg-white "}    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -581,21 +601,22 @@ export default function ChoosePlan() {
                     <br />
                     <span className="bg-[#03045e] p-2 text-white">
                       USDT address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd7
+                        TSz8H9wHZUyshtCiwWd
                         <br />
-                        bfR3UT6ds5sJ
+                        iK7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -622,7 +643,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setGoldTrx(!goldTrx);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose TRX wallet
                       </span>
@@ -638,8 +660,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    goldTrx ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    goldTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the TRX (TRX) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -648,22 +671,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       TRX address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd7b
+                        TSz8H9wHZUyshtCiwWd
                         <br />
-                        fR3UT6ds5sJ
+                        iK7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -708,14 +732,15 @@ export default function ChoosePlan() {
                     <TiArrowRight className="animate-ping   text-white  " />
                     <RiSecurePaymentFill className="text-white" />
                     <TiArrowRight className="animate-ping   text-white" />
-                    <GrBitcoin className="text-white" />{' '}
+                    <GrBitcoin className="text-white" />{" "}
                   </div>
                   <div className="     flex justify-between items-center w-full mx-auto   py-2">
                     <button
                       onClick={() => {
                         setPremiumBtc(!premiumBtc);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose bitcoin wallet
                       </span>
@@ -731,8 +756,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    premiumBtc ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    premiumBtc ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the bitcoin (btc) wallet address bellow and make
                     deposit of your investment value in bitcoin through your
@@ -741,22 +767,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       Bitcoin address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        19S3BzZG3bf5EkL4iWF
+                        13P8YmLRsAhiTDqMVo2Rj
                         <br />
-                        4HxdwanKkXp14tM
+                        3TGLfwX7bZmew
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('19S3BzZG3bf5EkL4iWF4HxdwanKkXp14tM');
+                          copyWallet("13P8YmLRsAhiTDqMVo2Rj3TGLfwX7bZmew");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -782,7 +809,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setPremiumEth(!premiumEth);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1   font-bold  border-white  border-2   shadow-2xl shadow-gray  text-white  mx-auto"
+                    >
                       {/* <FaEthereum className="text-white inline mr-2" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose Etheruem wallet
@@ -800,9 +828,10 @@ export default function ChoosePlan() {
                 <div
                   className={`${
                     premiumEth
-                      ? 'hidden'
-                      : 'block    bg-white    text-[#03045e]'
-                  }    `}>
+                      ? "hidden"
+                      : "block    bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the Etheruem (Etheruem) wallet address bellow
                     and make deposit of your investment value in Etheruem
@@ -812,24 +841,25 @@ export default function ChoosePlan() {
                   <p className="border-2 border-[#03045e]  flex flex-col justify-between items-center  text-center    p-3">
                     <span className="bg-[#03045e] p-2 text-white">
                       Etheruem address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        '0x3096cD7ae641E6dc4aABc3388745
+                        0x4fdf276b5e35e0c9759fc759
                         <br />
-                        4C233cbEA102'
+                        41dd0d555a2826a7
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x3096cD7ae641E6dc4aABc33887454C233cbEA102'
+                            "0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7"
                           );
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -856,7 +886,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setPremiumUsdt(!premiumUsdt);
                       }}
-                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto">
+                      className="bg-[#03045e] w-[99%]  px-1 py-1     border-white  border-2      text-white  mx-auto"
+                    >
                       {/* <HiCurrencyDollar className="text-white   inline" /> */}
                       <span className="w-[99%]  mx-auto">
                         Click to choose USDT wallet
@@ -873,8 +904,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    premiumUsdt ? 'hidden' : 'block bg-white '
-                  }    `}>
+                    premiumUsdt ? "hidden" : "block bg-white "
+                  }    `}
+                >
                   <p className="wallet-text-style ">
                     Please copy the USDT (USDT) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -884,21 +916,22 @@ export default function ChoosePlan() {
                     <br />
                     <span className="bg-[#03045e] p-2 text-white">
                       USDT address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd7b
+                        TSz8H9wHZUyshtCiwWd
                         <br />
-                        fR3UT6ds5sJ
+                        iK7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -925,7 +958,8 @@ export default function ChoosePlan() {
                       onClick={() => {
                         setPremiumTrx(!premiumTrx);
                       }}
-                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto">
+                      className="  flex flex-col justify-between item-center      bg-[#03045e] w-[99%]  px-1 py-1   border-white  border-2      text-white  mx-auto"
+                    >
                       <span className="w-[99%]  mx-auto">
                         Click to choose TRX wallet
                       </span>
@@ -941,8 +975,9 @@ export default function ChoosePlan() {
                 </div>
                 <div
                   className={`${
-                    premiumTrx ? 'hidden' : 'block   bg-white    text-[#03045e]'
-                  }    `}>
+                    premiumTrx ? "hidden" : "block   bg-white    text-[#03045e]"
+                  }    `}
+                >
                   <p className="wallet-text-style">
                     Please copy the TRX (TRX) wallet address bellow and make
                     deposit of your investment value in Etheruem through your
@@ -951,22 +986,23 @@ export default function ChoosePlan() {
                   <p className="mx-auto border-2 border-[#03045e]  flex flex-col justify-between text-center items-center      p-3">
                     <span className="bg-[#03045e] p-2 text-white mx-auto items-center">
                       TRX address :
-                    </span>{' '}
+                    </span>{" "}
                   </p>
                   <br />
                   {/* start */}
                   <div className="  center-with-flex  w-full">
                     <div className="   flex flex-col justify-between items-center     w-[99%] text-center mx-auto">
                       <span className=" w-[80%] text-center mx-auto border-2 p-2 text-black">
-                        TVZaNnUTc9Tr6JxwimLtd7bf
+                        TSz8H9wHZUyshtCiwWdi
                         <br />
-                        R3UT6ds5sJ
+                        K7CmPoa1GUcDHS
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TVZaNnUTc9Tr6JxwimLtd7bfR3UT6ds5sJ');
+                          copyWallet("TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS");
                         }}
-                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4">
+                        className="flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4"
+                      >
                         Copy wallet
                         <FaCopy />
                       </button>
@@ -981,7 +1017,7 @@ export default function ChoosePlan() {
           {/* END OF PREMIUM PLAN  */}
           {/* $$$$$$$$$$$$$ */}
         </div>
-      </div>{' '}
+      </div>{" "}
     </section>
   );
 
