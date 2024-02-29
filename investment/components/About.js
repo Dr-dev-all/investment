@@ -3,52 +3,54 @@ import { FaBitcoin } from 'react-icons/fa';
 
 export default function About() {
   const content = (
-    <main className="min-h-screen">
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+    <main className='min-h-screen'>
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block max-w-5xl md:text-5xl font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
-                About BullHarvest
+              <span className='mt-6 block max-w-5xl md:text-5xl font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
+                About BullHarvester
               </span>
-              <span className="sm:mt-5 block font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block font-display text-base font-semibold text-neutral-950'>
                 About Us
               </span>
             </h1>
-            <div className="mt-6 max-w-3xl text-xl text-neutral-600">
+            <div className='mt-6 max-w-3xl text-xl text-neutral-600'>
               <p>
                 We believe that our strength lies in our collaborative approach,
                 which puts our clients at the center of everything we do.
               </p>
             </div>
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
-                We help our clients earn money on the volatility of the
-                cryptocurrency market. Due to the use of high frequency,
-                medium-term and long-term trading strategies our company has
-                being able to consistently generate a handsome percentage of
-                profits and thereby pay high interests to their investors.
+                BullHarvester Investment Company is a trusted name in the
+                financial industry, dedicated to providing comprehensive
+                investment solutions and personalized financial guidance to
+                individuals and businesses alike. Founded on the principles of
+                integrity, expertise, and client satisfaction, BullHarvester
+                aims to empower investors with the tools and knowledge they need
+                to achieve their financial goals effectively.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Our Mission
               </span>
-              <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950'>
                 Empowerment Through Knowledge
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
-                Welcome to BullHarvest, where investment meets innovation.
+                Welcome to BullHarvester, where investment meets innovation.
                 Established with a vision to redefine wealth management, we have
                 emerged as a trusted partner in your financial journey. At
                 BullHarvest, we believe in empowering individuals with the tools
@@ -59,21 +61,21 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 {' What Sets Us Apart'}
               </span>
-              <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950'>
                 Innovation at the Core
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
-                At BullHarvest, innovation is more than a buzzword; it's the
+                At BullHarvester, innovation is more than a buzzword; it's the
                 foundation of our approach. We leverage cutting-edge technology
                 to provide you with intuitive platforms, insightful analytics,
                 and a seamless investment experience.
@@ -82,7 +84,7 @@ export default function About() {
                 Your success is our success. We prioritize a client-centric
                 approach, ensuring that every decision we make is in your best
                 interest. From personalized investment strategies to responsive
-                customer support, BullHarvest is committed to your financial
+                customer support, BullHarvester is committed to your financial
                 well-being.
               </p>
             </div>
@@ -90,19 +92,19 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Our Values
               </span>
-              <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950'>
                 Integrity and Transparency
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
                 Trust is paramount in the world of finance. We uphold the
                 highest standards of integrity and transparency in all our
@@ -120,19 +122,19 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 md:text-4xl block max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 md:text-4xl block max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Meet the Team
               </span>
-              <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950'>
                 Passionate Experts at Your Service
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
                 Our team is composed of passionate individuals with diverse
                 expertise in finance, technology, and customer service.
@@ -144,22 +146,22 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Community Engagement
               </span>
-              <span className="sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950">
+              <span className='sm:mt-5 block  lg:text-3xl font-display text-base font-semibold text-neutral-950'>
                 Giving Back
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
                 Beyond our commitment to financial success, we believe in giving
-                back to the communities we serve. BullHarvest actively
+                back to the communities we serve. BullHarvester actively
                 participates in initiatives that promote financial literacy and
                 community well-being.
               </p>
@@ -168,44 +170,44 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 md:text-4xl block max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 md:text-4xl block max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Join Us on the Journey
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
-                Whether you're a seasoned investor or just starting, BullHarvest
-                invites you to join us on this exciting journey of financial
-                growth. Explore our platform, discover our resources, and
-                experience the BullHarvest difference.
+                Whether you're a seasoned investor or just starting,
+                BullHarvester invites you to join us on this exciting journey of
+                financial growth. Explore our platform, discover our resources,
+                and experience the BullHarvester difference.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 lg:px-8 mt-24 mb-6 lg:mb-9 sm:mt-32 lg:mt-40">
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="opacity: 1; transform: none;">
+      <section className='mx-auto max-w-7xl px-6 lg:px-8 mt-24 mb-6 lg:mb-9 sm:mt-32 lg:mt-40'>
+        <div className='mx-auto max-w-2xl lg:max-w-none'>
+          <div className='opacity: 1; transform: none;'>
             <h1>
-              <span className="mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              <span className='mt-6 block md:text-4xl max-w-5xl font-display text-3xl lg:text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl'>
                 Contact Us
               </span>
             </h1>
 
-            <div className="mt-10 max-w-2xl space-y-6 text-base">
+            <div className='mt-10 max-w-2xl space-y-6 text-base'>
               <p>
                 Have questions or want to learn more? Our team is here to assist
                 you. Reach out to us here, and let's build a prosperous future
                 together.
               </p>
               <p>
-                Thank you for choosing BullHarvest - where your financial
+                Thank you for choosing BullHarvester - where your financial
                 aspirations thrive.
               </p>
             </div>

@@ -26,32 +26,32 @@ export default function Footer() {
   ];
 
   const content = (
-    <footer className="min-h-[10rem] w-full bg-[#03045e]    text-white">
-      <main className="flex flex-col justify-between items-center">
-        <section className="center-with-flex h-auto py-[1rem]">
-          <div className="h-[5rem] flex flex-col justify-center items-center">
-            <h1 className=" mt-4">Need Help?</h1>
+    <footer className='min-h-[10rem] w-full bg-[#03045e]    text-white'>
+      <main className='flex flex-col justify-between items-center'>
+        <section className='center-with-flex h-auto py-[1rem]'>
+          <div className='h-[5rem] flex flex-col justify-center items-center'>
+            <h1 className=' mt-4'>Need Help?</h1>
             <Link
-              className=" border mt-[1rem] mx-auto  border-white p-1 mb-[2rem]  border-2"
-              href="/contact">
+              className=' border mt-[1rem] mx-auto  border-white p-1 mb-[2rem]  border-2'
+              href='/contact'>
               CONTACT US{' '}
             </Link>
           </div>
         </section>
-        <hr className="w-[80%]" />
-        <section className="  h-[70%] grow grid  grid-cols-1 md:grid-cols-4  mb-4 p-2 gap-3 w-[90%] mx-auto ">
+        <hr className='w-[80%]' />
+        <section className='  h-[70%] grow grid  grid-cols-1 md:grid-cols-4  mb-4 p-2 gap-3 w-[90%] mx-auto '>
           <div>
-            <Link href="/" className=" mt-4">
+            <Link href='/' className=' mt-4'>
               <Image
-                src="/bhlogo.jpeg"
-                alt="bh-logo"
+                src='/bhlogo.jpeg'
+                alt='bh-logo'
                 width={80}
                 height={80}
-                className="border-2  m-3  "
+                className='border-2  m-3  '
               />
             </Link>
             <p>
-              At Bullharvest Investment, we believe in cultivating prosperity
+              At Bullharvester Investment, we believe in cultivating prosperity
               through strategic and informed investment.
             </p>
           </div>
@@ -86,42 +86,42 @@ export default function Footer() {
             </ul>
           </div>
         </section>
-        <hr className="w-[80%]" />
+        <hr className='w-[80%]' />
 
-        <section className="h-[5%] w-full center-with-flex">
-          <div className="flex flex-row justify-around items-center w-full px-[2rem] py-4">
-            <IoLogoWhatsapp className="inline mx-auto text-[1.6rem]" />
-            <SiFacebook className="inline mx-auto text-[1.6rem]" />
-            <PiInstagramLogoFill className="inline mx-auto text-[1.6rem]" />
-            <IoLogoLinkedin className="inline mx-auto text-[1.6rem]" />
+        <section className='h-[5%] w-full center-with-flex'>
+          <div className='flex flex-row justify-around items-center w-full px-[2rem] py-4'>
+            <IoLogoWhatsapp className='inline mx-auto text-[1.6rem]' />
+            <SiFacebook className='inline mx-auto text-[1.6rem]' />
+            <PiInstagramLogoFill className='inline mx-auto text-[1.6rem]' />
+            <IoLogoLinkedin className='inline mx-auto text-[1.6rem]' />
           </div>
         </section>
-        <hr className="w-[80%]" />
+        <hr className='w-[80%]' />
 
         <section
-          className="flex flex-col flex-grow justify-center w-full min-h-[10rem]  text-center
+          className='flex flex-col flex-grow justify-center w-full min-h-[10rem]  text-center
         
-        ">
-          <div className="grid   h-[5rem] w-screen  px-3 my-6  ">
-            <Link href="#">Legal notice</Link>
-            <Link href="#">Whistleblowers</Link>
-            <Link href="#">Terms & Conditions</Link>
-            <Link href="#">Bug bounty</Link>
-            <Link href="#" className="">
+        '>
+          <div className='grid   h-[5rem] w-screen  px-3 my-6  '>
+            <Link href='#'>Legal notice</Link>
+            <Link href='#'>Whistleblowers</Link>
+            <Link href='#'>Terms & Conditions</Link>
+            <Link href='#'>Bug bounty</Link>
+            <Link href='#' className=''>
               Complaints
             </Link>
           </div>
-          <div className=" center-with-flex   mt-12   h-full w-full">
+          <div className=' center-with-flex   mt-12   h-full w-full'>
             <Image
-              src="/certificate.jpg"
-              alt="certificate-image"
+              src='/certificate.jpg'
+              alt='certificate-image'
               height={180}
               width={180}
-              className="w-auto h-auto border-4"
+              className='w-auto h-auto border-4'
             />
           </div>
-          <p className="  my-[2rem]  w-[90%] mx-auto">
-            &copy; 2023 BULLHARVEST All Rights reserved
+          <p className='  my-[2rem]  w-[90%] mx-auto'>
+            &copy; 2023 BULLHARVESTER All Rights reserved
           </p>
         </section>
       </main>
