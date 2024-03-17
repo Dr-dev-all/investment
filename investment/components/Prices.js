@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Prices() {
   const standard = [
-    { name: 'Interest', value: '6%', id: 1 },
+    { name: 'Capita Back', value: 'Yes', id: 1 },
     { name: 'Minimum Amount', value: '$50', id: 2 },
     { name: 'Maximum Amount', value: '$4,900', id: 3 },
     { name: 'ROI', value: '6% Daily', id: 4 },
@@ -11,7 +11,7 @@ export default function Prices() {
   ];
 
   const mega = [
-    { name: 'Interest', value: '8%', id: 1 },
+    { name: 'Capita Back', value: 'Yes', id: 1 },
     { name: 'Minimum Amount', value: '$5,000', id: 2 },
     { name: 'Maximum Amount', value: '$19,000', id: 3 },
     { name: 'ROI', value: '8% Daily', id: 4 },
@@ -19,7 +19,7 @@ export default function Prices() {
   ];
 
   const vip = [
-    { name: 'Interest', value: '10%', id: 1 },
+    { name: 'Capita Back', value: 'Yes', id: 1 },
     { name: 'Minimum Amount', value: '$20,000', id: 2 },
     { name: 'Maximum Amount', value: 'Unlimited', id: 3 },
     { name: 'ROI', value: '10% Daily', id: 4 },
