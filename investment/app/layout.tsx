@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Script
+        {/* <Script
           src='//code.tidio.co/29jnyibc3anmrnxeqmfssfkb25e1kuni.js'
           strategy='beforeInteractive'
-        />
+        /> */}
 
         {children}
       </body>
