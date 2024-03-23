@@ -45,7 +45,7 @@ import { ImQuotesLeft } from 'react-icons/im';
 
 export default function Landing() {
   const standard = [
-    { name: 'Capiatl Back', value: 'Yes', id: 1 },
+    { name: 'Capital Back', value: 'Yes', id: 1 },
     { name: 'Minimum Amount', value: '$500', id: 2 },
     { name: 'Maximum Amount', value: '$4,900', id: 3 },
     { name: 'ROI', value: '6% Daily', id: 4 },
