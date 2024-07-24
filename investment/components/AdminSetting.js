@@ -41,7 +41,7 @@ export default function AdminSetting() {
               <FaUserCircle className='  text-[3.2em] text-start rounded-lg mt-4 lg:ml-7 mb-5 text-white p-2 bg-[#03045e] lg:text-[4em]' />
               <div className=''>
                 <h1>support@BullHarvest.com</h1>
-                <p>+1 388 7333 838</p>
+                <p>+1 388 74333 838</p>
               </div>
             </div>
           </Link>
