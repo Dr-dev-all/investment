@@ -147,13 +147,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 '>
-                        13P8YmLRsAhiTDqMVo2R
-                        <br />
-                        j3TGLfwX7bZmew
+                      bc1qzlqcsskdznqf6yd4w87l7as
+                      <br />
+                      kfteu4wkcmgex63
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet(' 13P8YmLRsAhiTDqMVo2Rj3TGLfwX7bZmew');
+                          copyWallet(' bc1qzlqcsskdznqf6yd4w87l7askfteu4wkcmgex63');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1  rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4   
                            bg-green-500 '>
@@ -218,14 +218,14 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2  text-black '>
-                        0x4fdf276b5e35e0c9759fc7
-                        <br />
-                        5941dd0d555a2826a7
+                      0xB91D00440E338CF4242cd996
+                      <br />
+                      03aAB693fFdD0a56
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7'
+                            '0xB91D00440E338CF4242cd99603aAB693fFdD0a56'
                           );
                         }}
                         className='flex justify-between items-center  w-[50%] px-2 py-1   text-black    bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
@@ -289,13 +289,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWd
-                        <br />
-                        iK7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmzg
+                      <br/>
+                      E31iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -357,13 +357,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWdi
-                        <br />
-                        K7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmzg
+                      <br/>
+                      E31iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -449,13 +449,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        13P8YmLRsAhiTDqMVo2Rj
-                        <br />
-                        3TGLfwX7bZmew
+                      bc1qzlqcsskdznqf6yd4w87l7ask
+                      <br/>
+                      fteu4wkcmgex63
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('13P8YmLRsAhiTDqMVo2Rj3TGLfwX7bZmew');
+                          copyWallet('bc1qzlqcsskdznqf6yd4w87l7askfteu4wkcmgex63');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -518,14 +518,14 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        0x4fdf276b5e35e0c9759fc7
-                        <br />
-                        5941dd0d555a2826a7
+                      0xB91D00440E338CF4242cd99603
+                      <br/>
+                      aAB693fFdD0a56
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7'
+                            '0xB91D00440E338CF4242cd99603aAB693fFdD0a56'
                           );
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
@@ -587,13 +587,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWd
-                        <br />
-                        iK7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmz
+                      <br/>
+                      gE31iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -655,13 +655,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWd
-                        <br />
-                        iK7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmzgE3
+                      <br/>
+                      1iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -748,9 +748,9 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        13P8YmLRsAhiTDqMVo2Rj
-                        <br />
-                        3TGLfwX7bZmew
+                      bc1qzlqcsskdznqf6yd4w87l7as
+                      <br/>
+                      kfteu4wkcmgex63
                       </span>
                       <button
                         onClick={() => {
@@ -819,14 +819,14 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        0x4fdf276b5e35e0c9759fc759
-                        <br />
-                        41dd0d555a2826a7
+                      0xB91D00440E338CF4242cd99603
+                      <br/>
+                      aAB693fFdD0a56
                       </span>
                       <button
                         onClick={() => {
                           copyWallet(
-                            '0x4fdf276b5e35e0c9759fc75941dd0d555a2826a7'
+                            '0xB91D00440E338CF4242cd99603aAB693fFdD0a56'
                           );
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
@@ -890,13 +890,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWd
-                        <br />
-                        iK7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmzgE3
+                      <br/>
+                      1iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
@@ -958,13 +958,13 @@ export default function ChoosePlan() {
                   <div className='  center-with-flex  w-full'>
                     <div className='   flex flex-col justify-between items-center     w-[99%] text-center mx-auto'>
                       <span className=' w-[80%] text-center mx-auto border-2 p-2 text-black'>
-                        TSz8H9wHZUyshtCiwWdi
-                        <br />
-                        K7CmPoa1GUcDHS
+                      TBYA1E5qZBue6XFMdShmzgE
+                      <br/>
+                      31iAF1kC3nH
                       </span>
                       <button
                         onClick={() => {
-                          copyWallet('TSz8H9wHZUyshtCiwWdiK7CmPoa1GUcDHS');
+                          copyWallet('TBYA1E5qZBue6XFMdShmzgE31iAF1kC3nH');
                         }}
                         className='flex justify-between items-center text-black  w-[50%] px-2 py-1 bg-green-500 rounded-[2rem] mb-3 shadow-2xl shadow-gray-500  my-4'>
                         Copy wallet
