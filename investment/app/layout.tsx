@@ -18,9 +18,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <script
+        {/* <script
           src='//code.tidio.co/xxvrrbkixsntu19bwaziiindkev3dgqw.js'
-          async></script>
+          async></script> */}
+          <script 
+            src="//code.tidio.co/0fyjzckyuvkh5qkmnnjbd8bnvp0yp7tu.js"
+          async></script> 
 
         {children}
       </body>
