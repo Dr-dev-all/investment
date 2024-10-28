@@ -24,9 +24,12 @@ export default function RootLayout({
           {/* <script 
             src="//code.tidio.co/0fyjzckyuvkh5qkmnnjbd8bnvp0yp7tu.js"
           async></script>  */}
-          <script
+          {/* <script
            src="//code.tidio.co/p8joiqd85yn2uzypx2bgftbhfg9uvjr1.js"
-            async></script>
+            async></script> */}
+           <script
+            src="//code.tidio.co/0fu5euohbwdudsixqsasgvmvio6tuzhn.js"
+            async></script>
 
         {children}
       </body>
